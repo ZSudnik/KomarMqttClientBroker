@@ -1,0 +1,13 @@
+<resources>
+
+    <string name="notification_mqtt_service_title">Komar MQTT Client</string>
+    <string name="notification_mqtt_service_content_run">"MQTT client running …"</string>
+    <string name="notification_mqtt_service_content_connecting">"MQTT client is trying to connect"</string>
+    <string name="notification_mqtt_service_content_stop">"MQTT client stop"</string>
+    <string name="notification_mqtt_ticker">MQTT running</string>
+    <string name="fg_channel_name">MQTT client</string>
+    <string name="fg_channel_description">MQTT Foreground client</string>
+
+    <string name="app_name">Komar Mqtt Client</string>
+
+</resources>

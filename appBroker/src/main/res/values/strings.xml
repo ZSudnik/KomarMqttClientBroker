@@ -1,0 +1,1974 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <!--school id activation-->
+    <string name="app_name">Komar Mqtt Broker</string>
+
+    <string name="school_id_activation_next">Dalej</string>
+    <string name="school_id_activation_your_password">Twój kod</string>
+    <string name="school_id_activation_button_activate">Aktywuj</string>
+    <string name="school_id_activation_qr_scan_problem">Masz problem ze skanowaniem?</string>
+    <string name="school_id_activation_write_manually">Wpisz kod ręcznie</string>
+    <string name="school_id_activation_write_code">Wpisz kod</string>
+    <string name="school_id_no_camera_permission"><![CDATA[Nie wyraziłeś zgody na użycie aparatu. Pamiętaj, że zawsze możesz to zmienić w <font color=\'#007AFF\'>ustawieniach</font>.]]></string>
+    <string name="school_id_activation_qr_password_info">Podaj kod aktywacyjny. Kod ten znajduje się obok kodu QR, który otrzymałeś w sekretariacie. Podczas wpisywania kodu aktywacyjnego zwróć uwagę na wielkość znaków.\n\nPo wpisaniu kodu naciśnij Aktywuj.</string>
+
+    <!--related to service_fragment layout-->
+    <string name="service_pj">mPrawo Jazdy</string>
+    <string name="service_lstu">mLegitymacja Studencka</string>
+    <string name="service_lszk">mLegitymacja Szkolna</string>
+    <string name="service_mpo">mPojazd</string>
+    <string name="service_prescription">eRecepta</string>
+    <string name="service_ipolak">Polak za granicą</string>
+    <string name="service_pkp">Bilkom – bilety kolejowe</string>
+    <string name="service_mobywatel">Usługa mObywatel</string>
+    <string name="service_kdr">Karta Dużej Rodziny</string>
+    <string name="service_make_proposal">Złóż wniosek</string>
+    <string name="service_power_of_attorney">Pełnomocnictwa</string><!-- TODO MOB-4384 change to proper title and translation -->
+    <string name="service_payments">ePłatności</string>
+
+    <string name="mobywatel_service_description">Twoje dane osobowe</string>
+    <string name="student_card_service_description">Korzystaj z ulg i zniżek dla studentów</string>
+    <string name="school_card_service_description">Korzystaj z ulg i zniżek dla uczniów</string>
+    <string name="vehicle_service_description">Dane z dowodu rejestracyjnego, OC i karty pojazdu</string>
+    <string name="prescription_service_description">Lista niezrealizowanych elektronicznych recept</string>
+    <string name="ipolak_service_description">Informacje o krajach do których podróżujesz</string>
+    <string name="pkp_service_description">Zakupione na bilkom.pl lub bilet.wielkopolskiebilety.pl</string>
+    <string name="pensioner_card_service_description">Ulgi i zniżki dla emerytów/rencistów\n(Zakład Ubezpieczeń Społecznych)</string>
+    <string name="nurse_card_service_description">Twoje prawo wykonywania zawodu</string>
+    <string name="advocate_card_service_description">Dane Twoich uprawnień adwokackich</string>
+    <string name="gios_service_description">Poinformuj o zdarzeniu, które może mieć niekorzystny wpływ na środowisko</string>
+    <string name="make_proposal_service_description">Oświadczenia i wnioski o dopłaty</string>
+    <string name="payments_service_description">Finansowe zobowiązania urzędowe</string>
+    <string name="power_of_attorney_service_description">Pełnomocnictwa</string><!-- TODO MOB-4384 change to proper description and translation -->
+
+    <string name="driving_licence_service_description">Dane z prawa jazdy (również Tymczasowe) i licznik punktów karnych</string>
+    <string name="coronavirus_service_description">Informacje o koronawirusie</string>
+    <string name="penalty_points_service_description">Punkty karne</string>
+    <string name="city_card_krakow_service_description">Kraków, Tarnów i okolice</string>
+    <string name="family_card_service_description">Ulgi i zniżki dla rodzin wielodzietnych</string>
+    <string name="service_covid_passport">Unijny Certyfikat COVID</string>
+    <string name="covid_passport_service_description">Informacja o szczepieniu, teście lub przebyciu COVID-19</string>
+    <string name="service_railway_card">mLegitymacja UUT</string>
+    <string name="railway_card_service_description">Zniżki dla pracowników kolei</string>
+    <string name="service_yacht_sailor_licence">Licencja Żeglarza (Uprawnienia)</string>
+    <string name="yacht_sailor_licence_service_description">Przykładowy opis dla licencji żeglarza</string>
+    <string name="service_city_resident_licence">Karta mieszkańca (Uprawnienia)</string>
+    <string name="city_resident_licence_service_description">Przykładowy opis dla karty miejskiej</string>
+    <string name="service_raska_senior_licence">Reska Karta Seniora</string>
+    <string name="service_zdunskowolska_resident_licence">Zduńskowolska Karta Mieszkańca</string>
+    <string name="service_zdunskowolska_senior_licence">Zduńskowolska Karta Seniora</string>
+    <string name="service_zdunskowolska_family_licence">Miejska Karta Rodziny</string>
+    <string name="service_lp">Legitymacja poselska</string>
+    <string name="deputy_card_service_description">Potwierdza status posła Sejmu Rzeczypospolitej Polskiej</string>
+    <string name="service_si2pem">Mapa PEM</string>
+    <string name="si2pem_service_description">Rozkład PEM na terenie Polski oraz położenie stacji bazowych operatorów telekomunikacyjnych</string>
+    <string name="service_authority_card">mUpoważnienia</string>
+    <string name="service_doctor_card">PWZ lekarza i lekarza dentysty</string>
+    <string name="service_nurse_card">PWZ pielęgniarki i położnej</string>
+    <string name="service_advocate_card">Legitymacja adwokacka</string>
+    <string name="service_advocate_card_full">Legitymacja adwokacka</string>
+    <string name="service_pensioner_card">Legitymacja emeryta-rencisty</string>
+    <string name="service_pensioner_card_full">Legitymacja emeryta-rencisty</string>
+    <string name="authority_card_service_description">Przykładowy opis</string>
+
+    //
+    <string name="service_olawska_resident_licence">Oławska Karta Mieszkańca</string>
+    <string name="service_olawska_family_licence">Oławska Karta Dużej Rodziny</string>
+    <string name="service_olawska_senior_licence">Oławska Karta Seniora</string>
+    <string name="service_suchy_las_family_licence">Karta Dużej Rodziny Gminy Suchy Las</string>
+    <string name="service_miejska_augustow_tourist_licence">Augustowska Karta Turysty</string>
+
+    <string name="service_chelm_resident_licence">Chełmska Karta Mieszkańca</string>
+    <string name="service_chelm_family_licence">Chełmska Karta Dużej Rodziny</string>
+    <string name="service_chelm_senior_licence">Chełmska Karta Seniora</string>
+    <string name="service_lodz_family_licence">Wojewódzka Karta Rodzin Wielodzietnych</string>
+    <string name="service_lodz_senior_licence">Karta Seniora Województwa Łódzkiego</string>
+    //
+
+
+    <!--related to mlegitymacjaSzkolnaFragment class-->
+    <string name="invalid_status">Nieważna</string>
+    <string name="mLegitymacja_szkolna_fragment_title">Legitymacja szkolna</string>
+    <string name="default_value">-</string>
+    <string name="student_residential_address_label">Adres zamieszkania</string>
+
+    <!--related to mlegitymacja_student layout-->
+    <string name="mLegitymacja_studencka">Legitymacja studencka</string>
+    <string name="university_info_label">Nazwa uczelni</string>
+    <string name="barcode_invalid_student_id">Twoja mLegitymacja studencka jest nieważna. Nie możesz skorzystać z tej funkcji.</string>
+    <string name="authorize_ose_invalid_school_id">Twoja mLegitymacja szkolna jest nieważna. Nie możesz skorzystać z tej funkcji.</string>
+
+    <!--fragment headlines-->
+    <string name="headline_main_activity"><![CDATA[<font color=\'#E54560\'>m</font>Obywatel]]></string>
+    <string name="headline_identity"><![CDATA[<font color=\'#E54560\'>m</font>Obywatel]]></string>
+    <string name="headline_driving_licence"><![CDATA[<font color=\'#E54560\'>m</font>Prawo Jazdy]]></string>
+    <string name="headline_vehicle_registration_number"><![CDATA[<font color=\'#E54560\'>m</font>Pojazd: %s]]></string>
+    <string name="headline_vehicle_list"><![CDATA[Twoje <font color=\'#E54560\'>m</font>Pojazdy]]></string>
+    <string name="headline_recepta_fragment"><![CDATA[<font color=\'#E54560\'>e</font>Recepta]]></string>
+    <string name="headline_ipolak_fragment">Polak za granicą</string>
+    <string name="headline_pkp_fragment">Bilkom – bilety kolejowe</string>
+    <string name="headline_authority_service"><![CDATA[<font color=\'#E54560\'>m</font>Upoważnienia]]></string>
+    <string name="headline_nurse">PWZ Pielęgniarki i Położnej</string>
+    <string name="headline_advocate">Legitymacja adwokacka</string>
+    <string name="headline_pensioner">Legitymacja emeryta-rencisty</string>
+
+    <string name="headline_coronavirus_fragment">Koronawirus - informator</string>
+    <string name="city_cards_title">Karty miejskie</string>
+    <string name="headline_city_card_krakow_fragment">Małopolska Karta Aglomeracyjna</string>
+    <string name="headline_family_card_fragment">Karta Dużej Rodziny</string>
+    <string name="headline_railway_card"><![CDATA[<font color=\'#E54560\'>m</font>Legitymacja UUT]]></string>
+    <string name="headline_deputy_card">Legitymacja Poselska</string>
+
+    <!--downloading a package-->
+    <string name="error_invalid_password">Podano złe hasło, aktywuj mLegitymację ponownie.</string>
+    <string name="error_different_refreshed_pesel">Pobrana legitymacja nie należy do Ciebie. Upewnij się, że skanujesz odpowiedni kod QR.</string>
+    <string name="error_invalid_card_type">Upewnij się, że wybrałeś prawidłowy rodzaj legitymacji.</string>
+    <string name="error_package_downloaded">mLegitymacja o podanym kodzie została już aktywowana w systemie. Zgłoś się do swojej szkoły w celu wyjaśnienia sprawy.</string>
+    <string name="error_package_not_exists">mLegitymacja nie istnieje. Zgłoś się do swojej szkoły w celu wyjaśnienia sprawy.</string>
+    <string name="error_package_generation_exception">mLegitymacja nie została wygenerowana. Zgłoś się do swojej szkoły w celu wyjaśnienia sprawy.</string>
+
+    <!--mPojazd-->
+    <string name="choose_vehicle">Wybierz pojazd, aby zobaczyć jego dokument</string>
+    <string name="vin_number">Nr VIN</string>
+    <string name="production_year">Rok produkcji</string>
+    <string name="vehicle_registration_number">Nr rejestracyjny</string>
+    <string name="technical_survey">Badanie techniczne ważne jeszcze</string>
+    <string name="insurance_valid_days">Ubezpieczenie OC ważne jeszcze</string>
+    <string name="expandable_layout_insurance_info">Informacje o ubezpieczeniu</string>
+    <string name="expandable_layout_vehicle_card">Karta Pojazdu</string>
+    <string name="expandable_layout_registration_document">Dowód rejestracyjny</string>
+    <string name="expandable_layout_vehicle_details">Szczegóły pojazdu</string>
+    <string name="insurer_name">Nazwa ubezpieczyciela</string>
+    <string name="insurance_policy_number">Seria i numer polisy</string>
+    <string name="insurance_type">Rodzaj ubezpieczenia</string>
+    <string name="insurance_contract_date">Data zawarcia umowy ubezpieczenia</string>
+    <string name="insurance_period_beginning">Data początku okresu ubezpieczenia</string>
+    <string name="insurance_period_end">Data końca okresu ubezpieczenia</string>
+    <string name="vehicle_licence_card_info">Niezgodność danych?\nSkorzystaj z funkcji Aktualizuj (poniżej) - mPojazd pobierze aktualne dane z Centralnej Ewidencji Pojazdów i Kierowców.\n\n<b>UWAGA - niektóre dane mogą pojawić się w CEPiK z kilkudniowym, a dane o nowej polisie OC nawet z kilkutygodniowym opóźnieniem.</b>\n\nEwentualne problemy prosimy zgłosić na adres <a href="mailto:mpojazd-pomoc@coi.gov.pl\">mpojazd-pomoc@coi.gov.pl</a></string>
+    <string name="vehicle_qr_purpose_dialog_header">Wygenerowany kod QR zawiera następujące dane:</string>
+    <string name="vehicle_qr_purpose_dialog_info">• Marka\n• Model pojazdu\n• Numer rejestracyjny\n• Nr VIN\n• Rok produkcji\n• Pojemność skokowa silnika\n• Maksymalna moc netto silnika\n• Imię pierwsze\n• Imię drugie\n• Nazwisko\n• PESEL\n• Adres zamieszkania</string>
+    <string name="vehicle_qr_purpose_dialog_accept">ROZUMIEM</string>
+
+    <!--mPojazd akordeon nr 2 i 3-->
+    <string name="document_series_and_number">Seria i numer dokumentu</string>
+    <string name="is_duplicate">Czy wtórnik</string>
+    <string name="date_of_issue">Data wydania dokumentu</string>
+    <string name="validity_date">Data ważności dokumentu</string>
+    <string name="id_validity_date">Data ważności dowodu osobistego</string>
+    <string name="release_date_pwz">Data uzyskania PWZ</string>
+    <string name="release_date_pwz_limited">Data uzyskania ograniczonego PWZ</string>
+    <string name="issuing_authority">Nazwa organu wydającego</string>
+
+    <!--mPojazd akordeon nr 4-->
+    <string name="vehicle_brand">Marka pojazdu</string>
+    <string name="vehicle_model">Model pojazdu</string>
+    <string name="type">Rodzaj</string>
+    <string name="subtype">Podrodzaj</string>
+    <string name="vehicle_category">Kategoria pojazdu</string>
+    <string name="first_registration_date_accordion">Data pierwszej rejestracji</string>
+    <string name="purpose">Przeznaczenie</string>
+    <string name="kind">Typ</string>
+    <string name="vehicle_origin">Pochodzenie pojazdu</string>
+    <string name="incuse_id_number">Wybity nr identyfikacyjny</string>
+    <string name="nameplate">Tabliczka znamionowa</string>
+    <string name="homologation_certificate_number">Numer świadectwa homologacji typu pojazdu</string>
+    <string name="production_way">Sposób produkcji pojazdu</string>
+    <string name="engine_capacity">Pojemność skokowa silnika</string>
+    <string name="engine_power">Maksymalna moc netto silnika</string>
+    <string name="power_to_deadweight_ratio">Stosunek mocy do masy własnej (w kW/kg)</string>
+    <string name="fuel_kind">Rodzaj paliwa</string>
+    <string name="alternative_fuel_kind">Rodzaj pierwszego paliwa alternatywnego</string>
+    <string name="alternative_fuel_kind2">Rodzaj drugiego paliwa alternatywnego</string>
+    <string name="is_catalyst_mounted">Zamontowany katalizator/pochłaniacz</string>
+    <string name="fuel_usage_average">Średnie zużycie paliwa</string>
+    <string name="fuel_usage_average_wltp">Średnie zużycie paliwa (WLTP)</string>
+    <string name="co2_emission_level">Indywidualne poziomy emisji CO2</string>
+    <string name="co2_emission_level_wltp">Indywidualne poziomy emisji CO2 (WLTP)</string>
+    <string name="gross_vehicle_mass">Dopuszczalna masa całkowita</string>
+    <string name="max_vehicle_mass">Maksymalna masa całkowita pojazdu</string>
+    <string name="permissible_capacity">Dopuszczalna ładowność</string>
+    <string name="seat_number">Liczba miejsc siedzących</string>
+    <string name="standing_seat_number">Liczba miejsc stojących</string>
+    <string name="seat_general_number">Liczba miejsc ogółem</string>
+    <string name="axles_number">Liczba osi</string>
+    <string name="deadweight_load">Masa własna</string>
+    <string name="gross_vehicle_group_mass">Dopuszczalna masa całkowita zespołu pojazdów</string>
+    <string name="max_gross_trailer_with_brake_mass">Maksymalna masa całkowita ciągniętej przyczepy z hamulcem</string>
+    <string name="max_gross_trailer_without_brake_mass">Maksymalna masa całkowita ciągniętej przyczepy bez hamulca</string>
+    <string name="wheelbase">Rozstaw osi</string>
+    <string name="min_axle_track">Minimalny rozstaw kół</string>
+    <string name="max_axle_track">Maksymalny rozstaw kół</string>
+    <string name="mean_axle_track">Średni rozstaw kół</string>
+    <string name="max_axle_pressure">Największy dopuszczalny nacisk osi</string>
+    <string name="is_hook_mounted">Zamontowany hak</string>
+
+
+    <string name="cardNumber">Numer legitymacji</string>
+    <string name="cardNumber_pl">Numer legitymacji</string>
+    <string name="albumNumber">Numer albumu</string>
+
+    <string name="drivingLicenceNumber">Numer prawa jazdy</string>
+    <string name="drivingLicenceExpirationDate">Data ważności prawa jazdy</string>
+    <string name="kdrExpirationDate">Data ważności Karty Dużej Rodziny</string>
+    <string name="uutExpirationDate">Data ważności mLegitymacji UUT</string>
+    <string name="document_has_expired">Dokument stracił ważność</string>
+    <string name="select_update_for_download_new_card">Wybierz \"Aktualizuj\" aby pobrać nową legitymację.</string>
+    <string name="select_update_for_download_new_document">Jeśli chcesz nadal z niego korzystać, zaktualizuj dokument.</string>
+
+    <string name="permissionCategories">Kategorie uprawnień</string>
+    <string name="restrictCodes">Kody ograniczeń</string>
+
+    <string name="editionNumber">Numer edycji legitymacji</string>
+    <string name="editionNumber_pl">Numer edycji legitymacji</string>
+    <string name="schoolName">Nazwa szkoły</string>
+    <string name="schoolName_pl">Nazwa szkoły</string>
+    <string name="schoolNameAndAddress">Nazwa i adres szkoły</string>
+    <string name="schoolNameAndAddress_pl">Nazwa i adres szkoły</string>
+    <string name="ageInYears">Wiek w latach</string>
+
+    <string name="kdrNumber">Numer Karty Dużej Rodziny</string>
+    <string name="uutNumber">Numer mLegitymacji UUT</string>
+
+    <string name="universityName">Nazwa uczelni</string>
+    <string name="universityName_pl">Nazwa uczelni</string>
+    <string name="schoolAddress">Adres szkoły</string>
+    <string name="schoolAddress_pl">Adres szkoły</string>
+    <string name="universityAddress">Adres uczelni</string>
+    <string name="universityAddress_pl">Adres uczelni</string>
+    <string name="distributionDate">Data wydania legitymacji</string>
+    <string name="distributionDate_pl">Data wydania legitymacji</string>
+    <string name="expirationDate">Termin ważności legitymacji</string>
+    <string name="expirationDate_pl">Termin ważności legitymacji</string>
+    <string name="director">Dyrektor szkoły</string>
+    <string name="director_pl">Dyrektor szkoły</string>
+    <string name="schoolPhoneNo">Numer telefoniczny do szkoły</string>
+    <string name="schoolPhoneNo_pl">Numer telefoniczny do szkoły</string>
+    <string name="universityPhoneNo">Numer telefoniczny do uczelni</string>
+    <string name="universityPhoneNo_pl">Numer telefoniczny do uczelni</string>
+    <string name="disability">Wskażnik niepełnosprawności</string>
+    <string name="disability_pl">Wskażnik niepełnosprawności</string>
+    <string name="card_data">Dane wizytówki</string>
+    <string name="city_place">Miejscowość</string>
+    <string name="city_place_pl">Miejscowość</string>
+    <string name="university_unit_name">Nazwa jednostki uczelni</string>
+    <string name="university_unit_name_pl">Nazwa jednostki uczelni</string>
+    <string name="university_type_symbol">Symbol typu uczelni</string>
+    <string name="university_type_symbol_pl">Symbol typu uczelni</string>
+    <string name="university_id">Identyfikator uczelni</string>
+    <string name="university_id_pl">Identyfikator uczelni</string>
+    <string name="university_regon">Numer REGON uczelni</string>
+    <string name="university_regon_pl">Numer REGON uczelni</string>
+    <string name="student_id">Identyfikator studenta</string>
+    <string name="student_id_pl">Identyfikator studenta</string>
+    <string name="pesel_chechsum">CheckSum z numeru PESEL</string>
+    <string name="pesel_chechsum_pl">CheckSum z numeru PESEL</string>
+
+    <string name="two_strings_placeholder">%s %s</string>
+
+    <string name="you_are_not_tester_any_more">Nie jesteś już testerem prawa jazdy. Odmowa dostępu.</string>
+
+    <string name="technical_survey_invalid_from">Badanie techniczne nieważne od</string>
+    <string name="oc_invalid_from">Ubezpieczenie OC nieważne od</string>
+
+    <!--TODO zmienic komunikat -->
+
+    <string name="activate_step_onboarding_vehicle_title">Dodajesz mPojazd</string>
+    <string name="activate_step_onboarding_school_title">Dodajesz mLegitymację szkolną</string>
+    <string name="activate_step_onboarding_school_one">Sprawdź, czy w Twojej szkole dostępne są mLegitymacje.</string>
+    <string name="activate_step_onboarding_school_two">Przygotuj kod QR i hasło do aktywacji mLegitymacji.</string>
+    <string name="activate_step_onboarding_school_three">Zeskanuj lub przepisz kod QR i wpisz dołączone do niego hasło.</string>
+
+    <string name="activate_step_onboarding_prescription_title_refugee">Dodajesz eReceptę</string>
+
+    <string name="family_card_status_not_active_msg">Karta nie została jeszcze wydana lub po wydaniu została unieważniona/anulowana</string>
+    <string name="family_card_error_footer"><![CDATA[<br><br><b>Skontaktuj się z gminą, w której złożono wniosek.</b>]]></string>
+
+    <string name="family_card_expired_msg">Karta została wydana, ale upłynął jej termin ważności</string>
+    <string name="family_card_subject_not_have_card_msg">Podana osoba posiada kartę, ale status karty elektronicznej to „niezamawiana”</string>
+    <string name="family_card_subject_not_found_msg">Dla podanej osoby nie znaleziono w systemie karty</string>
+    <string name="family_card_no_no_data_found_msg">Wystąpił błąd podczas pobierania danych z bazy Ministerstwa Rodziny i Polityki Społecznej</string>
+    <string name="family_card_no_no_data_found_footer"><![CDATA[<br><br><b>Skontaktuj się z pomocą pod adresem: </b><a href="mailto:info@mrips.gov.pl">info@mrips.gov.pl</a>]]></string>
+    <string name="could_not_add_card"><b>Nie można dodać karty</b></string>
+    <string name="family_members_header">Wybierz osobę, której dane chcesz przekazać\ndo aplikacji mWeryfikator.</string>
+    <string name="kdr_activation_school_extend">Aby aktywować Kartę Dużej Rodziny najpierw przedłuż ważność mLegitymacji szkolnej (poproś w\u00A0szkole o\u00A0nowy kod QR).</string>
+    <!--    TODO-->
+    <string name="pensioner_card_activation_school_extend">Aby aktywować Legitymację emeryta-rencisty najpierw przedłuż ważność mLegitymacji szkolnej (poproś w\u00A0szkole o\u00A0nowy kod QR).</string>
+    <string name="railway_activation_school_extend">Aby aktywować mLegitymację UUT najpierw przedłuż ważność mLegitymacji szkolnej (poproś w\u00A0szkole o\u00A0nowy kod QR).</string>
+    <string name="kdr_renewal_school_extend">Aby nadal korzystać z aplikacji przedłuż ważność mLegitymacji (poproś w szkole o nowy kod QR).</string>
+    <string name="i_have_new_qrcode">Mam nowy kod QR</string>
+    <string name="family_card_cannot_activate"><![CDATA[Aby aktywować Kartę Dużej Rodziny musisz najpierw dodać jeden z tych dokumentów:<br><br><b>mObywatel</b> (jeżeli masz ukończone 18 lat i posiadasz dowód osobisty)<br><br><b>mLegitymacja szkolna</b> (sprawdź, czy Twoja szkoła wydaje mLegitymacje)]]></string>
+    <string name="card_cannot_activate"><![CDATA[Aby dodać %s, dodaj najpierw jeden z powiązanych dokumentów:<br><br>&bull; mObywatel - jeśli masz ukończone 18 lat i dowód osobisty<br><br>&bull; mLegitymacja szkolna - jeśli twoja szkoła ją wydaje.]]></string>
+    <string name="pensioner_card_cannot_activate"><![CDATA[Aby dodać %s, dodaj najpierw jeden z powiązanych dokumentów:<br><br>&bull; mObywatel - jeśli masz ukończone 13 lat, posiadasz ważny dowód osobisty oraz aktywny profil zaufany (lub inny środek identyfikacji),<br><br>&bull; mLegitymację szkolną - masz ukończone 13 lat, a Twoja szkoła wydaje taki dokument.]]></string>
+    <string name="railway_cannot_activate"><![CDATA[Aby aktywować mLegitymację UUT musisz najpierw dodać jeden z tych dokumentów:<br><br><b>mObywatel</b> (jeżeli masz ukończone 18 lat i posiadasz dowód osobisty)<br><br><b>mLegitymacja szkolna</b> (sprawdź, czy Twoja szkoła wydaje mLegitymacje)]]></string>
+
+    <string name="activate_step_onboarding_covid_passport_title_refugee">Dodajesz Unijny Certyfikat COVID</string>
+
+    <string name="call">Zadzwoń</string>
+
+    <!-- PRZENIESIONE PRZY UCHODŹCY -->
+    <string name="let_scan_your_qr_code_pl">Pozwól zeskanować kod QR\n(osobie, która weryfikuje Twój dokument).</string>
+    <string name="app_was_updated_need_new_pin">Aplikacja została zaktualizowana. Wymagane ponowne ustawienie PIN‑u</string>
+    <string name="new_crypto_method_info">W najnowszej wersji aplikacji zmieniliśmy sposób szyfrowania danych. Teraz Twoje dokumenty chroni nowy, jeszcze silniejszy algorytm kryptograficzny. \n\nZwiększenie poziomu bezpieczeństwa wymaga ponownego ustawienia PIN‑u do logowania biometrycznego.\n\n</string>
+    <string name="your_pin_need_have_min_length">Twój PIN powinien składać się z 4 cyfr.</string>
+    <string name="not_use_weak_sets">Nie używaj oczywistych zestawień - np. roku urodzenia.</string>
+    <string name="set_new_pin">Ustaw nowy PIN</string>
+    <string name="enter_new_pin">Wprowadź nowy kod PIN.</string>
+    <string name="enter_current_pin">Podaj aktualny PIN</string>
+    <string name="confirm_by_enter_new_pin">Potwierdź wprowadzając nowy kod PIN.</string>
+    <string name="confirm_pin_change_by_enter_pin">Potwierdź swoim kodem PIN, że świadomie zmieniasz swój kod PIN.</string>
+    <string name="confirm_disable_two_factor_auth_by_enter_pin">Potwierdź swoim kodem PIN, że świadomie wyłączasz logowanie dwuetapowe.</string>
+    <string name="next_step_you_can_change_login_method">W kolejnym kroku będziesz mógł wybrać sposób logowania: z użyciem samej biometrii\u000Blub dwuetapowo.</string>
+    <string name="remember_that_pin_is_required_for_send_data">Pamiętaj, że logując się tylko biometrią, PIN będzie wymagany przy przekazywaniu danych.</string>
+    <string name="i_prefer_login_with_password">Wolę logowanie hasłem</string>
+    <string name="starting_dots">Uruchamianie...</string>
+    <string name="more_informations">Więcej informacji</string>
+    <string name="close_app">Zamknij aplikację</string>
+    <string name="detected_potential_threat">Wykryto potencjalne zagrożenie.</string>
+    <string name="for_security_reason_access_blocked">Ze względów bezpieczeństwa dostęp został zablokowany.</string>
+    <string name="details_colon">Szczegóły:</string>
+    <string name="waiting_for_reply">Oczekuję na odpowiedź</string>
+    <string name="city_card_information_about_add_cards">W Aplikacji mObywatel możesz dodać tylko kartę, która już zostałą wydana i korzystać z tych biletów, które zostały opłacone - nie możesz wyrobić, ani kupić biletu w aplikacji</string>
+    <string name="republic_of_poland">Rzeczpospolita Polska</string>
+    <string name="partners_kdr">Partnerzy Karty\nDużej Rodziny</string>
+    <string name="go2">Przejdź</string>
+    <string name="my_family">Moi bliscy</string>
+    <string name="previous_card">Poprzednia karta</string>
+    <string name="next_card">Następna karta</string>
+    <string name="data_pass_fail">Nie udało się przekazać\ndanych</string>
+    <string name="try_pass_data_one_more_time">Spróbuj przekazać dane jeszcze raz</string>
+    <string name="not_valid_url_adres">Nieprawidłowy format adresu URL\n(560f7ca4-0775-4f84-b402- 57d214c7013c)</string>
+    <string name="copy_error_code_to_clipboard">Kopiuj kod błędu\ndo schowka</string>
+    <string name="i_understand">Rozumiem</string>
+    <string name="something_is_missing_here">Czegoś tu brakuje...</string>
+    <string name="you_try_pass_data_which_you_havnt_got_yet">Próbujesz przekazać dane, których jeszcze nie masz w mObywatelu.\n\nPobierz brakujące informacje korzystając z funkcji aktualizacji.</string>
+    <string name="refresh_data_need_confirmation_of_identity">Zaktualizowanie danych wymaga potwierdzenia Twojej tożsamości przy pomocy Profilu Zaufanego lub Twojego banku.</string>
+    <string name="refresh_data2">Aktualizuj dane</string>
+    <string name="data_transfering_in_progress">Trwa przekazywanie danych</string>
+    <string name="connecting_in_progress">Trwa nawiązywanie połączenia</string>
+    <string name="data_was_transferred_successfuly">Dane zostały przekazane\npomyślnie</string>
+    <string name="ok_uppercase">OK</string>
+    <string name="enter_pin2">Wprowadź PIN</string>
+    <string name="if_the_verifier_ask_you_select_this_button">Jeżeli weryfikujący Cię poprosi, wybierz ten przycisk:</string>
+    <string name="verification_with_a_series_of_codes">Weryfikacja serią kodów</string>
+    <string name="prepare_document_for_verification">Przygotowanie dokumentu do weryfikacji</string>
+    <string name="scan_qr_code">Zeskanuj kod QR</string>
+    <string name="let_the_verifier_scan_qr_codes">Pozwól zeskanować weryfikującemu\nserię kodów QR</string>
+    <string name="prepare_data_dots">Przygotowuję dane...</string>
+    <string name="data_was_passed">Dane zostały przekazane?</string>
+    <string name="finish">Zakończ</string>
+    <string name="pass_data">Przekaż dane</string>
+    <string name="person_verifying_your_identity">Osobie weryfikującej\nTwoją tożsamość</string>
+    <string name="generate_and_show_qr_code">Wygeneruj i pozwól zeskanować kod QR</string>
+    <string name="pass">Przekaż</string>
+    <string name="institution_or_compay">Instytucji lub firmie</string>
+    <string name="scan_code_qr_and_pass_data">Zeskanuj okazany kod QR i przekaż swoje dane</string>
+    <string name="colon">:</string>
+    <string name="space_and_space">\u00A0oraz\u00A0</string>
+    <string name="to_day">do dnia</string>
+    <string name="from_day2">od dnia</string>
+    <string name="tip_text_0">Potwierdzaj operacje z Profilu Zaufanego w mObywatelu.</string>
+    <string name="tip_text_1">Dzięki mObywatelowi bezpiecznie okazujesz swoje dane, korzystasz z usług e-administracji.</string>
+    <string name="tip_text_2">Dzięki mObywatelowi okażesz swoje dane, skorzystasz z eRecepty, mPrawa jazdy, mPojazdu i innych usług.</string>
+    <string name="tip_text_3">Dane mObywatela pochodzą z rejestrów państwowych. Ich pobranie wymaga potwierdzenia tożsamości za pomocą Profilu Zaufanego lub Twojego banku.</string>
+    <string name="tip_text_4">Dostęp do mLegitymacji uzyskasz skanując kod QR, który wyda Ci szkoła lub uczelnia. Profil Zaufany nie jest tu potrzebny.</string>
+    <string name="sms_to_push">Zmień SMS-y\nna powiadomienia</string>
+    <string name="digital_wallet">Najważniejszy w smartfonie.</string>
+    <string name="many_possibilities">Wiele możliwości.</string>
+    <string name="data_in_app">Dane w aplikacji.</string>
+    <string name="for_students">Dla uczniów i studentów.</string>
+    <string name="qr_code_expired">Ważność kodu QR wygasła</string>
+    <string name="scan_new_code">Zeskanuj nowy kod</string>
+    <string name="passing_data_blocked">Przekazanie danych zablokowane</string>
+    <string name="institution_which_code_was_scanned_dont_have_permission_to_get_data">Instytucja, której kod zeskanowano nie ma uprawnień do pobierania danych z mObywatela</string>
+    <string name="institution_which_code_scanned_did_not_refreshed_permission_to_get_data">Instytucja, której kod zeskanowano nie odnowiła uprawnień do pobierania danych z mObywatela</string>
+    <string name="institution_card_download_failed">Nie udało się pobrać wizytówki instytucji</string>
+    <string name="try_pass_data_again">Spróbuj przekazać dane jeszcze raz</string>
+    <string name="failed_to_pass_data">Nie udało się przekazać danych</string>
+    <string name="successfuly_copied_error_code">Pomyślnie skopiowano\nkod błędu</string>
+    <string name="successfuly_copied_error_code2">Pomyślnie skopiowano kod błędu</string>
+    <string name="i_passing_my_personal_data">Przekazuję\nmoje dane osobowe</string>
+    <string name="pass_personal_data_of_member_family">Przekazywanie danych\nczłonka rodziny</string>
+    <string name="one_way_pass_data">Jednostronne przekazanie danych</string>
+    <string name="cancel_activation">Pomiń</string>
+    <string name="botsense_security_alert_root_title">Uprawnienia root</string>
+    <string name="botsense_security_alert_root_description">Zgodnie z regulaminem, w tym przypadku, korzystanie z aplikacji nie jest możliwe.</string>
+    <string name="botsense_security_alert_emulator_title">Wirtualne środowisko</string>
+    <string name="botsense_security_alert_emulator_description">Aplikacja została uruchomiona w wirtualnym (emulowanym) środowisku.</string>
+    <string name="botsense_security_alert_malware_title">Podejrzane narzędzia</string>
+    <string name="botsense_security_alert_malware_description">Mogą to być programy służące do ukrywania uprawnień root lub do modyfikacji aplikacji.</string>
+    <string name="botsense_security_alert_overlay_title">Program przysłaniający pierwszy plan ekranu</string>
+    <string name="botsense_security_alert_overlay_description">Zminimalizuj aplikację, która znajduje się na pierwszym planie. Może to być skrót do komunikatora lub smsów, okno z nawigacją czy multimedia. Następnie uruchom ponownie mObywatela.</string>
+    <string name="botsense_report_mail_subject">Blokada dostępu do aplikacji</string>
+    <string name="botsense_report_content_select_correct_statement">Wskaż poprawne stwierdzenie (wpisz TAK / NIE):</string>
+    <string name="botsense_report_content_statement_1">1.\tZgłaszana aplikacja wykorzystuje legalne / poprawne etycznie rozwiązania.</string>
+    <string name="botsense_report_content_statement_2">2.\tZgłaszana aplikacja została pobrana ze sklepu Google Play / App Store.</string>
+    <string name="botsense_report_content_statement_3">3.\tZgłaszana aplikacja nie służy do omijania zabezpieczeń, modyfikacji systemu / innych aplikacji lub nielegalnego uruchamiania płatnych funkcji.</string>
+    <string name="botsense_report_content_reported_app">Zgłaszana aplikacja: %1$s</string>
+    <string name="botsense_report_content_my_smartphone">Mój smartfon: %1$s</string>
+    <string name="botsense_report_content_os_android">System: Android %1$s</string>
+    <string name="botsense_report_content_code_tools_root_emulation">Kod: Narzędziowe, Root, Emulacja</string>
+    <string name="keep_reading">Czytaj dalej</string>
+    <string name="botsense_dangerous_tools_alert_title">Wykryto potencjalne zagrożenie</string>
+    <string name="botsense_dangerous_tools_alert_subtitle">mObywatel wykrył, że w tle działa program lub biblioteka, które korzystają z kodu mogącego stwarzać zagrożenie.</string>
+    <string name="botsense_dangerous_tools_alert_description_1">Oprogramowanie to może służyć np. do ukrywania uprawnień root lub modyfikacji działających aplikacji.\n\nZe względów bezpieczeństwa korzystanie z mObywatela nie jest możliwe.\n\nWykryty program / biblioteka:</string>
+    <string name="what_to_do">Co zrobić?</string>
+    <string name="botsense_dangerous_tools_alert_step_1_description">Zweryfikuj aplikację i źródło jej instalacji.</string>
+    <string name="botsense_dangerous_tools_alert_step_2_description">Sprawdź, czy aplikacja wykorzystuje legalne / poprawne etycznie rozwiązania.</string>
+    <string name="botsense_dangerous_tools_alert_step_3_description">Odinstaluj aplikację, jeśli wzbudza Twoje podejrzenia.</string>
+    <string name="botsense_dangerous_tools_alert_step_4_description">Bezwzględnie odinstaluj problematyczną aplikację, jeśli przynajmniej jedno z poniższych jest prawdziwe:</string>
+    <string name="botsense_dangerous_tools_alert_step_4_a_title">Aplikacja służy do</string>
+    <string name="botsense_dangerous_tools_alert_step_4_a_description">omijania lub modyfikacji zabezpieczeń, innych aplikacji lub systemu,</string>
+    <string name="botsense_dangerous_tools_alert_step_4_b_title">Aplikacja wpływa na</string>
+    <string name="botsense_dangerous_tools_alert_step_4_b_description">stan innych aplikacji lub systemu,</string>
+    <string name="botsense_dangerous_tools_alert_step_4_c_title">Aplikacja umożliwia</string>
+    <string name="botsense_dangerous_tools_alert_step_4_c_description">nielegalnie uruchamiać płatne funkcje innego oprogramowania</string>
+    <string name="botsense_dangerous_tools_alert_step_5_description">Po odinstalowaniu aplikacji przeskanuj swoje urządzenie programem antywirusowym.</string>
+    <string name="botsense_dangerous_tools_alert_step_6_description">Jeśli aplikacja pochodzi z pewnego źródła i nie służy do omijania zabezpieczeń, modyfikacji systemu / innych aplikacji lub nielegalnego uruchamiania płatnych funkcji, zgłoś aplikację drogą mailową.</string>
+
+    <!--related to bottom navigation-->
+    <string name="menu_document">Dokument</string>
+    <string name="menu_additional_document">mObywatel</string>
+    <string name="menu_refugee_document">Diia.pl</string>
+    <string name="menu_qr">Przekaż</string>
+    <string name="menu_card_my_family">Moi bliscy</string>
+    <string name="menu_vehicles">Pojazdy</string>
+    <string name="menu_refresh">Aktualizuj</string>
+    <string name="menu_update">Aktualizuj</string>
+    <string name="menu_penalty">Punkty karne</string>
+    <string name="menu_barcode">Nr albumu</string>
+    <string name="menu_main_page">Strona główna</string>
+    <string name="menu_english_version">English</string>
+    <string name="menu_landing_page">Landing page</string>
+    <string name="menu_online_service_fragment">Strona online</string>
+
+    <!--related to password activation-->
+    <string name="password_to_short">Hasło musi mieć co najmniej 8 znaków</string>
+    <string name="password_not_match">Podane hasła są różne</string>
+    <string name="password_clear">Wyczyść hasło</string>
+    <string name="password_change">Zmiana hasła</string>
+    <string name="password_input_new">Ustaw nowe hasło</string>
+    <string name="password_change_action2">ZMIEŃ HASŁO</string>
+    <string name="password_current_required">Wpisz swoje aktualne hasło</string>
+    <string name="password_new_equal_old">Nowe hasło powinno być różne od aktualnego</string>
+    <string name="password_change_wait">Trwa zmiana hasła. Proszę czekać.</string>
+    <string name="perm_info_school">Aplikacja poprosi Cię o pozwolenie na użycie aparatu. Jest on używany do skanowania kodów QR, co znacznie przyspieszy proces aktywacji.\n\nWyrażenie zgody nie jest wymagane, kod zawsze można podać ręcznie.</string>
+    <string name="password_please_wait_dialog">Proszę czekać</string>
+    <string name="password_change_info_snack">Hasło zostało zmienione</string>
+
+    <!--Fingerprint-->
+    <string name="activate_fingerprint_pin_login">Aktywacja logowania biometrycznego z PINem</string>
+    <string name="fingerprint_login_activated">Włączono logowanie dwuetapowe biometryczne</string>
+    <string name="fingerprint_login_without_pin_activated">Włączono logowanie jednoetapowe biometryczne</string>
+    <string name="fingerprint_login_with_pin_deactivated">Wyłączono logowanie dwuetapowe</string>
+    <string name="fingerprint_login_without_pin_deactivated">Włączono logowanie dwuetapowe</string>
+    <string name="fingerprint_login_deactivated">Wyłączono logowanie biometryczne</string>
+    <string name="invalid_pin_general">Nieprawidłowy pin</string>
+    <string name="invalid_pin">Nieprawidłowy PIN. Pozostały %s próby.</string>
+    <string name="invalid_pin_1_attempt">Nieprawidłowy PIN. Pozostała 1 próba.</string>
+    <string name="different_values">Wpisane wartości są różne</string>
+    <string name="pin_length_error">PIN musi mieć 4 cyfry</string>
+    <string name="pin_change">PIN został zmieniony</string>
+    <string name="fingerprint_key_invalidated_error_title">Logowanie biometryczne zostało wyłączone</string>
+    <string name="fingerprint_key_invalidated_error">Powodem jest usunięcie blokady ekranu lub danych biometrycznych. Ponownie aktywuj biometrię w mObywatelu.</string>
+    <string name="activate_fingerprint_title">Ryzyko związane z logowaniem biometrycznym</string>
+    <string name="activate_fingerprint_risk">Logowanie z wykorzystaniem danych biometrycznych nie jest tak bezpieczne, jak logowanie z użyciem silnego hasła.\n\nZaakceptuj ryzyko, jeśli chcesz korzystać z łatwiejszej metody logowania.</string>
+    <string name="accept_biometrics_risk">Akceptuję ryzyko związane z logowaniem biometrycznym</string>
+    <string name="biometric_activation_password_required">Aktywacja logowania biometrycznego wymaga wprowadzenia aktualnie używanego hasła.</string>
+    <string name="biometric_login_settings_change_password_required">Zmiana ustawień logowania biometrycznego wymaga wprowadzenia aktualnie używanego hasła.</string>
+    <string name="biometric_login_settings_change_password_additional_info">Zmiana hasła wymaga wprowadzenia aktualnie używanego hasła.</string>
+    <string name="input_pin">Ustaw PIN</string>
+    <string name="fingerprint_error_no_hardware">Twoje urządzenie nie wspiera logowania biometrycznego.</string>
+    <string name="fingerprint_error_unsupported">Działanie biometrii na Twoim telefonie nie spełnia wymogów bezpieczeństwa systemu Android.</string>
+    <string name="fingerprint_error_unsupported_title">Aktywacja niemożliwa</string>
+    <string name="fingerprint_error_hardware_unavailable">Skanowanie biometryczne jest chwilowo niedostępne. Spróbuj ponownie później</string>
+    <string name="fingerprint_error_no_fingers_defined_title">Nie można włączyć logowania biometrycznego</string>
+    <string name="fingerprint_error_no_fingers_defined">Najpierw skonfiguruj blokadę ekranu i logowanie biometryczne do swojego smartfona. Następnie aktywuj biometrię w mObywatelu.</string>
+    <string name="fingerprint_error_no_fingers_defined_change_method">Aby zmienić metodę logowania, musisz mieć aktywowane logowanie biometryczne w telefonie.</string>
+    <string name="fingerprint_error_keyguard_secure">Musisz mieć aktywną blokadę ekranu urządzenia.</string>
+    <string name="last_login_error_date_time2">Ostatnie błędne logowanie: %s</string>
+
+    <string name="last_pass_change_date_item">Ostatnia zmiana hasła: %s</string>
+    <string name="biometric_status_unknown">Nieznany błąd. Sprawdź czy na pewno masz włączoną blokadę ekranu oraz dodany odcisk palca lub skan twarzy.</string>
+    <string name="biometric_error_unsupported">Błąd uwierzytelnienia spowodowany niekompatybilnością logowania biometrycznego z\u00A0bieżącą wersją systemu Android. Zaktualizuj system Android jeśli to możliwe i\u00A0podejmij ponowną próbę aktywacji logowania biometrycznego.</string>
+    <string name="biometric_error_security_update_required">Wykryto lukę bezpieczeństwa związaną ze sprzętowym czujnikiem biometrycznym. Zaktualizuj system Android jeśli to możliwe i\u00A0podejmij ponowną próbę aktywacji logowania biometrycznego.</string>
+    <string name="pass_change_required">Dalsze używanie aplikacji wymaga zmiany hasła.\n\nPowód: \n%s</string>
+    <string name="document_required">Aby włączyć logowanie biometryczne musisz aktywować dokument.</string>
+    <string name="document_required_for_pin">Aby zmienić metodę logowania, musisz posiadać przynajmniej jedną aktywną usługę.</string>
+    <string name="valid_document_required_to_use_biometric">Twoje dokumenty straciły ważność. Aby włączyć logowanie biometryczne, najpierw zaktualizuj dane mObywatela lub przedłuż ważność mLegitymacji.</string>
+    <string name="document_required_deact">Aby wyłączyć logowanie biometryczne musisz aktywować dokument.</string>
+    <string name="valid_document_required_deact">Aby wyłączyć logowanie biometryczne musisz posiadać przynajmniej jeden ważny dokument.</string>
+    <string name="pass_change_document_required">Aby zmienić hasło musisz posiadać przynajmniej jeden aktywny dokument.</string>
+    <string name="pass_change_valid_document_required">Aby zmienić hasło musisz posiadać przynajmniej jeden ważny dokument.</string>
+    <string name="pin_change_document_required">Aby zmienić PIN musisz posiadać przynajmniej jeden aktywny dokument.</string>
+    <string name="pin_change_valid_document_required">Aby zmienić PIN musisz posiadać przynajmniej jeden ważny dokument.</string>
+
+    <string name="choose_app_login_method">Wybierz sposób logowania do aplikacji</string>
+    <string name="biometric_login_without_pin_warning">Uwaga! Jeśli wybierzesz logowanie samą biometrią PIN będzie wymagany przy przekazywaniu danych.</string>
+    <string name="login_method_biometric_without_pin">Jednoetapowe (bez PIN-u)</string>
+    <string name="login_method_biometric_with_pin">Dwuetapowe (z PIN-em)</string>
+
+    <!--zestaw stringow dla nowego interfejsu przy aktywacji aplikacji-->
+    <string name="activate_step_onboarding_title">Aktywujesz aplikację mObywatel</string>
+    <string name="activate_step_onboarding_step_one_privacy_policy"><![CDATA[Przeczytaj i zaakceptuj Regulamin oraz Politykę Prywatności (<b>poniżej</b>).]]></string>
+    <string name="activate_step_onboarding_step_two">Ustaw nazwę telefonu i hasło do aplikacji.</string>
+    <string name="activate_step_onboarding_step_three">Dodawaj dokumenty i usługi.</string>
+    <string name="activate_step_onboarding_regulation_read">Zapoznałem / zapoznałam się z treścią Regulaminu Publicznej Aplikacji Mobilnej mObywatel i akceptuję jego warunki.</string>
+    <string name="activate_step_confirm">Zatwierdź</string>
+    <string name="activate_step_accept">Akceptuję</string>
+
+    <string name="activate_step_pin_provide">Ustaw PIN</string>
+    <string name="activate_step_pin_confirm">Potwierdź PIN</string>
+    <string name="activate_step_pin_confirm_new">Powtórz nowy PIN</string>
+
+    <string name="activate_step_regulations_acceptance">AKCEPTACJA REGULAMINU</string>
+    <string name="new_regulation_dialog_title">Nowy regulamin</string>
+
+    <string name="activate_step_set_password">Ustaw hasło do aplikacji</string>
+    <string name="set_new_password">Ustaw nowe hasło</string>
+
+    <string name="activate_step_set_password2">Ustaw hasło</string>
+
+    <string name="activate_step_repeat_password">Powtórz hasło</string>
+    <string name="activate_step_password_requirements">Hasło musi składać się z minimum \n<b>8</b>\u00A0znaków i zawierać co najmniej <b>1</b>\u00A0małą literę, <b>1</b>\u00A0dużą literę, <b>1</b>\u00A0cyfrę i <b>1</b>\u00A0znak specjalny, na\u00A0przykład: ! @ # $ % ^ \u0026 *</string>
+    <string name="activate_step_password_requirements2">Hasło musi składać się z minimum 8\u00A0znaków i zawierać co najmniej 1\u00A0małą literę, 1\u00A0dużą literę,\u00A01 cyfrę i 1\u00A0znak specjalny, na\u00A0przykład: ! @ # $ % ^ \u0026 *</string>
+
+    <string name="activate_step_onboarding_refugee_one"><![CDATA[Kliknij <b>Dalej</b> i poczekaj na pobranie danych]]>.</string>
+    <string name="activate_step_onboarding_refugee_two">Autoryzuj się podając login i hasło do swojego Profilu Zaufanego.</string>
+    <string name="activate_step_onboarding_refugee_three">Potwierdź logowanie kodem autoryzacyjnym (otrzymasz go SMSem).</string>
+
+    <string name="activate_step_onboarding_ua_driving_licence_one"><![CDATA[Zaakceptuj regulamin a następnie przejdź do aplikacji Diia. Jeżeli jej nie posiadasz możesz pobrać ją ze sklepu Play lub App Store]]></string>
+    <string name="activate_step_onboarding_ua_driving_licence_two"><![CDATA[W Дія wyraź zgodę na udostępnienie danych z Twojego prawa jazdy]]>.</string>
+    <string name="activate_step_onboarding_ua_driving_licence_three">Potwierdź udostępnienie danych do aplikacji mObywatel.</string>
+
+    <string name="activate_step_password_requirements_prefix">"Hasło powinno zawierać co najmniej "</string>
+    <string name="activate_step_password_requirements_one_big_letter"><![CDATA[<b>1</b> dużą literę]]></string>
+    <string name="activate_step_password_requirements_one_small_letter"><![CDATA[<b>1</b> małą literę]]></string>
+    <string name="activate_step_password_requirements_one_digit"><![CDATA[<b>1</b> cyfrę]]></string>
+    <string name="activate_step_password_requirements_one_special_char"><![CDATA[<b>1</b> znak specjalny]]></string>
+    <string name="activate_step_device_name_info">Nazwa powinna być unikalna. W\u00A0przypadku utraty telefonu wykorzystasz ją do zastrzeżenia aplikacji.</string>
+    <string name="activate_step_device_name_details">Nazwa nie może zawierać znaków specjalnych, tylko litery i\u00A0cyfry.</string>
+
+    <string name="family_card_activation_onboarding_title">Dodajesz Kartę Dużej Rodziny</string>
+    <string name="family_card_activation_onboarding_step_two"><![CDATA[Kliknij <b>Dalej</b> i poczekaj na pobranie danych]]>.</string>
+    <string name="family_card_activation_onboarding_regulation_read">Zapoznałem / zapoznałam się z treścią Regulaminu Karty Dużej Rodziny i akceptuję jego warunki.</string>
+
+    <string name="pensioner_card_activation_onboarding_title">Dodajesz Legitymację emeryta-rencisty</string>
+    <string name="pensioner_card_activation_onboarding_step_two"><![CDATA[Kliknij <b>Dalej</b> i poczekaj na pobranie danych]]>.</string>
+    <string name="pensioner_card_activation_onboarding_regulation_read">Zapoznałem / zapoznałam się z treścią Regulaminu Legitymacji emeryta-rencisty i akceptuję jego warunki.</string>
+
+    <string name="nurse_card_activation_onboarding_title">Dodajesz PWZ Pielęgniarki i Położnej</string>
+    <string name="pwz_label_valid">Dokument ważny</string>
+    <string name="pwz_label_invalid">Dokument utracił ważność</string>
+    <string name="advocate_card_activation_onboarding_title">Dodajesz Legitymację adwokacką</string>
+
+    <!--related to settings_fragment layout-->
+    <string name="update_data">AKTUALIZUJ DANE</string>
+    <string name="settings_terms_of_service">Informacje prawne</string>
+    <string name="settings_privacy_policy">Polityka prywatności</string>
+    <string name="settings_support">Pomoc techniczna</string>
+    <string name="settings_logout">Wyloguj się</string>
+    <string name="settings_deactivate">Dezaktywuj aplikację</string>
+    <string name="settings_change_password">Zmień hasło</string>
+    <string name="settings_change_pin">Zmień PIN</string>
+    <string name="settings_enable_fingerprint_pin">Włącz logowanie biometryczne</string>
+    <string name="settings_enable_fingerprint_with_pin">Włącz PIN przy logowaniu</string>
+    <string name="settings_enable_fingerprint_without_pin">Wyłącz PIN przy logowaniu</string>
+    <string name="settings_remove_btmacaddress">Usuń z pamięci adres Bluetooth</string>
+
+    <string name="settings_main_screen">Pulpit aplikacji</string>
+    <string name="settings_main_screen_text_icon_size">Rozmiar ikon na pulpicie</string>
+    <string name="settings_main_screen_text_icon_order">Kolejność i widoczność ikon</string>
+    <string name="settings_main_screen_text_icon_drag_and_drop">Przytrzymaj ikonkę z prawej strony nazwy usługi i nie puszczając przeciągnij zmieniając kolejność elementów.</string>
+
+    <string name="settings_activity">Aktywność</string>
+    <string name="settings_history">Historia</string>
+    <string name="settings_your_documents">Twoje dokumenty i usługi</string>
+    <string name="settings_app_certifiactes">Wydane certyfikaty</string>
+    <string name="settings_certificate">Certyfikat</string>
+    <string name="settings_verification">Weryfikacja</string>
+    <string name="settings_data_pass">Przekazywanie danych</string>
+    <string name="settings_logging_to_app">Logowanie do aplikacji</string>
+    <string name="settings_terms_of_app">Regulamin aplikacji</string>
+    <string name="settings_public_info_biulletin">Biuletyn Informacji Publicznej</string>
+    <string name="settings_additional_informations">Dodatkowe informacje</string>
+    <string name="settings_check_history_description">Sprawdź historię najważniejszych czynności wykonanych w aplikacji.</string>
+    <string name="settings_refresh_certificates_description">O skorzystanie z funkcji Aktualizacji certyfikatów publicznych możemy poprosić Cię, kiedy kontaktujesz się z konsultantem infolinii aplikacji mObywatel.</string>
+    <string name="settings_biometrics_description">Aktywacja logowania biometrycznego wymaga podania hasła i nadania kodu PIN.\n\nDo wyboru masz dwa sposoby autoryzacji z użyciem biometrii: jednoetapowe (biometria) lub dwuetapowe (biometria i PIN).\n\nPamiętaj, że przy logowaniu jednoetapowym, kod PIN będzie wymagany np. podczas przekazywania danych.</string>
+    <string name="settings_uninstall_mobywatel_additional_info"> Odinstalowanie dokumentu mObywatel spowoduje usunięcie wszystkich usług z aplikacji.</string>
+    <string name="settings_uninstall_diia_additional_info"> Odinstalowanie dokumentu Diia.pl spowoduje usunięcie wszystkich usług z aplikacji.</string>
+    <string name="settings_notifications_overall">Ogólne</string>
+    <string name="settings_notifications_personal">Osobiste</string>
+    <string name="settings_notifications_mobywatel">mObywatel (dokument)</string>
+    <string name="settings_notifications_mpojazd">mPojazd</string>
+    <string name="settings_notifications_mprawojazdy">mPrawo Jazdy</string>
+    <string name="settings_notifications_muut">mLegitymacja UUT</string>
+    <string name="settings_notifications_mlegitymacjaszkolna">mLegitymacja Szkolna</string>
+    <string name="settings_notifications_mlegitymacjastudencka">mLegitymacja Studencka</string>
+    <string name="settings_notifications_mcovid_passport">Unijny Certyfikat COVID</string>
+    <string name="settings_notifications_mfamily_card">mKarta Dużej Rodziny</string>
+    <string name="settings_notifications_additional_info">Ogólne - powiadomienia kierowane do wszystkich Użytkowników aplikacji (np. przerwy techniczne, nowe wersje w sklepie itp.). \n\nOsobiste - powiadomienia skierowane wyłącznie do Ciebie.\n</string>
+    <string name="settings_notifications_additional_info_mobywatel">mObywatel (dokument) - powiadomienia związane z Twoim dokumentem mObywatel.</string>
+    <string name="settings_notifications_additional_info_vehicle">mPojazd - powiadomienia dotyczące Twoich pojazdów.</string>
+    <string name="settings_notifications_additional_info_mprawojazdy">mPrawo Jazdy - powiadomienia związane z Twoim dokumentem mPrawo Jazdy.</string>
+    <string name="settings_notifications_additional_info_mrailwaycard">mLegitymacja UUT - powiadomienia związane z Twoim dokumentem mLegitymacja UUT.</string>
+    <string name="settings_notifications_additional_info_mlegitymacjaszkolna">mLegitymacja Szkolna - powiadomienia związane z Twoim dokumentem mLegitymacja Szkolna.</string>
+    <string name="settings_notifications_additional_info_mlegitymacjastudencka">mLegitymacja Studencka - powiadomienia związane z Twoim dokumentem mLegitymacja Studencka.</string>
+    <string name="settings_notifications_additional_info_mcovidpassport">Unijny Certyfikat COVID - powiadomienia związane z Twoim dokumentem Unijny Certyfikat COVID.</string>
+    <string name="settings_notifications_additional_info_mfamilycard">mKarta Dużej Rodziny - powiadomienia związane z Twoim dokumentem mKarta Dużej Rodziny.</string>
+    <!-- notification -->
+    <string name="notification_empty">""</string>
+    <!-- notification message driver licence   -->
+    <string name="notification_exter_header_prawojazdy">"mObywatel"</string>
+    <string name="notification_exter_message_prawojazdy_month">"Twoje plastikowe Prawo Jazdy straci ważność za %s. Zobacz, jak i kiedy złożyć wniosek o nowe. Masz już nowe? Pobierz jego dane do mObywatela."</string>
+    <string name="notification_exter_message_prawojazdy_day">"%s twoje dotychczasowe Prawo Jazdy straci ważność. Masz już nowe? Pobierz jego dane do mObywatela."</string>
+    <string name="notification_exter_message_prawojazdy_week">"Twoje stare Prawo Jazdy straciło ważność. Masz już nowe? Pobierz jego dane do mObywatela."</string>
+    <string name="notification_exter_message_prawojazdy_infi">"Twoje stare Prawo Jazdy straciło ważność. Masz już nowe? Pobierz jego dane do mObywatela."</string>
+    <string name="notification_exter_first_button_prawojazdy">"Pobierz"</string>
+    <string name="notification_exter_second_button_prawojazdy">"Zobacz"</string>
+    <string name="notification_inter_header_prawojazdy_month">"Twoje plastikowe Prawo Jazdy straci ważność za 30 dni"</string>
+    <string name="notification_inter_message_prawojazdy_month">"Jeśli masz już nowe - pobierz jego dane. Jeśli chcesz złożyć wniosek o nowy dokument - skorzystaj z poradnika gov.com."</string>
+    <string name="notification_inter_header_prawojazdy_day">"Jutro twoje dotychczasowe Prawo Jazdy straci ważność"</string>
+    <string name="notification_inter_message_prawojazdy_day">"Jeśli masz już nowe - pobierz jego dane. Jeśli chcesz złożyć wniosek o nowy dokument - skorzystaj z poradnika gov.com."</string>
+    <string name="notification_inter_header_prawojazdy_week">"Twoje stare Prawo Jazdy straciło ważność"</string>
+    <string name="notification_inter_message_prawojazdy_week">"Jeśli masz już nowe - pobierz jego dane. Jeśli chcesz złożyć wniosek o nowy dokument - skorzystaj z poradnika gov.com."</string>
+    <string name="notification_inter_header_prawojazdy_infi">"Twoje stare Prawo Jazdy straciło ważność"</string>
+    <string name="notification_inter_message_prawojazdy_infi">"Jeśli masz już nowe - pobierz jego dane. Jeśli chcesz złożyć wniosek o nowy dokument - skorzystaj z poradnika gov.com."</string>
+    <string name="notification_inter_upper_button_prawojazdy">"Pobierz dane nowego mPJ"</string>
+    <string name="notification_inter_middle_button_prawojazdy">"Poradnik na gov.pl"</string>
+    <string name="notification_inter_lower_button_prawojazdy_later">"Przypomnij mi później"</string>
+    <string name="notification_inter_lower_button_prawojazdy_close">"Zamknij"</string>
+    <string name="notification_text_piece_prawojazdy_month">"za 30 dni"</string>
+    <string name="notification_text_piece_prawojazdy_day">"Jutro"</string>
+    <!-- notification message railway card   -->
+    <string name="notification_exter_header_railwaycard">"mObywatel"</string>
+    <string name="notification_exter_message_owner_railwaycard_month">"Twoja tradycyjna legitymacja UUT straci ważność za 30 dni. Aby ją odnowić skontaktuj się z pracodawcą. Masz już nową? Pobierz jej dane do mObywatela."</string>
+    <string name="notification_exter_message_kid_railwaycard_month">"Twoja tradycyjna legitymacja UUT dla współmałżonka bądź podopiecznego straci ważność za 30 dni. Aby ją odnowić skontaktuj się z pracodawcą. Masz już nową? Pobierz jej dane do mObywatela."</string>
+    <string name="notification_exter_message_owner_railwaycard_day">"Jutro twoja dotychczasowa legitymacja UUT straci ważność. Aby ją odnowić skontaktuj się z pracodawcą. Masz już nową? Pobierz jej dane do mObywatela."</string>
+    <string name="notification_exter_message_kid_railwaycard_day">"Jutro twoja dotychczasowa legitymacja UUT dla współmałżonka bądź podopiecznego straci ważność. Masz już nową? Pobierz jej dane do mObywatela."</string>
+    <string name="notification_exter_message_owner_railwaycard_infi">"Twoja stara legitymacja UUT straciła ważność. Masz już nową? Pobierz jej dane do mObywatela."</string>
+    <string name="notification_exter_message_kid_railwaycard_infi">"Twoja stara legitymacja UUT dla współmałżonka bądź podopiecznego straciła ważność. Masz już nową? Pobierz jej dane do mObywatela."</string>
+    <string name="notification_exter_first_button_railwaycard">"Pobierz"</string>
+    <string name="notification_inter_header_owner_railwaycard_month">"Twoja tradycyjna legitymacja UUT straci ważność za 30 dni"</string>
+    <string name="notification_inter_message_owner_railwaycard_month">"Aby dalej z niej korzystać w aplikacji,  skontaktuj się ze swoim pracodawcą. Jeśli masz już nową – pobierz jej dane."</string>
+    <string name="notification_inter_header_kid_railwaycard_month">"Twoja tradycyjna legitymacja UUT dla współmałżonka bądź podopiecznego straci ważność za 30 dni"</string>
+    <string name="notification_inter_message_kid_railwaycard_month">"Aby dalej z niej korzystać w aplikacji,  skontaktuj się ze swoim pracodawcą. Jeśli masz już nową – pobierz jej dane."</string>
+    <string name="notification_inter_header_owner_railwaycard_day">"Jutro twoja dotychczasowa legitymacja UUT straci ważność"</string>
+    <string name="notification_inter_message_owner_railwaycard_day">"Aby dalej z niej korzystać w aplikacji, skontaktuj się ze swoim pracodawcą. Jeśli masz już nową – pobierz jej dane."</string>
+    <string name="notification_inter_header_kid_railwaycard_day">"Jutro twoja dotychczasowa legitymacja UUT dla współmałżonka bądź podopiecznego straci ważność"</string>
+    <string name="notification_inter_message_kid_railwaycard_day">"Aby dalej z niej korzystać w aplikacji, skontaktuj się ze swoim pracodawcą. Jeśli masz już nową – pobierz jej dane."</string>
+    <string name="notification_inter_header_owner_railwaycard_infi">"Twoja stara legitymacja UUT straciła ważność"</string>
+    <string name="notification_inter_message_owner_railwaycard_infi">"Aby dalej z niej korzystać w aplikacji,  skontaktuj się ze swoim pracodawcą. Jeśli masz już nową – pobierz jej dane."</string>
+    <string name="notification_inter_header_kid_railwaycard_infi">"Twoja stara legitymacja UUT dla współmałżonka bądź podopiecznego straciła ważność"</string>
+    <string name="notification_inter_message_kid_railwaycard_infi">"Aby dalej z niej korzystać w aplikacji, skontaktuj się ze swoim pracodawcą. Jeśli masz już nową – pobierz jej dane."</string>
+    <string name="notification_inter_upper_button_railwaycard">"Pobierz dane nowej legitymacji UUT"</string>
+    <string name="notification_inter_lower_button_railwaycard_later">"Przypomnij mi później"</string>
+    <string name="notification_inter_lower_button_railwaycard_close">"Zamknij"</string>
+    <!-- notification message school card   -->
+    <string name="notification_exter_header_schoolcard">"mObywatel"</string>
+    <string name="notification_exter_message_schoolcard_month">"Twoja mLegitymacja Szkolna straci ważność %s. Aby dalej z niej korzystać poproś przedstawiciela szkoły o wydanie nowego kodu QR i kodu aktywacyjnego."</string>
+    <string name="notification_exter_message_schoolcard_day">"%s twoja mLegitymacja Szkolna traci ważność. Aby dalej z niej korzystać poproś przedstawiciela szkoły o wydanie nowego kodu QR i kodu aktywacyjnego."</string>
+    <string name="notification_exter_message_schoolcard_week">"Twoja mLegitymacja Szkolna straciła ważność. Masz już nową? Pobierz jej dane do mObywatela skanując kod QR i wpisując kod aktywacyjny."</string>
+    <string name="notification_exter_message_schoolcard_infi">"Twoja mLegitymacja Szkolna straciła ważność. Masz już nową? Pobierz jej dane do mObywatela skanując kod QR i wpisując kod aktywacyjny."</string>
+    <string name="notification_inter_header_schoolcard_month">"Twoja mLegitymacja Szkolna straci ważność za 30 dni"</string>
+    <string name="notification_inter_message_schoolcard_month">"Aby dalej z niej korzystać poproś przedstawiciela szkoły o wydanie nowego kodu QR i kodu aktywacyjnego."</string>
+    <string name="notification_inter_header_schoolcard_day">"Jutro twoja mLegitymacja Szkolna traci ważność"</string>
+    <string name="notification_inter_message_schoolcard_day">"Aby dalej z niej korzystać poproś przedstawiciela szkoły o wydanie nowego kodu QR i kodu aktywacyjnego."</string>
+    <string name="notification_inter_header_schoolcard_week">"Twoja mLegitymacja Szkolna straciła ważność"</string>
+    <string name="notification_inter_message_schoolcard_week">"Masz już nową? Pobierz jej dane do mObywatela, skanując kod QR i wpisując kod aktywacyjny."</string>
+    <string name="notification_inter_header_schoolcard_infi">"Twoja mLegitymacja Szkolna straciła ważność"</string>
+    <string name="notification_inter_message_schoolcard_infi">"Masz już nową? Pobierz jej dane do mObywatela, skanując kod QR i wpisując kod aktywacyjny."</string>
+    <string name="notification_inter_upper_button_schoolcard">"Mam już kody"</string>
+    <string name="notification_inter_lower_button_schoolcard_later">"Przypomnij mi później"</string>
+    <string name="notification_inter_lower_button_schoolcard_close">"Zamknij"</string>
+    <string name="notification_text_piece_schoolcard_month">"za 30 dni"</string>
+    <string name="notification_text_piece_schoolcard_day">"Jutro"</string>
+    <!-- notification message student card   -->
+    <string name="notification_exter_header_studentcard">"mObywatel"</string>
+    <string name="notification_exter_message_studentcard_month">"Twoja mLegitymacja Studencka straci ważność %s. Aby dalej z niej korzystać poproś przedstawiciela uczelni o wydanie nowego kodu QR i kodu aktywacyjnego."</string>
+    <string name="notification_exter_message_studentcard_day">"%s twoja mLegitymacja Studencka traci ważność. Aby dalej z niej korzystać poproś przedstawiciela uczelni o wydanie nowego kodu QR i kodu aktywacyjnego."</string>
+    <string name="notification_exter_message_studentcard_week">"Twoja mLegitymacja Studencka straciła ważność. Masz już nową? Pobierz jej dane do mObywatela skanując kod QR i wpisując kod aktywacyjny."</string>
+    <string name="notification_exter_message_studentcard_infi">"Twoja mLegitymacja Studencka straciła ważność. Masz już nową? Pobierz jej dane do mObywatela skanując kod QR i wpisując kod aktywacyjny."</string>
+    <string name="notification_inter_header_studentcard_month">"Twoja mLegitymacja Studencka straci ważność za 30 dni"</string>
+    <string name="notification_inter_message_studentcard_month">"Aby dalej z niej korzystać poproś przedstawiciela uczelni o wydanie nowego kodu QR i kodu aktywacyjnego."</string>
+    <string name="notification_inter_header_studentcard_day">"Jutro twoja mLegitymacja Studencka traci ważność"</string>
+    <string name="notification_inter_message_studentcard_day">"Aby dalej z niej korzystać poproś przedstawiciela uczelni o wydanie nowego kodu QR i kodu aktywacyjnego."</string>
+    <string name="notification_inter_header_studentcard_week">"Twoja mLegitymacja Studencka straciła ważność"</string>
+    <string name="notification_inter_message_studentcard_week">"Masz już nową? Pobierz jej dane do mObywatela skanując kod QR i wpisując kod aktywacyjny."</string>
+    <string name="notification_inter_header_studentcard_infi">"Twoja mLegitymacja Studencka straciła ważność"</string>
+    <string name="notification_inter_message_studentcard_infi">"Masz już nową? Pobierz jej dane do mObywatela skanując kod QR i wpisując kod aktywacyjny."</string>
+    <string name="notification_inter_upper_button_studentcard">"Mam już kody"</string>
+    <string name="notification_inter_lower_button_studentcard_later">"Przypomnij mi później"</string>
+    <string name="notification_inter_lower_button_studentcard_close">"Zamknij"</string>
+    <string name="notification_text_piece_studentcard_month">"za 30 dni"</string>
+    <string name="notification_text_piece_studentcard_day">"Jutro"</string>
+    <!-- notification message covid passport   -->
+    <string name="notification_exter_header_covidpassport">"mObywatel"</string>
+    <string name="notification_exter_message_owner_covidpassport_month">"Twój  certyfikat COVID traci ważność za 30 dni. Zobacz, gdzie i kiedy zapisać się na dawkę przypominającą. Masz już nowy certyfikat? Pobierz jego dane do mObywatela."</string>
+    <string name="notification_exter_message_kid_covidpassport_month">"Certyfikat COVID twojego podopiecznego traci ważność za 30 dni. Zobacz, gdzie i kiedy zapisać się na dawkę przypominającą."</string>
+    <string name="notification_exter_message_owner_covidpassport_day">"Jutro twój dotychczasowy certyfikat COVID straci ważność. Masz już nowy? Pobierz jego dane do mObywatela"</string>
+    <string name="notification_exter_message_kid_covidpassport_day">"Jutro twój dotychczasowy certyfikat COVID podopiecznego straci ważność. Masz już nowy? Pobierz jego dane do mObywatela"</string>
+    <string name="notification_exter_message_owner_covidpassport_infi">"Twój stary certyfikat COVID stracił ważność. Masz już nowy? Pobierz jego dane do mObywatela."</string>
+    <string name="notification_exter_message_kid_covidpassport_infi">"Twój stary certyfikat COVID  podopiecznego stracił ważność. Masz już nowy? Pobierz jego dane do mObywatela."</string>
+    <string name="notification_exter_first_button_covidpassport">"Pobierz"</string>
+    <string name="notification_exter_second_button_covidpassport">"Zobacz"</string>
+    <string name="notification_inter_header_owner_covidpassport_month">"Twój certyfikat COVID traci ważność za 30 dni"</string>
+    <string name="notification_inter_message_owner_covidpassport_month">"Jeśli masz już nowy – pobierz jego dane. Jeśli chcesz zapisać się na dawkę przypominającą – przejdź do Portalu Pacjenta."</string>
+    <string name="notification_inter_header_kid_covidpassport_month">"Certyfikat COVID twojego podopiecznego traci ważność za 30 dni"</string>
+    <string name="notification_inter_message_kid_covidpassport_month">"Jeśli masz już nowy – pobierz jego dane. Jeśli chcesz zapisać podopiecznego na dawkę przypominającą – przejdź do Portalu Pacjenta."</string>
+    <string name="notification_inter_header_owner_covidpassport_day">"Jutro twój dotychczasowy certyfikat COVID straci ważność"</string>
+    <string name="notification_inter_message_owner_covidpassport_day">"Jeśli masz już nowy – pobierz jego dane. Jeśli chcesz zapisać się na dawkę przypominającą –  przejdź do Portalu Pacjenta."</string>
+    <string name="notification_inter_header_kid_covidpassport_day">"Jutro twój dotychczasowy certyfikat COVID podopiecznego straci ważność"</string>
+    <string name="notification_inter_message_kid_covidpassport_day">"Jeśli masz już nowy – pobierz jego dane. Jeśli chcesz zapisać podopiecznegona dawkę przypominającą –  przejdź do Portalu Pacjenta."</string>
+    <string name="notification_inter_header_owner_covidpassport_infi">"Twój stary certyfikat COVID stracił ważność"</string>
+    <string name="notification_inter_message_owner_covidpassport_infi">"Jeśli masz już nowy – pobierz jego dane. Jeśli chcesz zapisać się na dawkę przypominającą –  przejdź do Portalu Pacjenta.."</string>
+    <string name="notification_inter_header_kid_covidpassport_infi">"Twój stary certyfikat COVID podopiecznego stracił ważność"</string>
+    <string name="notification_inter_message_kid_covidpassport_infi">"Jeśli masz już nowy – pobierz jego dane. Jeśli chcesz zapisać podopiecznego na dawkę przypominającą –  przejdź do Portalu Pacjenta."</string>
+    <string name="notification_inter_upper_button_covidpassport">"Pobierz dane nowego certyfikatu"</string>
+    <string name="notification_inter_middle_button_covidpassport">"pacjent.gov.pl"</string>
+    <string name="notification_inter_lower_button_covidpassport_later">"Przypomnij mi później"</string>
+    <string name="notification_inter_lower_button_covidpassport_close">"Zamknij"</string>
+    <!-- notification message family card   -->
+    <string name="notification_exter_header_familycard">"mObywatel"</string>
+    <string name="notification_exter_message_familycard_month">"Twoja plastikowa Karta Dużej Rodziny straci ważność za 30 dni. Zobacz, jak i kiedy złożyć wniosek o nową.Masz już nową? Pobierz jej dane do mObywatela."</string>
+    <string name="notification_exter_message_familycard_day">"Jutro twoja dotychczasowa Karta Dużej Rodziny straci ważność. Masz już nową? Pobierz jej dane do mObywatela."</string>
+    <string name="notification_exter_message_familycard_infi">"Twoja stara Karta Dużej Rodziny straciła ważność. Masz już nową? Pobierz jej dane do mObywatela"</string>
+    <string name="notification_exter_first_button_familycard">"Pobierz"</string>
+    <string name="notification_exter_second_button_familycard">"Zobacz"</string>
+    <string name="notification_inter_header_familycard_month">"Twoje plastikowa Karta Dużej Rodziny straci ważność za 30 dni"</string>
+    <string name="notification_inter_message_familycard_month">"Jeśli masz już nową – pobierz jej dane. Jeśli chcesz złożyć wniosek o nowy dokument – skorzystaj z poradnika gov.pl"</string>
+    <string name="notification_inter_header_familycard_day">"Jutro twoja dotychczasowa Karta Dużej Rodziny straci ważność"</string>
+    <string name="notification_inter_message_familycard_day">"Jeśli masz już nową – pobierz jejdane. Jeśli chcesz złożyć wniosek o nowy dokument – skorzystaj z poradnika gov.pl"</string>
+    <string name="notification_inter_header_familycard_infi">"Twoja stara Karta Dużej Rodziny straciła ważność"</string>
+    <string name="notification_inter_message_familycard_infi">"Jeśli masz już nową – pobierz jej dane. Jeśli chcesz złożyć wniosek o nowy dokument – skorzystaj z poradnika gov.pl"</string>
+    <string name="notification_inter_upper_button_familycard">"Pobierz dane nowej mKDR"</string>
+    <string name="notification_inter_middle_button_familycard">"Poradnik na gov.pl"</string>
+    <string name="notification_inter_lower_button_familycard_later">"Przypomnij mi później"</string>
+    <string name="notification_inter_lower_button_familycard_close">"Zamknij"</string>
+    <!-- notification message car insurance   -->
+    <string name="notification_exter_header_insurance">"mObywatel"</string>
+    <string name="notification_exter_message_insurance_month">"<b>%s</b> wygaśnie ubezpieczenie OC Twojego pojazdu"</string>
+    <string name="notification_exter_message_insurance_two_week">"<b>%s</b> wygaśnie ubezpieczenie OC Twojego pojazdu"</string>
+    <string name="notification_exter_message_insurance_week">"<b>%s</b> wygaśnie ubezpieczenie OC Twojego pojazdu"</string>
+    <string name="notification_exter_message_insurance_nine_day">"Dane mPojazdu wymagają aktualizacji"</string>
+    <string name="notification_exter_message_insurance_infi">"Dane mPojazdu wymagają aktualizacji"</string>
+    <string name="notification_inter_header_insurance_month">"Przypomnienie"</string>
+    <string name="notification_inter_message_insurance_month">"Według danych z CEPiK <b>%s wygaśnie ubezpieczenie OC</b> pojazdu o numerze rejestracyjnym %s.<br /><br />Kiedy rozpocznie się nowy okres ubezpieczenia OC, zaktualizuj dane mPojazdu, aby je odświeżyć."</string>
+    <string name="notification_inter_header_insurance_two_week">"Przypomnienie"</string>
+    <string name="notification_inter_message_insurance_two_week">"Według danych z CEPiK <b>%s wygaśnie ubezpieczenie OC</b> pojazdu o numerze rejestracyjnym %s.<br /><br />Kiedy rozpocznie się nowy okres ubezpieczenia OC, zaktualizuj dane mPojazdu, aby je odświeżyć."</string>
+    <string name="notification_inter_header_insurance_week">"Przypomnienie"</string>
+    <string name="notification_inter_message_insurance_week">"Według danych z CEPiK <b>%s wygaśnie ubezpieczenie OC</b> pojazdu o numerze rejestracyjnym %s.<br /><br />Kiedy rozpocznie się nowy okres ubezpieczenia OC, zaktualizuj dane mPojazdu, aby je odświeżyć."</string>
+    <string name="notification_inter_header_insurance_nine_day">"Nieaktualne dane"</string>
+    <string name="notification_inter_message_insurance_nine_day">"Dane mPojazdu wymagają aktualizacji - pobrania aktualnych danych z Centralnej Ewidencji Pojazdów i Kierowców.<br /><br /><b>Uwaga</b> - dane od ubezpieczycieli mogą spływać do CEPiK z kilku tygodniowym opóźnieniem."</string>
+    <string name="notification_inter_header_insurance_infi">"Nieaktualne dane"</string>
+    <string name="notification_inter_message_insurance_infi">"Dane mPojazdu wymagają aktualizacji - pobrania aktualnych danych z Centralnej Ewidencji Pojazdów i Kierowców.<br /><br /><b>Uwaga</b> - dane od ubezpieczycieli mogą spływać do CEPiK z kilku tygodniowym opóźnieniem."</string>
+    <string name="notification_inter_upper_button_insurance_month">"Przypomnij za 2 tygodnie"</string>
+    <string name="notification_inter_lower_button_insurance_month">"Nie przypominaj o tym"</string>
+    <string name="notification_inter_upper_button_insurance_two_week">"Przypomnij za tydzień"</string>
+    <string name="notification_inter_lower_button_insurance_two_week">"Nie przypominaj o tym"</string>
+    <string name="notification_inter_upper_button_insurance_week">"Rozumiem"</string>
+    <string name="notification_inter_upper_button_insurance_nine_day">"Aktualizuj dane"</string>
+    <string name="notification_inter_lower_button_insurance_nine_day">"Przypomnij mi później"</string>
+    <string name="notification_inter_upper_button_insurance_infi">"Aktualizuj dane"</string>
+    <string name="notification_inter_lower_button_insurance_infi">"Przypomnij mi później"</string>
+    <string name="notification_text_piece_external_insurance_month">"Za miesiąc"</string>
+    <string name="notification_text_piece_internal_button_insurance_month">"za 2 tygodnie"</string>
+    <string name="notification_text_piece_external_insurance_two_week">"Za 2 tygodnie"</string>
+    <string name="notification_text_piece_internal_button_insurance_twoo_week">"za tydzień"</string>
+    <string name="notification_text_piece_external_insurance_week">"Za tydzień"</string>
+    <!-- notification message car techsurvey   -->
+    <string name="notification_exter_header_techsurvey">"mObywatel"</string>
+    <string name="notification_exter_message_techsurvey_month">"<b>%s</b> kończy się ważność badania technicznego Twojego pojazdu"</string>
+    <string name="notification_exter_message_techsurvey_two_week">"<b>%s</b> kończy się ważność badania technicznego Twojego pojazdu"</string>
+    <string name="notification_exter_message_techsurvey_week">"<b>%s</b> kończy się ważność badania technicznego Twojego pojazdu"</string>
+    <string name="notification_exter_message_techsurvey_nine_day">"Dane mPojazdu wymagają aktualizacji"</string>
+    <string name="notification_exter_message_techsurvey_infi">"Dane mPojazdu wymagają aktualizacji"</string>
+    <string name="notification_inter_header_techsurvey_month">"Przypomnienie"</string>
+    <string name="notification_inter_message_techsurvey_month">"Według danych z CEPiK <b>%s kończy się ważność badania technicznego</b> pojazdu o numerze rejestracyjnym %s.<br /><br />Kiedy pojazd przejdzie badanie techniczne, zaktualizuj dane mPojazdu, aby je odświeżyć."</string>
+    <string name="notification_inter_header_techsurvey_two_week">"Przypomnienie"</string>
+    <string name="notification_inter_message_techsurvey_two_week">"Według danych z CEPiK <b>%s kończy się ważność badania technicznego</b> pojazdu o numerze rejestracyjnym %s.<br /><br />Kiedy pojazd przejdzie badanie techniczne, zaktualizuj dane mPojazdu, aby je odświeżyć."</string>
+    <string name="notification_inter_header_techsurvey_week">"Przypomnienie"</string>
+    <string name="notification_inter_message_techsurvey_week">"Według danych z CEPiK <b>%s kończy się ważność badania technicznego</b> pojazdu o numerze rejestracyjnym %s.<br /><br />Kiedy pojazd przejdzie badanie techniczne, zaktualizuj dane mPojazdu, aby je odświeżyć."</string>
+    <string name="notification_inter_header_techsurvey_nine_day">"Nieaktualne dane"</string>
+    <string name="notification_inter_message_techsurvey_nine_day">"Dane mPojazdu wymagają aktualizacji - pobrania aktualnych danych z Centralnej Ewidencji Pojazdów i Kierowców.<br /><br /><b>Uwaga</b> - dane od ubezpieczycieli mogą spływać do CEPiK z kilkutygodniowym opóźnieniem."</string>
+    <string name="notification_inter_header_techsurvey_infi">"Nieaktualne dane"</string>
+    <string name="notification_inter_message_techsurvey_infi">"Dane mPojazdu wymagają aktualizacji - pobrania aktualnych danych z Centralnej Ewidencji Pojazdów i Kierowców.<br /><br /><b>Uwaga</b> - dane od ubezpieczycieli mogą spływać do CEPiK z kilkutygodniowym opóźnieniem."</string>
+    <string name="notification_inter_upper_button_techsurvey_month">"Przypomnij za 2 tygodnie"</string>
+    <string name="notification_inter_lower_button_techsurvey_month">"Nie przypominaj o tym"</string>
+    <string name="notification_inter_upper_button_techsurvey_two_week">"Przypomnij za tydzień"</string>
+    <string name="notification_inter_lower_button_techsurvey_two_week">"Nie przypominaj o tym"</string>
+    <string name="notification_inter_upper_button_techsurvey_week">"Rozumiem"</string>
+    <string name="notification_inter_upper_button_techsurvey_nine_day">"Aktualizuj dane"</string>
+    <string name="notification_inter_lower_button_techsurvey_nine_day">"Przypomnij później"</string>
+    <string name="notification_inter_upper_button_techsurvey_infi">"Aktualizuj dane"</string>
+    <string name="notification_inter_lower_button_techsurvey_infi">"Przypomnij później"</string>
+    <string name="notification_text_piece_external_techsurvey_month">"Za miesiąc"</string>
+    <string name="notification_text_piece_internal_button_techsurvey_month">"za 2 tygodnie"</string>
+    <string name="notification_text_piece_external_techsurvey_two_week">"Za 2 tygodnie"</string>
+    <string name="notification_text_piece_internal_button_techsurvey_two_week">"za tydzień"</string>
+    <string name="notification_text_piece_external_techsurvey_week">"Za tydzień"</string>
+    <!-- notification message identitycert   -->
+    <string name="notification_exter_header_identitycert">"mObywatel"</string>
+    <string name="notification_exter_message_identitycert_two_week">"Za %s upływa ważność Twojego mObywatela. Odnowienie będzie wymagało ponownego logowania Profilem Zaufanym lub za pomocą Twojego banku."</string>
+    <string name="notification_exter_message_identitycert_week">"Za %s upływa ważność Twojego mObywatela. Odnowienie będzie wymagało ponownego logowania Profilem Zaufanym lub za pomocą Twojego banku."</string>
+    <string name="notification_exter_message_identitycert_day">"%s kończy się ważność Twojego mObywatela. Odnów go jutro, aby nadal korzystać z cyfrowych dokumentów."</string>
+    <string name="notification_exter_message_identitycert_infi">"Twój mObywatel stracił ważność. Odnów go, aby nadal korzystać z cyfrowych dokumentów."</string>
+    <string name="notification_inter_header_identitycert_two_week">"Ważność aplikacji mObywatel upływa za 14 dni."</string>
+    <string name="notification_inter_message_identitycert_two_week">"Odnowienie będzie wymagało ponownego logowania Profilem Zaufanym lub za pomocą Twojego banku."</string>
+    <string name="notification_inter_header_identitycert_week">"Ważność aplikacji mObywatel upływa za 7 dni"</string>
+    <string name="notification_inter_message_identitycert_week">"Odnowienie będzie wymagało ponownego logowania Profilem Zaufanym lub za pomocą Twojego banku."</string>
+    <string name="notification_inter_header_identitycert_day">"Twój mObywatel jutro straci ważność"</string>
+    <string name="notification_inter_message_identitycert_day">"Aby nadal korzystać z aplikacji odnów jutro swoje dokumenty z użyciem Profilu Zaufanego lub za pomocą Twojego banku."</string>
+    <string name="notification_inter_header_identitycert_infi">"Twój mObywatel stracił ważność"</string>
+    <string name="notification_inter_message_identitycert_infi">"Aby nadal korzystać z aplikacji odnów swoje dokumenty z użyciem Profilu Zaufanego lub za pomocą Twojego banku."</string>
+    <string name="notification_inter_upper_button_identitycert_infi">"Kontynuuj"</string>
+    <string name="notification_inter_lower_button_identitycert_all">"Przypomnij mi później"</string>
+    <string name="notification_text_piece_identitycert_two_week">"14 dni"</string>
+    <string name="notification_text_piece_identitycert_week">"7 dni"</string>
+    <string name="notification_text_piece_identitycert_day">"Jutro"</string>
+    <!-- notification message identitydoc   -->
+    <string name="notification_exter_header_identitydoc">"mObywatel"</string>
+    <string name="notification_exter_message_identitydoc_two_month">"Twój plastikowy dowód osobisty straci ważność za %s. Zobacz, jak i kiedy złożyć wniosek o nowy. Masz już nowy? Pobierz jego dane do mObywatela."</string>
+    <string name="notification_exter_message_identitydoc_month">"Twój plastikowy dowód osobisty straci ważność za %s. Zobacz, jak i kiedy złożyć wniosek o nowy. Masz już nowy? Pobierz jego dane do mObywatela."</string>
+    <string name="notification_exter_message_identitydoc_day">"%s Twój dotychczasowy dowód osobisty straci ważność. Masz już nowy? <b>Pobierz jego dane</b>, aby móc korzystać z aplikacji mObywatela."</string>
+    <string name="notification_exter_message_identitydoc_infi">"Twój stary dowód osobisty stracił ważność. Masz już nowy? Pobierz jego dane, aby móc korzystać z aplikacji mObywatela."</string>
+    <string name="notification_exter_first_button_identitydoc">"Zobacz"</string>
+    <string name="notification_inter_header_identitydoc_two_month">"Twój plastikowy dowód osobisty utraci ważność za 60 dni"</string>
+    <string name="notification_inter_message_identitydoc_two_month">"Jeśli masz już nowy dowód – pobierz jego dane. Jeśli chcesz złożyć wniosek o DO – skorzystaj z poradnika gov.com. Nowy dokument będzie niezbędny, aby korzystać z aplikacji."</string>
+    <string name="notification_inter_header_identitydoc_month">"Twój plastikowy dowód osobisty utraci ważność za 30 dni"</string>
+    <string name="notification_inter_message_identitydoc_month">"Jeśli masz już nowy dowód – pobierz jego dane. Jeśli chcesz złożyć wniosek o DO – skorzystaj z poradnika gov.com. Nowy dokument będzie niezbędny, aby korzystać z aplikacji."</string>
+    <string name="notification_inter_header_identitydoc_day">"Twój dotychczasowy dowód osobisty jutro straci ważność"</string>
+    <string name="notification_inter_message_identitydoc_day">"Jeśli masz już nowy dowód – pobierz jego dane. Jeśli chcesz złożyć wniosek o DO – skorzystaj z poradnika gov.com. Nowy dokument jest niezbędny, aby korzystać z aplikacji."</string>
+    <string name="notification_inter_header_identitydoc_infi">"Twój stary dowód osobisty stracił ważność"</string>
+    <string name="notification_inter_message_identitydoc_infi">"Jeśli masz już nowy dowód – pobierz jego dane. Jeśli chcesz złożyć wniosek o DO – skorzystaj z poradnika gov.com. Nowy dokument jest niezbędny, aby korzystać z aplikacji."</string>
+    <string name="notification_inter_upper_button_identitydoc_all">"Pobierz dane nowego dowodu"</string>
+    <string name="notification_inter_middle_button_identitydoc_all">"Poradnik na gov.pl"</string>
+    <string name="notification_inter_lower_button_identitydoc_all">"Przypomnij mi później"</string>
+    <string name="notification_text_piece_external_identitydoc_two_month">"za 60 dni"</string>
+    <string name="notification_text_piece_internal_identitydoc_twoo_month">"za 60 dni"</string>
+    <string name="notification_text_piece_external_identitydoc_month">"za 30 dni"</string>
+    <string name="notification_text_piece_internal_identitydoc_month">"za 30 dni"</string>
+    <string name="notification_text_piece_external_identitydoc_day">"Jutro"</string>
+    <string name="notification_text_piece_internal_identitydoc_day">"Jutro"</string>
+    <!--related to WorkCertsEntity-->
+    <string name="work_cert_issuer">Wystawca</string>
+    <string name="work_cert_serial_number">Numer seryjny</string>
+    <string name="work_cert_dn">Podmiot</string>
+    <string name="work_cert_mt_id">Identyfikator</string>
+    <string name="work_cert_device_id">Urządzenie</string>
+    <string name="work_cert_state">Status</string>
+    <string name="work_cert_valid">Ważny</string>
+    <string name="work_cert_revoke_code">Kod odwołania</string>
+    <string name="work_cert_created">Utworzono</string>
+    <string name="work_cert_valid_from">Ważny od</string>
+    <string name="work_cert_valid_to">Ważny do</string>
+    <string name="work_cert_revoked">Unieważniono</string>
+    <string name="work_cert_invalid">Nieważny</string>
+    <string name="work_cert_user_revocation">Unieważniony przez Użytkownika aplikacji</string>
+    <string name="work_cert_id_card_invalidated_subscription">Dowód osobisty stracił ważność</string>
+    <string name="work_cert_id_card_invalidated_refresh">Dowód osobisty został zastrzeżony, unieważniony lub stracił ważność</string>
+    <string name="work_cert_admin_revocation">Unieważniony przez operatora po zgłoszeniu Użytkownika aplikacji</string>
+    <string name="work_cert_certificates_limit_reached">Unieważniony z powodu przekroczenia limitu wydanych certyfikatów</string>
+    <!--related to work_cert_list_layout-->
+    <string name="work_cert_list_intro">Aby usunąć dostęp do swoich danych na którymkolwiek urządzeniu unieważnij certyfikat przypisany do aplikacji.\n\nCertyfikaty są ważne przez rok. Kiedy upłynie data ważności certyfikatu lub unieważnisz go ręcznie, stracą ważność związane z nim mObywatel, mPojazd, mPrawo Jazdy i eRecepta.\n\nW takim wypadku aplikacja poprosi Cię o ponowne aktywowanie mObywatela i wygeneruje nowy certyfikat.</string>
+    <string name="work_cert_list_intro_diia">Aby usunąć dostęp do swoich danych na którymkolwiek urządzeniu unieważnij certyfikat przypisany do aplikacji.\n\nCertyfikaty są ważne przez rok. Kiedy upłynie data ważności certyfikatu lub unieważnisz go ręcznie, straci ważność związany z nim Diia.com.\n\nW takim wypadku aplikacja poprosi Cię o ponowne aktywowanie Diia.pl i wygeneruje nowy certyfikat.</string>
+    <string name="work_cert_list_valid">Ważność:</string>
+    <string name="certificate_mobywatel">Certyfikat mObywatela</string>
+    <string name="certificate_diia">Certyfikat Diia.pl</string>
+    <!--related to empty layouts-->
+    <string name="work_certs_empty">Lista certyfikatów jest pusta</string>
+    <string name="activity_logs_empty">Historia aktywności jest pusta</string>
+    <string name="verification_logs_empty">Twoja historia weryfikacji jest pusta</string>
+    <string name="data_pass_logs_empty">Twoja historia przekazywania danych jest pusta</string>
+    <!--related to ActivityLogsEntity-->
+    <string name="activity_type_work_cert_response">Pobranie certyfikatu</string>
+    <string name="activity_type_personal_data_response">Pobranie danych tożsamości</string>
+    <string name="activity_type_work_certificate_list_response">Pobranie listy certyfikatów</string>
+    <string name="activity_type_revoke_certificate_response">Unieważnienie certyfikatu</string>
+    <string name="activity_type_online_cert_status_response">Sprawdzenie statusu certyfikatu</string>
+    <string name="activity_type_revoke_certificate_pesel_response">Unieważnienie certyfikatów przez call center</string>
+    <string name="activity_type_user_activity_list_response">Pobranie historii aktywności</string>
+    <string name="activity_type_unknown">Aktywność %d</string>
+    <string name="activity_type_vehicle_data_response">Pobranie danych pojazdu</string>
+    <string name="activity_type_driving_licence_data_response">Pobranie danych prawa jazdy</string>
+    <string name="activity_type_revoked_certificate_by_identity_change">Unieważnienie mObywatela (nieważny dowód osobisty)</string>
+    <string name="activity_type_token_response">Pobranie tokenu bezpieczeństwa</string>
+    <string name="activity_type_family_data_response">Pobranie danych Karty Dużej Rodziny</string>
+    <string name="activity_type_vaccination_response">Pobranie danych Szczepienie COVID-19</string>
+    <string name="activity_type_green_passport_response">Pobranie danych Unijnego Certyfikatu COVID</string>
+    <string name="activity_type_railway_card_data_response">Pobranie danych mLegitymacji UUT</string>
+    <string name="activity_type_deputy_card_data_response">Pobranie danych Legitymacji Poselskiej</string>
+    <string name="activity_type_gios_info_pass_process_started">Uruchomiono proces przekazania informacji do Głównego Inspektoratu Ochrony Środowiska</string>
+    <string name="activity_type_gios_downloaded_data_from_rdk">Pobrano dane z Rejestru Danych Kontaktowych w celu realizacji zgłoszenia naruszenia środowiskowego</string>
+    <string name="activity_type_local_document_response">Pobranie danych dokumentu lokalnego</string>
+
+    <!--related to vehicle_licence_card_fragment layout-->
+    <string name="last_update_vehicle">OSTATNIA AKTUALIZACJA:</string>
+
+    <!--related to data refresh-->
+    <string name="data_refresh_title">Odnów swoje cyfrowe dokumenty.</string>
+    <string name="data_refresh_confirm">Potwierdzenie aktualizacji danych</string>
+    <string name="data_refresh_msg"><b>Twój mObywatel i powiązane dokumenty straciły ważność.\n\n</b>Aby nadal korzystać z aplikacji odnów swoje dokumenty z użyciem Profilu Zaufanego lub za pomocą Twojego banku.</string>
+    <string name="data_refresh_msg_diia"><b>Twój Diia.pl i powiązane dokumenty straciły ważność.\n\n</b>Aby nadal korzystać z aplikacji odnów swoje dokumenty z użyciem Profilu Zaufanego lub za pomocą Twojego banku.</string>
+    <string name="data_refresh_msg_no_certs">Dane dotyczące tożsamości zostaną zaktualizowane.\nCzy chcesz kontynuować?</string>
+    <string name="data_refresh_msg_pensioner_card">Dane dotyczące Legitymacji emeryta-rencisty zostaną zaktualizowane.\nCzy chcesz kontynuować?</string>
+    <string name="data_refresh_msg_driving_licence">Dane dotyczące prawa jazdy zostaną zaktualizowane.\nCzy chcesz kontynuować?</string>
+
+    <!-- related to PZ-->
+    <string name="wait_for_wk">Oczekuję na odpowiedź...</string>
+    <string name="wait_for_wk_response">Oczekiwanie na odpowiedź</string>
+    <string name="pz_sign_error">Błąd podpisu przy potwierdzaniu tożsamości</string>
+
+    <!--related to login-->
+    <string name="enter_password">Podaj hasło</string>
+    <string name="invalid_password">Podano nieprawidłowe hasło.</string>
+    <string name="incorrect_login_count_error">Logowanie zablokowane po zbyt dużej ilości błędnych prób. Spróbuj ponownie za chwilę.</string>
+    <string name="incorrect_login_count_timeout">Przekroczono dozwoloną liczbę prób. Spróbuj ponownie za %d minut.</string>
+    <string name="login">Logowanie</string>
+    <string name="last_login_error">Ostatnie błędne logowanie:</string>
+    <string name="i_dont_remember_password">Nie pamiętam hasła</string>
+
+    <!--related to loading-->
+    <string name="loading_data">Wczytywanie danych</string>
+    <string name="loading_processing_save">Przetwarzanie i zapisywanie danych</string>
+    <string name="loading_decrypt_process">Odszyfrowywanie i przetwarzanie danych</string>
+    <string name="loading_templates_downloading">Pobieranie szablonu</string>
+    <string name="loading_finalizing">Finalizowanie</string>
+
+    <!--related to certificate deactivation-->
+    <string name="deactivate_cert_text">Czy chcesz unieważnić ten certyfikat? Po tej operacji usługa %1$s na %2$s utraci ważność.</string>
+    <string name="deactivate_cert_confirm">UNIEWAŻNIJ</string>
+    <string name="deactivate_cert_wait">Unieważnianie certyfikatu</string>
+    <string name="deactivate_cert_success_title">Certyfikat został unieważniony</string>
+    <string name="deactivate_cert_success">Usługa mObywatel na %s straciła ważność.</string>
+    <string name="deactivate_cert_success_diia">Usługa Дія пл (Diia.pl) na %s straciła ważność.</string>
+
+    <!--related to app deactivation-->
+    <string name="deactivate_title">Potwierdzenie dezaktywacji</string>
+    <string name="deactivate_text">Trwałe wyczyszczenie danych i certyfikatów. Wymagana będzie ponowna aktywacja aplikacji.\nCzy chcesz kontynuować?</string>
+    <string name="deactivate_confirm">DEZAKTYWUJ</string>
+    <string name="deactivate_cancel">ANULUJ</string>
+    <string name="deactivate_wait">Dezaktywowanie aplikacji</string>
+    <string name="deactivate_success">Wszystkie dane zostały usunięte pomyślnie. Aplikacja zostanie zamknięta.</string>
+
+    <string name="removebtaddress_title">Potwierdzenie usunięcia adresu Bluetooth</string>
+    <string name="removebtaddress_text">Kolejna weryfikacja dokumentu będzie dłużej trwała, czy chcesz kontynuować?</string>
+    <string name="removebtaddress_confirm">USUŃ</string>
+
+    <string name="deactivate_service_vehicle">Czy na pewno chcesz usunąć ten dokument i wszystkie zawarte w nim dane?</string>
+    <string name="deactivate_service_wait">Usuwanie dokumentu</string>
+    <string name="deactivate_service_success">Dokument i wszystkie zawarte w nim dane zostały usunięte.</string>
+    <string name="deactivate_service_error">Dezaktywowanie aplikacji nie powiodło się.</string>
+    <string name="deactivate_service_server_error">Nie udało się poinformować serwera o dezaktywacji usługi mObywatel. Czy chcesz dezaktywować mObywatel lokalnie, bez odwołania certyfikatu po stronie serwera?</string>
+    <string name="deactivate_service_server_error_refugee">Nie udało się poinformować serwera o\u00A0dezaktywacji usługi Diia.com. Czy chcesz dezaktywować Diia.pl lokalnie, bez odwołania certyfikatu po stronie serwera?</string>
+
+    <!--related to logout-->
+    <string name="logout_title">Uwaga</string>
+    <string name="logout_msg">Czy na pewno chcesz się wylogować?</string>
+
+    <!--related to PZ and SRP errors-->
+    <string name="error_pz">Login.gov.pl zwrócił błąd:\n%s.</string>
+    <string name="error_pz_cert">Błąd certyfikatu</string>
+    <string name="pz">Profil Zaufany</string>
+    <string name="error_no_data_for_pesel_in_rdo">Brak danych dowodu dla numeru PESEL.</string>
+    <string name="error_no_valid_document_for_pesel">Nie możesz aktywować mObywatela, ponieważ <b>nie posiadasz ważnego dowodu osobistego.</b>\n\nSpróbuj ponownie, kiedy odbierzesz nowy dowód z urzędu.</string>
+    <string name="error_srp_technical">Błąd techniczny w SRP.</string>
+    <string name="error_no_data_for_pesel_in_pesel">Brak danych w bazie PESEL dla numeru PESEL.</string>
+
+    <string name="headline_activate_step_permission">Dostęp do telefonu</string>
+    <string name="headline_activate_step_password">Dane logowania</string>
+    <string name="headline_pz_login_fragment">Potwierdzenie tożsamości</string>
+    <string name="headline_activate_step_info_school_card"><![CDATA[Aktywacja <font color=\'#E54560\'>m</font>Dokumentu]]></string>
+
+    <string name="error_invalid_institution_type_id">Nieprawidłowa instytucja.\n(Kod: %d, %s)</string>
+
+    <string name="understand">Rozumiem</string>
+
+    <string name="all_documents_activated">Wszystkie dostępne mDokumenty zostały aktywowane.</string>
+
+    <string name="family_card_number">Nr karty: %s</string>
+    <string name="last_update_info">Stan na dzień %s</string>
+
+    <!--general-->
+    <string name="loadin_in_progress">Trwa wczytywanie</string>
+    <string name="close">ZAMKNIJ</string>
+    <string name="close_pl">ZAMKNIJ</string>
+    <string name="continue1">Kontynuuj</string>
+    <string name="close2">Zamknij</string>
+    <string name="close3">Zamknij</string>
+    <string name="continue1_">KONTYNUUJ</string>
+
+
+    <string name="reject">Odrzuć</string>
+    <string name="empty" />
+    <string name="yes">Tak</string>
+    <string name="no">Nie</string>
+    <string name="yes_uppercase">TAK</string>
+    <string name="no_uppercase">NIE</string>
+    <string name="verifier_info_header">Weryfikator prosi \no przekazanie danych</string>
+    <string name="verifier_id">IDENTYFIKATOR WERYFIKATORA / VERIFIER ID</string>
+    <string name="connection_status_fetching_data">Odbieranie danych.</string>
+    <string name="verifier_history_label">mWeryfikator</string>
+    <string name="verifier_pass_confirmation">Dane zostały przekazane</string>
+    <string name="error_open_container">Nie udało się otworzyć pliku z danymi.</string>
+    <string name="error_incompatibility_data_and_template">Nieprawidłowy szablon.</string>
+    <string name="error_app_stopped_working">Aplikacja przestała działać poprawnie. Zrestartuj ją, aby przywrócić funkcjonalność.</string>
+    <string name="error_app_stopped_working_reinstall">Aplikacja przestała poprawnie działać. Odinstaluj ją i ponownie pobierz ze sklepu.</string>
+    <string name="error_incorrect_system_time">Operacja nie może zostać wykonana, ponieważ Twój telefon ma ustawiony nieprawidłowy czas. Możesz to zmienić w ustawieniach telefonu.</string>
+    <string name="activation_cancel">Czy na pewno chcesz wyjść z procesu aktywacji?</string>
+    <string name="change_pin_cancel">Czy na pewno chcesz przerwać proces zmiany PIN\u2011u?</string>
+    <string name="error_rodo">Błąd komunikacji z serwerem.</string>
+    <string name="open_in_browser_error">Nie udało się otworzyć przeglądarki.</string>
+    <string name="subject_not_found_in_cepik">W bazie CEPiK nie ma pojazdów, których jesteś właścicielem lub współwłaścicielem. Jeżeli to nieprawda, napisz na adres <a href="mailto:mobywatel-pomoc@coi.gov.pl\">mobywatel-pomoc@coi.gov.pl</a></string>
+    <string name="subject_not_found_in_cepik_title">Brak pojazdów</string>
+    <string name="vehicle_not_found_in_cepik_title">Brak pojazdów, których jesteś właścicielem</string>
+
+    <!--mInstitution akordeon-->
+    <string name="picture">Zdjęcie</string>
+    <string name="surname">Nazwisko</string>
+    <string name="surname_pl">Nazwisko</string>
+    <string name="givenname">Imiona</string>
+    <string name="pesel">PESEL</string>
+    <string name="professional_title">Tytuł zawodowy</string>
+    <string name="pesel_no">Nr PESEL</string>
+    <string name="statusOfForeigner">Status Cudzoziemca</string>
+    <string name="birthday">Data urodzenia</string>
+    <string name="birthday_pl">Data urodzenia</string>
+    <string name="advocate_department">Izba adwokacka</string>
+    <string name="advocate_footer">Legitymacja jest certyfikowana przez\nNaczelną Radę Adwokacką</string>
+    <string name="advocate_number">Nr wpisu</string>
+    <string name="advocate_permission">Rodzaj uprawnienia</string>
+    <string name="benefit_identifier_pl">Rodzaj świadczenia</string>
+    <string name="birthplace">Miejsce urodzenia</string>
+    <string name="birthplace_pl">Miejsce urodzenia</string>
+    <string name="personalId">Numer dowodu osobistego</string>
+    <string name="personalId_pl">Numer dowodu osobistego</string>
+    <string name="pwz_number">Numer PWZ</string>
+    <string name="pwz_number_limited">Numer ograniczonego PWZ</string>
+    <string name="seriesAndNumber">Seria i numer</string>
+    <string name="personalIdExpirationDate">Termin ważności dowodu osobistego</string>
+    <string name="personalIdExpirationDate_pl">Termin ważności dowodu osobistego</string>
+    <string name="documentExpirationDate">Data ważności (dokumentu)</string>
+    <string name="issuer">Organ wydający dowód osobisty</string>
+    <string name="issuer_pl">Organ wydający dowód osobisty</string>
+    <string name="nurse_card_issuer">Organ wydający PWZ</string>
+    <string name="nurse_card_issuer_limited">Organ przyznający ograniczone PWZ</string>
+    <string name="permanent_residence_check_in_date">Data zameldowania</string>
+    <string name="permanent_residence_check_in_date_pl">Data zameldowania</string>
+    <string name="family_name">Nazwisko rodowe</string>
+    <string name="family_name_pl">Nazwisko rodowe</string>
+    <string name="father_name">Imię ojca</string>
+    <string name="father_family_name">Nazwisko rodowe ojca</string>
+    <string name="father_family_name_pl">Nazwisko rodowe ojca</string>
+    <string name="mother_name">Imię matki</string>
+    <string name="mother_name_pl">Imię matki</string>
+    <string name="mother_family_name">Nazwisko rodowe matki</string>
+    <string name="mother_family_name_pl">Nazwisko rodowe matki</string>
+    <string name="birth_place_country">Kraj urodzenia</string>
+    <string name="birth_place_country_pl">Kraj urodzenia</string>
+    <string name="sex">Płeć</string>
+    <string name="sex_pl">Płeć</string>
+    <string name="nationality">Obywatelstwo</string>
+    <string name="nationality_pl">Obywatelstwo</string>
+    <string name="registered_address">Adres zameldowania</string>
+    <string name="registered_address_pl">Adres zameldowania</string>
+    <string name="registered_date">Data zameldowania</string>
+    <string name="registered_date_pl">Data zameldowania</string>
+    <string name="picture_ua">Zdjęcie</string>
+    <string name="givenname_ua">Imiona</string>
+    <string name="surname_ua_2">Nazwisko</string>
+    <string name="cepik_system_error">Błąd systemu CEPiK.</string>
+    <string name="unexpected_pz_account_error">Pobranie dokumentu powinno odbyć się poprzez potwierdzenie tożsamości tym samym kontem, za pomocą którego pobrano mObywatela.</string>
+    <string name="no_needed_data_found_error">Brak wymaganych danych z systemu CEPiK</string>
+    <string name="empty_vehicle_list_error">Nie można dodać usługi mPojazd - w Centralnej Ewidencji Pojazdów (CEP) nie ma pojazdów, których jesteś właścicielem lub współwłaścicielem\n(być może korzystasz z samochodu leasingowanego, firmowego lub wypożyczonego).\n\nJeśli informacje te nie są poprawne, zgłoś ten problem na\n<a href="mailto:mobywatel-pomoc@coi.gov.pl\">mobywatel-pomoc@coi.gov.pl</a>.</string>
+    <string name="empty_vehicle_list_during_refresh_error">W Centralnej Ewidencji Pojazdów (CEP) nie ma pojazdów, których jesteś właścicielem lub współwłaścicielem.\n\nJeśli informacje te nie są poprawne, zgłoś ten problem na <a href="mailto:mobywatel-pomoc@coi.gov.pl\">mobywatel-pomoc@coi.gov.pl</a>.</string>
+    <string name="security_download_error">Nie udało się pobrać danych. Sprawdź połączenie z internetem i spróbuj ponownie za chwilę.</string>
+    <string name="vehicle_security_download_error">Nie udało się pobrać danych mPojazdu. Sprawdź połączenie z internetem i spróbuj ponownie za chwilę.</string>
+    <string name="no_document_owner_found">Twojego profilu nie ma na liście właścicieli pojazdu.</string>
+    <string name="operation_succeed">Operacja zakończona powodzeniem.</string>
+    <string name="secure_folder_installed_error">Prawdopodobnie używasz aplikacji szyfrującej dane. mObywatel bezpiecznie szyfruje dane i nie wymaga dodatkowych zabezpieczeń. Zainstaluj mObywatela bez pośrednictwa innych aplikacji.</string>
+    <string name="driving_licence_document_not_found_title">Hm…</string>
+    <string name="driving_licence_document_not_found">Wygląda na to, że nie masz prawa jazdy. Jeżeli to nieprawda, zgłoś błąd pod adresem <a href="https://www.gov.pl/web/gov/zglos-rozbieznosc-w-danych-prawa-jazdy">https://www.gov.pl/web/gov/zglos-rozbieznosc-w-danych-prawa-jazdy</a></string>
+    <string name="cek_technical_error"><b>Wystąpił problem po stronie usługodawcy.</b>\n\nMożesz go zgłosić pod adresem <a href="mailto:mobywatel-pomoc@coi.gov.pl">mobywatel-pomoc@coi.gov.pl</a> </string>
+    <string name="refresh_data_again">Zaktualizuj dane ponownie.</string>
+    <string name="cert_revoked_error">Twój certyfikat został unieważniony. Aby wygenerować nowy certyfikat zaktualizuj dane.</string>
+
+    <!--related to institution card fragment-->
+    <string name="institution_card_send_data_approve">Potwierdzam</string>
+    <string name="institution_card_send_data_approve2">Potwierdź</string>
+    <string name="institution_card_send_data_cancel">Anuluj</string>
+    <string name="institution_card_feedback">Dane przekazane przez instytucję</string>
+    <string name="institution_card_exit">Powrót</string>
+    <string name="institution_OCSP">Weryfikuj ważność certyfikatu instytucji online.</string>
+
+
+    <string name="pensioner_card_invalid_yours_title">Twoja Legitymacja emeryta-rencisty straciła ważność</string>
+    <string name="pensioner_card_invalid_yours_message">Przykładowy opis</string>
+
+    <string name="nurse_card_invalid_yours_title">Twoje PWZ Pielęgniarki i Położnej straciło ważność</string>
+    <string name="nurse_card_invalid_yours_message">Przykładowy opis</string>
+
+    <string name="advocate_card_invalid_yours_title">Twoja Legitymacja adwokacka straciła ważność</string>
+    <string name="advocate_card_invalid_yours_message">Przykładowy opis</string>
+
+    <string name="institution_bad_card_url_format">Nieprawidłowy format adresu URL.\n(%s)</string>
+    <string name="institution_bad_scope">Nieprawidłowo zdefiniowany zestaw danych w wizytówce.\n(%s)</string>
+    <string name="institution_certificate_expired">Certyfikat stracił ważność.\n(%s)</string>
+    <string name="institution_certificate_verify_error">Weryfikacja ścieżki certyfikatów została zakończona niepowodzeniem.\n(%s)</string>
+    <string name="institution_certificate_not_valid">Certyfikat instytucji jest nieprawidłowy.\n(Kod: %d, %s)</string>
+    <string name="institution_unknown">Nieznana instytucja.\n(Kod: %d, %s)</string>
+    <string name="institution_server_bad_response">Nieprawidłowa odpowiedź serwera.\n(%s)</string>
+    <string name="institution_bad_card_url">Nieprawidłowy adres URL instytucji.\n(Kod: %d, %s)</string>
+    <string name="institution_get_card_general_error">Nieprawidłowa odpowiedź serwera.\n(Kod: %d, %s)</string>
+    <string name="institution_send_identity_general_error">%s: %s\n(Kod: %d, %s)</string>
+    <string name="institution_send_identity_general_error_without_message">(Kod: %d, %s)</string>
+
+    <string name="device_name">Nazwa urządzenia</string>
+    <string name="activate_fingerprint_interrupt_question">Chcesz przerwać proces?</string>
+
+    <string name="activate_step_cancel">Anuluj</string>
+    <string name="password">Hasło</string>
+    <string name="password_repeat">Powtórz hasło</string>=
+    <string name="scan_qr_code_info">Pozwól zeskanować kod QR,\naby przekazać dane.</string>
+    <string name="retype_pin">Powtórz PIN</string>
+    <string name="purpose_header">Potwierdź cel sprawdzenia</string>
+    <string name="error_history_save">Wystąpił błąd podczas zapisywania histori.</string>
+    <string name="error_unexpected_with_exception">Wystąpił nieoczekiwany błąd. (%s)</string>
+    <string name="error_cert_parsing_response">Wystąpił błąd przy parsowaniu odpowiedzi. \n(Kod: %s)</string>
+    <string name="connection_status_send_cert">Przekazywanie certyfikatu</string>
+    <string name="connection_status_send_identity">Szyfrowanie i przekazywanie tożsamości</string>
+    <string name="connection_status_process_additional_data">Dane dodatkowe</string>
+    <string name="connection_status_finalize">Finalizowanie</string>
+    <string name="permission_bluetooth_discoverable">Aplikacja musi posiadać pozwolenie na widoczność dla innych urządzeń bluetooth.</string>
+    <string name="error_imei_is_null">Masz nową wersję Android 10. Aby korzystać z aplikacji musisz odinstalować i ponownie zainstalować aplikację i dodać usługi.</string>
+    <string name="error_get_IMEI_airplane_on">Wyłącz tryb samolotowy i spróbuj ponownie</string>
+    <string name="error_get_IMEI_airplane_off">Wystąpił błąd przy próbie pobrania IMEI. Aplikacja musi zostać zamknięta</string>
+    <string name="error_occurred_try_again">Wystąpił błąd. Spróbuj ponownie.</string>
+    <string name="error_something_went_wrong">Coś poszło nie tak</string>
+    <string name="error_something_went_wrong_with_ellipsis">Coś poszło nie tak…</string>
+    <string name="activate">AKTYWUJ</string>
+    <string name="ask_later">PRZYPOMNIJ PÓŹNIEJ</string>
+    <string name="ask_later_lower_case">Przypomnij później</string>
+    <string name="error_occurred_try_again_simple">Wystąpił błąd z zalogowaniem w celu potwierdznia tożsamości. Spróbuj ponownie aktywować dokument.</string>
+    <string name="error_certificate_date_is_different_than_in_settings">Wystąpił błąd z ważnością certyfikatu. Sprawdź czy masz aktualną datę w ustawieniach urządzenia i spróbuj ponownie.</string>
+    <string name="error_unexpected_try_again">Wystąpił nieznany błąd. Spróbuj ponownie.</string>
+    <string name="error_token">Wystąpił błąd przy próbie pobrania tokenu.</string>
+    <string name="error_revoked_cert">Twój certyfikat został unieważniony. Aby wygenerować nowy certyfikat zaktualizuj dane.</string>
+    <string name="error_activity_logs_list_loading">Wystąpił błąd podczas wczytywania historii aktywności.\n\n(Kod: %s)</string>
+    <string name="scan_qr_institution_info">Zeskanuj <b>kod QR</b>, aby\n przekazać dane</string>
+    <string name="error_deactivate_cert">Nie udało się unieważnić certyfikatu usługi mObywatel.</string>
+    <string name="error_deactivate_cert_diia">Nie udało się unieważnić certyfikatu usługi Diia.com.</string>
+    <string name="diia_error_update_title">Aktualizacja się nie powiodła</string>
+    <string name="diia_error_update_message">Spróbuj ponownie lub sprawdź warunki korzystania z Diia.com.\nJest ona dostępna tylko dla obywateli Ukrainy, którzy przekroczyli granicę polsko-ukraińską po 24 lutego 2022 r.</string>
+    <string name="wait_for_online_service">Proszę czekać na pobranie usługi %s</string>
+    <string name="file_downloading">Pobieranie pliku</string>
+    <string name="cert_pinning_failure_no_ssl">Wystąpił problem przy próbie nawiązania bezpiecznego połączenia z serwerem usługi %s - brak SSL.</string>
+    <string name="cert_pinning_failure_unknown_exception">Wystąpił problem przy próbie nawiązania bezpiecznego połączenia z serwerem usługi %s - nieprzewidziany wyjątek.</string>
+    <string name="cert_pinning_failure_certificates_not_compliant">Wystąpił problem przy próbie nawiązania bezpiecznego połączenia z serwerem usługi %s - niezgodność certyfikatów.</string>
+    <string name="get_token_failure">Wystąpił błąd przy pobieraniu tokenu.</string>
+    <string name="secured_connection_failure">Wystąpił problem przy próbie nawiązania bezpiecznego połączenia z serwerem usługi %s.</string>
+    <string name="online_service_other_problem">Wystąpił problem w trakcie przetwarzania usługi %s.</string>
+    <string name="penalty_points">Punkty karne</string>
+    <string name="city_card">Małopolska Karta Aglomeracyjna</string>
+    <string name="passing_data">Przekazywanie danych</string>
+    <string name="to">do</string>
+    <string name="to_cofirm_identity">w celu potwierdzenia ich autentyczności.</string>
+    <string name="renew">Przedłuż ważność</string>
+    <string name="connection_error_info">Podczas przekazania danych\nwystąpił błąd połączenia</string>
+    <string name="try_again">Spróbuj ponownie</string>
+    <string name="more_uppercase">WIĘCEJ</string>
+    <string name="more_lowercase">więcej</string>
+
+    <string name="identity_is_invalid"><b>Twój mObywatel został unieważniony,</b> ponieważ Twój dowód osobisty stracił ważność.\n\nJeżeli masz już nowy dowód aktywuj ponownie mObywatela z użyciem Profilu Zaufanego lub za pomocą Twojego banku.</string>
+    <string name="remove_card">Usuń kartę</string>
+    <string name="do_you_really_want_to_remove_this_document">Spowoduje to usunięcie usługi z aplikacji oraz powiązanych z nią pozostałych usług i dokumentów.</string>
+    <string name="remove">USUŃ</string>
+    <string name="add_yours_first_document">Dodaj swój pierwszy dokument</string>
+    <string name="add_new_document_or_function">Dodaj nowy dokument\nlub funkcję</string>
+    <string name="add_new_document"> \u0020\u0020Dodaj dokument</string>
+    <string name="minus">\u0020\u2014</string>
+
+    <string name="change_order_title">Zarządzanie pulpitem</string>
+    <string name="change_order_info">Kliknij i przytrzymaj ikonkę z prawej strony nazwy usługi i nie puszczając przeciągnij zmieniając kolejność elementów.</string>
+    <string name="ready"> <![CDATA[\u0020 Gotowe]]></string>
+
+    <string name="starting">Zaczynamy</string>
+    <string name="add_service">Dodaj %s</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="mobywatel">mObywatel</string>
+
+    <string name="notifications_disabled_explanation">Powiadomienia są wyłączone na poziomie ustawień systemowych. Kliknij \"Przejdź\" jeśli chcesz zmienić ustawienia.</string>
+
+    <string name="mobywatel_refresh_title"><![CDATA[<b>mObywatel nie aktualizuje danych automatycznie</b>]]></string>
+    <string name="refresh_data">Aktualizuj dane</string>
+    <string name="update_data_lower_case">Aktualizuj dane</string>
+    <string name="refreshing_data"><b>Aktualizowanie danych</b></string>
+
+    <string name="not_now">Nie teraz</string>
+
+    <string name="mpojazd_refresh_msg"><![CDATA[Jeżeli więc w dokumentach brakuje jakichś danych, dane są nieprawidłowe lub dostajesz nieaktualne przypomnienia - zaktualizuj dane dokumentu, aby je odświeżyć.<br><br><font color=\'#FF0000\'>Ważne</font> - dane o zmianie polisy OC mogą pojawić się w Centralnej Ewidencji Pojazdów nawet z 30-dniowym opóźnieniem, dlatego prosimy o <b>regularne aktualizowanie danych mPojazdu</b>]]></string>
+    <string name="mpojazd_refresh_msg2">Z Centralnej Ewidencji Pojazdów i Kierowców zostaną pobrane aktualne dane. Czy chcesz kontynuować?</string>
+
+    <string name="go">Przejdź</string>
+    <string name="go_pl">Przejdź</string>
+    <string name="go_to_regulation">Przejdź do regulaminu</string>
+    <string name="see_on_gov_pl">Zobacz na gov.pl</string>
+    <string name="know_more">Dowiedz się więcej</string>
+    <string name="refresh_bold"><b>AKTUALIZUJ</b></string>
+    <string name="are_you_sure_you_want_to_abort">Czy na pewno chcesz przerwać?</string>
+    <string name="_no"><b>Nie</b></string>
+    <string name="are_you_sure_you_want_to_abort2">Chcesz przerwać proces?</string>
+
+    <string name="invalid_qr_code">Nieprawidłowy kod QR</string>
+    <string name="pasted_from_clipboard">Wklejono ze schowka</string>
+    <string name="clipboard_is_empty">Schowek jest pusty</string>
+
+    <string name="activate_step_desc">Aktywacja dokumentów i usług w mObywatelu wymaga potwierdzenia Twojej tożsamości. W tym celu możesz użyć jednej z poniższych metod logowania:</string>
+    <string name="eDowod">eDowód</string>
+    <string name="learn_more_1">Dowiedz się więcej</string>
+    <string name="online_banking_account">Konto Bankowości Elektronicznej</string>
+    <string name="online_banking_account_desc">Dla klientów PKO BP, Inteligo i Banków Spółdzielczych</string>
+    <string name="car_odometer">Stan licznika</string>
+    <string name="from_day">Z dnia</string>
+    <string name="issuer_vehicle_label">Wprowadzone przez</string>
+    <string name="download_business_card">"Weryfikacja instytucji przed przekazaniem danych - dot. %1$s</string>
+    <string name="document_invalidation">"Unieważnienie %1$s</string>
+    <string name="download_business_card_for_push">"Weryfikacja instytucji przed przekazaniem odpowiedzi na wiadomość - dot. %1$s</string>
+    <string name="do_not_remind_2">NIE PRZYPOMINAJ</string>
+    <string name="close_application">ZAMKNIJ APLIKACJĘ</string>
+
+    <string name="service_description_long">Pobranie danych osobowych mObywatela oraz powiązanych z nimi dokumentów i usług wymaga potwierdzenia Twojej tożsamości za pomocą Profilu Zaufanego lub Twojego banku (nie dotyczy to mLegitymacji).</string>
+    <string name="service_description_long_refugee">Pobranie danych osobowych Diia.pl oraz powiązanych z nią dokumentów i usług wymaga potwierdzenia Twojej tożsamości za pomocą Profilu Zaufanego.</string>
+    <string name="cofirmation_identity">Potwierdzenie tożsamości</string>
+    <string name="please_be_patient">Prosimy o cierpliwość</string>
+    <string name="cek_please_wait_message">Aby zapobiec przeciążeniu systemu zaktualizowanie danych będzie ponownie możliwe za</string>
+    <string name="its_issue">Jest sprawa…</string>
+    <string name="reactivate">Aktywuj ponownie</string>
+    <string name="terms_of_service_changes_message">Nastąpiły zmiany w regulaminie. Nowy regulamin znajdziesz w menu aplikacji w zakładce \'informacje prawne\'.</string>
+
+    <string name="activate_step_onboarding_student_title">Dodajesz mLegitymację studencką</string>
+    <string name="activate_step_onboarding_privacy_policy_read_confirmation">Zapoznałem / zapoznałam się z treścią Polityki Prywatności i akceptuję jej warunki.</string>
+
+    <string name="activate_step_onboarding_student_one">Sprawdź, czy na Twojej uczelni dostępne są mLegitymacje.</string>
+    <string name="activate_step_onboarding_identity_title">Pobierasz swoje dane osobowe</string>
+
+    <string name="activate_step_onboarding_with_identity_one">Potwierdź swoją tożsamość logując się z użyciem Profilu Zaufanego lub za pomocą Twojego banku.</string>
+    <string name="activate_step_onboarding_with_identity_two">Potwierdź logowanie kodem autoryzacyjnym z SMS-a lub aplikacji bankowej.</string>
+    <string name="identity_activation_subtitle">Wraz z nimi zostaną dodane usługi eRecepta, Polak za granicą, Naruszenia środowiskowe i Złóż wniosek.</string>
+    <string name="identity_subtitle">Dokument, który dodajesz jest powiązany z danymi osobowymi usługi mObywatel - zostaną one dodane automatycznie.</string>
+
+    <string name="activate_step_onboarding_prescription_title">Dodajesz eReceptę</string>
+    <string name="activate_step_onboarding_ipolak_title">Dodajesz Polaka za granicą </string>
+    <string name="activate_step_onboarding_power_of_attorney_title">Dodajesz Pełnomocnictwa</string><!-- TODO MOB-4384 change to proper text and translation -->
+    <string name="activate_step_onboarding_payments_title">Dodajesz Płatności</string>
+    <string name="activate_step_onboarding_driving_licence_title">Dodajesz mPrawo Jazdy</string>
+    <string name="activate_step_onboarding_city_title">Dodajesz Małopolską Kartę Aglomeracyjną</string>
+    <string name="activate_step_onboarding_pkp_title">Dodajesz Bilkom – bilety kolejowe</string>
+    <string name="activate_step_onboarding_yacht_sailor_licence_title">Dodajesz YachtSailorLicence</string>
+    <string name="activate_step_onboarding_deputy_card_title">Dodajesz Legitymację Poselską</string>
+    <string name="activate_step_onboarding_authority_card_title">Dodajesz mUpoważnienia</string>
+    <string name="activate_step_onboarding_si2pem_title">Dodajesz Mapę PEM</string>
+    <string name="activate_step_onboarding_gios_title">Dodajesz Naruszenia środowiskowe</string>
+    <string name="activate_step_onboarding_make_proposal_title">Dodajesz usługę Złóż wniosek</string>
+
+    <string name="identity_confirmation">Potwierdzenie tożsamości</string>
+    <string name="werificator_application">Aplikacji mWeryfikator</string>
+
+    <string name="legitimation_number">Numer legitymacji</string>
+    <string name="legitimation_number_short">Nr legitymacji</string>
+    <string name="cadencyNumber">Numer Kadencji Sejmu</string>
+    <string name="data_passing">Przekazywanie danych</string>
+    <string name="ups"><b>Ups...</b></string>
+
+    <string name="biometric_prompt_header">Biometria czy hasło?</string>
+    <string name="biometric_prompt_msg">Wybór należy do Ciebie! Pamiętaj, że w każdej chwili możesz zmienić zdanie – wystarczy skorzystać z menu aplikacji (w prawym górnym rogu).</string>
+    <string name="biometric_prompt_ok">Chcę biometrię</string>
+    <string name="biometric_prompt_cancel">Wolę używać hasła</string>
+
+    <string name="driving_licence_prompt_cancel_short">Innym razem</string>
+
+    <string name="activate_step_onboarding_covid_passport_title">Dodajesz Unijny Certyfikat COVID</string>
+
+    <string name="whats_new_title_01">Legitymacja emeryta-rencisty</string>
+    <string name="whats_new_title_02">Legitymacja adwokacka</string>
+    <string name="whats_new_title_03">PWZ pielęgniarki i położnej</string>
+    <string name="whats_new_title_04">PWZ lekarza i lekarza dentysty</string>
+    <string name="whats_new_title_05">Również dla dużej rodziny</string>
+    <string name="whats_new_title_06">W drogę z MKA!</string>
+
+    <string name="whats_new_text_01">Korzystaj z uprawnień emeryta i rencisty okazujac dokument w mObywatelu.</string>
+    <string name="whats_new_text_02">Z dokumentem potwierdzisz wpis na liście adwokackiej oraz przynależność do izby zawodowej.</string>
+    <string name="whats_new_text_03">Korzystaj z mobilnej wersji dokumentu, którym potwierdzasz prawo wykonywania zawodu pielęgniarki i położnej.</string>
+    <string name="whats_new_text_04">Korzystaj z mobilnej wersji dokumentu, którym potwierdzasz prawo wykonywania zawodu lekarza i lekarza dentysty.</string>
+    <string name="whats_new_text_05">Zmieniony wygląd dokumentu zawiera więcej lepszych zabezpieczeń wizualnych.</string>
+    <string name="whats_new_text_06">Korzystasz z Małopolskiej Karty Aglomeracyjnej? Umieść ją w mObywatelu! Wybierz „Dodaj dokument” na pulpicie aplikacji.</string>
+
+    <string name="hmm">Hmm…</string>
+    <string name="if_you_wanna_use_document_update_app_then">Pobrany dokument wymaga najnowszej wersji aplikacji. Jeśli chcesz\u0020z niego korzystać zaktualizuj aplikację mObywatel.</string>
+    <string name="family_card_is_compliant">Dane Karty Dużej Rodziny są zgodne z\u00A0danymi Ministerstwa Rodziny i\u00A0Polityki Społecznej</string>
+
+    <string name="begin">Zaczynamy</string>
+
+    <string name="activate_fingerprint_login">Aktywuj logowanie biometryczne</string>
+    <string name="or_password_text">lub zaloguj się z użyciem hasła</string>
+    <string name="login2">Zaloguj</string>
+    <string name="access_is_blocked">Dostęp do aplikacji\nzostał zablokowany</string>
+    <string name="minuts">minuty</string>
+    <string name="secunds">sekundy</string>
+    <string name="access_blocked_reason">Powodem czasowej blokady jest zbyt duża liczba błędnych prób logowania.\nSpróbuj ponownie za:</string>
+    <string name="or_biometric_login">Zaloguj się biometrią</string>
+    <string name="how_to_do_it">Jak to zrobić</string>
+
+    <string name="enter_pin">Podaj PIN</string>
+    <string name="confirm_data_send_by_pin">Potwierdź przekazanie danych kodem PIN.</string>
+    <string name="confirm_data_send_by_password">Potwierdź przekazanie\ndanych za pomocą hasła.</string>
+    <string name="authorize_data_send_by_password">Możesz autoryzować przekazanie\ndanych za pomocą hasła</string>
+    <string name="biometric_Login"><b>Logowanie biometryczne</b></string>
+    <string name="biometric_login_steps">Aby aktywować logowanie biometryczne:\n\n1. Zaloguj się.\n\n2. Dodaj pierwszy dokument.\n\n3. Przejdź do menu aplikacji (ikona w\u00A0prawym górnym rogu na pulpicie aplikacji).\n\n4. Wybierz \u0022Włącz logowanie biometryczne\u0022.
+    </string>
+    <string name="you_cant_download">Nie możesz pobrać danych</string>
+    <string name="you_data_expired"><b>Twój mObywatel i\u00A0powiązane dokumenty straciły ważność.</b>\n\nAby nadal korzystać z\u00A0aplikacji odnów swoje dokumenty z\u00A0użyciem Profilu Zaufanego lub za pomocą Twojego banku.</string>
+    <string name="you_data_expired_diia"><b>Twój Diia.pl i\u00A0powiązane dokumenty straciły ważność.</b>\n\nAby nadal korzystać z\u00A0aplikacji odnów swoje dokumenty z\u00A0użyciem Profilu Zaufanego lub za pomocą Twojego banku.</string>
+    <string name="reactivate_documents">Odnów dokumenty</string>
+    <string name="password_not_match2">Podane hasła są różne</string>
+    <string name="covid_passport_has_been_refreshed">Dane Unijnego Certyfikatu COVID są zgodne z\u00A0danymi Twojego Internetowego Konta Pacjenta.\n\nJeżeli widzisz nieścisłość zadzwoń pod numer 19\u00A0239 lub wyślij zgłoszenie.</string>
+    <string name="covid_passport_send_report">Wyślij zgłoszenie</string>
+    <string name="ua_driving_licence_is_about_to_expire_title">Zaktualizuj Prawo Jazdy</string>
+    <string name="ua_driving_licence_is_about_to_expire_about_7_days_description">Za 7 dni upływa termin ważności Prawa Jazdy w aplikacji mObywatel. Możesz przedłużyć jego ważność o kolejne 30 dni.</string>
+    <string name="ua_driving_licence_is_about_to_expire_tomorrow_description">Jutro upływa termin ważności Prawa Jazdy w aplikacji mObywatel. Możesz przedłużyć jego ważność o kolejne 30 dni.</string>
+    <string name="ua_driving_licence_is_about_to_expire_positive">Przedłuż ważność</string>
+    <string name="ua_driving_licence_is_about_to_expire_negative">Anuluj</string>
+
+    <string name="download_data_slash_english"><![CDATA[Pobierz dane <font color=\'#66AFA3\'>/ Download data</font>]]></string>
+    <string name="refresh_data_slash_english"><![CDATA[Aktualizuj dane <font color=\'#66AFA3\'>/ Refresh data</font>]]></string>
+    <string name="digital_green_certificate">Unijny Certyfikat COVID</string>
+    <string name="no_personal_certificates">Brak osobistych certyfikatów</string>
+    <string name="no_children_certificates">Brak certyfikatów podopiecznych</string>
+    <string name="certificates_personal_list_info">Poniżej znajdziesz wszystkie certyfikaty. Listę możesz zaktualizować korzystając z\u00A0przycisku \u0022Aktualizuj dane\u0022 (na dole ekranu).</string>
+    <string name="certificates_children_list_info">Lista certyfikatów uwzględnia wyłącznie podopiecznych (niepełnoletnich i / lub uczących się) przypisanych do Twojego ubezpieczenia zdrowotnego.\n\nPomoc techniczna: certyfikatyCOVID19@cez.gov.pl</string>
+    <string name="no_certificates_available">Skorzystaj z przycisku \"Aktualizuj dane\" (poniżej). W ten sposób sprawdzisz, czy do Twojego Internetowego Konta Pacjenta dopisane są certyfikaty.</string>
+    <string name="no_certificates_support_mail">Pomoc techniczna:\ncertyfikatyCOVID19@cez.gov.pl </string>
+
+    <string name="download_certificates_using_bottom_button">Pobierz certyfikaty używając przycisku na dole.</string>
+    <string name="download_certificates_of_children_using_bottom_button">Pobierz certyfikaty podopiecznych używając przycisku na dole.</string>
+    <string name="green_digital_certificate_english">Digital COVID Certificate</string>
+    <string name="vaccination_certificate_2_english">Vaccination certificate</string>
+    <string name="convalescent_certificate_english">Recovery certificate</string>
+    <string name="test_results">Certyfikat testu</string>
+    <string name="test_results_english">Test certificate</string>
+    <string name="privacy_policy">Polityka prywatności</string>
+    <string name="opening_service_failure">Podczas uruchamiania usługi wystąpił błąd</string>
+    <string name="remove_covid_data">Usuń Unijny Certyfikat COVID</string>
+    <string name="cannot_download_certificate">Nie można pobrać zaświadczenia</string>
+    <string name="server_connection_error_be_sure">Wystąpił błąd podczas komunikacji z\u00A0serwerem. Upewnij się, że masz dostęp do internetu i\u00A0spróbuj ponownie.</string>
+    <string name="e_health_centre">Centrum e-Zdrowia</string>
+    <string name="we_need_your_permission">Potrzebujemy Twojej zgody</string>
+    <string name="bluetooth_use_explanation">mObywatel do komunikacji z\u00A0aplikacją mWeryfikator (przy weryfikacji dokumentów) wykorzystuje Bluetooth i lokalizację (do komunikacji z drugim telefonem). Aby skorzystać z usługi potrzebujemy Twojej zgody.</string>
+    <string name="I_agree">Zgadzam się</string>
+
+    <string name="pensioner_data_refresh_msg">Dane Legitymacji emeryta-rencisty zostaną zaktualizowane. Czy chcesz kontynuować?</string>
+    <string name="nurse_data_refresh_msg">Dane PWZ Pielęgniarki i Położnej zostaną zaktualizowane. Czy chcesz kontynuować?</string>
+    <string name="advocate_data_refresh_msg">Dane Legitymacji adwokackiej zostaną zaktualizowane. Czy chcesz kontynuować?</string>
+
+    <string name="deputy_data_refresh_msg">Dane Legitymacji Poselskiej zostaną zaktualizowane. Czy chcesz kontynuować?</string>
+    <string name="deputy_data_refreshed">Dane są zgodne z Rejestrem Sejmu RP.</string>
+    <string name="authorities_data_refreshed">Dane mUpoważnień zostały zaktualizowane.</string>
+
+    <string name="qr_series_info_step1">Zeskanuj kod QR z\u00A0telefonu osoby, która weryfikuje Twój dokument.</string>
+    <string name="qr_series_info_step2">Pozwól zeskanować (osobie, która weryfikuje Twój dokument) kod z\u00A0Twojego telefonu.</string>
+
+    <string name="public_mobile_app">Publiczna Aplikacja Mobilna</string>
+    <string name="step_1">Krok 1</string>
+    <string name="step_2">Krok 2</string>
+    <string name="step_3">Krok 3</string>
+    <string name="step_4">Krok 4</string>
+    <string name="step_5">Krok 5</string>
+    <string name="step_6">Krok 6</string>
+    <string name="use_biometric_reader">Użyj czytnika biometrycznego</string>
+    <string name="login_progress">Logowanie...</string>
+    <string name="log_by_password">Zaloguj się hasłem</string>
+    <string name="fingerprint_error_hw_not_present">Brak komponentu sprzętowego mogącego przeprowadzić uwierzytelnienie biometryczne</string>
+    <string name="fingerprint_error_hw_unavailable">Urządzenie nie odpowiada. Proszę spróbować ponownie</string>
+    <string name="fingerprint_error_lock_out_permanent">Sensor biometryczny został zablokowany z\u00A0powodu zbyt wielu błędnych prób. Należy zablokować i\u00A0odblokować urządzenie, a\u00A0następnie ponownie dokonać próby aktywacji biometrii w\u00A0aplikacji.</string>
+    <string name="fingerprint_error_no_biometrics">Brak skonfigurowanych odcisków palca na urządzeniu</string>
+    <string name="fingerprint_error_no_credential">Urządzenie nie ma skonfigurowanej blokady ekranu hasłem, PIN\u2011em ani wzorem</string>
+    <string name="fingerprint_error_no_space">Operacja przerwana z powodu zbyt małej ilości wolnego miejsca w\u00A0pamięci urządzenia</string>
+    <string name="fingerprint_error_timeout">Brak reakcji użytkownika - uwierzytelnienie przerwane</string>
+    <string name="fingerprint_error_unable_to_process">Czujnik biometryczny nie był w stanie przeprocesować danych. Spróbuj jeszcze raz</string>
+    <string name="fingerprint_error_user_canceled">Uwierzytelnienie przerwane w\u00A0wyniku interakcji użytkownika. Spróbuj jeszcze raz lub zaloguj się poprzez hasło</string>
+    <string name="fingerprint_error_vendor">`Błąd fabryczny czujnika biometrii. %s</string>
+    <string name="pin_should">PIN powinien mieć 4 cyfry</string>
+    <string name="turn_off_biometric_title">Uwaga</string>
+    <string name="do_you_really_want_to_turn_off_biometric">Jeżeli wybierzesz logowanie hasłem, <b>logowanie biometryczne zostanie wyłączone</b>.\n\nLogowanie biometryczne możesz ponownie włączyć w ustawieniach aplikacji.</string>
+    <string name="turn_off_biometric">Wyłącz logowanie biometryczne</string>
+    <string name="invalid_documents"><![CDATA[<b>Nieważne dokumenty</b>]]></string>
+    <string name="email_app_body_version">\n\nWersja aplikacji\n%1$s\nWersja systemu\n%2$s</string>
+
+    <string name="familycard_invalid_yours_title">Twoja Karta Dużej Rodziny straciła ważność</string>
+    <string name="familycard_invalid_some_members_title">Karty niektórych członków Twojej rodziny utraciły ważność</string>
+    <string name="familycard_invalid_member_title">Karta członka Twojej rodziny: %1$s utraciła ważność</string>
+    <string name="familycard_invalid_yours_message">Wniosek o nową Kartę możesz złożyć w\u00A0Urzędzie Gminy.\n\nJeżeli masz już nową Kartę, wybierz \"Aktualizuj dane\".</string>
+
+    <string name="refresh_vehicle_data">Aktualizuj dane mPojazd</string>
+    <string name="mpojazd">mPojazd</string>
+
+    <string name="familycard_invalid_member_message">Aby uzyskać informacje o przyczynie utraty ważności Karty członka Twojej rodziny, skontaktuj się z urzędem gminy, który wydał tę Kartę.\n\n<b>Zaktualizuj dane, aby korzystać ze swojej Karty.</b></string>
+
+    <string name="employee_category">Kategoria osoby uprawnionej</string>
+    <string name="employer_name">Nazwa pracodawcy</string>
+    <string name="employer_code">Kod pracodawcy</string>
+    <string name="railway_bottom_info">Ważna legitymacja poświadcza wykup ulgowej usługi transportowej, zgodnie ze wskazaniami na legitymacji.\n\nDo przejazdów w ramach ulgowej usługi transportowej mają zastosowanie postanowienia Zasad odprawy osób uprawnionych do ulgowej usługi transportowej (Zasady odprawy UUT).\n\nInformacji o terminie ważności legitymacji udziela pracodawca.\n\nLegitymację należy okazywać podczas kontroli łącznie z\u00A0dokumentem(-ami), o\u00A0których mowa w\u00A0Zasadach odprawy UUT.\n\nZabronione jest odstępowanie legitymacji oraz korzystanie z\u00A0przerobionej, podrobionej lub cudzej legitymacji.\n\nUtratę legitymacji należy bezzwłocznie zgłosić swojemu pracodawcy.</string>
+    <string name="document_series_and_number_colon">Seria i nr dokumentu:</string>
+    <string name="document_number_placeholder">Nr dokumentu: %s</string>
+    <string name="train_class">Klasa pociągu</string>
+    <string name="concession">Ulga</string>
+    <string name="railway_data_have_been_refreshed">Jeśli widzisz nieścisłości/błędy na mLegitymacji UUT skontaktuj się z\u00A0pracodawcą, u\u00A0którego złożono wniosek o\u00A0UUT.</string>
+
+    <string name="nurse_data_have_been_refreshed">Dane są zgodne z Rejestrem Naczelnej Izby Pielęgniarek i Położnych</string>
+    <string name="advocate_data_have_been_refreshed">Dane są zgodne z Rejestrem KRAiAA</string>
+    <string name="pensioner_data_have_been_refreshed">Dane są zgodne z Rejestrem ZUS</string>
+
+    <string name="dokument_mobywatel">Dokument mObywatel</string>
+    <string name="dokument_mobywatel_check">Sprawdź, gdzie z niego skorzystasz.</string>
+    <string name="let_scan_your_qr_code">Pozwól zeskanować kod QR\n(osobie, która weryfikuje Twój dokument).</string>
+    <string name="cannot_download_UUT">Nie można dodać mLegitymacji</string>
+    <string name="generic_mail_body">Jakie czynności doprowadziły do wystąpienia błędu?\n\nCzy błąd wystąpił pierwszy raz?\n\n\nNIE USUWAJ PONIŻSZYCH DANYCH!\nPotrzebujemy ich, aby skutecznie Ci pomóc:\n\nOpis błędu:\n</string>
+    <string name="do_you_really_want_to_cancel_passing_data">Czy na pewno chcesz zrezygnować z\u00A0przekazania danych?</string>
+    <string name="android_m_end_of_support_title">Ostatnia aktualizacja dla Androida 6.0</string>
+    <string name="android_m_end_of_support_message">To ostatnia aktualizacja mObywatela dla systemu Android\u00A06.0.\n\nKolejne wersje aplikacji będą dostępne dla telefonów z\u00A0Androidem od 7.0 wzwyż.</string>
+    <string name="error_report">Zgłoszenie błędu</string>
+    <string name="you_dont_use_edo_app">Nie korzystasz z\u00A0eDO\u00A0App</string>
+    <string name="edo_app_install_instruction">Uruchom sklep z\u00A0aplikacjami, znajdź i\u00A0pobierz eDO\u00A0App.</string>
+    <string name="do_you_want_download_information_about_another_dose">Chcesz pobrać informację o\u00A0dodatkowej dawce?</string>
+    <string name="another_dose_info">Aby pobrać informację o\u00A0dodatkowej dawce szczepienia - zaktualizuj dane. Możesz to zrobić później klikając ikonę \u0022Aktualizuj\u0022 w dolnym menu.</string>
+    <string name="ucc_update_is_needed">Wymagana aktualizacja Unijnego Certyfikatu COVID</string>
+    <string name="ucc_cert_has_new_expiry_date">Twój Unijny Certyfikat COVID ma nowy termin ważności - aby z\u00A0niego korzystać, musisz zaktualizować dane.</string>
+    <string name="update">Aktualizuj</string>
+    <string name="update_pl">Aktualizuj</string>
+    <string name="ucc_update_finished">Aktualizacja Unijnego Certyfikatu COVID zakończona</string>
+    <string name="ucc_expiry_date_has_been_changed">Decyzją Ministerstwa Zdrowia długość ważności Unijnego Certyfikatu COVID została zmieniona na 270 dni.</string>
+    <string name="ucc_has_new_expiry_date">Twój Unijny Certyfikat COVID ma nowy termin ważności, korzystanie z\u00A0niego wymaga zaktualizowania kodu QR.</string>
+    <string name="update_has_failed">Aktualizacja nie powiodła się.</string>
+
+    <string name="are_you_sure_you_want_to_abort_biometric">Do aktywacji biometrii \nmożesz wrócić w dowolnym\nmomencie - funkcję znajdziesz w ustawieniach aplikacji.</string>
+    <string name="_dont_stop">NIE PRZERYWAJ</string>
+    <string name="stop">PRZERWIJ</string>
+
+    <string name="enter_active_password">Wprowadź aktualne hasło</string>
+
+    <string name="are_you_sure_you_want_to_abort_change_password">Czy na pewno chcesz przerwać proces zmiany hasła?</string>
+    <string name="cancel_">Anuluj</string>
+    <string name="password_input_new2">Wprowadź aktualne hasło</string>
+    <string name="input_pin_error">Błędnie powtórzony pin</string>
+    <string name="do_you_want_continue">Czy chcesz kontynuować?</string>
+    <string name="forgotten_password_info_title">Nadanie nowego hasła lub PIN\u2011u wiąże się z ponowną aktywacją aplikacji.</string>
+    <string name="entry_pasword">Wprowadź hasło</string>
+    <string name="password_app_change_info"><![CDATA[Zmiana hasła spowoduje konieczność ponownej aktywacji logowania biometrycznego.\n\nCzy chcesz kontynuować?]]></string>
+
+    <string name="support_problem_not_found">Nie ma odpowiedzi na Twoje pytanie?</string>
+    <string name="below_choose_bug_category">Poniżej wybierz odpowiednią kategorię do zgłoszenia błędu.</string>
+    <string name="documents">DOKUMENTY</string>
+    <string name="documents_upper">Dokumenty</string>
+
+    <string name="settings_bluetooth_text">Włączenie Bluetooth przyśpiesza proces wymiany danych podczas korzystania z mWeryfikatora.</string>
+    <string name="settings_bluetooth">Bluetooth po zalogowaniu</string>
+    <string name="settings_for_bluetooth">Ustawienia bluetooth</string>
+    <string name="settings_disable_fingerprint_pin">Wyłącz logowanie biometryczne</string>
+    <string name="settings_refresh_public_certificates">Aktualizuj certyfikaty publiczne</string>
+    <string name="unistall_service">Odinstaluj usługę</string>
+    <string name="application">APLIKACJA</string>
+    <string name="report_problem">Zgłoś problem</string>
+    <string name="support_vehicle_info">Widzisz nieaktualne dane pojazdów? Najpierw <font color='#8C9199'>spróbuj zaktualizować</font> dokument, zanim prześlesz zgłoszenie problemu.</string>
+    <string name="vehicle_support_info">mPojazd nie łączy się z siecią bez Twojej wiedzy. Dane możesz pobrać w dowolnym momencie wybierając Aktualizuj (w menu pod dokumentem).</string>
+    <string name="mobywatel_document">mObywatel - dokument</string>
+    <string name="report_problem_or_bug">Zgłoszenie problemu lub błędu.</string>
+    <string name="choice_pwz_title">PWZ Pielęgniarki\ni Położnej</string>
+    <string name="choice_pwz_title_toolbar">PWZ Pielęgniarki i Położnej</string>
+    <string name="Bug_report_will_be_send_by_email">Zgłoszenie zostanie wysłane mailem.</string>
+    <string name="dont_remove_data_info">Nie usuwaj danych, które zostaną automatycznie dołączone do treści wiadomości.</string>
+    <string name="missing_country_info">brak kraju urodzenia (to nowa rubryka, nie każdy ma ją wypełnioną).</string>
+    <string name="spelling_info">błędy lub literówki w imionach, nazwisku, nazwach miejscowości – należy zgłosić w lokalnym urzędzie.</string>
+    <string name="old_data_info">Widzisz nieaktualne dane?\nNajpierw <font color='#8C9199'>spróbuj zaktualizować</font> dokument, zanim prześlesz zgłoszenie problemu.</string>
+    <string name="you_are_after_vacinne">Jeśli jesteś po drugiej dawce szczepienia,</string>
+    <string name="you_are_after_test">Jeśli wykonałaś / wykonałeś test w ostatnich 24 godzinach,</string>
+    <string name="you_have_status">Jeśli uzyskałaś / uzyskałeś status ozdrowieńca w ostatnich 24 godzinach.</string>
+    <string name="pdf_link_info">PDF z certyfikatem pobierzesz ze strony  <a href="https://pacjent.gov.pl">pacjent.gov.pl</a></string>
+    <string name="cert_link_info">Certyfikat dla osób niepełnoletnich otrzymasz u lekarza POZ lub pobierzesz z  <a href="https://pacjent.gov.pl">pacjent.gov.pl</a></string>
+    <string name="refresh_cert">Aktualizuj dane Certyfikatu</string>
+    <string name="error_info">Upewnij się, że Twoje zgłoszenie zawiera dokładny opis napotkanego problemu.</string>
+    <string name="error_info2">To znacznie przyspieszy obsługę zgłoszenia.</string>
+    <string name="mvehicle">mPrawo Jazdy</string>
+    <string name="read_before_you_send_report">Przeczytaj, zanim wyślesz zgłoszenie.</string>
+    <string name="mvehicle_support_info">numer dokumentu zapisany bez ukośników,</string>
+    <string name="mvehicle_support_info2">skrócone kody ograniczeń,</string>
+    <string name="other_photo">inne zdjęcie.</string>
+    <string name="error_info_cek">Wymienione różnice nie są błędami, to efekt zapisu danych w Centralnej Ewidencji Pojazdów i Kierowców.</string>
+    <string name="error_info_cek2">Jeśli zauważysz niezgodność innych danych, wybierz <font color='#8C9199'>Wypełnij formularz</font>.</string>
+    <string name="fill_report">Wypełnij formularz</string>
+    <string name="you_dont_see_other_familycards">Nie widzisz kart innych członków rodziny?</string>
+    <string name="fill_application_zkdr04">Złóż wniosek ZKDR04 w swoim lokalnym urzędzie.</string>
+    <string name="fill_application">Złóż ten wniosek w swoim lokalnym urzędzie.</string>
+
+    <string name="are_you_want_phisical_card_or_duplicat">Chcesz otrzymać fizyczną kartę lub jej duplikat?</string>
+    <string name="applications_you_find_on_site">Wnioski i oświadczenie znajdziesz na stronie <a href="https://www.rodzina.gov.pl">www.rodzina.gov.pl</a></string>
+    <string name="bugs_info">Błędy lub literówki należy zgłaszać w lokalnym urzędzie.</string>
+    <string name="if_want_other_problem">Jeśli chcesz zgłosić inny problem lub o coś zapytać, odezwij się do nas.</string>
+    <string name="school_info_qr">Kod QR można zrealizować (zeskanować) tylko raz.</string>
+    <string name="school_info">mLegitymacja może być dodana tylko na jednym urządzeniu.</string>
+    <string name="school_info3">Nową mLegitymację wydaje szkoła (sekretariat, kancelaria).</string>
+    <string name="school_info4">Błędy lub literówki należy zgłaszać w szkole (sekretariat, kancelaria).</string>
+    <string name="student_info4">Błędy lub literówki należy zgłaszać w dziekanacie (lub w systemie Uczelni).</string>
+
+    <string name="school_info5">Źle skadrowane zdjęcie - należy zgłosić w szkole (sekretariat, kancelaria).</string>
+    <string name="student_info5">Źle skadrowane zdjęcie - sprawdź zdjęcie, jakie zostało przekazane do systemu.</string>
+    <string name="others_documents">Inne dokumenty</string>
+    <string name="pz_bank">Profil Zaufany, bankowość</string>
+    <string name="rest">Pozostałe</string>
+    <string name="app_dev_ideas_title_2">Masz ciekawy pomysł?\nPodziel się nim!</string>
+    <string name="mail_us">Napisz do nas</string>
+    <string name="obywatel_refresh_info">\nData ostatniej aktualizacji danych (mObywatel - dokument): %1$s</string>
+    <string name="vehicle_refresh_info">\nData ostatniej aktualizacji danych (mPojazd): %1$s</string>
+    <string name="vehicle_registration_number_2">numer rejestracyjny pojazdu,</string>
+    <string name="fill_vehicle_support">wskazać, które dane zawierają błąd (np. ubezpieczenie, przegląd techniczny, pojemność silnika itp.).</string>
+    <string name="this_is_not_errors">To NIE są błędy:</string>
+    <string name="when_refresh_data">W jakiej sytuacji zaktualizować dane?</string>
+    <string name="vehicle_support_info_2">Od kiedy dostępne są nowe dane?</string>
+    <string name="insurance">Ubezpieczenie</string>
+    <string name="vehicle_refresh_info_2">Najpóźniej 30 dni od momentu przekazania danych przez Ubezpieczyciela do bazy CEPIK.</string>
+    <string name="technical_inspection">Przegląd techniczny</string>
+    <string name="vehicle_refresh_info_3">Do 24 godzin od momentu wysłania informacji przez Stację Kontroli Pojazdów do bazy CEPIK.</string>
+    <string name="pass_changed_biometry_info_title">Hasło do aplikacji zostało zmienione.</string>
+    <string name="pass_changed_biometry_info_message">Czy chcesz ponownie aktywować logowanie biometryczne z\u00A0PIN\u2011em?</string>
+    <string name="activation_button_activate">Aktywuj</string>
+
+
+    <string name="distributionDateDrivingLicence">Data wydania prawa jazdy</string>
+    <string name="validityDateDrivingLicence">Data ważności prawa jazdy</string>
+    <string name="issuingAuthorityDrivingLicence">Organ wydający prawo jazdy</string>
+    <string name="numberDrivingLicence">Numer prawa jazdy</string>
+    <string name="cardNumberDrivingLicence">Numer blankietu prawa jazdy</string>
+    <string name="cardstatusDrivingLicence">Status dokumentu</string>
+    <string name="restrictionsDrivingLicence">Ograniczenia</string>
+    <string name="categoryDrivingLicence">Kategoria prawa jazdy</string>
+    <string name="categoryDistributionData">Data wydania uprawnienia\nokreślonej kategorii po raz pierwszy</string>
+    <string name="categoryValidationData">Data ważności uprawnienia</string>
+    <string name="statusDrivingLicence">Status</string>
+
+    <string name="notifications">Powiadomienia</string>
+    <string name="msg_token_fmt" translatable="false">FCM registration Token: %s</string>
+    <string name="we_are_going_to_ask_you_to">Będziemy prosić Cię o:</string>
+    <string name="deactivate_without_internet">Dezaktywujesz usługę bez dostępu do Internetu</string>
+
+    <string name="get_deep_link_error_title">Wystąpił błąd</string>
+    <string name="get_deep_link_error_description">Nie udało się nawiązać połączenia z serwerem. Spróbuj ponownie za chwilę. Napisz do nas, jeśli problem się powtórzy.\nmobywatel-pomoc@coi.gov.pl</string>
+
+    <string name="push_notification_error_title">Nie odebrano powiadomienia</string>
+    <string name="push_notification_error_description">Nie udało się pobrać ostatniej wiadomości / powiadomienia. Napisz do nas, jeśli problem się powtórzy.\nmobywatel-pomoc@coi.gov.pl</string>
+
+    <string name="push_notification_history_list_error_title">Nie pobrano listy wiadomości</string>
+    <string name="push_notification_history_list_error_description">Nie udało się pobrać listy / historii wiadomości. Spróbuj ponownie za chwilę. Napisz do nas, jeśli problem się powtórzy.\nmobywatel-pomoc@coi.gov.pl</string>
+
+    <string name="push_notification_send_reaction_error_title">Nie przekazano odpowiedzi</string>
+    <string name="push_notification_send_reaction_error_description">Nie udało się przekazać odpowiedzi. Napisz do nas, jeśli problem się powtórzy.\nmobywatel-pomoc@coi.gov.pl</string>
+
+    <string name="push_notification_get_card_error_title">Nie pobrano części wiadomości</string>
+    <string name="push_notification_get_card_error_description">Nie udało się pobrać części wiadomości powiązanej z nadawcą. Napisz do nas, jeśli problem się powtórzy.\nmobywatel-pomoc@coi.gov.pl</string>
+
+    <string name="push_notification_private_content_error_title">Nie pobrano części wiadomości</string>
+    <string name="push_notification_private_content_error_description">Nie udało się pobrać prywatnej części wiadomości. Napisz do nas, jeśli problem się powtórzy.\nmobywatel-pomoc@coi.gov.pl</string>
+
+    <string name="push_notification_error_get_full_message">Nie udało się pobrać całej wiadomości.</string>
+    <string name="push_notification_error_get_message">Nie udało się pobrać\nwiadomości.</string>
+    <string name="push_notification_send_answer_to">Wyślij odpowiedź do</string>
+    <string name="push_notification_downloading_message">Pobieram wiadomość...</string>
+    <string name="push_notification_downloading_institution_card">Pobieram wizytówkę...</string>
+    <string name="push_notification_sending_answer">Przekazuję odpowiedź...</string>
+    <string name="push_notification_no_messages_in_box_info">Brak powiadomień\nw skrzynce</string>
+    <string name="push_notification_error_close">Zamknij</string>
+    <string name="push_notification_no_internet_connection">Brak połączenia z Internetem.</string>
+    <string name="push_notification_answered">Udzielono odpowiedzi</string>
+    <string name="push_notification_answer_sent_to">Udzielono odpowiedzi do\n%1$s</string>
+
+    <string name="remember_to_specify">Pamiętaj, aby podać:</string>
+    <string name="specify_authorisation_method">metodę autoryzacji (np. Profil Zaufany, bank, eDowód),</string>
+    <string name="specify_pz_user_name">nazwę użytkownika Profilu Zaufanego lub nazwę banku,</string>
+    <string name="decscribe_encountered_problem">opisz napotkany problem.</string>
+    <string name="useful_links">Przydatne linki:</string>
+    <string name="how_to_create_pz">Jak założyć Profil Zaufany bez wychodzenia z domu?</string>
+    <string name="when_my_bank_isnt_on_list">Co zrobić, jeśli mojego banku nie ma na liście?</string>
+    <string name="licence_has_been_invalidated">Uprawnienie jest unieważnione.</string>
+    <string name="navigate_to_message"><![CDATA[Przejdź do wiadomości >]]></string>
+    <string name="navigate_to_document"><![CDATA[Przejdź do usługi >]]></string>
+    <string name="navigate_to_document_error">Usługa do której próbujesz wejść nie jest aktywna</string>
+    <string name="navigate_to_document_update_error">Usługa do której próbujesz wejść wymaga najnowszej wersji aplikacji. Zaktualizuj ją i spróbuj ponownie</string>
+    <string name="navigate_to_document_certificate_error">Usługa do której próbujesz wejść ma zastrzeżony certyfikat</string>
+    <string name="error_salt_disappeared">Operacja logowania została przerwana.</string>
+    <string name="cert_revocation_message">Nie udało się poprawnie zweryfikować certyfikatów</string>
+    <string name="logout_success_information">Wylogowano</string>
+    <string name="data_refresh_msg_refugee">Dane dotyczące usługi Diia.pl zostaną zaktualizowane.\nCzy chcesz kontynuować?</string>
+    <string name="cannot_activate_tozsamosc_if_refugee_exists">Nie można aktywować usługi mObywatel jeśli usługa Diia.pl jest już aktywna</string>
+    <string name="activate_step_onboarding_refugee_card_title">Dodajesz usługę Diia.pl</string>
+    <string name="activate_step_onboarding_ua_driving_licence_card_title">Dodajesz usługę Prawo Jazdy</string>
+
+    <string name="names2_ua">Imiona / Ім\'я</string>
+    <string name="surname_ua">Nazwisko / Прізвище</string>
+    <string name="birth_date_ua">Data urodzenia / Дата народження</string>
+    <string name="additional_data_ua">Dodatkowe dane / Додаткові дані</string>
+    <string name="family_name_ua">Nazwisko rodowe / Прізвище</string>
+    <string name="categories_ua">Kategorie / Категорії</string>
+    <string name="document_valid_ua">Dokument ważny / Дійсний документ</string>
+    <string name="until_day_ua">do dnia / Діє до</string>
+    <string name="form_status_ua">Status blankietu / Статус форми</string>
+
+    <string name="menu_qr_refugee">Przekaż</string>
+    <string name="menu_update_refugee">Aktualizuj</string>
+    <string name="activity_type_refugee_data_response">Pobranie danych tożsamości - Дія пл (Diia.pl)</string>
+    <string name="activity_type_nurse_data_response">Pobranie danych PWZ Pielęgniarki i Położnej</string>
+    <string name="activity_type_advocate_data_response">Pobranie danych Legitymacji adwokackiej</string>
+    <string name="activity_type_pensioner_data_response">Pobranie danych Legitymacji emeryta-rencisty</string>
+    <string name="activity_type_driving_licence_ua_data_response">Pobranie Prawo Jazdy (Diia)</string>
+
+    <string name="cannot_add_document">Nie można dodać dokumentu</string>
+    <string name="refugee_service_for_refugees_only">Dokument Дія пл (Diia.pl) dostępny jest wyłącznie dla Uchodźców z\u00A0Ukrainy, którym nadano numer PESEL i\u00A0profil zaufany.</string>
+    <string name="service_refugee_description">Podstawowe dane osobowe (dla osób ze\u00A0statusem Uchodźcy z\u00A0Ukrainy)</string>
+    <string name="service_refugee_card">Дія пл</string>
+    <string name="service_ua_driving_licence_card">Prawo Jazdy (Diia)</string>
+    <string name="service_ua_driving_licence_card_services_to_add">Prawo Jazdy</string>
+    <string name="service_gios">Naruszenia środowiskowe</string>
+
+    <string name="service_ua_driving_licence_description">Prawo jazdy pobierane z aplikacji Diia</string>
+    <string name="service_refugee_card_services_to_add">Дія пл (Diia.pl)</string>
+    <string name="data_refresh_title_refugee_cert_invalid">Odnów swoje cyfrowe dokumenty</string>
+    <string name="refugee_series_and_document_number">Seria i nr dokumentu / Серія та номер документа:</string>
+    <string name="if_you_wanna_use_document_update_app_then_refugee">Do prawidłowego działania dokumentu wymagana jest najnowsza wersja aplikacji. Zaktualizuj aplikację korzystając ze sklepu Google Play.</string>
+    <string name="update_required_refugee">Wymagana aktualizacja</string>
+    <string name="tips_refugee_description">Додати Дія пл</string>
+    <string name="parent_service_error">Wystąpił błąd pobierania usługi nadrzędnej.</string>
+    <string name="ucc_with_tozsamosc_or_diia"><![CDATA[Aby aktywować Unijny Certyfikat COVID musisz najpierw dodać jeden z\u00A0poniższych dokumentów:<br><br><b>mObywatel</b> (jeśli masz ukończone 18 lat i\u00A0posiadasz dowód osobisty)<br><br><b>Diia.pl</b> (jeśli pochodzisz z\u00A0Ukrainy i uzyskałeś numer PESEL oraz Profil Zaufany).]]></string>
+    <string name="ua_driving_licence_activate_diia"><![CDATA[Aby aktywować Prawo Jazdy (Diia) musisz najpierw dodać dokument: <br><br><b>Diia.pl</b> (jeśli pochodzisz z\u00A0Ukrainy i uzyskałeś numer PESEL oraz Profil Zaufany).]]></string>
+    <string name="prescription_with_tozsamosc_or_diia"><![CDATA[Aby aktywować eReceptę musisz najpierw dodać jeden z\u00A0poniższych dokumentów:<br><br><b>mObywatel</b> (jeśli masz ukończone 18 lat i\u00A0posiadasz dowód osobisty)<br><br><b>Diia.pl</b> (jeśli pochodzisz z\u00A0Ukrainy i uzyskałeś numer PESEL oraz Profil Zaufany).]]></string>
+    <string name="download_with_tozsamosc">Dodaj usługę mObywatel</string>
+    <string name="download_with_diia">Dodaj usługę Diia.pl</string>
+    <string name="ucc_names_and_surname">Nazwisko i Imiona</string>
+    <string name="ucc_birth_date">Data urodzenia</string>
+    <string name="ucc_certificate_identifier">Unikalny identyfikator certyfikatu</string>
+    <string name="ucc_turn_blur_on">Kliknij, aby zasłonić dane</string>
+    <string name="ucc_turn_blur_off">Kliknij, aby odsłonić dane</string>
+    <string name="ucc_additional_data">DODATKOWE DANE</string>
+    <string name="ucc_certificate_type">Rodzaj certyfikatu</string>
+    <string name="ucc_disease_name">Nazwa choroby lub czynnika chorobotwórczego</string>
+    <string name="ucc_vaccination_type">Szczepionka/profilaktyka</string>
+    <string name="ucc_vaccination_name">Produkt leczniczy</string>
+    <string name="ucc_vaccination_manufacturer">Producent dopuszczający szczepionkę do obrotu</string>
+    <string name="ucc_vaccination_dose">Liczba serii szczepień/dawek</string>
+    <string name="ucc_vaccination_date">Data szczepienia</string>
+    <string name="ucc_vaccination_country">Państwo członkowskie</string>
+    <string name="ucc_certificate_issuer">Wystawca certyfikatu</string>
+    <string name="ucc_first_positive_test_result_date">Data pierwszego pozytywnego testu</string>
+    <string name="ucc_certificate_validity">Certyfikat ważny od</string>
+    <string name="ucc_country">Państwo członkowskie</string>
+    <string name="ucc_test_type">Rodzaj testu</string>
+    <string name="ucc_test_rat_name">Nazwa i producent testu RAT</string>
+    <string name="ucc_test_naat_name">Nazwa testu NAAT</string>
+    <string name="ucc_test_result">Wynik testu</string>
+    <string name="ucc_test_sampling_date">Data pobrania próbki</string>
+    <string name="ucc_test_examination_date">Data otrzymania wyniku</string>
+    <string name="ucc_test_point_name">Centrum testowe</string>
+    <string name="ucc_convalescent_certificate">Certyfikat ozdrowienia</string>
+    <string name="ucc_test_certificate">Certyfikat testu</string>
+    <string name="ucc_valid_in_poland_only">Ważny tylko w Polsce</string>
+    <string name="ucc_bottom_item_language">Polski</string>
+    <string name="ucc_bottom_item_options">Więcej</string>
+    <string name="ucc_convalescent_certificate_statement">Niniejsze Zaświadczenie potwierdza przebycie choroby COVID\u201119. Jeśli masz pytania wyślij wiadomość e\u2011mail na adres:certyfikatyCOVID19@cez.gov.pl lub zadzwoń pod numer 19\u00A0239 dostępny 7 dni w\u00A0tygodniu w\u00A0godz. 6.00 – 21.00"</string>
+    <string name="ucc_polish_convalescent_certificate_statement">Ten certyfikat nie jest dokumentem podróży i\u00A0obowiązuje tylko w kraju jego nadania.</string>
+    <string name="ucc_test_result_certificate_statement">Niniejsze Zaświadczenie wskazuje wynik testu na obecność COVID\u201119 w organizmie. Jeśli masz pytania wyślij wiadomość e\u2011mail na adres: certyfikatyCOVID19@cez.gov.pl lub zadzwoń pod numer 19\u00A0239 dostępny 7 dni w\u00A0tygodniu w\u00A0godz. 6.00 – 21.00"</string>
+    <string name="ucc_vaccination_certificate_statement">Niniejsze Zaświadczenie potwierdza zaszczepienie przeciwko COVID‑19. Jeśli masz pytania wyślij wiadomość e‑mail na adres: certyfikatyCOVID19@cez.gov.pl lub zadzwoń pod numer 19 239 dostępny 7 dni w tygodniu w godz. 6.00 – 21.00</string>
+    <string name="ucc_general_document_statement">Ten certyfikat nie jest dokumentem podróży. Dowody naukowe dotyczące szczepień, testów i\u00A0wyzdrowień na COVID‑19 wciąż ewoluują, również w\u00A0związku z\u00A0nowymi niepokojącymi wariantami wirusa. Przed podróżą sprawdź obowiązujące środki ochrony zdrowia publicznego i\u00A0związane z\u00A0nimi ograniczenia obowiązujące w\u00A0miejscu docelowym. Istotne informacje można znaleźć tutaj: https://reopen.europa.eu/pl</string>
+    <string name="ucc_toolbat_title">Unijny Certyfikat COVID</string>
+    <string name="ucc_update_data">Aktualizuj</string>
+    <string name="ucc_vaccination_certificate">Certyfikat szczepienia</string>
+    <string name="ucc_status_invalid">Nieważny</string>
+    <string name="ucc_status_valid_in_poland">Ważność kodu w Polsce\n</string>
+    <string name="ucc_current_vaccination_certificate">AKTUALNY CERTYFIKAT SZCZEPIENIA</string>
+    <string name="ucc_other_vaccination_certificates">POZOSTAŁE CERTYFIKATY SZCZEPIENIA</string>
+    <string name="ucc_refresh_ended"><b>Aktualizowanie zakończone</b></string>
+    <string name="diia_subtitle">Dokument, który dodajesz jest powiązany z danymi osobowymi usługi Diia.pl - zostaną one dodane automatycznie.</string>
+    <string name="ucc_current_convalescent_certificate">AKTUALNY CERTYFIKAT OZDROWIENIA</string>
+    <string name="ucc_current_test_certificate">AKTUALNY CERTYFIKAT TESTU</string>
+    <string name="deactivate_service_without_internet">Wyłączasz usługę tylko na swoim telefonie. Aby dezaktywować ją w serwisie połącz się z siecią, inaczej wciąż możesz otrzymywać powiadomienia z aplikacji. Dezaktywacja usługi nie unieważnia dokumentu.</string>
+    <string name="deactivate_service_id_title_2">Czy na pewno chcesz odinstalować usługę?</string>`
+    <string name="pesel2">Numer PESEL</string>
+    <string name="deactivate_cert_title">Czy chcesz unieważnić?</string>
+    <string name="before_one_week">Ponad tydzień temu</string>
+    <string name="future_login_attempts_as_a_result_of_date_manipulation_on_the_device">Próby logowania powstałe w\u00A0przyszłości w\u00A0wyniku manipulacji datą na urządzeniu</string>
+    <string name="error_has_occurred_no_connection">Wystąpił błąd (brak połączenia)</string>
+    <string name="error_has_occurred_no_acceptance_in_mobywatel">Wystąpił błąd (brak akceptacji w aplikacji mObywatel)</string>
+    <string name="passing_mobywatel_data_to">Przekazanie danych (%s) do %s</string>
+    <string name="used_device">Używane urządzenie</string>
+    <string name="other_devices">Pozostałe urządzenia</string>
+    <string name="revoke_certificate">Unieważnij certyfikat</string>
+    <string name="canceled">Unieważniony</string>
+    <string name="submit_idea_for_development_application">Zgłoś pomysł na rozwój aplikacji</string>
+    <string name="using_now">teraz używasz</string>
+    <string name="personal">Osobiste</string>
+    <string name="kids">Dzieci</string>
+    <string name="activation_biometrics_with_pin">Aktywacja biometrii</string>
+    <string name="reactivation_biometrics_title">Potwierdź biometrią</string>
+    <string name="accept_new_pin">Potwierdź nowy PIN</string>
+    <string name="use_biometric_to_confirm_activation">Użyj czytnika biometrycznego aby potwierdzić aktywację</string>
+    <string name="cancel_activiation">Anuluj aktywację</string>
+    <string name="monday">Poniedziałek</string>
+    <string name="tuesday">Wtorek</string>
+    <string name="wednesday">Środa</string>
+    <string name="thursday">Czwartek</string>
+    <string name="friday">Piątek</string>
+    <string name="saturday">Sobota</string>
+    <string name="sunday">Niedziela</string>
+
+    <string name="we_accept_phone_report">Przyjmujemy zgłoszenia telefoniczne</string>
+    <string name="call_is_realised_to_polish_phone_number">Połączenie realizowane jest na polski numer telefonu</string>
+    <string name="call_fee_is_in_accordance_with_your_operator_price">Opłata za połączenie jest zgodna z cennikiem Twojego operatora</string>
+    <string name="if_you_want_report_a_problem_or_have_a_question_give_us_a_call">Jeśli chcesz zgłosić problem lub o coś zapytać, zadzwoń do nas.</string>
+    <string name="template_verify_error">Błąd weryfikacji szablonu.</string>
+    <string name="template_is_not_in_the_container_error">Brak szablonu w kontenerze.</string>
+    <string name="licence_data_have_been_refreshed">Dane dokumentu zostały zaktualizowane.</string>
+    <string name="desktop_edit_mode">Edycja pulpitu</string>
+    <string name="describe_problem_info">Dokładnie opisz problem lub wskaż błąd:\n\nNie usuwaj poniższych danych!\nPotrzebujemy ich, aby skutecznie Ci pomóc.\n</string>
+    <string name="describe_problem_info_vehicle">Numer rejestracyjny pojazdu:\n\nDokładnie opisz problem lub wskaż błąd:\n\nNie usuwaj poniższych danych!\nPotrzebujemy ich, aby skutecznie Ci pomóc.\n</string>
+    <string name="describe_problem_info_pz">Dokładnie opisz problem lub wskaż błąd:\n\nWskaż, w jaki sposób dokonujesz autoryzacji - np. Profil Zaufany, nazwa banku, eDowód, mojeID (z nazwą banku):\n\nNie usuwaj poniższych danych!\nPotrzebujemy ich, aby skutecznie Ci pomóc.\n</string>
+    <string name="describe_problem_info_ucc">Dokładnie opisz problem związany z certyfikatem:\n\nNie usuwaj poniższych danych!\nPotrzebujemy ich, aby skutecznie Ci pomóc.\n</string>
+    <string name="describe_problem_info_other">Podaj nazwę dokumentu lub usługi:\n\nDokładnie opisz problem lub wskaż błąd:\n\nNie usuwaj poniższych danych!\nPotrzebujemy ich, aby skutecznie Ci pomóc.\n</string>
+    <string name="describe_problem_info_evolution_app">Imię i nazwisko:\n\nMój pomysł na rozwój / zmiany w aplikacji:\n\nNie usuwaj poniższych danych!\nPotrzebujemy ich, aby skutecznie Ci pomóc.\n</string>
+    <string name="mobywatel_report_problem">mObywatel - dokument - zgłoszenie</string>
+    <string name="mkdr_report">mKDR - zgłoszenie</string>
+    <string name="diia_report">Diia.pl - zgłoszenie</string>
+    <string name="school_report">mLegitymacja szkolna - zgłoszenie</string>
+    <string name="student_report">mLegitymacja studencka - zgłoszenie</string>
+    <string name="vehicle_report">mPojazd - zgłoszenie</string>
+    <string name="pz_report">Profil Zaufany (WK) - autoryzacja w aplikacji mObywatel</string>
+    <string name="ucc_report">Unijny Certyfikat COVID - aplikacja mObywatel</string>
+    <string name="recipe_report">eRecepta - aplikacja mObywatel</string>
+    <string name="mobywatel_other_report">mObywatel - Pozostałe - zgłoszenie problemu</string>
+    <string name="report_from_mobywatel">Zgłoszenie z aplikacji mObywatel</string>
+    <string name="refresh_inbox">Odśwież skrzynkę</string>
+    <string name="refreshing_inbox">Odświeżam skrzynkę…</string>
+    <string name="download_messages">Wczytuję wiadomości…</string>
+    <string name="mcard">mLegitymacja</string>
+    <string name="add_mobywatel_title">Brak dokumentu \"mObywatel\"</string>
+    <string name="add_mobywatel_description">Dodaj dokument, aby zalogować się do portalu moj.gov.pl</string>
+    <string name="add_mobywatel_positive">Dodaj</string>
+    <string name="add_mobywatel_negative">Anuluj</string>
+    <string name="activate_app_title">Aplikacja nie została aktywowana</string>
+    <string name="activate_app_description">Aktywuj swoją aplikację, aby zalogować się do portalu moj.gov.pl</string>
+    <string name="activate_app_positive">Rozumiem</string>
+    <string name="authorities_for_review">Upoważnienia do wglądu</string>
+    <string name="authorities_state_on_day">Stan na dzień %s</string>
+    <string name="no_internet">Brak internetu</string>
+    <string name="authorities_no_internet_info">Możesz jedynie zobaczyć pobrane wcześniej upoważnienia.</string>
+    <string name="authority_type_general">Ogólne</string>
+    <string name="authority_type_auth">Upoważnienie</string>
+    <string name="indefinitely">bezterminowo</string>
+    <string name="authority_not_active_yet">Upoważnienie jeszcze nie jest ważne.</string>
+    <string name="authority_is_expired">Upoważnienie przeterminowane.</string>
+    <string name="authorities_empty_list_info">Nie posiadasz aktualnie żadnych udzielonych Ci upoważnień. Skorzystaj z przycisku \"Aktualizuj dane\" (poniżej). W ten sposób sprawdzisz, czy zostały wydane Ci nowe upoważnienia.</string>
+    <string name="authority_type_of_id_document">Typ dokumentu legitymującego</string>
+    <string name="authority_series_and_number_of_id_document">Seria i numer dokumentu legitymującego</string>
+    <string name="authority_principal_data">Dane mocodawcy</string>
+    <string name="authority_content">Treść upoważnienia</string>
+    <string name="authority_number">Numer upoważnienia</string>
+    <string name="authority_type">Typ upoważnienia</string>
+
+    <string name="deactivate_document_message">Aby ponownie korzystać z usługi konieczne będzie dodanie jej klikając na pulpicie aplikacji [dodaj dokument].</string>
+    <string name="deactivate_document_parent_message">Spowoduje to usunięcie wszystkich powiązanych z nim usług. Czy na pewno chcesz kontynuować?</string>
+    <string name="delete">Usuń</string>
+    <string name="remove_document">Usuń dokument</string>
+    <string name="edit_dashboard">Edytuj pulpit</string>
+    <string name="deactivite_document_title">Usunąć %s?</string>
+    <string name="deactivite_document_parent_title">Usuwanie nadrzędnego dokumentu</string>
+    <string name="deactivited_document_title">Usunięto %s</string>
+    <string name="deactivited_document_message">Możesz ponownie dodać ten dokument korzystając z przycisku [dodaj dokument] znajdującego się na dole głównego ekranu aplikacji.</string>
+    <string name="deactivited_document_parent_message">Możesz ponownie dodać dokumenty korzystając z przycisku [dodaj] znajdującego się na głównym ekranie.</string>
+    <string name="button_go_to_pulpit">Przejdź na pulpit</string>
+    <string name="button_close">Zamknij</string>
+    <string name="penatly_points_service_not_exist">Brak usługi \'Punkty Karne\'</string>
+    <string name="do_you_want_to_add_it_to_app_now">Czy chcesz ją teraz dodać w aplikacji?</string>
+    <string name="ua_driving_licence_subtitle">Prawo jazdy pobrane z aplikacji Дія ważne jest przez 31 dni. Po tym czasie należy je odświeżyć korzystając z funkcji \'Aktualizuj\'.</string>
+
+    <string name="add_doc_penalty_points_message">Od teraz masz stały podgląd swoich punktów karnych. Możesz je sprawdzać klikając ikonę na pulpicie aplikacji lub z\u00A0poziomu dokumentu \'mPrawo Jazdy\'</string>
+    <string name="add_doc">Dodano</string>
+    <string name="driving_licence_diia">Prawo Jazdy (Diia)</string>
+
+    <!-- Accessibility -->
+    <string name="ac_menu_item_notification">Skrzynka powiadomień</string>
+    <string name="ac_menu_item_menu">Menu</string>
+    <string name="ac_button_scan_qr_code">Skanuj kod QR</string>
+    <string name="ac_button_change_order">Zmień kolejność</string>
+    <string name="ac_button_cancel">Anuluj</string>
+    <string name="ac_button_accept">Zaakceptuj</string>
+    <string name="ac_button_minus">Pomniejsz</string>
+    <string name="ac_button_plus">Powiększ</string>
+    <string name="ac_img_qr_code">Kod QR</string>
+    <string name="ac_menu_close">Zamknij menu</string>
+    <string name="ac_show_password">Pokaż hasło</string>
+    <string name="ac_hide_password">Ukryj hasło</string>
+    <string name="ac_notification_switch_active">Zaznaczono</string>
+    <string name="ac_notification_switch_inactive">Niezaznaczono</string>
+    <string name="ac_notification_switch_message">%s zgoda na powiadomienia %s</string>
+    <string name="ac_img_pl_flag">Flaga Polski</string>
+    <string name="ac_faq_banner">Pomoc techniczna. Zanim wyślesz zgłoszenie, zapoznaj się z FAQ. Pytania i odpowiedzi. Tutaj znajdziesz wiele pomocnych informacji.</string>
+    <string name="nurse_card_footer_nurse">Weryfikacja prawa wykonywania zawodu dostępna na stronie: <a color="#192B4A" href="https://nipip.pl/weryfikacja-pwz/">nipip.pl/weryfikacja-pwz</a>\n\nPrawo wykonywania zawodu jest dokumentem uprawniającym do wykonywania zawodu %s na terytorium Rzeczypospolitej Polskiej.</string>
+    <string name="nurse_card_footer_nurse_limited">Weryfikacja prawa wykonywania zawodu dostępna na stronie: <a href="https://nipip.pl/weryfikacja-pwz/">nipip.pl/weryfikacja-pwz</a>\n\nOgraniczone prawo wykonywania zawodu jest dokumentem uprawniającym do wykonywania zawodu %s na terytorium Rzeczypospolitej Polskiej.</string>
+
+    <string name="nurse_card_document_expired">Aby przywrócić jego ważność, wybierz \"Aktualizuj\".</string>
+    <string name="nurse_card_documents_expired">Aby przywrócić ich ważność, wybierz \"Aktualizuj\".</string>
+
+    <string name="activation_step_header">Ви біженець з України?</string>
+
+    <!-- GIOS -->
+    <string name="incident_privacy_policy_header">Zgodnie z art. 13 rozporządzenia Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 r. w sprawie ochrony osób fizycznych w związku z przetwarzaniem danych osobowych i w sprawie swobodnego przepływu takich danych oraz uchylenia dyrektywy 95/46/WE (ogólne rozporządzenie o ochronie danych), informuję że:</string>
+    <string name="incident_privacy_policy_content">
+        1. Administratorem Państwa danych osobowych jest Główny Inspektor Ochrony Środowiska z siedzibą przy ul. Bitwy Warszawskiej 1920 r. 3, 02-362 Warszawa do którego kierowany jest wniosek;\n
+        2. Administrator wyznaczył Inspektora Ochrony Danych, z którym można skontaktować się poprzez email \niod@gios.gov.pl lub pisemnie na adres siedziby Administratora;\n
+        3. Podanie danych we wniosku jest dobrowolne;\n
+        4. Dane osobowe będą przetwarzane w celu realizacji wniosku przez czas określony w przepisach prawa oraz dla wypełnienia obowiązków archiwizacyjnych;\n
+        5. Dane nie będą przetwarzane w sposób zautomatyzowany i nie będą poddawane profilowaniu;\n
+        6. Odbiorcą danych jest Minister Cyfryzacji, z siedzibą przy Alejach Ujazdowskich 1/3 00-583 Warszawa, uprawniony do przetwarzania danych osobowych w imieniu Administratora na podstawie porozumienia określającego zasady przetwarzania danych osobowych;\n
+        7. Odbiorcą danych osobowych mogą zostać uprawnione organy publiczne, podmioty wykonujące usługi niszczenia dokumentacji;\n
+        8. Posiadają Państwo prawo dostępu do treści swoich danych osobowych oraz ich sprostowania;\n
+        9. Żądanie realizacji wyżej wymienionych praw proszę przesłać w formie pisemnej lub w formie elektronicznej zgodnie z art. 78 § 1 Kodeksu cywilnego do Administratora Danych Osobowych (adres podany na wstępie, z dopiskiem „Ochrona danych osobowych");\n 10. Przysługuje Państwu prawo wniesienia skargi do organu nadzorczego zajmującego się ochroną danych osobowych. Biuro Prezesa Urzędu Ochrony Danych Osobowych, adres: Stawki 2, 00-193 Warszawa, telefon: 22 531 03 00;\n 11. Szczegółowe informacje o przetwarzaniu danych osobowych zamieszczone są na stronie internetowej Głównego Inspektoratu Ochrony Środowiska \nwww.gov.pl/web/gios\n
+    </string>
+    <string name="incident_privacy_policy_close">Zamknij</string>
+    <string name="incident_cancel_dialog_title">Anulowanie zgłoszenia</string>
+    <string name="incident_cancel_dialog_message">Czy na pewno chcesz przerwać zgłoszenie incydentu środowiskowego?</string>
+    <string name="incident_cancel_dialog_positive">Przerwij</string>
+    <string name="incident_cancel_dialog_negative">Anuluj</string>
+
+    <string name="incident_header">Zgłoszenie</string>
+    <string name="incident_content_main">Zapoznaj się z danymi a następnie zatwierdź wysłanie zgłoszenia. Możesz edytować dane poniżej.</string>
+    <string name="incident_category_title">Kategoria zgłoszenia i rodzaj odpadów</string>
+    <string name="incident_category_placeholder">Kategoria (wymagane)</string>
+    <string name="incident_category_type_placeholder">Rodzaj odpadów</string>
+    <string name="incident_category_change_button">Zmień</string>
+    <string name="incident_category_choose_button">Wybierz</string>
+    <string name="incident_button_category_additional_information">Dodatkowe informacje</string>
+    <string name="incident_case_name">Nazwa przedmiotu, którego dotyczy zgłoszenie</string>
+    <string name="incident_case_description">Dodaj opis sprawy (wymagane)</string>
+    <string name="incident_photo_placeholder">Zdjęcie (wymagane)</string>
+    <string name="incident_add_photo_button">Dodaj</string>
+    <string name="incident_take_photo_button">Zrób nowe</string>
+    <string name="incident_requester_data_title">Dane zgłaszającego</string>
+    <string name="incident_hint_input_name_and_surname">Dodaj imię i nazwisko</string>
+    <string name="incident_hint_input_address">Dodaj adres</string>
+    <string name="incident_hint_input_email">Dodaj email</string>
+    <string name="incident_hint_input_phone_number">Dodaj numer telefonu</string>
+    <string name="incident_hint_input_administration_unit">Dodaj organ administracji publicznej (wymagane)</string>
+    <string name="incident_detail_data_title">Przedmiot interwencji</string>
+    <string name="incident_location_data_title">Lokalizacja zgłoszenia</string>
+    <string name="incident_detail_data_date_time_item_placeholder">Data i godzina</string>
+    <string name="incident_detail_data_add_button">Dodaj</string>
+    <string name="incident_detail_data_location_item_placeholder">Lokalizacja (wymagane)</string>
+    <string name="incident_detail_data_location_add_button">Edytuj</string>
+    <string name="incident_detail_data_lat_placeholder">Szer. geogr.</string>
+    <string name="incident_detail_data_lng_placeholder">Dł. geogr.</string>
+    <string name="incident_was_reported_placeholder">Czy sprawa była już zgłaszana organom administracji publicznej?</string>
+    <string name="incident_privacy_policy_placeholder">Zapoznałem/am się z informacją o administratorze i przetwarzaniu danych</string>
+    <string name="incident_button_send_request">Wyślij</string>
+    <string name="incident_hint_input_street_and_number">Ulica, nr budynku, nr lokalu</string>
+    <string name="incident_hint_input_post_code_and_city">Kod pocztowy, miasto</string>
+    <string name="incident_hint_input_county">Województwo (wymagane)</string>
+    <string name="incident_form_field_error_required">To pytanie jest wymagane</string>
+    <string name="incident_form_field_error_email">Podaj prawidłowy adres e-mail</string>
+    <string name="incident_form_field_error_max_length">Wprowadź co najwyżej następującą liczbę znaków: 1000</string>
+    <string name="incident_permission_location_not_granted_msg">Nie udzielono zgody na korzystanie z lokalizacji.</string>
+
+    <!-- Incident Step -->
+    <string name="incident_step_fragment_title">Naruszenia środowiskowe</string>
+    <string name="incident_step_title">Główny Inspektorat Ochrony Środowiska</string>
+    <string name="incident_step_subtitle">Zgłoś incydent, który może mieć niekorzystny wpływ na środowisko.</string>
+    <string name="incident_step_important_info">Ważne! W przypadku sytuacji zagrożenia życia lub zdrowia prosimy o kontakt z numerem alarmowym 112.\n\nPrzypominamy również, że GIOŚ rozpatruje sprawy związane z ochroną środowiska.</string>
+    <string name="incident_step_zero_placeholder">Krok 1</string>
+    <string name="incident_step_zero_title">Uzupełnij podstawowe dane</string>
+    <string name="incident_step_first_placeholder">Krok 2</string>
+    <string name="incident_step_first_title">Zrób zdjęcie</string>
+    <string name="incident_step_second_placeholder">Krok 3</string>
+    <string name="incident_step_second_title">Oznacz miejsce na mapie</string>
+    <string name="incident_step_third_placeholder">Krok 4</string>
+    <string name="incident_step_third_title">Wyślij zgłoszenie</string>
+    <string name="incident_button_take_a_picture">Zgłoś naruszenie</string>
+    <string name="error_bt_connection_msg">Wystąpił błąd podczas komunikacji między urządzeniami.\n</string>
+
+    <!-- Doctor card-->
+    <string name="pwz_registry_number">Numer rejestru</string>
+    <string name="doctor_card_service_description">Dokument potwierdzający prawo wykonywania zawodu</string>
+    <string name="headline_doctor">PWZ Lekarza i Lekarza Dentysty</string>
+    <string name="expandable_layout_doctor_info">DODATKOWE INFORMACJE</string>
+    <string name="doctor_card_activation_onboarding_title">Dodajesz PWZ Lekarza i Lekarza Dentysty</string>
+    <string name="doctor_card_label">Prawo wykonywania zawodu lekarza / The right to practice the profession of a Physician</string>
+    <string name="dentist_card_label">Prawo wykonywania zawodu lekarza dentysty / The right to practice the profession of a Dentist</string>
+    <string name="doctor_card_invalid_yours_title">Twoje PWZ Lekarza i Lekarza Dentysty straciła ważność</string>
+    <string name="doctor_card_invalid_yours_message">Przykładowy opis</string>
+    <string name="doctor_card_is_compliant">Przykładowy opis</string>
+    <string name="doctor_data_refresh_msg">Dane PWZ Lekarza i Lekarza Dentysty zostaną zaktualizowane. Czy chcesz kontynuować?</string>
+    <string name="doctor_data_have_been_refreshed">Dane są zgodne z Rejestrem Naczelnej Izby Lekarskiej</string>
+    <string name="choice_doctor_title">PWZ Lekarza\ni Lekarza Dentysty</string>
+    <string name="choice_doctor_title_toolbar">PWZ Lekarza i Lekarza Dentysty</string>
+    <string name="activity_type_doctor_data_response">Pobranie danych PWZ Lekarza i Lekarza Dentysty</string>
+    <string name="doctor_card_with_tozsamosc"><![CDATA[Aby aktywować PWZ Lekarza i Lekarza Dentysty musisz najpierw dodać usługę: <br><br><b>mObywatel]]></string>
+    <string name="doctor_card_footer">\n\nSzczegółowe informacje dostępne są w Centralnym Rejestrze Lekarzy i Lekarzy Dentystów Rzeczypospolitej Polskiej\n\n <a color="#192B4A" href="http://rejestr.nil.org.pl/">http://rejestr.nil.org.pl/</a></string>
+    <string name="specializations">Specjalizacje</string>
+    <string name="register_number">Numer rejestru</string>
+    <string name="current_medical_chamber">Aktualna izba lekarska</string>
+
+    <string name="ewizyta">Umów e-wizytę</string>
+    <string name="call_zus">Zadzwoń do ZUS</string>
+    <string name="describe_problem_info2">Moje imię i nazwisko:\n\nDokładnie opisz problem lub wskaż błąd:\n\nNie usuwaj poniższych danych!\nPotrzebujemy ich, aby skutecznie Ci pomóc.\n</string>
+    <string name="pensioner_report">Legitymacja emeryta-rencisty, aplikacja mObywatel</string>
+    <string name="advocate_report">Legitymacja adwokacka, aplikacja mObywatel</string>
+    <string name="nurse_report">PWZ pielęgniarki i położnej, aplikacja mObywatel</string>
+    <string name="doctor_report">PWZ lekarza i lekarza dentysty, aplikacja mObywatel</string>
+    <string name="deputy_report">Legitymacja poselska, aplikacja mObywatel</string>
+    <string name="support_pensioner_phone">zadzownić do ZUS: tel. <a href="tel:+48225601600">+48 22 560 16 00</a></string>
+    <string name="support_pensioner_ewizyta">spotkać sie z ekspertem z ZUS\n<a href="https://www.zus.pl/e-wizyta">przez internet</a></string>
+    <string name="support_pensioner_help">skorzystać z porady <a href="https://www.zus.pl/o-zus/kontakt/oddzialy-inspektoraty-biura-terenowe">w każdej placówce ZUS</a></string>
+    <string name="support_pensioner_headline">Jeśli masz pytania związane z Legitymacją emeryta-rencisty, możesz</string>
+    <string name="support_pensioner_phone_additional">(w dni robocze: poniedziałek-piątek,\nw godzinach: 7:00-18:00)</string>
+    <string name="support_button_helper_mail">Jeśli szukasz pomocy związanej z obsługa aplikacji – kliknij przycisk Wyślij Zgłoszenie</string>
+    <string name="support_button_helper_mail_phone">Jeśli szukasz pomocy związanej z obsługa aplikacji – skontaktuj się mailowo lub telefonicznie z Service Desk mObywatel</string>
+    <string name="support_advocate_headline">Problemy związane z błędami, aktywacją lub wydaniem elektronicznej wersji Legitymacji adwokackiej rozwiążesz kontaktując się ze swoją Okręgową Radą Adwokacką.</string>
+    <string name="support_advocate_contact">Aktualne adresy i numery telefonów znajdziez na <a href="http://www.nra.pl/izby-adwokackie-27/">stronie Naczelnej Rady Adwokackiej</a></string>
+    <string name="support_nurse_headline">Problemy związane z błędami, aktywacją lub wydaniem elektronicznej wersji Prawa wykonywania zawodu pielęgniarki lub położnej rozwiążesz kontaktując się ze swoją Okręgową Izbą Pielęgniarek i Położnych.</string>
+    <string name="support_nurse_contact">Aktualne adresy i numery telefonów znajdziez na <a href="https://nipip.pl/kontakt/kontakt-oipip">stronie Naczelnej Izby Pielęgniarek i Położnych</a></string>
+    <string name="support_doctor_headline">Problemy związane z błędami, aktywacją lub wydaniem elektronicznej wersji Prawa wykonywania zawodu lekarza lub lekarza dentysty rozwiążesz kontaktując się ze swoją Okręgową Izbą Lekarską.</string>
+    <string name="support_doctor_contact">Aktualne adresy i numery telefonów znajdziez na <a href="https://nil.org.pl/dzialalnosc/izby-okregowe">stronie Naczelnej Izby Lekarskiej</a></string>
+    <string name="support_deputy_headline">Problemy związane z błędami, aktywacją lub wydaniem elektronicznej wersji Legitymacji poselskiej rozwiążesz kontaktując się z Kancelarią Sejmu.</string>
+    <string name="support_deputy_contact">Aktualne adresy i numery telefonów znajdziez na <a href="https://www.sejm.gov.pl/sejm9.nsf/page.xsp/kontakts">stronie Kancelarii Sejmu</a></string>
+
+    <!-- Diia driving licence -->
+    <string name="diia_driving_licence_data_refresh_msg">Dane dotyczące prawa jazdy zostaną zaktualizowane.\nCzy chcesz kontynuować?</string>
+    <string name="diia_app_not_installed">Brak zainstalowanej aplikacji Дія</string>
+    <string name="diia_install_diia_app_if_want_use_ua_driving_licence">Zainstaluj aplikację Дія, aby korzystać z ukraińskiego prawa jazdy w mObywatelu.</string>
+    <string name="diia_download_app">Pobierz Дія</string>
+
+
+    <!-- Deputy -->
+    <string name="deputy_cadency">Osoba, której dane znajdują się powyżej, jest posłem na Sejm Rzeczypospolitej Polskiej %s kadencji.</string>
+    <string name="deputy_cadency_number">zakończenia %s kadencji Sejmu Rzeczypospolitej Polskiej</string>
+    <string name="document_fragment_last_update">Stan na dzień %s</string>
+
+    <!-- Diia activity log-->
+    <string name="diia_subscription_personal_data_cancelled">Twoja Diia.pl straciła ważność\nPowód: brak danych.</string>
+    <string name="diia_subscription_personal_data_user_death">Twoja Diia.pl straciła ważność\nPowód: zgon Użytkownika.</string>
+    <string name="diia_subscription_personal_ukr_status_loss">Twoja Diia.pl straciła ważność\nPowód: utrata statusu UKR.</string>
+    <string name="diia_subscription_personal_data_pesel_change">Twoja Diia.pl straciła ważność\nPowód: zmiana numeru PESEL.</string>
+    <string name="diia_subscription_personal_data_name_or_surname_change">Twoja Diia.pl straciła ważność\nPowód: zmiana danych osobowych.</string>
+
+    <!-- Diia subscription reason-->
+    <string name="diia_subscription_error_title">Twoja Diia.pl straciła ważność</string>
+    <string name="diia_subscription_cancelled_reason">Powód: brak danych.\nZaktualizuj Diia.pl za pomocą profilu zaufanego, aby korzystać z aplikacji.</string>
+    <string name="diia_user_death_reason">Powód: zgon Użytkownika.\nZaktualizuj Diia.pl za pomocą profilu zaufanego, aby korzystać z aplikacji.</string>
+    <string name="diia_user_ukr_status_loss_reason">Powód: utrata statusu UKR.\nZaktualizuj Diia.pl za pomocą profilu zaufanego, aby korzystać z aplikacji.</string>
+    <string name="diia_user_pesel_change_reason">Powód: zmiana numeru PESEL.\nZaktualizuj Diia.pl za pomocą profilu zaufanego, aby korzystać z aplikacji.</string>
+    <string name="diia_user_personal_data_change_reason">Powód: zmiana danych osobowych.\nZaktualizuj Diia.pl za pomocą profilu zaufanego, aby korzystać z aplikacji.</string>
+    <string name="title_dynamicfeature">Ssss</string>
+
+</resources>

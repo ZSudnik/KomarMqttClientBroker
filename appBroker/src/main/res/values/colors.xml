@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="activate_step_button_blue">#005EA5</color>
+    <color name="university_id_barcode_dialog_blue">#007AFF</color>
+    <color name="transparent">#00000000</color>
+    <color name="bottom_navigation_view_unchecked_grey">#878787</color>
+    <color name="dark_blue">#192b4a</color>
+    <color name="dark_blue_half_opacity">#77192b4a</color>
+    <color name="dark_gray">#29000000</color>
+    <color name="timeout_single_box_stroke">#80203A5C</color>
+    <color name="login_fragment_input_blue">#77cce4ff</color>
+    <color name ="biometrics_input_background">#14787880</color>
+    <color name ="biometrics_input_box_stroke">#4A3C3C43</color>
+    <color name="railway_gray">#9BA3B5</color>
+    <color name="red2">#EF5350</color>
+    <color name="red">#E54560</color>
+
+    <color name="appMenuColor">#192b4a</color>
+    <color name="gray4">#767C85</color>
+    <color name="warning_box_bg">#F3F4F6</color>
+    <color name="app_menu_bg">#14747480</color>
+    <color name="app_menu_separator">#14747480</color>
+    <color name="gray5">#ADB2BC</color>
+
+    <color name="secondary_text">#767C85</color>
+    <color name="support_separtor">#B1B2B6</color>
+
+    <color name="push_notification_progress_bar_indicator">#E680858E</color>
+    <color name="push_notification_progress_bar_title">#E03C3C43</color>
+    <color name="push_notification_info_on_layout1">#4C192B4A</color>
+    <color name="push_notification_info_on_layout2">#8C9199</color>
+    <color name="push_notification_info_on_layout3">#66192B4A</color>
+
+    <color name="card_bg">#F5F5F5</color>
+    <color name="card_text">#1A2433</color>
+    <color name="card_button_bg">#1A0061FE</color>
+    <color name="card_button_text">#0061FE</color>
+
+    <color name="text_content">#A3A3A3</color>
+    <color name="icon_list_item">#BCBCBF</color>
+</resources>

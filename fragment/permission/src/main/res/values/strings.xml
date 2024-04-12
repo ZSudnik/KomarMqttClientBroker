@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="fragment_permission_top_bar_title">"Allow notification"</string>
+  <string name="fragment_permission_button">"Enable Notifications"</string>
+  <string name="fragment_permission_text">"Do you want to receive notifications?"</string>
+</resources>

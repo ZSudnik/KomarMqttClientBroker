@@ -1,0 +1,42 @@
+<resources>
+
+    <string name="notification_mqtt_service_title">Zibi MQTT Broker</string>
+    <string name="notification_mqtt_service_content">"MQTT broker running …"</string>
+    <string name="notification_mqtt_ticker">MQTT broker running</string>
+    <string name="fg_channel_name">MQTT broker</string>
+    <string name="fg_channel_description">MQTT Foreground broker</string>
+
+    <string name="app_name">Zibi Mqtt Broker</string>
+
+    <string name="start_but">START</string>
+    <string name="stop_but">STOP</string>
+    <string name="close_apk_but">Close apk</string>
+    <string name="how_many">How Many:</string>
+    <string name="how_many_s">How Many/sek:</string>
+    <string name="priv_key">Private Key</string>
+    <string name="address_1">Address</string>
+    <string name="address_bc1">Address bc1</string>
+    <string name="privWIF">Priv Key WIF</string>
+    <string name="first_luck">First luck</string>
+    <string name="sec_luck">Second luck</string>
+    <string name="blanck">---</string>
+
+    <string name="please_wait_copy">Please wait DB is copy</string>
+
+    <string name="notification_serv_title">Breaking Bitcoin</string>
+    <string name="notification_serv_desc">Good luck. Wait for find key.</string>
+    <string name="notification_serv_desc_work">Searching a private key. Good luck.</string>
+    <string name="notification_serv_desc_stop">Stop searching.</string>
+    <string name="notification_find_key">You lucky. You find key.</string>
+
+    <string name="info_description">If you are lucky (First luck will be green) and the apk found a private key, you need to create a wallet on the found key. Then transfer bitcoin from the created wallet to your wallet. Bitcoins are yours. Everything is legal.
+If you hit a private key, you can check how much bitcoin is in this wallet by entering the address at https://www.blockchain.com.
+The program searches over 4.5 million addresses. The largest wallet has 140,000 bitcoin ($ 8.5 billion) and the smallest 0.50 bitcoin ($ 30,000). </string>
+
+    <!--    <string name="notification_msg">The next alarm is at\u0020</string>-->
+<!--    <string name="notification_msg_beg">\u0020( Beginning nap )</string>-->
+<!--    <string name="notification_msg_end">\u0020( End of nap )</string>-->
+
+
+
+</resources>

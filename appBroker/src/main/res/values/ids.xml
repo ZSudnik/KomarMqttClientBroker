@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="action_call" type="id" />
+
+    <!--doctor akordeon nr 1-->
+    <item name="specialization_textview" type="id" />
+    <item name="register_number_value" type="id" />
+    <item name="actual_textview" type="id" />
+
+    <!--mPojazd akordeon nr 1-->
+    <item name="insurer_name_textview" type="id" />
+    <item name="insurer_name_value" type="id" />
+    <item name="insurance_policy_number_textview" type="id" />
+    <item name="insurance_policy_number_value" type="id" />
+    <item name="insurance_type_textview" type="id" />
+    <item name="insurance_type_value" type="id" />
+    <item name="insurance_contract_date_textview" type="id" />
+    <item name="insurance_contract_date_value" type="id" />
+    <item name="insurance_period_beginning_textview" type="id" />
+    <item name="insurance_period_beginning_value" type="id" />
+    <item name="insurance_period_end_textview" type="id" />
+    <item name="insurance_period_end_value" type="id" />
+
+    <!--mPojazd akordeon nr 2-->
+    <item name="vehicle_card_document_series_and_number_textview" type="id" />
+    <item name="vehicle_card_document_series_and_number_value" type="id" />
+    <!--<item name="vehicle_card_document_type_textview" type="id"/>-->
+    <!--<item name="vehicle_card_document_type_value" type="id"/>-->
+    <item name="vehicle_card_is_duplicate_textview" type="id" />
+    <item name="vehicle_card_is_duplicate_value" type="id" />
+    <item name="vehicle_card_date_of_issue_textview" type="id" />
+    <item name="vehicle_card_date_of_issue_value" type="id" />
+    <item name="vehicle_card_validity_date_textview" type="id" />
+    <item name="vehicle_card_validity_date_value" type="id" />
+    <item name="vehicle_card_issuing_authority_textview" type="id" />
+    <item name="vehicle_card_issuing_authority_value" type="id" />
+
+    <!--Pojazd akordeon nr 3-->
+    <item name="registration_document_document_series_and_number_textview" type="id" />
+    <item name="registration_document_document_series_and_number_value" type="id" />
+    <!--<item name="registration_document_document_type_textview" type="id"/>-->
+    <!--<item name="registration_document_document_type_value" type="id"/>-->
+    <item name="registration_document_is_duplicate_textview" type="id" />
+    <item name="registration_document_is_duplicate_value" type="id" />
+    <item name="registration_document_date_of_issue_textview" type="id" />
+    <item name="registration_document_date_of_issue_value" type="id" />
+    <item name="registration_document_validity_date_textview" type="id" />
+    <item name="registration_document_validity_date_value" type="id" />
+    <item name="registration_document_issuing_authority_textview" type="id" />
+    <item name="registration_document_issuing_authority_value" type="id" />
+
+
+    <!--mPojazd akordeon nr 4-->
+    <item name="vehicle_brand_textview" type="id" />
+    <item name="vehicle_brand_value" type="id" />
+    <item name="vehicle_model_textview" type="id" />
+    <item name="vehicle_model_value" type="id" />
+    <item name="vehicle_type_textview" type="id" />
+    <item name="vehicle_type_value" type="id" />
+    <item name="vehicle_subtype_textview" type="id" />
+    <item name="vehicle_subtype_value" type="id" />
+    <item name="vehicle_category_textview" type="id" />
+    <item name="vehicle_category_value" type="id" />
+    <item name="purpose_textview" type="id" />
+    <item name="purpose_value" type="id" />
+    <item name="vin_number_accordion_textview" type="id" />
+    <item name="vin_number_accordion_value" type="id" />
+    <item name="production_year_textview" type="id" />
+    <item name="production_year_value" type="id" />
+    <item name="first_registration_date_textview" type="id" />
+    <item name="first_registration_date_value" type="id" />
+    <item name="kind_textview" type="id" />
+    <item name="kind_value" type="id" />
+    <item name="vehicle_origin_textview" type="id" />
+    <item name="vehicle_origin_value" type="id" />
+    <item name="incuse_id_number_textview" type="id" />
+    <item name="incuse_id_number_value" type="id" />
+    <item name="nameplate_textview" type="id" />
+    <item name="nameplate_value" type="id" />
+    <item name="homologation_certificate_number_textview" type="id" />
+    <item name="homologation_certificate_number_value" type="id" />
+    <item name="production_way_textview" type="id" />
+    <item name="production_way_value" type="id" />
+    <item name="engine_capacity_textview" type="id" />
+    <item name="engine_capacity_value" type="id" />
+    <item name="engine_power_textview" type="id" />
+    <item name="engine_power_value" type="id" />
+    <item name="power_to_deadweight_ratio_textview" type="id" />
+    <item name="power_to_deadweight_ratio_value" type="id" />
+    <item name="fuel_kind_textview" type="id" />
+    <item name="fuel_kind_value" type="id" />
+    <item name="secondary_fuel_kind_textview" type="id" />
+    <item name="secondary_fuel_kind_textview2" type="id" />
+
+    <item name="secondary_fuel_kind_value" type="id" />
+    <item name="secondary_fuel_kind_value2" type="id" />
+
+    <item name="is_catalyst_mounted_textview" type="id" />
+    <item name="is_catalyst_mounted_value" type="id" />
+    <item name="fuel_usage_average_textview" type="id" />
+    <item name="fuel_usage_average_value" type="id" />
+    <item name="fuel_usage_average_textview_wltp" type="id" />
+    <item name="fuel_usage_average_value_wltp" type="id" />
+
+    <item name="co2_emission_level_textview" type="id" />
+    <item name="co2_emission_level_value" type="id" />
+    <item name="co2_emission_level_textview_wltp" type="id" />
+    <item name="co2_emission_level_value_wltp" type="id" />
+
+    <item name="gross_vehicle_mass_textview" type="id" />
+    <item name="gross_vehicle_mass_value" type="id" />
+    <item name="max_vehicle_mass_textview" type="id" />
+    <item name="max_vehicle_mass_value" type="id" />
+    <item name="permissible_capacity_textview" type="id" />
+    <item name="permissible_capacity_value" type="id" />
+    <item name="seat_number_textview" type="id" />
+    <item name="seat_number_value" type="id" />
+    <item name="standing_seat_number_textview" type="id" />
+    <item name="standing_seat_number_value" type="id" />
+    <item name="seat_general_number_textview" type="id" />
+    <item name="seat_general_number_value" type="id" />
+    <item name="axles_number_textview" type="id" />
+    <item name="axles_number_value" type="id" />
+    <item name="deadweight_load_textview" type="id" />
+    <item name="deadweight_load_value" type="id" />
+    <item name="gross_vehicle_group_mass_textview" type="id" />
+    <item name="gross_vehicle_group_mass_value" type="id" />
+    <item name="max_gross_trailer_with_brake_mass_textview" type="id" />
+    <item name="max_gross_trailer_with_brake_mass_value" type="id" />
+    <item name="max_gross_trailer_without_brake_mass_textview" type="id" />
+    <item name="max_gross_trailer_without_brake_mass_value" type="id" />
+    <item name="wheelbase_textview" type="id" />
+    <item name="wheelbase_value" type="id" />
+    <item name="min_axle_track_textview" type="id" />
+    <item name="min_axle_track_value" type="id" />
+    <item name="max_axle_track_textview" type="id" />
+    <item name="max_axle_track_value" type="id" />
+    <item name="mean_axle_track_textview" type="id" />
+    <item name="mean_axle_track_value" type="id" />
+    <item name="max_axle_pressure_textview" type="id" />
+    <item name="max_axle_pressure_value" type="id" />
+    <item name="is_hook_mounted_textview" type="id" />
+    <item name="is_hook_mounted_value" type="id" />
+
+    <!--institution akordeon-->
+    <item name="institution_sharing_data_text_view" type="id" />
+    <item name="institution_picture_text_view" type="id" />
+    <item name="institution_country_text_view" type="id" />
+    <item name="institution_status_of_foreigner_text_view" type="id" />
+    <item name="institution_surname_text_view" type="id" />
+    <item name="institution_name_text_view" type="id" />
+    <item name="institution_pesel_text_view" type="id" />
+    <item name="institution_birthday_text_view" type="id" />
+    <item name="institution_birthplace_text_view" type="id" />
+    <item name="institution_personal_id_text_view" type="id" />
+    <item name="institution_personal_id_expiration_date_text_view" type="id" />
+    <item name="institution_issuer_text_view" type="id" />
+    <item name="institution_card_data_text_view" type="id" />
+    <item name="institution_card_data_value" type="id" />
+    <item name="institution_family_name_text_view" type="id"/>
+    <item name="institution_father_name_text_view" type="id"/>
+    <item name="institution_father_family_name_text_view" type="id"/>
+    <item name="institution_mother_name_text_view" type="id"/>
+    <item name="institution_mother_family_name_text_view" type="id"/>
+    <item name="institution_birth_place_country_text_view" type="id"/>
+    <item name="institution_sex_text_view" type="id"/>
+    <item name="institution_nationality_text_view" type="id"/>
+    <item name="institution_registered_address_text_view" type="id"/>
+    <item name="institution_registered_date_text_view" type="id"/>
+
+    <item name="institution_card_number_text_view" type="id" />
+    <item name="institution_edition_number_text_view" type="id" />
+    <item name="institution_school_name_text_view" type="id" />
+    <item name="institution_school_address_text_view" type="id" />
+    <item name="institution_distribution_date_text_view" type="id" />
+    <item name="institution_expiration_date_text_view" type="id" />
+    <item name="institution_director_text_view" type="id" />
+    <item name="institution_school_phone_no_text_view" type="id" />
+    <item name="institution_disability_text_view" type="id" />
+    <item name="institution_university_unit_text_view" type="id" />
+    <item name="institution_university_type_symbol_text_view" type="id" />
+    <item name="institution_university_id_text_view" type="id" />
+    <item name="institution_student_id_text_view" type="id" />
+    <item name="institution_university_regon_number_text_view" type="id" />
+    <item name="institution_pesel_number_checksum_text_view" type="id" />
+    <item name="institution_place_text_view" type="id" />
+
+    <item name="institution_family_card_number_text_view" type="id" />
+
+    <item name="institution_distribution_date_driving_licence_tv" type="id" />
+    <item name="institution_validity_date_driving_licence_tv" type="id" />
+    <item name="institution_issuing_authority_driving_licence_tv" type="id" />
+    <item name="institution_number_driving_licence_tv" type="id" />
+    <item name="institution_card_number_driving_licence_tv" type="id" />
+    <item name="institution_card_status_driving_licence_tv" type="id" />
+    <item name="institution_restrictions_driving_licence_tv" type="id" />
+    <item name="institution_attributes_driving_licence_tv" type="id" />
+    <item name="institution_category_driving_licence_tv" type="id" />
+    <item name="institution_category_distribution_data_tv" type="id" />
+    <item name="institution_category_validation_data_tv" type="id" />
+    <item name="institution_restriction_status" type="id" />
+    <item name="institution_status_driving_licence_tv" type="id" />
+</resources>

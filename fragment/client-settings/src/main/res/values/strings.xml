@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="fragment_setting_top_bar_title">"Settings"</string>
+  <string name="fragment_setting_section_broker_title">"Broker"</string>
+  <string name="fragment_setting_section_client_title">"Client (me)"</string>
+  <string name="fragment_setting_section_app_title">"App"</string>
+  <string name="fragment_setting_desc_app_password">"Password"</string>
+  <string name="fragment_setting_desc_app_user_name">"User Name"</string>
+  <string name="fragment_setting_desc_mqtt_broker_password">"Password"</string>
+  <string name="fragment_setting_desc_mqtt_broker_user_name">"User Name"</string>
+  <string name="fragment_setting_desc_mqtt_port">"Mqtt Port"</string>
+  <string name="fragment_setting_desc_mqtt_client_name">"Name"</string>
+  <string name="fragment_setting_desc_mqtt_client_identification">"Identifier"</string>
+  <string name="fragment_setting_desc_mqtt_ipaddress">"IP Address"</string>
+  <string name="fragment_setting_desc_web_socket_enabled">"Web Socket Enabled"</string>
+  <string name="fragment_setting_desc_web_socket_port">"Web Socket Port"</string>
+  <string name="fragment_setting_desc_web_socket_path" translatable="false">"Web Socket Path"</string>
+  <string name="fragment_setting_desc_authentication_enabled" translatable="false">"Authentication Enabled"</string>
+  <string name="fragment_setting_bottom_button_navigation">"Go to Fragment Two"</string>
+  <string name="fragment_setting_port_warning">"Port should be a number greater than 1023"</string>"
+  <string name="fragment_setting_empty_warning">Value cannot be empty</string>
+  <string name="fragment_setting_dialog_title">Write Parameters</string>
+  <string name="fragment_setting_dialog_content">Want to save your changes</string>
+  <string name="fragment_setting_dialog_positive_button">Save</string>
+  <string name="fragment_setting_dialog_negative_button">Don"'"t Save</string>
+  <string name="fragment_setting_dialog_cancel_button">Cancel</string>
+  <!--  <string name="fragment_setting_-->
+<!--  <string name="fragment_setting_-->
+<!--  <string name="fragment_setting_-->
+</resources>

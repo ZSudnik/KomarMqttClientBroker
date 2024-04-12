@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+<!--    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />-->
+<!--    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />-->
+
+    <application
+        android:label="@string/app_name">
+    <service
+        android:name="com.zibi.service.client.service.MQTTService"
+        android:enabled="true"
+        android:exported="true" >
+    </service>
+<!--        android:foregroundServiceType="specialUse"-->
+    </application>
+</manifest>

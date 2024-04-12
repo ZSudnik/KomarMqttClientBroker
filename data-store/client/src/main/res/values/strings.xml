@@ -1,0 +1,5 @@
+<resources>
+    <string name="light_1">Light 1</string>
+    <string name="light_2">Light 2</string>
+    <string name="light_1_2">Light 1 and 2</string>
+</resources>

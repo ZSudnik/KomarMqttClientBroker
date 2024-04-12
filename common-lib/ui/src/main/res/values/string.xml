@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Inputs -->
+    <string name="common_ui_input_field_icon_error_content_description">Ikona błędu</string>
+    <string name="common_ui_input_field_dot">.</string>
+    <string name="common_ui_input_field_password_char">•</string>
+
+    <!-- FieldText -->
+    <string name="common_ui_input_field_text_parenthesis_open">&#160;(</string>
+    <string name="common_ui_input_field_text_parenthesis_close">)</string>
+    <string name="common_ui_input_field_text_error_msg_placeholder">Wpisz prawidłowe dane</string>
+
+    <!-- FieldDate -->
+    <string name="common_ui_input_field_date_label">Ważne do</string>
+    <string name="common_ui_input_field_date_hint">dd/mm/rrrr</string>
+    <string name="common_ui_input_field_date_icon_content_description">Ikona kalendarza</string>
+    <string name="common_ui_input_field_date_value_separator">/</string>
+    <string name="common_ui_input_field_date_format">dd/MM/yyyy</string>
+
+    <!-- FieldTextPassword -->
+    <string name="common_ui_input_field_text_password_label">Hasło</string>
+    <string name="common_ui_input_field_text_password_hint">Wpisz hasło</string>
+    <string name="common_ui_input_field_text_password_icon_visible_content_description">Ikona widocznego hasła</string>
+    <string name="common_ui_input_field_text_password_icon_invisible_content_description">Ikona ukrytego hasła</string>
+
+    <!-- TopMenu -->
+    <string name="common_ui_top_menu_progress_percentage">%</string>
+
+    <!-- Profile -->
+    <string name="common_ui_profile_name_and_surname">%s&#160;%s</string>
+
+    <!-- DocumentCard -->
+    <string name="common_ui_document_card_button_text">Pokaż</string>
+
+    <string name="common_ui_document_card_show_label">Pokaż</string>
+
+    <!-- Onboarding -->
+  <string name="common_ui_onboarding_first_button">Dalej</string>
+  <string name="common_ui_onboarding_first_button_alt">Rozpocznij</string>
+  <string name="common_ui_onboarding_second_button">Pomiń</string>
+
+</resources>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="fragment_start_login_top_bar_title">"Login"</string>
+  <string name="fragment_start_login_button">"Login"</string>
+  <string name="fragment_start_login_label_username">"user"</string>
+  <string name="fragment_start_login_hint_username">"Enter user"</string>
+  <string name="fragment_start_login_label_password">"Password"</string>
+  <string name="fragment_start_login_hint_password">"Enter password"</string>
+  <string name="fragment_start_login_dialog_title">"Bad login"</string>
+  <string name="fragment_start_login_dialog_context">"User name or password is wrong. Try again"</string>
+  <string name="fragment_start_login_dialog_first_button">"OK"</string>
+  <string name="fragment_start_main_top_bar_title">"Zibi Mqtt Broker"</string>
+  <string name="fragment_start_main_desc_state">"State"</string>
+  <string name="fragment_start_main_state_run">"Running"</string>
+  <string name="fragment_start_main_state_stop">"Stopped"</string>
+  <string name="fragment_start_main_desc_ip_address">"IP Address"</string>
+  <string name="fragment_start_main_desc_clients_connected">"Clients connected"</string>
+  <string name="fragment_start_main_desc_logs">"Logs"</string>
+
+  <!--  <string name="fragment_start_bottom_button_nvigation">"Go to Fragment One"</string>-->
+</resources>

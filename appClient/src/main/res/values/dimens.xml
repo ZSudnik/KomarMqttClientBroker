@@ -1,0 +1,45 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <dimen name="service_item_margin">10dp</dimen>
+
+    <dimen name="padlock_drawable_width">10dp</dimen>
+    <dimen name="padlock_drawable_height">15dp</dimen>
+
+    <dimen name="design_bottom_navigation_text_size" tools:override="true">12dp</dimen>
+    <dimen name="design_bottom_navigation_active_text_size" tools:override="true">12dp</dimen>
+    <dimen name="design_bottom_navigation_item_max_width" tools:override="true">600dp</dimen>
+    <dimen name="design_bottom_navigation_active_item_max_width" tools:override="true">600dp</dimen>
+    <!--mPojazd-->
+    <dimen name="vehicle_accordion_value_text_size">12dp</dimen>
+    <dimen name="vehicle_accordion_label_text_size">12dp</dimen>
+    <dimen name="institution_accordion_label_text_size">13dp</dimen>
+    <dimen name="institution_accordion_card_label_text_size">11dp</dimen>
+    <dimen name="mPojazd_accordion_line_width">1dp</dimen>
+    <dimen name="mPojazd_accordion_textview_value_padding">7dp</dimen>
+    <dimen name="vehicle_card_label_vertical_margin">8dp</dimen>
+    <dimen name="vehicle_accordion_value_margin_end">5dp</dimen>
+
+    <dimen name="institution_card_value_row_text_size">17dp</dimen>
+    <!--
+    Because the window insets on round devices are larger than 15dp, this padding only applies
+    to square screens.
+    -->
+    <dimen name="box_inset_layout_padding">0dp</dimen>
+
+    <!--
+    This padding applies to both square and round screens. The total padding between the buttons
+    and the window insets is box_inset_layout_padding (above variable) on square screens and
+    inner_frame_layout_padding (below variable) on round screens.
+    -->
+    <dimen name="inner_frame_layout_padding">5dp</dimen>
+    <dimen name="service_padding_vertical">10dp</dimen>
+    <dimen name="shadow_stack_single_padding">3dp</dimen>
+
+    <dimen name="pin_code_round_size">25dp</dimen>
+    <dimen name="pin_code_round_margin">10dp</dimen>
+
+    <dimen name="dgc_shadow_stack_single_padding">2dp</dimen>
+    <dimen name="dgc_radius">20dp</dimen>
+    <dimen name="DGC_button_margin_bottom">30dp</dimen>
+    <dimen name="cardElevation">2dp</dimen>
+    <dimen name="cardRadius">10dp</dimen>
+</resources>
