@@ -31,6 +31,7 @@ import io.zibi.komar.mclient.utils.Log.i
 import io.zibi.komar.mclient.core.ProcessorResult.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
@@ -50,7 +51,7 @@ class MqttClient(
     private val contextClient: CoroutineContext,
 ) : IMqttClient {
     private val mqttVer = options.mqttVersion
-    private val selectorManager = SelectorManager(contextClient)
+    private var selectorManager = SelectorManager(contextClient)
 
     var listener: IListener? = null
     private var receiverJob: Job? = null
@@ -90,6 +91,8 @@ class MqttClient(
     private suspend fun socketLink(timeout: Long?): Boolean =
         withTimeoutOrNull(timeout ?: options.actionTimeout) {
             try {
+                selectorManager.close()
+                selectorManager = SelectorManager(contextClient)
                 socket = aSocket(selectorManager).tcp().connect(options.host, options.port)
                 byteReadChannel = socket?.openReadChannel()
                 byteWriteChannel = socket?.openWriteChannel(autoFlush = true)
@@ -104,7 +107,7 @@ class MqttClient(
         val halfTimeout = (timeout ?: options.actionTimeout) / 2
         while (isAutoConnect) {
             if (!isSocketActive) {
-//                listener?.onConnectLost(Exception("Main thread: lose socket"))
+                listener?.onConnectLost(Exception("Main thread: lose socket"))
                 do {
                     if (socketLink(timeout)) {
                         delayConnection(timeout, "socket")
@@ -113,14 +116,14 @@ class MqttClient(
                 } while (isAutoConnect && !isSocketActive)
             }
             if (!isConnected) {
-//                listener?.onConnectLost(Exception("Main thread: lose connection"))
+                listener?.onConnectLost(Exception("Main thread: lose connection"))
                 do {
                     openReceiver()
                     connectSession()
                     delayConnection(timeout, "connection")
                 } while (isAutoConnect && isSocketActive && !isConnected)
             }
-//            if (byteReadChannel?.isClosedForWrite == true) closeSocket(Exception("Lose socket link"))
+            if (byteReadChannel?.isClosedForWrite == true) closeSocket(Exception("Lose socket link"))
             delay(halfTimeout)
         }
     }
@@ -263,7 +266,8 @@ class MqttClient(
 
     override fun shutDown() {
         disConnectParameters()
-//        selectorManager.close()
+//        contextClient.cancel()
+//        selectorManager.cancel()
         byteReadChannel = null
         byteWriteChannel = null
         socket = null

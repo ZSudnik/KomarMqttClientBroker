@@ -47,7 +47,7 @@ class ClientListenerSrv(
 
     override fun onConnectLost(e: Throwable) {
         Log.e("onConnectLost : ${e.message} /n${e.printStackTrace()}")
-//        errorConnect(false)
+        errorConnect(false)
 
     }
 

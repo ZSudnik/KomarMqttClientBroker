@@ -27,9 +27,7 @@ class ConnectProcessor: IProcessor {
         scope: CoroutineScope,
         writeChannel: suspend (ByteArray) -> Unit,
     ): ProcessorResult {
-        val msg = MqttConnectMessage(options)
-        i("-->connect:：$msg")
-        writeChannel(msg.toDecByteArray(options.mqttVersion))
+        writeChannel(MqttConnectMessage(options).toDecByteArray(options.mqttVersion))
         job = scope.launch {
             delay(options.actionTimeout)
             try {

@@ -20,7 +20,7 @@ class MqttSubscribeMessage(
 
     constructor(messageId: Int, qos: Int = 0, topics: List<String>): this(
         MqttFixedHeader(
-            MqttMessageType.SUBSCRIBE, false, MqttQoS.valueOf(qos),
+            MqttMessageType.SUBSCRIBE, false, MqttQoS.AT_LEAST_ONCE,
             false, 0),
         MqttMessageVariableHeader(messageId),
         MqttSubscribePayload(
@@ -41,16 +41,4 @@ class MqttSubscribeMessage(
                 remainingLength(variableHeader().toDecByteArray() +
                         payload().toDecByteArray())
     }
-
-//    companion object{
-//
-//        fun create(messageId: Int, qos: Int = 0, topics: List<String>): MqttSubscribeMessage {
-//            val list: MutableList<MqttTopicSubscription> = mutableListOf()
-//            for (topic in topics) {
-//                list.add(MqttTopicSubscription(topic, MqttQoS.valueOf(qos)))
-//            }
-//            return create(messageId, list)
-//        }
-//    }
-
 }
