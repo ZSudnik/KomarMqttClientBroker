@@ -26,6 +26,6 @@ interface IMqttClient {
     @Throws(Exception::class)
     fun publish(topic: String, content: String)
 
-    fun close()
+    fun shutDown()
 
 }

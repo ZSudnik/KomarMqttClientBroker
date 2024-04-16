@@ -15,10 +15,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlin.text.Charsets.UTF_8
 
-class PublishProcessor(
-    private val options: MqttConnectOptions,
-    private val scope: CoroutineScope
-) : IProcessor {
+class PublishProcessor: IProcessor {
 
     private var result: Deferred<ProcessorResult>? = null
     private var jobTime: Job? = null
@@ -29,7 +26,8 @@ class PublishProcessor(
     suspend fun publish(
         topic: String,
         content: String,
-        timeout: Long,
+        options: MqttConnectOptions,
+        scope: CoroutineScope,
         writeChannel: suspend (ByteArray) -> Unit,
     ): ProcessorResult {
         receivedAck.value = false
@@ -43,7 +41,7 @@ class PublishProcessor(
                 )
                 writeChannel(msg.toDecByteArray(options.mqttVersion))
                 jobTime = launch {
-                    if (!receivedAck.value) delay(timeout)
+                    if (!receivedAck.value) delay(options.actionTimeout)
                 }
                 jobTime?.join()
                 return@async if (receivedAck.value) RESULT_SUCCESS else RESULT_FAIL

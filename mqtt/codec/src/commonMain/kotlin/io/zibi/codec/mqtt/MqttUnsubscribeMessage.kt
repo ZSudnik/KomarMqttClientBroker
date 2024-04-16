@@ -13,7 +13,7 @@ class MqttUnsubscribeMessage(
     constructor(messageId: Int, topicList: List<String>): this(
         MqttFixedHeader(
             MqttMessageType.UNSUBSCRIBE, false, MqttQoS.AT_MOST_ONCE,
-        false, 0x02),
+            false, 0x02),
         MqttMessageVariableHeader(messageId),
         MqttUnsubscribePayload(topicList)
     )
@@ -30,5 +30,4 @@ class MqttUnsubscribeMessage(
             remainingLength(
                 variableHeader().toDecByteArray() + payload().toDecByteArray()
             )
-
 }

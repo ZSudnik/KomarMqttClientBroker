@@ -1,7 +1,6 @@
 package io.zibi.komar.mclient.core
 
 import io.zibi.komar.mclient.core.MessageIdFactory.release
-import io.zibi.komar.mclient.utils.Log.i
 import io.zibi.codec.mqtt.MqttMessage
 import io.zibi.codec.mqtt.MqttUnsubAckMessage
 import io.zibi.codec.mqtt.MqttUnsubscribeMessage
@@ -15,10 +14,7 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class UnsubscribeProcessor(
-    private val options: MqttConnectOptions,
-    private val scope: CoroutineScope
-) : IProcessor {
+class UnsubscribeProcessor: IProcessor {
 
     private var result: Deferred<ProcessorResult>? = null
     private var jobTime: Job? = null
@@ -28,18 +24,17 @@ class UnsubscribeProcessor(
     @Throws(Exception::class)
     suspend fun unsubscribe(
         topics: List<String>,
-        timeout: Long,
+        options: MqttConnectOptions,
+        scope: CoroutineScope,
         writeChannel: suspend (ByteArray) -> Unit,
     ): ProcessorResult {
         receivedAck.value = false
         result = scope.async<ProcessorResult> {
             try {
                 msgId = MessageIdFactory.get()
-                val msg = MqttUnsubscribeMessage(msgId, topics)
-                i("-->：$msg")
-                writeChannel(msg.toDecByteArray(options.mqttVersion))
+                writeChannel(MqttUnsubscribeMessage(msgId, topics).toDecByteArray(options.mqttVersion))
                 jobTime = launch {
-                    delay(timeout)
+                    delay(options.actionTimeout)
                 }
                 jobTime?.join()
                 return@async if (receivedAck.value) RESULT_SUCCESS else RESULT_FAIL

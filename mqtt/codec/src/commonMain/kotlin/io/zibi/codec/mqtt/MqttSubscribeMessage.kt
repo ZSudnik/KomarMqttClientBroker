@@ -10,6 +10,24 @@ class MqttSubscribeMessage(
     payload: MqttSubscribePayload?
 ) : MqttMessage(mqttFixedHeader, variableHeader, payload) {
 
+    constructor(messageId: Int, mqttTopicSubscriptions: List<MqttTopicSubscription>): this(
+        MqttFixedHeader(
+            MqttMessageType.SUBSCRIBE, false, MqttQoS.AT_LEAST_ONCE,
+            false, 0),
+        MqttMessageVariableHeader(messageId),
+        MqttSubscribePayload(mqttTopicSubscriptions)
+    )
+
+    constructor(messageId: Int, qos: Int = 0, topics: List<String>): this(
+        MqttFixedHeader(
+            MqttMessageType.SUBSCRIBE, false, MqttQoS.valueOf(qos),
+            false, 0),
+        MqttMessageVariableHeader(messageId),
+        MqttSubscribePayload(
+            topics.map { topic -> MqttTopicSubscription(topic, MqttQoS.valueOf(qos)) }
+        )
+    )
+
     override fun variableHeader(): MqttMessageVariableHeader {
         return super.variableHeader() as MqttMessageVariableHeader
     }
@@ -24,22 +42,15 @@ class MqttSubscribeMessage(
                         payload().toDecByteArray())
     }
 
-    companion object{
-        fun create(messageId: Int, mqttTopicSubscriptions: List<MqttTopicSubscription>): MqttSubscribeMessage = MqttSubscribeMessage(
-            MqttFixedHeader(
-                MqttMessageType.SUBSCRIBE, false, MqttQoS.AT_LEAST_ONCE,
-                false, 0),
-            MqttMessageVariableHeader(messageId),
-            MqttSubscribePayload(mqttTopicSubscriptions)
-        )
-
-        fun create(messageId: Int, qos: Int = 0, topics: List<String>): MqttSubscribeMessage {
-            val list: MutableList<MqttTopicSubscription> = mutableListOf()
-            for (topic in topics) {
-                list.add(MqttTopicSubscription(topic, MqttQoS.valueOf(qos)))
-            }
-            return create(messageId, list)
-        }
-    }
+//    companion object{
+//
+//        fun create(messageId: Int, qos: Int = 0, topics: List<String>): MqttSubscribeMessage {
+//            val list: MutableList<MqttTopicSubscription> = mutableListOf()
+//            for (topic in topics) {
+//                list.add(MqttTopicSubscription(topic, MqttQoS.valueOf(qos)))
+//            }
+//            return create(messageId, list)
+//        }
+//    }
 
 }

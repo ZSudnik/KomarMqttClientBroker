@@ -1,16 +1,21 @@
 package io.zibi.komar.mclient.core
 
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
+import java.util.concurrent.ConcurrentHashMap
 
 object MessageIdFactory {
-    private val using = mutableMapOf<Int, Int>()
+    private val using =  ConcurrentHashMap<Int, Int>()
     private var lastId = 0
+    private val mutex = Mutex()
+
     @Throws(Exception::class)
-    fun get(): Int {
-        synchronized(using) {
+    suspend fun get(): Int {
+        mutex.withLock{
             var id = lastId
-            for (i in 1..65535) {
+            do{
                 ++id
-                if (id < 1 || id > 65535){
+                if (id < 1 || id >= 65535){
                     id = 1
                     using.clear()
                 }
@@ -19,12 +24,12 @@ object MessageIdFactory {
                     lastId = id
                     return id
                 }
-            }
+            }while (id < 65535)
             throw Exception("The message id has been used up!")
         }
     }
 
-    fun release(id: Int) {
-        if (id > 0) synchronized(using) { using.remove(id) }
+    suspend fun release(id: Int) {
+        mutex.withLock { using.remove(id) }
     }
 }
