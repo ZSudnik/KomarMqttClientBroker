@@ -15,10 +15,7 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class SubscribeProcessor(
-    private val options: MqttConnectOptions,
-    private val scope: CoroutineScope
-) : IProcessor {
+class SubscribeProcessor: IProcessor {
 
     private var result: Deferred<ProcessorResult>? = null
     private var jobTime: Job? = null
@@ -27,26 +24,29 @@ class SubscribeProcessor(
 
     @Throws(Exception::class)
     suspend fun subscribe(
-        topics: List<String>, timeout: Long,
+        topics: List<String>,
+        options: MqttConnectOptions,
+        scope: CoroutineScope,
         writeChannel: suspend (ByteArray) -> Unit,
     ): ProcessorResult {
-        return subscribe(0, topics, timeout, writeChannel)
+        return subscribe(topics, 0, options, scope, writeChannel)
     }
 
     @Throws(Exception::class)
     suspend fun subscribe(
-        qos: Int, topics: List<String>, timeout: Long,
+        topics: List<String>,
+        qos: Int,
+        options: MqttConnectOptions,
+        scope: CoroutineScope,
         writeChannel: suspend (ByteArray) -> Unit,
     ): ProcessorResult {
         receivedAck.value = false
         result = scope.async<ProcessorResult> {
             try {
                 msgId = MessageIdFactory.get()
-                val msg = MqttSubscribeMessage.create(msgId, qos, topics)
-                i("-->MqttSubscribeMessage：$msg")
-                writeChannel(msg.toDecByteArray(options.mqttVersion))
+                writeChannel(MqttSubscribeMessage(msgId, qos, topics).toDecByteArray(options.mqttVersion))
                 jobTime = launch {
-                    delay(timeout)
+                    delay(options.actionTimeout)
                 }
                 jobTime?.join()
                 return@async if (receivedAck.value) RESULT_SUCCESS else RESULT_FAIL

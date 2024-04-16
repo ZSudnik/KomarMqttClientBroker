@@ -69,10 +69,9 @@ class StartMainViewModelImpl (
                 },
                 sendDataListOfLightBulb = { listBulb ->
                     listBulb.forEach { bulb ->
-                        val msg = bulb.toJsonString()
                         MQTTService.publish(
                             topic = bulb.topic,
-                            message = msg,
+                            message = bulb.toJsonString(),
                         )
                     }
                 },

@@ -10,7 +10,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.async
 
 object MQTTWrapper {
-    private var TIME_OUT = 250L
     private var mqttClient: MqttClient? = null
 
     fun onPublishCommand(topic: String, message: String) {
@@ -24,7 +23,6 @@ object MQTTWrapper {
                         left to right
                     }
             msgMap.forEach { (key, value) ->
-                println("topic = cmnd/${topic}/${key}, content = $value")
                 mqttClient?.publish(topic = "cmnd/${topic}/${key}", content = value)
             }
 //            val ss = "{\"POWER\":\"ON\",\"Dimmer\":100,\"Color\":\"3152870000\",\"HSBColor\":\"217,64,53\",\"White\":0,\"CT\":253,\"Channel\":[19,32,53,0,0]}"
@@ -43,7 +41,7 @@ object MQTTWrapper {
         coroutineScope: CoroutineScope,
         errorConnect: (Boolean) -> Unit,
         ): Boolean {
-        mqttClient = MqttClient(prop as MqttConnectOptions, coroutineScope.coroutineContext,errorConnect)
+        mqttClient = MqttClient(prop as MqttConnectOptions, coroutineScope.coroutineContext)
         mqttClient?.let {
             it.listener = ClientListenerSrv(
                 mqttClient = it,
@@ -68,7 +66,7 @@ object MQTTWrapper {
         coroutineScope: CoroutineScope,
         errorConnect: (Boolean) -> Unit,
     ): Boolean {
-        mqttClient = MqttClient(prop as MqttConnectOptions, coroutineScope.coroutineContext,errorConnect)
+        mqttClient = MqttClient(prop as MqttConnectOptions, coroutineScope.coroutineContext)
         mqttClient?.let {
             it.listener = ClientListenerSrv(
                 mqttClient = it,
@@ -90,7 +88,7 @@ object MQTTWrapper {
 
     fun stopClient() {
         try {
-            mqttClient?.close()
+            mqttClient?.shutDown()
             mqttClient = null
         } catch (e: Exception) {
             Log.e("", e.message ?: "")

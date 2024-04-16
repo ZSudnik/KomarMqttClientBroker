@@ -158,11 +158,9 @@ class MqttDecoder(
      */
     suspend fun decodeFixedHeader(
         mqttVersion: MqttVersion,
-//        buffer: ByteReadChannel,
         readChannel: suspend (Int) -> ByteArray,
     ): MqttFixedHeader {
         val b1 = readChannel(1).first().toUByte().toInt()
-//        val b1 = buffer.readByte().toUByte().toInt()
         val messageType = MqttMessageType.valueOf(b1 shr 4)
         val dupFlag = b1 and 0x08 == 0x08
         val qosLevel = b1 and 0x06 shr 1
@@ -187,7 +185,9 @@ class MqttDecoder(
                 if (retain)
                     throw DecoderException("Illegal BIT 0 in fixed header of $messageType message, must be 0, found 1")
             }
-            else -> throw DecoderException("Unknown message type, do not know how to validate fixed header")
+            else -> {
+                throw DecoderException("Unknown message type, do not know how to validate fixed header")
+            }
         }
         val remainingLength = decodeVariableByteInteger(readChannel,messageType)
         mqttFixedHeader = validateFixedHeader(mqttVersion, resetUnusedFields(

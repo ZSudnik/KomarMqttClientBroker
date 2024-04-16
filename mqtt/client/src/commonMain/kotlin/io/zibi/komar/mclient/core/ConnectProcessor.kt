@@ -15,22 +15,19 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlin.coroutines.cancellation.CancellationException
 
-class ConnectProcessor(
-    private val scope: CoroutineScope
-) : IProcessor {
+class ConnectProcessor: IProcessor {
 
     private val atomicCD = atomic<CompletableDeferred<ProcessorResult>>(CompletableDeferred<ProcessorResult>())
     private val completableDeferred = atomicCD.value
     private var job: Job? = null
 
-//    @Throws(Exception::class)
+    @Throws(Exception::class)
     suspend fun connect(
         options: MqttConnectOptions,
+        scope: CoroutineScope,
         writeChannel: suspend (ByteArray) -> Unit,
     ): ProcessorResult {
-        val msg = MqttConnectMessage(options)
-        i("-->connect:：$msg")
-        writeChannel(msg.toDecByteArray(options.mqttVersion))
+        writeChannel(MqttConnectMessage(options).toDecByteArray(options.mqttVersion))
         job = scope.launch {
             delay(options.actionTimeout)
             try {
@@ -57,7 +54,7 @@ class ConnectProcessor(
                     it.complete(RESULT_SUCCESS)
                     return
                 }
-                return
+//                return
             }
             else -> res.toDesc()
         }
