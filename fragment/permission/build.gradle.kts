@@ -13,10 +13,6 @@ kotlin {
                 implementation( project(":common-lib:ui"))
                 implementation( project(":common-lib:error"))
                 implementation( project(":common-lib:resources"))
-                implementation(project(":common-lib:bms-node"))
-                implementation(project(":common-lib:bms-model"))
-                implementation( project(":data-store:client"))
-                implementation( project(":service-client"))
 
                 implementation( "com.freeletics.flowredux:flowredux-jvm:${ver.various.flow_redux}")
                 implementation( "com.freeletics.flowredux:compose:${ver.various.flow_redux}")
