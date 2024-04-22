@@ -1,4 +1,4 @@
-package com.zibi.mod.data_store.preferences
+package com.zibi.service.client.service
 
 import io.zibi.codec.mqtt.MqttVersion
 import io.zibi.codec.mqtt.util.MqttConnectOptions

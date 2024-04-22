@@ -24,11 +24,11 @@ class ClientSetting(
         produceFile = { context.preferencesDataStoreFile(USER_PREFERENCES) }
     )
 
-    private val firstShotClientMqtt = ClientProperties()
+//    private val firstShotClientMqtt = com.zibi.service.client.service.ClientProperties()
 
     private val mqttBrokerPort: Flow<Int>
         get() {
-            return dataStore.data.map { it[MQTT_BROKER_PORT] ?: firstShotClientMqtt.port }
+            return dataStore.data.map { it[MQTT_BROKER_PORT] ?: MQTT_PORT_DEFAULT }
         }
     suspend fun mqttBrokerPortFirst(): Int {
         return mqttBrokerPort.first()
@@ -39,7 +39,7 @@ class ClientSetting(
 
     private val mqttBrokerHost: Flow<String>
         get() {
-            return dataStore.data.map { it[MQTT_BROKER_HOST] ?: firstShotClientMqtt.host }
+            return dataStore.data.map { it[MQTT_BROKER_HOST] ?: MQTT_HOST_DEFAULT }
         }
     suspend fun mqttBrokerHostFirst(): String {
         return mqttBrokerHost.first()
@@ -50,7 +50,7 @@ class ClientSetting(
 
     private val mqttMyIdentifier: Flow<String>
         get() {
-            return dataStore.data.map { it[MQTT_MY_IDENTIFIER] ?: firstShotClientMqtt.clientIdentifier }
+            return dataStore.data.map { it[MQTT_MY_IDENTIFIER] ?: MQTT_CLIENT_IDENTIFIER_DEFAULT  }
         }
     suspend fun setMqttMyIdentifier(value: String) {
         dataStore.edit { it[MQTT_MY_IDENTIFIER] = value }
@@ -61,7 +61,7 @@ class ClientSetting(
 
     private val mqttMyName: Flow<String>
         get() {
-            return dataStore.data.map { it[MQTT_MY_USER_NAME] ?: firstShotClientMqtt.userName }
+            return dataStore.data.map { it[MQTT_MY_USER_NAME] ?: MQTT_CLIENT_USERNAME_DEFAULT }
         }
     suspend fun mqttMyNameFirst(): String {
             return mqttMyName.first()
@@ -90,16 +90,6 @@ class ClientSetting(
     }
     suspend fun setMqttBrokerUsername(value: String) {
         dataStore.edit { it[MQTT_BROKER_USERNAME] = value }
-    }
-
-    suspend fun getClientProperties(): ClientProperties {
-        return ClientProperties(
-            host = mqttBrokerHostFirst(),
-            port =  mqttBrokerPortFirst(),
-            clientIdentifier = mqttMyIdentifierFirst(),
-            userName = mqttMyNameFirst(),
-            password = mqttBrokerPasswordFirst().toByteArray(),
-        )
     }
 
     //////////////////////////////////////////////////

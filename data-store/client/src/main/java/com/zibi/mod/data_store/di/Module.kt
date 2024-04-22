@@ -3,7 +3,6 @@ package com.zibi.mod.data_store.di
 import com.zibi.mod.data_store.preferences.ClientSetting
 import com.zibi.mod.data_store.preferences.LightBulbStore
 import com.zibi.mod.data_store.preferences.UserLogin
-import com.zibi.mod.data_store.preferences.ClientProperties
 import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
 

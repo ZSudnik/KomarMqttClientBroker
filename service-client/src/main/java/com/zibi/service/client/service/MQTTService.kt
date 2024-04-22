@@ -30,6 +30,16 @@ class MQTTService : Service() {
         serviceJob = null
     }
 
+    private suspend fun getClientProperties(): ClientProperties {
+        return ClientProperties(
+            host = clientSetting.mqttBrokerHostFirst(),
+            port = clientSetting.mqttBrokerPortFirst(),
+            clientIdentifier = clientSetting.mqttMyIdentifierFirst(),
+            userName = clientSetting.mqttMyNameFirst(),
+            password = clientSetting.mqttBrokerPasswordFirst().toByteArray(),
+        )
+    }
+
     override fun onCreate() {
         super.onCreate()
         scope = CoroutineScope( Dispatchers.IO )
@@ -40,7 +50,7 @@ class MQTTService : Service() {
         if (this::scope.isInitialized && serviceJob == null)
             serviceJob = scope.launch {
                 isClientRunning.value = MQTTWrapper.startClientAuto(
-                    prop = clientSetting.getClientProperties(),
+                    prop = getClientProperties(),
                     lightBulbStore = lightBulbStore,
                     coroutineScope = this,
                     errorConnect = { value -> errorClient(value) }

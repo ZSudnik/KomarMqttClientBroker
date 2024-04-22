@@ -2,7 +2,6 @@ package com.zibi.service.client.service
 
 import android.annotation.SuppressLint
 import android.util.Log
-import com.zibi.mod.data_store.preferences.ClientProperties
 import com.zibi.mod.data_store.preferences.LightBulbStore
 import io.zibi.komar.mclient.MqttClient
 import io.zibi.codec.mqtt.util.MqttConnectOptions

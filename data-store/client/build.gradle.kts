@@ -7,7 +7,6 @@ kotlin {
     sourceSets {
         commonMain {
             dependencies {
-                implementation( project(":mqtt:client"))
                 implementation( project(":common-lib:resources"))
                 implementation( project(":common-lib:bms-model"))
                 api ("androidx.datastore:datastore-preferences:${ver.androidx.datastore_preferences}")
