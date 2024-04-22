@@ -1,6 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="codec-jvm">
-    <output-path>$PROJECT_DIR$/mqtt/codec/build/libs</output-path>
-    <root id="archive" name="codec-jvm.jar" />
-  </artifact>
-</component>

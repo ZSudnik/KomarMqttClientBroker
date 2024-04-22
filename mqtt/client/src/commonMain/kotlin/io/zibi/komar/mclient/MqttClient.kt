@@ -31,7 +31,6 @@ import io.zibi.komar.mclient.utils.Log.i
 import io.zibi.komar.mclient.core.ProcessorResult.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.cancel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
@@ -54,6 +53,10 @@ class MqttClient(
     private var selectorManager = SelectorManager(contextClient)
 
     var listener: IListener? = null
+    var stateConnection: ((Boolean) -> Unit)? = null
+    var onMessageArrived: ((topic: String, msg: String) -> Unit)? = null
+
+
     private var receiverJob: Job? = null
     private var pingJob: Job? = null
     private var socket: Socket? = null
@@ -103,35 +106,44 @@ class MqttClient(
             }
         } != RESULT_SUCCESS
 
-    override suspend fun connectAuto(timeout: Long?) {
+    override fun connectAuto(timeout: Long?) {
         val halfTimeout = (timeout ?: options.actionTimeout) / 2
-        while (isAutoConnect) {
-            if (!isSocketActive) {
-                listener?.onConnectLost(Exception("Main thread: lose socket"))
-                do {
-                    if (socketLink(timeout)) {
-                        delayConnection(timeout, "socket")
-                        closeSocket(Exception("Try socket link"))
-                    }
-                } while (isAutoConnect && !isSocketActive)
+        CoroutineScope(contextClient).launch {
+            while (isAutoConnect && isActive) {
+                if (!isSocketActive) {
+                    listener?.onConnectLost(Exception("Main thread: lose socket"))
+                    stateConnection?.let{  it(false) }
+                    do {
+                        if(!isActive) return@launch
+                        if (socketLink(timeout)) {
+                            delayConnection(timeout, "socket")
+                            closeSocket(Exception("Try socket link"))
+                        }
+                    } while (isAutoConnect && !isSocketActive)
+                }
+                if (!isConnected) {
+                    listener?.onConnectLost(Exception("Main thread: lose connection"))
+                    stateConnection?.let{  it(false) }
+                    do {
+                        if(!isActive) return@launch
+                        openReceiver()
+                        connectSession()
+                        delayConnection(timeout, "connection")
+                    } while (isAutoConnect && isSocketActive && !isConnected)
+                }
+                if (byteReadChannel?.isClosedForWrite == true) closeSocket(Exception("Lose socket link"))
+                delay(halfTimeout)
             }
-            if (!isConnected) {
-                listener?.onConnectLost(Exception("Main thread: lose connection"))
-                do {
-                    openReceiver()
-                    connectSession()
-                    delayConnection(timeout, "connection")
-                } while (isAutoConnect && isSocketActive && !isConnected)
-            }
-            if (byteReadChannel?.isClosedForWrite == true) closeSocket(Exception("Lose socket link"))
-            delay(halfTimeout)
+            stateConnection?.let{  it(false) }
         }
     }
 
-    override suspend fun connectOne(timeout: Long?) {
-        socketLink(timeout)
-        openReceiver()
-        connectSession()
+    override fun connectOne(timeout: Long?) {
+        CoroutineScope(contextClient).launch {
+            socketLink(timeout)
+            openReceiver()
+            connectSession()
+        }
     }
 
     private fun openReceiver() {
@@ -167,7 +179,7 @@ class MqttClient(
             if (isConnected) {
                 startPingTask()
                 listener?.onConnected()
-
+                stateConnection?.let{  it(true) }
             }
         }
     }
@@ -184,11 +196,11 @@ class MqttClient(
                         RESULT_SUCCESS -> Unit
                         RESULT_FAIL -> closeSocket(
                             TimeoutException("Did not receive a response for a long time : "
-                                + "${options.keepAliveTime}s [ping]"))
+                                    + "${options.keepAliveTime}s [ping]"))
                     }
                 }
             }catch (ex: Exception){
-              closeSocket(ex)
+                closeSocket(ex)
             }
         }
     }
@@ -266,7 +278,7 @@ class MqttClient(
 
     override fun shutDown() {
         disConnectParameters()
-//        contextClient.cancel()
+        stateConnection?.let{  it(false) }
 //        selectorManager.cancel()
         byteReadChannel = null
         byteWriteChannel = null
@@ -369,11 +381,11 @@ class MqttClient(
                         mqttPublishVariableHeader,
                         dec.decodePublishPayload(chunkBuffer)
                     )
+                    val topic = mqttPublishVariableHeader.topicName
+                    val msg = publishMessage.payload().toString(UTF_8)
+                    listener?.onMessageArrived(topic, msg)
+                    onMessageArrived?.let { it(topic, msg) }
 
-                    listener?.onMessageArrived(
-                        mqttPublishVariableHeader.topicName,
-                        publishMessage.payload().toString(UTF_8)
-                    )
                     if (mqttFixedHeader.qosLevel in listOf(
                             MqttQoS.AT_LEAST_ONCE,
                             MqttQoS.EXACTLY_ONCE

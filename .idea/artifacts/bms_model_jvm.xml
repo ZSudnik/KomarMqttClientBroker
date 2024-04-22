@@ -1,6 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="bms-model-jvm">
-    <output-path>$PROJECT_DIR$/common-lib/bms-model/build/libs</output-path>
-    <root id="archive" name="bms-model-jvm.jar" />
-  </artifact>
-</component>

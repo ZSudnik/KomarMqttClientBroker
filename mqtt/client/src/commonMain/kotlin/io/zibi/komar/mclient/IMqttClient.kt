@@ -4,19 +4,13 @@ interface IMqttClient {
 
 
     @Throws(Exception::class)
-    suspend fun connectAuto(timeout: Long? = null)
+    fun connectAuto(timeout: Long? = null)
 
-    suspend fun connectOne(timeout: Long? = null)
-
+    fun connectOne(timeout: Long? = null)
 
     @Throws(Exception::class)
     fun subscribe(topics: List<String>)
 
-    /**
-     * @param qos
-     * @param topics
-     * @throws Exception
-     */
     @Throws(Exception::class)
     fun subscribe(qos: Int, topics: List<String>)
 

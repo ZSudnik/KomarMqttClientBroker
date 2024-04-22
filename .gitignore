@@ -1,0 +1,5 @@
+.gradle/
+appBroker/build/
+*/build/
+*/*/build/
+.idea/
