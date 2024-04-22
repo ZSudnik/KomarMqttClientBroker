@@ -54,6 +54,5 @@ include(":common-lib:permission")
 include(":mqtt:codec")
 include(":mqtt:broker")
 include(":mqtt:client")
-include(":mqtt:client_ktor")
 //include(":mqtt:$typApp")
 ///////////
