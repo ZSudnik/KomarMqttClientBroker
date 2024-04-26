@@ -27,11 +27,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<!--        <service-->
-<!--            android:name="com.zibi.service.client.service.MQTTService"-->
-<!--            />-->
         <service
             android:name="com.zibi.service.client.service.MQTTService"
+            android:enabled="true"
+            android:exported="false"
+            android:stopWithTask="true"/>
+        <service
+            android:name="com.zibi.service.client.service_ktor.KMQTTService"
             android:enabled="true"
             android:exported="false"
             android:stopWithTask="true"/>

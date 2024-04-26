@@ -13,8 +13,8 @@ kotlin {
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:${ver.jetbrains.coroutines}")
                 implementation("org.jetbrains.kotlinx:atomicfu:${ver.various.atomicfu}")
 
-                implementation("io.ktor:ktor-server-cio:${ver.various.ktor}")
-                implementation("io.ktor:ktor-server-core:${ver.various.ktor}")
+                api("io.ktor:ktor-server-cio:${ver.various.ktor}")
+                api("io.ktor:ktor-server-core:${ver.various.ktor}")
 
 //                implementation("io.ktor:ktor-network-tls:${ver.various.ktor}")
                 implementation(kotlin("stdlib"))

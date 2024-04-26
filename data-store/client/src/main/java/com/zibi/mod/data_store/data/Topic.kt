@@ -1,10 +1,5 @@
 package com.zibi.mod.data_store.data
 
-import com.zibi.mod.common.resources.StringResolver
-import com.zibi.mod.data_store.R
-import com.zibi.mod.data_store.preferences.ClientSetting
-import org.koin.android.ext.android.inject
-
 
 object Topic{
 //    private val stringResolver: StringResolver by inject()

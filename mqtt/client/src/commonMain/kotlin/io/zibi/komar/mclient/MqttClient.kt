@@ -1,14 +1,9 @@
 package io.zibi.komar.mclient
 
 import io.ktor.network.selector.SelectorManager
-import io.ktor.network.sockets.Socket
 import io.ktor.network.sockets.aSocket
-import io.ktor.network.sockets.openReadChannel
-import io.ktor.network.sockets.openWriteChannel
-import io.ktor.utils.io.ByteReadChannel
-import io.ktor.utils.io.ByteWriteChannel
 import io.ktor.utils.io.core.ChunkBuffer
-import io.ktor.utils.io.writeFully
+import io.ktor.utils.io.errors.IOException
 import io.zibi.codec.mqtt.MqttConnAckMessage
 import io.zibi.codec.mqtt.MqttDecoder
 import io.zibi.codec.mqtt.MqttDisconnectMessage
@@ -29,39 +24,49 @@ import io.zibi.komar.mclient.core.SubscribeProcessor
 import io.zibi.komar.mclient.core.UnsubscribeProcessor
 import io.zibi.komar.mclient.utils.Log.i
 import io.zibi.komar.mclient.core.ProcessorResult.*
+import io.zibi.komar.mclient.utils.Connection
+import io.zibi.komar.mclient.utils.connection
+import io.zibi.komar.mclient.utils.isClose
+import io.zibi.komar.mclient.utils.waitForAvailable
+import kotlinx.coroutines.CoroutineName
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.sync.Mutex
-import kotlinx.coroutines.sync.withLock
-import kotlinx.coroutines.withContext
 import kotlinx.coroutines.withTimeoutOrNull
 import java.nio.ByteBuffer
 import java.util.concurrent.CopyOnWriteArrayList
 import java.util.concurrent.TimeUnit
 import java.util.concurrent.TimeoutException
-import kotlin.coroutines.CoroutineContext
+import kotlin.reflect.KSuspendFunction2
 import kotlin.text.Charsets.UTF_8
 
+internal val MQTT_COROUTINE = CoroutineName("mqtt-context")
+
 class MqttClient(
-    private val options: MqttConnectOptions,
-    private val contextClient: CoroutineContext,
+    private var options: MqttConnectOptions,
+    executionContext: Job,
 ) : IMqttClient {
     private val mqttVer = options.mqttVersion
-    private var selectorManager = SelectorManager(contextClient)
+    private var selectorManager: SelectorManager
+    private val backgroundScope: CoroutineScope
+    init {
+        backgroundScope = createCallScope(executionContext)
+        selectorManager = SelectorManager(backgroundScope.coroutineContext)
+    }
 
     var listener: IListener? = null
     var stateConnection: ((Boolean) -> Unit)? = null
     var onMessageArrived: ((topic: String, msg: String) -> Unit)? = null
-
+    var listMessageArrived: MutableList< KSuspendFunction2<String, String, Unit>> = mutableListOf()
+    fun reloadConfiguration(configuration: MqttConnectOptions){
+        options = configuration
+    }
 
     private var receiverJob: Job? = null
     private var pingJob: Job? = null
-    private var socket: Socket? = null
-    private var byteReadChannel: ByteReadChannel? = null
-    private var byteWriteChannel: ByteWriteChannel? = null
+    private var socketConnection: Connection? = null
     private var connectProcessor: ConnectProcessor = ConnectProcessor()
     private var pingProcessor: PingProcessor = PingProcessor()
     private val subscribeProcessorList: CopyOnWriteArrayList<SubscribeProcessor> =
@@ -73,32 +78,27 @@ class MqttClient(
     var isConnected = false
         private set
     val isSocketActive
-        get() = socket?.isActive ?: false
-    var isAutoConnect = true
+        get() = socketConnection?.socket?.isActive ?: false
 
-
-    private suspend fun closeSocket(e: Exception?) {
-        withContext(contextClient) {
-            socket?.close()
-            listener?.onConnectLost(e ?: Exception("Close socket"))
+    private fun closeSocket() {
+        doInBackground {
+            socketConnection?.socket?.close()
+            listener?.onConnectLost( Exception("Close socket"))
             shutDown()
         }
     }
 
-    private suspend fun delayConnection(timeout: Long?, idText: String) {
-        val actionTime = (timeout ?: options.actionTimeout)
-        i("Connect: initializer timeout :${actionTime / 1000} s $idText")
-        delay(actionTime)
+    private suspend fun delayConnection( idText: String) {
+        i("Connect: initializer timeout :${options.actionTimeout / 1000} s $idText")
+        delay(options.actionTimeout)
     }
 
-    private suspend fun socketLink(timeout: Long?): Boolean =
-        withTimeoutOrNull(timeout ?: options.actionTimeout) {
+    private suspend fun socketLink(): Boolean =
+        withTimeoutOrNull(options.actionTimeout) {
             try {
                 selectorManager.close()
-                selectorManager = SelectorManager(contextClient)
-                socket = aSocket(selectorManager).tcp().connect(options.host, options.port)
-                byteReadChannel = socket?.openReadChannel()
-                byteWriteChannel = socket?.openWriteChannel(autoFlush = true)
+                selectorManager = SelectorManager(backgroundScope.coroutineContext)
+                socketConnection = aSocket(selectorManager).tcp().connect(options.host, options.port).connection()
                 RESULT_SUCCESS
             } catch (ex: Exception) {
                 listener?.onConnectFailed(ex)
@@ -106,60 +106,59 @@ class MqttClient(
             }
         } != RESULT_SUCCESS
 
-    override fun connectAuto(timeout: Long?) {
-        val halfTimeout = (timeout ?: options.actionTimeout) / 2
-        CoroutineScope(contextClient).launch {
-            while (isAutoConnect && isActive) {
+    override fun connectAuto() {
+        val halfTimeout =  options.actionTimeout/ 2
+        doInBackground {
+            while ( it.isActive) {
                 if (!isSocketActive) {
                     listener?.onConnectLost(Exception("Main thread: lose socket"))
                     stateConnection?.let{  it(false) }
                     do {
-                        if(!isActive) return@launch
-                        if (socketLink(timeout)) {
-                            delayConnection(timeout, "socket")
-                            closeSocket(Exception("Try socket link"))
+                        if(!it.isActive) return@doInBackground
+                        if (socketLink()) {
+                            delayConnection( "socket")
+                            closeSocket()
                         }
-                    } while (isAutoConnect && !isSocketActive)
+                    } while ( !isSocketActive)
                 }
                 if (!isConnected) {
                     listener?.onConnectLost(Exception("Main thread: lose connection"))
                     stateConnection?.let{  it(false) }
                     do {
-                        if(!isActive) return@launch
+                        if(!it.isActive) return@doInBackground
                         openReceiver()
                         connectSession()
-                        delayConnection(timeout, "connection")
-                    } while (isAutoConnect && isSocketActive && !isConnected)
+                        delayConnection("connection")
+                    } while ( isSocketActive && !isConnected)
                 }
-                if (byteReadChannel?.isClosedForWrite == true) closeSocket(Exception("Lose socket link"))
+                if (socketConnection.isClose()) closeSocket()
                 delay(halfTimeout)
             }
             stateConnection?.let{  it(false) }
         }
     }
 
-    override fun connectOne(timeout: Long?) {
-        CoroutineScope(contextClient).launch {
-            socketLink(timeout)
+    override fun connectOne() {
+        doInBackground {
+            socketLink()
             openReceiver()
             connectSession()
         }
     }
 
     private fun openReceiver() {
-        receiverJob = CoroutineScope(contextClient).launch {
+        receiverJob = doInBackground {
             try {
                 val mqttHandler = MQTTHandler()
-                while (byteReadChannel?.isClosedForRead == false) {
-                    byteReadChannel?.availableForRead
-                    if (byteReadChannel == null) return@launch
+                while ( !socketConnection.isClose()) {
+                    if (socketConnection.waitForAvailable()) return@doInBackground
                     mqttHandler.channelRead()
                 }
             } catch (e: Exception) {
                 when (e) {
                     is DecoderException -> disConnect()
                     is NullPointerException -> {} //error if byteReadChannel == null after shutDown
-                    else -> closeSocket(e)
+                    else -> closeSocket()
                 }
             }
         }
@@ -168,8 +167,8 @@ class MqttClient(
     private suspend fun connectSession() {
         try {
             connectProcessor = ConnectProcessor()
-            isConnected = when (connectProcessor.connect(options, CoroutineScope(contextClient)
-            ) { byteArray -> writeChannel(byteArray) }) {
+            isConnected = when (connectProcessor.connect(options, childScope()
+            ) { byteArray -> socketConnection?.writeChannel(byteArray) }) {
                 RESULT_SUCCESS -> true
                 RESULT_FAIL -> throw TimeoutException("No answer for connect process. Timeout")
             }
@@ -185,22 +184,22 @@ class MqttClient(
     }
 
     private suspend fun startPingTask() {
-        pingJob = CoroutineScope(contextClient).launch {
+        pingJob = doInBackground {
             try {
                 if ( pingProcessor.isCancelled ) pingProcessor = PingProcessor()
                 val keepAliveMs = TimeUnit.SECONDS.toMillis(options.keepAliveTime.toLong())
-                while (isActive) {
+                while (it.isActive) {
                     delay(keepAliveMs + options.actionTimeout)
-                    when(pingProcessor.ping(options, CoroutineScope(contextClient)) { byteArray -> writeChannel(byteArray) })
+                    when(pingProcessor.ping(options, childScope()) { byteArray ->
+                        socketConnection?.writeChannel(byteArray)
+                    })
                     {
                         RESULT_SUCCESS -> Unit
-                        RESULT_FAIL -> closeSocket(
-                            TimeoutException("Did not receive a response for a long time : "
-                                    + "${options.keepAliveTime}s [ping]"))
+                        RESULT_FAIL -> closeSocket()
                     }
                 }
             }catch (ex: Exception){
-                closeSocket(ex)
+                closeSocket()
             }
         }
     }
@@ -210,7 +209,7 @@ class MqttClient(
     }
 
     override fun subscribe(qos: Int, topics: List<String>) {
-        CoroutineScope(contextClient).launch {
+        doInBackground {
             val sp = SubscribeProcessor()
             subscribeProcessorList.add(sp)
             try {
@@ -218,15 +217,15 @@ class MqttClient(
                     topics,
                     qos,
                     options,
-                    CoroutineScope(contextClient)
+                    childScope()
                 ) { byteArray ->
-                    writeChannel(byteArray)
+                    socketConnection?.writeChannel(byteArray)
                 }) {
                     RESULT_SUCCESS -> listener?.onSubscribe(topics.toString())
                     RESULT_FAIL -> listener?.onResponseTimeout("Subscribe：$topics")
                 }
             } catch (e: Exception) {
-                closeSocket(e)
+                closeSocket()
             } finally {
                 subscribeProcessorList.remove(sp)
             }
@@ -234,18 +233,18 @@ class MqttClient(
     }
 
     override fun unsubscribe(topics: List<String>) {
-        CoroutineScope(contextClient).launch {
+        doInBackground {
             val usp = UnsubscribeProcessor()
             unsubscribeProcessorList.add(usp)
             try {
-                when (usp.unsubscribe(topics, options, CoroutineScope(contextClient)) { byteArray ->
-                    writeChannel(byteArray)
+                when (usp.unsubscribe(topics, options, childScope()) { byteArray ->
+                    socketConnection?.writeChannel(byteArray)
                 }) {
                     RESULT_SUCCESS -> listener?.onUnsubscribe(topics.toString())
                     RESULT_FAIL -> listener?.onResponseTimeout("Unsubscribe：$topics")
                 }
             } catch (e: Exception) {
-                closeSocket(e)
+                closeSocket()
             } finally {
                 unsubscribeProcessorList.remove(usp)
             }
@@ -253,7 +252,7 @@ class MqttClient(
     }
 
     override fun publish(topic: String, content: String) {
-        CoroutineScope(contextClient).launch {
+        doInBackground {
             val pp = PublishProcessor()
             publishProcessorList.add(pp)
             try {
@@ -261,15 +260,15 @@ class MqttClient(
                     topic,
                     content,
                     options,
-                    CoroutineScope(contextClient)
+                    childScope()
                 ) { byteArray ->
-                    writeChannel(byteArray)
+                    socketConnection?.writeChannel(byteArray)
                 }) {
                     RESULT_SUCCESS -> {}//i("Publish ok：$content")
                     RESULT_FAIL -> listener?.onResponseTimeout("Publish：$content")
                 }
             } catch (e: Exception) {
-                closeSocket(e)
+                closeSocket()
             } finally {
                 publishProcessorList.remove(pp)
             }
@@ -280,19 +279,17 @@ class MqttClient(
         disConnectParameters()
         stateConnection?.let{  it(false) }
 //        selectorManager.cancel()
-        byteReadChannel = null
-        byteWriteChannel = null
-        socket = null
+        socketConnection = null
     }
 
-    fun disConnect() {
-        CoroutineScope(contextClient).launch {
+    override fun disConnect() {
+        doInBackground {
             try {
-                writeChannel(
+                socketConnection?.writeChannel(
                     MqttDisconnectMessage(mqttVersion = mqttVer).toDecByteArray(mqttVer)
                 )
             } catch (e: Exception) {
-                closeSocket(e)
+                closeSocket()
             } finally {
                 disConnectParameters()
             }
@@ -309,131 +306,123 @@ class MqttClient(
         publishProcessorList.forEach { sp -> sp.cancel() }
     }
 
-    private val mutex = Mutex()
-    suspend fun readChannel(size: Int): ByteArray {
-        if (byteReadChannel?.isClosedForWrite == true)
-            closeSocket(Exception("Read channel isClosedForWrite"))
-
-        while (byteReadChannel!!.availableForRead < size) delay(50)
-        val byteArray = ByteArray(size)
-        mutex.withLock {
-            byteReadChannel!!.readFully(byteArray, 0, size)
-        }
-        return byteArray
-    }
-
-    suspend fun writeChannel(byteArray: ByteArray) {
-        if (byteWriteChannel?.isClosedForWrite == true) {
-            closeSocket(Exception("Write channel isClosedForWrite"))
-            return
-        }
-        mutex.withLock {
-            byteWriteChannel!!.writeFully(byteArray)
-        }
-    }
-
     internal inner class MQTTHandler {
         private val dec = MqttDecoder()
         private val chunkBuffer = ChunkBuffer(ByteBuffer.allocate(dec.maxBytesInMessage))
 
         @Throws(Exception::class)
         suspend fun channelRead() {
-            val mqttFixedHeader = dec.decodeFixedHeader(mqttVer) { size -> readChannel(size) }
-            while (byteReadChannel!!.availableForRead < mqttFixedHeader.remainingLength) delay(50)
-            chunkBuffer.reset()
-            mutex.withLock {
-                byteReadChannel!!.readFully(chunkBuffer, mqttFixedHeader.remainingLength)
-            }
-            i("-->ChannelRead :${mqttFixedHeader.messageType.name}")
-            when (mqttFixedHeader.messageType) {
-                MqttMessageType.CONNACK -> connectProcessor.processAck(
-                    MqttConnAckMessage(
-                        mqttFixedHeader, dec.decodeConnAckVariableHeader(mqttVer, chunkBuffer)
-                    )
-                )
-
-                MqttMessageType.SUBACK -> {
-                    val mqttSubAckMessage = MqttSubAckMessage(
-                        mqttFixedHeader, dec.decodeVariableHeader(mqttVer, chunkBuffer),
-                        dec.decodeSubAckPayload(chunkBuffer)
-                    )
-                    subscribeProcessorList.forEach { subscribeProcessor ->
-                        subscribeProcessor.processAck(mqttSubAckMessage)
-                    }
+            try {
+                val mqttFixedHeader = dec.decodeFixedHeader(mqttVer) { size ->
+                    socketConnection?.readByteArray(size) ?: throw IOException()
                 }
-
-                MqttMessageType.UNSUBACK -> {
-                    val mqttUnsubAckMessage = MqttUnsubAckMessage(
-                        mqttFixedHeader, dec.decodeVariableHeader(mqttVer, chunkBuffer),
-                        dec.decodeUnsubAckPayload(chunkBuffer)
-                    )
-                    unsubscribeProcessorList.forEach { unsubscribeProcessor ->
-                        unsubscribeProcessor.processAck(mqttUnsubAckMessage)
-                    }
-                }
-
-                MqttMessageType.PUBLISH -> {
-                    val mqttPublishVariableHeader = dec.decodePublishVariableHeader(
-                        mqttVer, chunkBuffer, mqttFixedHeader
-                    )
-                    val publishMessage = MqttPublishMessage(
-                        mqttFixedHeader,
-                        mqttPublishVariableHeader,
-                        dec.decodePublishPayload(chunkBuffer)
-                    )
-                    val topic = mqttPublishVariableHeader.topicName
-                    val msg = publishMessage.payload().toString(UTF_8)
-                    listener?.onMessageArrived(topic, msg)
-                    onMessageArrived?.let { it(topic, msg) }
-
-                    if (mqttFixedHeader.qosLevel in listOf(
-                            MqttQoS.AT_LEAST_ONCE,
-                            MqttQoS.EXACTLY_ONCE
+                socketConnection?.readChunkBuffer(mqttFixedHeader.remainingLength, chunkBuffer)
+                i("-->ChannelRead :${mqttFixedHeader.messageType.name}")
+                when (mqttFixedHeader.messageType) {
+                    MqttMessageType.CONNACK -> connectProcessor.processAck(
+                        MqttConnAckMessage(
+                            mqttFixedHeader, dec.decodeConnAckVariableHeader(mqttVer, chunkBuffer)
                         )
-                    ) {
-                        // Wiadomości z poziomami qos 1 i 2 wymagają wysłania potwierdzenia
-                        // Uwaga: przed wysłaniem potwierdzenia należy je całkowicie przeczytać.
-                        val mqttPubAckMessage =
-                            MqttPubAckMessage(mqttPublishVariableHeader.packetId)
-                        writeChannel(mqttPubAckMessage.toDecByteArray(mqttVer))
-                    }
-                }
-                // qos = 1 Ta odpowiedź jest wymagana do wydania
-                MqttMessageType.PUBACK -> {
-                    val pubAckMessage = MqttPubAckMessage(
-                        mqttFixedHeader,
-                        dec.decodeVariableHeader(mqttVer, chunkBuffer),
                     )
-                    publishProcessorList.forEach { publishProcessor ->
-                        publishProcessor.processAck(pubAckMessage)
+
+                    MqttMessageType.SUBACK -> {
+                        val mqttSubAckMessage = MqttSubAckMessage(
+                            mqttFixedHeader, dec.decodeVariableHeader(mqttVer, chunkBuffer),
+                            dec.decodeSubAckPayload(chunkBuffer)
+                        )
+                        subscribeProcessorList.forEach { subscribeProcessor ->
+                            subscribeProcessor.processAck(mqttSubAckMessage)
+                        }
                     }
+
+                    MqttMessageType.UNSUBACK -> {
+                        val mqttUnsubAckMessage = MqttUnsubAckMessage(
+                            mqttFixedHeader, dec.decodeVariableHeader(mqttVer, chunkBuffer),
+                            dec.decodeUnsubAckPayload(chunkBuffer)
+                        )
+                        unsubscribeProcessorList.forEach { unsubscribeProcessor ->
+                            unsubscribeProcessor.processAck(mqttUnsubAckMessage)
+                        }
+                    }
+
+                    MqttMessageType.PUBLISH -> {
+                        val mqttPublishVariableHeader = dec.decodePublishVariableHeader(
+                            mqttVer, chunkBuffer, mqttFixedHeader
+                        )
+                        val publishMessage = MqttPublishMessage(
+                            mqttFixedHeader,
+                            mqttPublishVariableHeader,
+                            dec.decodePublishPayload(chunkBuffer)
+                        )
+                        val topic = mqttPublishVariableHeader.topicName
+                        val msg = publishMessage.payload().toString(UTF_8)
+                        listener?.onMessageArrived(topic, msg)
+                        onMessageArrived?.let { it(topic, msg) }
+                        listMessageArrived.forEach {
+                            doInBackground {
+                                it(topic, msg)
+                            }
+                        }
+                        if (mqttFixedHeader.qosLevel in listOf(
+                                MqttQoS.AT_LEAST_ONCE, MqttQoS.EXACTLY_ONCE)) {
+                            // Wiadomości z poziomami qos 1 i 2 wymagają wysłania potwierdzenia
+                            // Uwaga: przed wysłaniem potwierdzenia należy je całkowicie przeczytać.
+                            val mqttPubAckMessage =
+                                MqttPubAckMessage(mqttPublishVariableHeader.packetId)
+                            socketConnection?.writeChannel(mqttPubAckMessage.toDecByteArray(mqttVer))
+                        }
+                    }
+                    // qos = 1 Ta odpowiedź jest wymagana do wydania
+                    MqttMessageType.PUBACK -> {
+                        val pubAckMessage = MqttPubAckMessage(
+                            mqttFixedHeader,
+                            dec.decodeVariableHeader(mqttVer, chunkBuffer),
+                        )
+                        publishProcessorList.forEach { publishProcessor ->
+                            publishProcessor.processAck(pubAckMessage)
+                        }
+                    }
+
+                    MqttMessageType.PUBREC -> {}
+                    MqttMessageType.PUBREL -> {}
+                    MqttMessageType.PUBCOMP -> {}
+                    MqttMessageType.PINGRESP ->
+                        pingProcessor.processAck(MqttPingResponseMessage(mqttFixedHeader))
+
+                    MqttMessageType.CONNECT -> {}
+                    MqttMessageType.SUBSCRIBE -> {}
+                    MqttMessageType.UNSUBSCRIBE -> {}
+                    MqttMessageType.PINGREQ -> {}
+                    MqttMessageType.DISCONNECT -> {
+                        val reasonDisconnect =
+                            dec.decodeDisconnectVariableHeader(
+                                mqttVer,
+                                chunkBuffer
+                            ).disconnectReasonCode
+                        listener?.onDisConnected(reasonDisconnect.toDesc())
+                        disConnectParameters()
+                    }
+                    else -> {}
                 }
-
-                MqttMessageType.PUBREC -> {}
-                MqttMessageType.PUBREL -> {}
-                MqttMessageType.PUBCOMP -> {}
-                MqttMessageType.PINGRESP ->
-                    pingProcessor.processAck(MqttPingResponseMessage(mqttFixedHeader))
-
-                MqttMessageType.CONNECT -> {}
-                MqttMessageType.SUBSCRIBE -> {}
-                MqttMessageType.UNSUBSCRIBE -> {}
-                MqttMessageType.PINGREQ -> {}
-                MqttMessageType.DISCONNECT -> {
-                    val reasonDisconnect =
-                        dec.decodeDisconnectVariableHeader(
-                            mqttVer,
-                            chunkBuffer
-                        ).disconnectReasonCode
-                    listener?.onDisConnected(reasonDisconnect.toDesc())
-                    disConnectParameters()
-                }
-
-                else -> {}
+            }catch (ex: Exception){
+                closeSocket()
             }
         }
     }
 
+    private fun createCallScope(parentJob: Job): CoroutineScope {
+        val callJob = Job(parentJob)
+//    val callContext = this.coroutineContext + callJob + MQTT_COROUTINE
+        return CoroutineScope( callJob + MQTT_COROUTINE)
+    }
+
+    internal inline fun doInBackground(crossinline block: suspend (CoroutineScope) -> Unit): Job {
+        val childrenJob = backgroundScope.launch {
+            block.invoke(this)
+        }
+        return childrenJob
+    }
+
+    private fun childScope(): CoroutineScope = CoroutineScope(backgroundScope.coroutineContext)
 
 }
-

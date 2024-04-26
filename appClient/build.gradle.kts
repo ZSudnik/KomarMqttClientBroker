@@ -4,12 +4,12 @@ plugins {
 //    id("com.google.devtools.ksp")
 }
 
-    tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
-        kotlinOptions.jvmTarget = ver.build.java_compatibility.toString()
-    }
-    task("testClasses").doLast {
-        println("This is a dummy testClasses task")
-    }
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
+    kotlinOptions.jvmTarget = ver.build.java_compatibility.toString()
+}
+task("testClasses").doLast {
+    println("This is a dummy testClasses task")
+}
 
 android {
     namespace = "com.zibi.app.ex.client"
@@ -90,6 +90,8 @@ dependencies {
     implementation( "androidx.activity:activity-compose:${ver.androidx.activity_compose}")
 
     implementation("io.insert-koin:koin-android:${ver.various.koin}")
+    implementation("io.ktor:ktor-server-core:${ver.various.ktor}")
+    implementation("io.ktor:ktor-server-cio:${ver.various.ktor}")
 
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:${ver.jetbrains.coroutines}")
 
