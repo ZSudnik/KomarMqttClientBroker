@@ -25,9 +25,11 @@ class ConnectProcessor: IProcessor {
     suspend fun connect(
         options: MqttConnectOptions,
         scope: CoroutineScope,
+//        executionContext: Job,
         writeChannel: suspend (ByteArray) -> Unit,
     ): ProcessorResult {
         writeChannel(MqttConnectMessage(options).toDecByteArray(options.mqttVersion))
+//        CoroutineScope( executionContext).launch {
         job = scope.launch {
             delay(options.actionTimeout)
             try {

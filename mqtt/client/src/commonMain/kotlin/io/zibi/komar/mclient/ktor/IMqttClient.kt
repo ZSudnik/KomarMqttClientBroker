@@ -1,4 +1,7 @@
-package io.zibi.komar.mclient
+package io.zibi.komar.mclient.ktor
+
+import kotlinx.coroutines.Job
+import kotlin.coroutines.CoroutineContext
 
 interface IMqttClient {
 

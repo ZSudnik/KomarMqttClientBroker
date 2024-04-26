@@ -1,19 +1,39 @@
-package com.zibi.service.client.service
+package com.zibi.service.client.service_ktor
 
 import android.annotation.SuppressLint
 import android.util.Log
 import com.zibi.mod.data_store.preferences.LightBulbStore
-import io.zibi.komar.mclient.MqttClient
-import io.zibi.codec.mqtt.util.MqttConnectOptions
+import com.zibi.service.client.service.ClientProperties
+import io.zibi.komar.mclient.ktor.Mqtt
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.async
 
-object MQTTWrapper {
-    private var mqttClient: MqttClient? = null
+//fun Application.module() {
+//    configureMqtt()
+//}
+
+//fun Application.configureMqtt() {
+//    // Installs the plugin to the server so that you can use it, won't work otherwise
+//    install(Mqtt) {
+//        initSubscriptions(topics = Topic.list)
+//    }
+//
+//    // Allows to map function to different topics
+//    routing {
+//        topic(Topic.LivingRoom.light1) {
+//            println(it)
+//        }
+//        topic(Topic.LivingRoom.light2) {
+//            println(it)
+//        }
+//    }
+//}
+
+
+object KxMQTTWrapper {
 
     fun onPublishCommand(topic: String, message: String) {
-        if (mqttClient?.isConnected == true) {
+        if (Mqtt.client.isConnected()) {
             val msgMap =
                 message.replace("[{}\"]".toRegex(), "")
                     .split("(,(?=[^,]+:))".toRegex())
@@ -23,7 +43,7 @@ object MQTTWrapper {
                         left to right
                     }
             msgMap.forEach { (key, value) ->
-                mqttClient?.publish(topic = "cmnd/${topic}/${key}", content = value)
+                Mqtt.client.publish(topic = "cmnd/${topic}/${key}", content = value)
             }
 //            val ss = "{\"POWER\":\"ON\",\"Dimmer\":100,\"Color\":\"3152870000\",\"HSBColor\":\"217,64,53\",\"White\":0,\"CT\":253,\"Channel\":[19,32,53,0,0]}"
 //            val ss = "{\"Dimmer\":53,\"Color\":\"3152870000\",\"White\":0,\"CT\":253}"
@@ -35,29 +55,15 @@ object MQTTWrapper {
     }
 
     @SuppressLint("SuspiciousIndentation")
-    suspend fun startClientAuto(
+    fun startClientAuto(
         prop: ClientProperties,
         lightBulbStore: LightBulbStore,
-//        coroutineScope: CoroutineScope,
-        parentJob: Job,
-        errorConnect: (Boolean) -> Unit,
-        ): Boolean {
-        mqttClient = MqttClient(prop as MqttConnectOptions, parentJob)
-        mqttClient?.let {
-            it.listener = ClientListenerSrv(
-                mqttClient = it,
-                lightBulbStore = lightBulbStore,
-                onOffConnect = errorConnect
-            )
-        }
-        return CoroutineScope(parentJob).async {
-             try {
-                mqttClient?.connectAuto()
-                mqttClient?.isConnected ?: false
-            } catch (e: Exception) {
-                false
-            }
-        }.await()
+        onOffConnect: (Boolean) -> Unit,
+        ) {
+        Mqtt.client.reloadConfiguration(prop)
+        Mqtt.client.addOnMessageArrived( lightBulbStore::setMessageArrived)
+        Mqtt.client.addOnOffMonitorConnection(onOffConnect)
+        Mqtt.client.connectAuto()
     }
 
     @SuppressLint("SuspiciousIndentation")
@@ -65,32 +71,24 @@ object MQTTWrapper {
         prop: ClientProperties,
         lightBulbStore: LightBulbStore,
         coroutineScope: CoroutineScope,
-        errorConnect: (Boolean) -> Unit,
+        onOffConnect: (Boolean) -> Unit,
     ): Boolean {
-//        mqttClient = MqttClient(prop as MqttConnectOptions, coroutineScope.coroutineContext)
-        mqttClient?.let {
-            it.listener = ClientListenerSrv(
-                mqttClient = it,
-                lightBulbStore = lightBulbStore,
-                onOffConnect = errorConnect
-            )
-        }
+        Mqtt.client.reloadConfiguration(prop)
+        Mqtt.client.addOnMessageArrived( lightBulbStore::setMessageArrived)
+        Mqtt.client.addOnOffMonitorConnection(onOffConnect)
         return coroutineScope.async {
             try {
-                mqttClient?.connectOne()
-                mqttClient?.isConnected ?: false
+                Mqtt.client.connectOne()
+                Mqtt.client.isConnected()
             } catch (e: Exception) {
                 false
             }
         }.await()
     }
 
-    fun isConnected() = ( mqttClient?.isConnected ?: false) && (mqttClient?.isSocketActive ?: false)
-
     fun stopClient() {
         try {
-            mqttClient?.shutDown()
-            mqttClient = null
+            Mqtt.client.shutDown()
         } catch (e: Exception) {
             Log.e("", e.message ?: "")
         }
@@ -98,7 +96,7 @@ object MQTTWrapper {
 
     fun disConnectClient() {
         try {
-            mqttClient?.disConnect()
+            Mqtt.client.disConnect()
         } catch (e: Exception) {
             Log.e("", e.message ?: "")
         }

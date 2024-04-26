@@ -55,7 +55,7 @@ class LightBulbStore(
         }
     }
 
-    suspend fun setMessageArrived(topic: String, msg: String) {
+     suspend fun setMessageArrived(topic: String, msg: String) {
         topicClean( topic)?.let { shorTopic ->
             mapStateTemplate[shorTopic]?.let { shortModel ->
                 shortModel.overwrite(msg)

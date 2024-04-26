@@ -22,10 +22,10 @@ import com.zibi.mod.common.navigation.global.GlobalNavigationEvent
 import com.zibi.mod.common.navigation.global.GlobalNavigationEventHandler
 import com.zibi.mod.common.navigation.global.GlobalNavigationManager
 import com.zibi.service.client.service.MQTTService
+//import com.zibi.service.client.service_ktor.KMQTTService
 import org.koin.android.ext.android.inject
 
 const val REQUEST_PERMISSION_NOTIFICATION = 1159828952
-const val REQUEST_PERMISSION_CAMERA = 1
 
 class MainActivity : AppCompatActivity(), GlobalNavigationEventHandler {
 

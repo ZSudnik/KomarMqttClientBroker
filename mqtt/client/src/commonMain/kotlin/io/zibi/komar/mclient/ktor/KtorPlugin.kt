@@ -1,25 +1,34 @@
-package io.zibi.komar.mclient
+package io.zibi.komar.mclient.ktor
 
 import io.ktor.server.application.Application
 import io.ktor.server.application.ApplicationStopPreparing
 import io.ktor.server.application.BaseApplicationPlugin
 import io.ktor.events.EventDefinition
+import io.ktor.server.application.ApplicationCallPipeline
+import io.ktor.server.application.ApplicationCallPipeline.ApplicationPhase.Plugins
+import io.ktor.server.application.call
 import io.ktor.server.application.install
 import io.ktor.server.application.plugin
+import io.ktor.server.response.respondText
 import io.ktor.server.routing.Route
 import io.ktor.server.routing.application
 import io.ktor.util.AttributeKey
 import io.ktor.util.KtorDsl
 import io.zibi.codec.mqtt.MqttQoS
 import io.zibi.codec.mqtt.util.MqttConnectOptions
+import io.zibi.komar.mclient.ktor.IMqttClient
+import io.zibi.komar.mclient.ktor.MqttClient
 import io.zibi.komar.mclient.core.IListener
+import kotlinx.coroutines.CompletableJob
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.cancel
+import kotlinx.coroutines.job
 import kotlinx.coroutines.launch
 import java.util.concurrent.ConcurrentHashMap
 import kotlin.coroutines.CoroutineContext
+import kotlin.reflect.KSuspendFunction2
 
 class TopicContext(val topic: String, private val mqttClient: Mqtt){
     fun sendMessage(topic: String, msg: String) =
@@ -29,11 +38,12 @@ typealias MessageListener = suspend TopicContext.(message: String) -> Unit
 
 fun Application.Mqtt(config: Mqtt.Configuration.() -> Unit): Mqtt = install(Mqtt, config)
 
+//fun Application.module() { configureMqtt() }
+
 interface Mqtt : CoroutineScope , IMqttClient {
 
     class Configuration {
         var connectionOptions = MqttConnectOptions()
-        var autoConnect: Boolean = true
         val topicSubscription = listOf<String>()
         var qoSSubscription: Int = 0
         fun initSubscriptions(qos: Int = 1, topics: List<String>) {
@@ -46,19 +56,20 @@ interface Mqtt : CoroutineScope , IMqttClient {
         }
     }
 
+    fun isConnected(): Boolean
+
     fun addTopicListener(topic: String, listener: MessageListener)
-    fun addGeneralListener(listener: IListener)
+//    fun addGeneralListener(listener: IListener)
+    fun addOnMessageArrived(onMsgArrived: KSuspendFunction2<String, String, Unit>)
     fun addOnOffMonitorConnection(onOff: (Boolean) -> Unit)
+    fun reloadConfiguration(connectionOptions: MqttConnectOptions)
 
-//    companion object Plugin : BaseApplicationPlugin<ApplicationCallPipeline, Configuration, CustomHeader> {
-//        // ...
-//    }
-
+    //    companion object Plugin : BaseApplicationPlugin<ApplicationCallPipeline, Configuration, CustomHeader> {
     companion object Plugin : BaseApplicationPlugin<Application, Configuration, Mqtt> {
         override val key: AttributeKey<Mqtt> = AttributeKey("Mqtt")
         val ConnectedEvent: EventDefinition<Mqtt> = EventDefinition()
         val ClosedEvent: EventDefinition<Unit> = EventDefinition()
-        private val coroutineContext = CoroutineScope(Dispatchers.IO).coroutineContext
+//        private val coroutineContext = CoroutineScope(Dispatchers.IO).coroutineContext
         lateinit var client: MqttClientPlugin
 
 
@@ -66,10 +77,11 @@ interface Mqtt : CoroutineScope , IMqttClient {
             val applicationMonitor = pipeline.environment.monitor
 
             val config = Configuration().apply(configure)
-            val delegate = MqttClient(config.connectionOptions, coroutineContext)
-            client = MqttClientPlugin(config, coroutineContext, delegate)
+            val parent: CompletableJob = Job()
+            val mqttClient = MqttClient(config.connectionOptions, parent)
+            client = MqttClientPlugin(mqttClient, parent)
 
-            if (config.autoConnect) client.connectAuto(null).also {
+            client.connectAuto().also {
                 applicationMonitor.raise(
                     ConnectedEvent, client
                 )
@@ -86,22 +98,25 @@ interface Mqtt : CoroutineScope , IMqttClient {
 
 
     class MqttClientPlugin(
-        private val config: Mqtt.Configuration,
-        private val corContext: CoroutineContext,
         private val mqttClient: MqttClient,
+        private val parent: CompletableJob
     ) : Mqtt {
 
         override val coroutineContext: CoroutineContext
-            get() = corContext
+            get() = parent
 
-        override fun connectAuto(timeout: Long?) {
-            mqttClient.connectAuto(timeout)
-            mqttClient.onMessageArrived = this::onMessageArrived
+        override fun isConnected(): Boolean = mqttClient.isConnected
+
+        override fun connectAuto() {
+            addOnMessageArrived(this::onMessageArrived)
+            mqttClient.connectAuto()
         }
-        override fun connectOne(timeout: Long?) {
-            mqttClient.connectOne(timeout)
-            mqttClient.onMessageArrived = this::onMessageArrived
+
+        override fun connectOne() {
+            addOnMessageArrived(this::onMessageArrived)
+            mqttClient.connectOne()
         }
+
         override fun subscribe(topics: List<String>) {
             mqttClient.subscribe(topics)
         }
@@ -129,38 +144,44 @@ interface Mqtt : CoroutineScope , IMqttClient {
 //        disconnectForcibly()
         }
 
+        override fun disConnect() {
+            mqttClient.disConnect()
+        }
+
         private val messageListenerByTopic = ConcurrentHashMap<String, MessageListener>()
 
         override fun addTopicListener(topic: String, listener: MessageListener) {
             messageListenerByTopic[topic] = listener
         }
 
-        override fun addGeneralListener(listener: IListener) {
-            mqttClient.listener = listener
+        override fun addOnMessageArrived(onMsgArrived: KSuspendFunction2<String, String, Unit>) {
+            mqttClient.listMessageArrived.add(onMsgArrived)
         }
 
         override fun addOnOffMonitorConnection(onOff: (Boolean) -> Unit) {
             mqttClient.stateConnection = onOff
         }
 
+        override fun reloadConfiguration(connectionOptions: MqttConnectOptions) {
+            mqttClient.reloadConfiguration(connectionOptions)
+        }
 
-        private fun onMessageArrived(topic: String, msg: String){
-            messageListenerByTopic[topic].let {
+        private suspend fun onMessageArrived(topic: String, msg: String) {
+            messageListenerByTopic[topic].let { messageListener ->
                 launch {
-                    it?.invoke(TopicContext(topic, this@MqttClientPlugin), msg)
+                    messageListener?.invoke(TopicContext(topic, this@MqttClientPlugin), msg)
                 }
             }
         }
-
-
     }
+
 }
 
 @KtorDsl
-fun Route.topic(topic: String, qos: MqttQoS = MqttQoS.AT_MOST_ONCE, listener: MessageListener): Job {
+fun Route.topic(topic: String, qos: MqttQoS = MqttQoS.AT_MOST_ONCE, listener: MessageListener) {//}: Job {
     val client = application.plugin(Mqtt)
     client.addTopicListener(topic, listener)
-    return client.launch {
-        client.subscribe(  qos.value(), listOf( topic) )
-    }
+//    return client.launch {
+//        client.subscribe(  qos.value(), listOf( topic) )
+//    }
 }
