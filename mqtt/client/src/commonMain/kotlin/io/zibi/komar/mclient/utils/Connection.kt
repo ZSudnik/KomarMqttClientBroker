@@ -45,7 +45,6 @@ class Connection(
             output.writeFully(byteArray)
         }
     }
-
 }
 
 /**
@@ -53,8 +52,6 @@ class Connection(
  */
 fun Socket.connection(): Connection = Connection(this, openReadChannel(), openWriteChannel(autoFlush = true))
 
-fun Connection?.isClose() = this?.input?.isClosedForWrite == true
-fun Connection?.waitForAvailable(size: Int) = this?.input?.availableForRead!! < size
 fun Connection?.waitForAvailable() =
     try {
         this?.input?.availableForRead
@@ -62,4 +59,4 @@ fun Connection?.waitForAvailable() =
     }catch (ex: Exception){
         true
     }
-fun Connection?.isWriteClose() = this?.output?.isClosedForWrite == true
+fun Connection?.isClose() = this?.input?.isClosedForWrite != false

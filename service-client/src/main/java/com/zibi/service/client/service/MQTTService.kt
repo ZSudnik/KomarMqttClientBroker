@@ -52,13 +52,13 @@ class MQTTService : Service() {
                     prop = getClientProperties(),
                     lightBulbStore = lightBulbStore,
                     parentJob = serviceJob!!,
-                    errorConnect = { value -> errorClient(value) }
+                    onOffConnect = this@MQTTService::onOffConnect
                 )
             }
         return START_STICKY
     }
 
-    private fun errorClient(value: Boolean){
+    private fun onOffConnect(value: Boolean){
         if(isConn != value) {
             isClientRunning.value = value
             startForeground(NOT_SERVICE_ID, NotificationUtil(this@MQTTService).notification)

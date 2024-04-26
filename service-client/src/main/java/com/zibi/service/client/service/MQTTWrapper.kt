@@ -38,16 +38,15 @@ object MQTTWrapper {
     suspend fun startClientAuto(
         prop: ClientProperties,
         lightBulbStore: LightBulbStore,
-//        coroutineScope: CoroutineScope,
         parentJob: Job,
-        errorConnect: (Boolean) -> Unit,
+        onOffConnect: (Boolean) -> Unit,
         ): Boolean {
         mqttClient = MqttClient(prop as MqttConnectOptions, parentJob)
         mqttClient?.let {
+            it.stateConnection = onOffConnect
             it.listener = ClientListenerSrv(
                 mqttClient = it,
                 lightBulbStore = lightBulbStore,
-                onOffConnect = errorConnect
             )
         }
         return CoroutineScope(parentJob).async {
@@ -64,18 +63,18 @@ object MQTTWrapper {
     suspend fun startClientOne(
         prop: ClientProperties,
         lightBulbStore: LightBulbStore,
-        coroutineScope: CoroutineScope,
-        errorConnect: (Boolean) -> Unit,
+        parentJob: Job,
+        onOffConnect: (Boolean) -> Unit,
     ): Boolean {
-//        mqttClient = MqttClient(prop as MqttConnectOptions, coroutineScope.coroutineContext)
+        mqttClient = MqttClient(prop as MqttConnectOptions, parentJob)
         mqttClient?.let {
+            it.stateConnection = onOffConnect
             it.listener = ClientListenerSrv(
                 mqttClient = it,
                 lightBulbStore = lightBulbStore,
-                onOffConnect = errorConnect
             )
         }
-        return coroutineScope.async {
+        return CoroutineScope(parentJob).async {
             try {
                 mqttClient?.connectOne()
                 mqttClient?.isConnected ?: false
@@ -84,8 +83,6 @@ object MQTTWrapper {
             }
         }.await()
     }
-
-    fun isConnected() = ( mqttClient?.isConnected ?: false) && (mqttClient?.isSocketActive ?: false)
 
     fun stopClient() {
         try {
