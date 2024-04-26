@@ -2,6 +2,7 @@ package io.zibi.komar.mclient
 
 import io.ktor.network.selector.SelectorManager
 import io.ktor.network.sockets.aSocket
+import io.ktor.network.sockets.awaitClosed
 import io.ktor.utils.io.core.ChunkBuffer
 import io.ktor.utils.io.errors.IOException
 import io.zibi.codec.mqtt.MqttConnAckMessage
@@ -58,8 +59,7 @@ class MqttClient(
 
     var listener: IListener? = null
     var stateConnection: ((Boolean) -> Unit)? = null
-    var onMessageArrived: ((topic: String, msg: String) -> Unit)? = null
-    var listMessageArrived: MutableList< KSuspendFunction2<String, String, Unit>> = mutableListOf()
+    var listMessageArrived: CopyOnWriteArrayList<KSuspendFunction2<String, String, Unit>> = CopyOnWriteArrayList()
     fun reloadConfiguration(configuration: MqttConnectOptions){
         options = configuration
     }
@@ -69,15 +69,12 @@ class MqttClient(
     private var socketConnection: Connection? = null
     private var connectProcessor: ConnectProcessor = ConnectProcessor()
     private var pingProcessor: PingProcessor = PingProcessor()
-    private val subscribeProcessorList: CopyOnWriteArrayList<SubscribeProcessor> =
-        CopyOnWriteArrayList()
-    private val unsubscribeProcessorList: CopyOnWriteArrayList<UnsubscribeProcessor> =
-        CopyOnWriteArrayList()
-    private val publishProcessorList: CopyOnWriteArrayList<PublishProcessor> =
-        CopyOnWriteArrayList()
+    private val subscribeProcessorList: CopyOnWriteArrayList<SubscribeProcessor> = CopyOnWriteArrayList()
+    private val unsubscribeProcessorList: CopyOnWriteArrayList<UnsubscribeProcessor> = CopyOnWriteArrayList()
+    private val publishProcessorList: CopyOnWriteArrayList<PublishProcessor> = CopyOnWriteArrayList()
     var isConnected = false
         private set
-    val isSocketActive
+    private val isSocketActive
         get() = socketConnection?.socket?.isActive ?: false
 
     private fun closeSocket() {
@@ -86,11 +83,6 @@ class MqttClient(
             listener?.onConnectLost( Exception("Close socket"))
             shutDown()
         }
-    }
-
-    private suspend fun delayConnection( idText: String) {
-        i("Connect: initializer timeout :${options.actionTimeout / 1000} s $idText")
-        delay(options.actionTimeout)
     }
 
     private suspend fun socketLink(): Boolean =
@@ -106,35 +98,39 @@ class MqttClient(
             }
         } != RESULT_SUCCESS
 
-    override fun connectAuto() {
-        val halfTimeout =  options.actionTimeout/ 2
+    private fun monitorSocketLink(){
         doInBackground {
-            while ( it.isActive) {
-                if (!isSocketActive) {
-                    listener?.onConnectLost(Exception("Main thread: lose socket"))
-                    stateConnection?.let{  it(false) }
-                    do {
-                        if(!it.isActive) return@doInBackground
-                        if (socketLink()) {
-                            delayConnection( "socket")
-                            closeSocket()
-                        }
-                    } while ( !isSocketActive)
-                }
-                if (!isConnected) {
-                    listener?.onConnectLost(Exception("Main thread: lose connection"))
-                    stateConnection?.let{  it(false) }
-                    do {
-                        if(!it.isActive) return@doInBackground
-                        openReceiver()
-                        connectSession()
-                        delayConnection("connection")
-                    } while ( isSocketActive && !isConnected)
-                }
-                if (socketConnection.isClose()) closeSocket()
-                delay(halfTimeout)
+            try {
+                socketConnection!!.socket.awaitClosed()
+                closeSocket()
+            }catch (ex: Exception){
+                closeSocket()
             }
-            stateConnection?.let{  it(false) }
+        }
+    }
+
+    override fun connectAuto() {
+        val halfTimeout = options.actionTimeout / 2
+        doInBackground {
+            while (it.isActive) {
+                while (!isSocketActive && it.isActive) {
+                    stateConnection?.let { it(false) }
+                    if (socketLink()) {
+                        delay(options.actionTimeout)
+                    } else {
+                        monitorSocketLink()
+                    }
+                }
+                while (isSocketActive && !isConnected && it.isActive) {
+                    stateConnection?.let { it(false) }
+                    openReceiver()
+                    connectSession()
+                    if (!isConnected) delay(options.actionTimeout)
+                }
+                delay(halfTimeout)
+                if (socketConnection.isClose()) closeSocket() //monitorSocketLink same times no working
+            }
+            stateConnection?.let { it(false) }
         }
     }
 
@@ -150,14 +146,14 @@ class MqttClient(
         receiverJob = doInBackground {
             try {
                 val mqttHandler = MQTTHandler()
-                while ( !socketConnection.isClose()) {
+                while ( it.isActive) {
                     if (socketConnection.waitForAvailable()) return@doInBackground
                     mqttHandler.channelRead()
                 }
             } catch (e: Exception) {
                 when (e) {
                     is DecoderException -> disConnect()
-                    is NullPointerException -> {} //error if byteReadChannel == null after shutDown
+                    is NullPointerException -> closeSocket() //error if byteReadChannel == null after shutDown
                     else -> closeSocket()
                 }
             }
@@ -170,16 +166,17 @@ class MqttClient(
             isConnected = when (connectProcessor.connect(options, childScope()
             ) { byteArray -> socketConnection?.writeChannel(byteArray) }) {
                 RESULT_SUCCESS -> true
-                RESULT_FAIL -> throw TimeoutException("No answer for connect process. Timeout")
+                RESULT_FAIL -> false
             }
         } catch (ex: Exception) {
-            listener?.onConnectFailed(ex)
+            closeSocket()
         } finally {
+            stateConnection?.let{  it(isConnected) }
             if (isConnected) {
                 startPingTask()
                 listener?.onConnected()
-                stateConnection?.let{  it(true) }
-            }
+            }else
+                listener?.onConnectFailed( TimeoutException("No answer for connect process. Timeout"))
         }
     }
 
@@ -192,8 +189,7 @@ class MqttClient(
                     delay(keepAliveMs + options.actionTimeout)
                     when(pingProcessor.ping(options, childScope()) { byteArray ->
                         socketConnection?.writeChannel(byteArray)
-                    })
-                    {
+                    }) {
                         RESULT_SUCCESS -> Unit
                         RESULT_FAIL -> closeSocket()
                     }
@@ -213,16 +209,11 @@ class MqttClient(
             val sp = SubscribeProcessor()
             subscribeProcessorList.add(sp)
             try {
-                when (sp.subscribe(
-                    topics,
-                    qos,
-                    options,
-                    childScope()
-                ) { byteArray ->
+                when (sp.subscribe(topics, qos, options, childScope()) { byteArray ->
                     socketConnection?.writeChannel(byteArray)
                 }) {
                     RESULT_SUCCESS -> listener?.onSubscribe(topics.toString())
-                    RESULT_FAIL -> listener?.onResponseTimeout("Subscribe：$topics")
+                    RESULT_FAIL -> closeSocket()
                 }
             } catch (e: Exception) {
                 closeSocket()
@@ -241,7 +232,7 @@ class MqttClient(
                     socketConnection?.writeChannel(byteArray)
                 }) {
                     RESULT_SUCCESS -> listener?.onUnsubscribe(topics.toString())
-                    RESULT_FAIL -> listener?.onResponseTimeout("Unsubscribe：$topics")
+                    RESULT_FAIL -> closeSocket()
                 }
             } catch (e: Exception) {
                 closeSocket()
@@ -256,16 +247,11 @@ class MqttClient(
             val pp = PublishProcessor()
             publishProcessorList.add(pp)
             try {
-                when (pp.publish(
-                    topic,
-                    content,
-                    options,
-                    childScope()
-                ) { byteArray ->
+                when (pp.publish(topic, content, options, childScope()) { byteArray ->
                     socketConnection?.writeChannel(byteArray)
                 }) {
-                    RESULT_SUCCESS -> {}//i("Publish ok：$content")
-                    RESULT_FAIL -> listener?.onResponseTimeout("Publish：$content")
+                    RESULT_SUCCESS -> Unit//i("Publish ok：$content")
+                    RESULT_FAIL -> closeSocket()
                 }
             } catch (e: Exception) {
                 closeSocket()
@@ -278,7 +264,6 @@ class MqttClient(
     override fun shutDown() {
         disConnectParameters()
         stateConnection?.let{  it(false) }
-//        selectorManager.cancel()
         socketConnection = null
     }
 
@@ -357,11 +342,8 @@ class MqttClient(
                         val topic = mqttPublishVariableHeader.topicName
                         val msg = publishMessage.payload().toString(UTF_8)
                         listener?.onMessageArrived(topic, msg)
-                        onMessageArrived?.let { it(topic, msg) }
                         listMessageArrived.forEach {
-                            doInBackground {
-                                it(topic, msg)
-                            }
+                            doInBackground { it(topic, msg) }
                         }
                         if (mqttFixedHeader.qosLevel in listOf(
                                 MqttQoS.AT_LEAST_ONCE, MqttQoS.EXACTLY_ONCE)) {
@@ -424,5 +406,4 @@ class MqttClient(
     }
 
     private fun childScope(): CoroutineScope = CoroutineScope(backgroundScope.coroutineContext)
-
 }

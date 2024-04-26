@@ -12,12 +12,10 @@ import kotlinx.coroutines.launch
 class ClientListenerSrv(
     private val mqttClient: MqttClient,
     private val lightBulbStore: LightBulbStore,
-    private val onOffConnect: (Boolean) -> Unit,
 ) : IListener {
 
     override fun onConnected() {
         Log.i("onConnected add subscribe")
-        onOffConnect(true)
 
         //topic: tasmota_%06X
         //group topic 1: cmnd/tasmotas/
@@ -47,13 +45,10 @@ class ClientListenerSrv(
 
     override fun onConnectLost(e: Throwable) {
         Log.e("onConnectLost : ${e.message} /n${e.printStackTrace()}")
-        onOffConnect(false)
-
     }
 
     override fun onDisConnected(description: String) {
         Log.e("onDisConnected : $description")
-        onOffConnect(false)
     }
 
     override fun onMessageArrived(topic: String, s: String) {
