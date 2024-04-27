@@ -91,12 +91,12 @@ class MqttClient(
                 selectorManager.close()
                 selectorManager = SelectorManager(backgroundScope.coroutineContext)
                 socketConnection = aSocket(selectorManager).tcp().connect(options.host, options.port).connection()
-                RESULT_SUCCESS
+                true
             } catch (ex: Exception) {
                 listener?.onConnectFailed(ex)
-                RESULT_FAIL
+                false
             }
-        } != RESULT_SUCCESS
+        } == true
 
     private fun monitorSocketLink(){
         doInBackground {
