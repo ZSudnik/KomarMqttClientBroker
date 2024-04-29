@@ -40,4 +40,5 @@ android {
 dependencies {
     implementation("androidx.test:monitor:1.6.1")
     implementation(project(":mqtt:client"))
+    testImplementation("junit:junit:${ver.various.junit}")
 }
