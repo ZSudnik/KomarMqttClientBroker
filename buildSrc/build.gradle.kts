@@ -1,4 +1,4 @@
-val gradle_android = "8.3.1"
+val gradle_android = "8.5.0"
 //val coroutines = "1.8.0" // two place change
 val kotlin = "1.9.23" // two place change
 val compose = "1.6.1"
