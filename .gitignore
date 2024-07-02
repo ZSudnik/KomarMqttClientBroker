@@ -3,3 +3,9 @@ appBroker/build/
 */build/
 */*/build/
 .idea/
+.idea/*
+.idea/kotlinc.xml
+.idea/.name
+.idea/deploymentTargetSelector.xml
+
+
