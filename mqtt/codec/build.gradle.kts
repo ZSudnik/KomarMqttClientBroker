@@ -10,7 +10,6 @@ kotlin {
             dependencies {
                 implementation(libs.coroutines.core)
                 implementation(libs.atomicfu)
-//                implementation( kotlin("stdlib"))
                 implementation(libs.ktor.server.cio)
             }
         }
