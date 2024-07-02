@@ -22,8 +22,3 @@ kotlin {
         println("This is a dummy testClasses task")
     }
 }
-
-java{
-    sourceCompatibility = ver.build.java_compatibility
-    targetCompatibility = ver.build.java_compatibility
-}
