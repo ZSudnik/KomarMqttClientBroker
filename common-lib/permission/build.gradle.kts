@@ -8,8 +8,8 @@ kotlin {
         commonMain {
             dependencies {
                 implementation( project(":common-lib:lifecycle"))
-                implementation( "androidx.appcompat:appcompat:${ver.androidx.appcompat}")
-                implementation( "androidx.navigation:navigation-compose:${ver.androidx.navigation_compose}")
+                implementation( libs.androidx.appcompat)
+                implementation( libs.androidx.navigation.compose)
             }
         }
     }

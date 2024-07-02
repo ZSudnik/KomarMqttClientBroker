@@ -1,5 +1,5 @@
 plugins {
-    id("org.jetbrains.compose")
+    alias(libs.plugins.compose.compiler)
     id("android-library-module")
 }
 
@@ -17,9 +17,7 @@ dependencies {
     implementation( project(":common-lib:error"))
     implementation( project(":common-lib:lifecycle"))
 
-    api( "androidx.navigation:navigation-compose:${ver.androidx.navigation_compose}")
-
-    implementation( "org.jetbrains.kotlinx:kotlinx-coroutines-android:${ver.jetbrains.coroutines}")
-
-    implementation("io.insert-koin:koin-androidx-compose:${ver.various.koin}")
+    api( libs.androidx.navigation.compose)
+    implementation( libs.kotlinx.coroutines.android)
+    implementation(libs.koin.androidx.compose)
 }

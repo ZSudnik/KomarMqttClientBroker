@@ -1,6 +1,6 @@
 plugins {
-    id("org.jetbrains.compose")
     id("android-library-module")
+    alias(libs.plugins.compose.compiler)
 }
 
 kotlin {
@@ -9,41 +9,37 @@ kotlin {
     sourceSets {
         commonMain {
             dependencies {
-                api(compose.material)
-                api(compose.material3)
-                implementation(compose.foundation)
-                implementation(compose.uiTooling)
-                implementation(compose.ui)
-                api(compose.preview)
-                implementation(compose.animation)
-                implementation(compose.animationGraphics)
-                implementation(compose.materialIconsExtended)
+                api(libs.compose.material)
+                api(libs.compose.material3)
+                implementation(libs.compose.foundation)
+                implementation(libs.compose.uiTooling)
+                implementation(libs.compose.ui)
+                api(libs.compose.preview)
+                implementation(libs.compose.animation)
+                implementation(libs.compose.animationGraphics)
+                implementation(libs.compose.materialIconsExtended)
 
-                implementation("androidx.navigation:navigation-compose:${ver.androidx.navigation_compose}")
-                implementation("androidx.constraintlayout:constraintlayout-compose:${ver.androidx.constraintlayout_compose}")
-                implementation("androidx.appcompat:appcompat:${ver.androidx.appcompat}")
+                implementation(libs.androidx.navigation.compose)
+                implementation(libs.androidx.constraintlayout.compose)
+                implementation(libs.androidx.appcompat)
 
-                implementation( "androidx.customview:customview-poolingcontainer:${ver.androidx.customview_poolingcontainer}")
+                implementation( libs.androidx.customview.poolingcontainer)
 
-                implementation( "androidx.camera:camera-camera2:${ver.androidx.camerax}")
-                implementation( "androidx.camera:camera-lifecycle:${ver.androidx.camerax}")
-                implementation( "androidx.camera:camera-view:${ver.androidx.camerax}")
-                implementation( "com.google.zxing:core:${ver.google.zxing_core}")
+                implementation( libs.androidx.camera.camera2)
+                implementation( libs.androidx.camera.lifecycle)
+                implementation( libs.androidx.camera.view)
+                implementation( libs.zxing.core)
 
-                implementation("androidx.media3:media3-exoplayer:${ver.google.exoplayer}")
-                implementation("androidx.media3:media3-ui:${ver.google.exoplayer}")
+                implementation(libs.androidx.media3.exoplayer)
+                implementation(libs.androidx.media3.ui)
 
-                implementation( "com.airbnb.android:lottie-compose:${ver.various.lottie}")
-                implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:${ver.androidx.lifecycle}")
-                implementation ("androidx.lifecycle:lifecycle-common:${ver.androidx.lifecycle}")
+                implementation( libs.lottie.compose)
+                implementation (libs.androidx.lifecycle.viewmodel)
+                implementation (libs.androidx.lifecycle.common)
 
-                implementation("com.github.ajalt.colormath:colormath:${ver.various.colormath}")
+                implementation(libs.colormath)
             }
         }
-    }
-
-    tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
-        kotlinOptions.jvmTarget = ver.build.java_compatibility.toString()
     }
     task("testClasses").doLast {
         println("This is a dummy testClasses task")
@@ -53,23 +49,7 @@ kotlin {
 android {
     namespace = "com.zibi.mod.common.ui"
     resourcePrefix = "common_ui"
-    compileSdk = ver.build.compile_sdk
-    defaultConfig {
-        minSdk = ver.build.min_sdk
-    }
-    compileOptions {
-        isCoreLibraryDesugaringEnabled = true
-        sourceCompatibility = ver.build.java_compatibility
-        targetCompatibility = ver.build.java_compatibility
-    }
 //    buildFeatures {
 //        compose = true
 //    }
-//    composeOptions {
-//        kotlinCompilerExtensionVersion = ver.build.compose_compiler
-//    }
-}
-
-dependencies {
-    coreLibraryDesugaring( "com.android.tools:desugar_jdk_libs:${ver.android.desugar}")
 }

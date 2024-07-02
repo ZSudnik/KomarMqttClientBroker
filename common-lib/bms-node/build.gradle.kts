@@ -1,6 +1,7 @@
 plugins {
     id("android-library-module")
-    id("org.jetbrains.compose")
+//    id("org.jetbrains.compose")
+    alias(libs.plugins.compose.compiler)
 }
 
 kotlin {
@@ -10,8 +11,8 @@ kotlin {
             dependencies {
                 implementation(project(":common-lib:ui"))
                 implementation(project(":common-lib:bms-model"))
-                implementation(compose.material)
-                implementation("com.github.ajalt.colormath:colormath:3.4.0")
+                implementation(libs.compose.material)
+                implementation(libs.colormath)
             }
         }
     }

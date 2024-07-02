@@ -7,7 +7,7 @@ kotlin {
     sourceSets {
         commonMain {
             dependencies {
-                implementation( "com.google.code.gson:gson:${ver.google.gson}")
+                implementation( libs.gson)
             }
         }
     }

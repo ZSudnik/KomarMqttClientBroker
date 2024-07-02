@@ -1,30 +1,16 @@
-import java.io.FileInputStream
-import java.util.Properties
-
 plugins {
     kotlin("android")
-    id("com.android.application")
-//    id("com.google.devtools.ksp")
+    id("android-application-module")
+    alias(libs.plugins.compose.compiler)
 }
-
-    tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
-        kotlinOptions.jvmTarget = ver.build.java_compatibility.toString()
-    }
     task("testClasses").doLast {
         println("This is a dummy testClasses task")
     }
 
 android {
     namespace = "com.zibi.app.ex.broker"
-//    resourcePrefix = "app_client"
-    compileSdk = ver.build.compile_sdk
     defaultConfig {
         applicationId ="com.komar.broker"
-        minSdk = ver.build.min_sdk
-        versionName = "1.0.2"
-        versionCode = 3
-//        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        multiDexEnabled = true
     }
     signingConfigs {
 //        create("release") {
@@ -41,34 +27,12 @@ android {
 //            }
 //        }
     }
-    buildTypes {
-        getByName("release") {
-//            signingConfig = signingConfigs.getByName("release")
-            isDebuggable = false
-            isJniDebuggable = false
-            isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
-            signingConfig = signingConfigs.getByName("debug")
-        }
-        getByName("debug") {
-            isDebuggable = true
-            isMinifyEnabled = false
-            isShrinkResources = false
-        }
-    }
-    compileOptions {
-        isCoreLibraryDesugaringEnabled = true
-        sourceCompatibility = ver.build.java_compatibility
-        targetCompatibility = ver.build.java_compatibility
-    }
-    buildFeatures {
-//        viewBinding = true
-        compose = true
-        buildConfig = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = ver.build.compose_compiler
-    }
+
+//    buildFeatures {
+////        viewBinding = true
+//        compose = true
+//        buildConfig = true
+//    }
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
@@ -88,12 +52,10 @@ dependencies {
     implementation( project(":data-store:broker"))
     implementation( project(":service-broker"))
 
-    implementation( "androidx.appcompat:appcompat:${ver.androidx.appcompat}")
-    implementation( "androidx.activity:activity-compose:${ver.androidx.activity_compose}")
+    implementation( libs.androidx.appcompat)
+    implementation( libs.compose.activity)
 
-    implementation("io.insert-koin:koin-android:${ver.various.koin}")
+    implementation(libs.koin.android)
+    implementation(libs.kotlinx.coroutines.android)
 
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:${ver.jetbrains.coroutines}")
-
-    coreLibraryDesugaring( "com.android.tools:desugar_jdk_libs:${ver.android.desugar}")
 }

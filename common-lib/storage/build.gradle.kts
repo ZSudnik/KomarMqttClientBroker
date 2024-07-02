@@ -7,8 +7,8 @@ kotlin {
     sourceSets {
         commonMain {
             dependencies {
-                implementation("androidx.core:core:${ver.androidx.core}")
-                implementation( "io.insert-koin:koin-android:${ver.various.koin}")
+                implementation(libs.androidx.core)
+                implementation( libs.koin.android)
 
             }
         }

@@ -24,22 +24,11 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
     }
-//    versionCatalogs {
-//        create("vers") {
-//            version( "gradle_android", "8.3.1" )
-//            version( "coroutines", "1.8.0" )
-//            version( "kotlin", "1.9.23" )
-//            version( "compose", "1.6.1" )
-//            version( "atomicfu", "0.23.2" )
-////            from(files("main/kotlin/build_version.gradle.kt"))
-//        }
-//    }
+    versionCatalogs {
+        create("libs") {
+            from(files("../gradle/libs.versions.toml"))
+        }
+    }
 }
-
-//dependencyResolutionManagement {
-//    versionCatalogs { // <1>
-//        create("libs", { from(files("../gradle/libs.versions.toml")) })
-//    }
-//}
 
 rootProject.name = "buildSrc"
