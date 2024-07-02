@@ -7,7 +7,6 @@ kotlin {
     sourceSets {
         commonMain {
             dependencies {
-//                implementation( "androidx.appcompat:appcompat:${ver.androidx.appcompat}")
                 implementation( libs.androidx.core)
                 implementation( libs.androidx.navigation.compose)
             }

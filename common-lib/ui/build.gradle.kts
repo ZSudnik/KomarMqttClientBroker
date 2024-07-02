@@ -49,7 +49,4 @@ kotlin {
 android {
     namespace = "com.zibi.mod.common.ui"
     resourcePrefix = "common_ui"
-//    buildFeatures {
-//        compose = true
-//    }
 }

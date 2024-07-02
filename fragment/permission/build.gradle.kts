@@ -5,7 +5,6 @@ plugins {
 
 kotlin {
     androidTarget("android")
- //   jvm()
     sourceSets {
         commonMain {
             dependencies {

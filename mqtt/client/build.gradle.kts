@@ -15,7 +15,6 @@ kotlin {
 
                 api(libs.ktor.server.cio)
                 api(libs.ktor.server.core)
-
 //                implementation("io.ktor:ktor-network-tls:${ver.various.ktor}")
                 implementation(kotlin("stdlib"))
             }

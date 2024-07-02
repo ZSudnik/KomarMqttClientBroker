@@ -5,7 +5,6 @@ plugins {
 
 kotlin {
     androidTarget("android")
- //   jvm()
     sourceSets {
         commonMain {
             dependencies {
@@ -33,7 +32,4 @@ kotlin {
 android {
     namespace = "com.zibi.client.fragment.setting"
     resourcePrefix = "fragment_setting"
-//    buildFeatures {
-//        compose = true
-//    }
 }
