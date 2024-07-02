@@ -33,9 +33,6 @@ kotlin {
 
 android {
     namespace= "com.zibi.service.client"
-//    buildFeatures {
-//        aidl = true
-//    }
 }
 
 dependencies {

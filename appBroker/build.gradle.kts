@@ -1,5 +1,4 @@
 plugins {
-    kotlin("android")
     id("android-application-module")
     alias(libs.plugins.compose.compiler)
 }
@@ -27,12 +26,6 @@ android {
 //            }
 //        }
     }
-
-//    buildFeatures {
-////        viewBinding = true
-//        compose = true
-//        buildConfig = true
-//    }
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
