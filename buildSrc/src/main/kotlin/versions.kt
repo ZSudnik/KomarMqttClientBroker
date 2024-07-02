@@ -31,7 +31,7 @@ object ver {
 
     object android {
         const val gradle = "8.2.2"
-        const val desugar = "2.0.4"
+//        const val desugar = "2.0.4"
         const val material3 = "1.1.0-beta02"
         const val material = "1.6.1"
     }

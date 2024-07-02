@@ -11,12 +11,12 @@ kotlin {
                 implementation( project(":common-lib:bms-model"))
                 api ("androidx.datastore:datastore-preferences:${ver.androidx.datastore_preferences}")
 
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:${ver.jetbrains.coroutines}")
-                implementation("io.insert-koin:koin-android:${ver.various.koin}")
+                implementation(libs.kotlinx.coroutines.android)
+                implementation(libs.koin.android)
             }
             commonTest {
                 dependencies{
-                        implementation ("junit:junit:${ver.various.junit}")
+                        implementation (libs.junit)
                 }
             }
         }

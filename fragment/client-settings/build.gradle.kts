@@ -1,6 +1,6 @@
 plugins {
     id("android-library-module")
-    id("org.jetbrains.compose")
+    alias(libs.plugins.compose.compiler)
 }
 
 kotlin {
@@ -15,13 +15,13 @@ kotlin {
                 implementation( project(":common-lib:resources"))
                 implementation( project(":data-store:client"))
 
-                implementation( "com.freeletics.flowredux:flowredux-jvm:${ver.various.flow_redux}")
-                implementation( "com.freeletics.flowredux:compose:${ver.various.flow_redux}")
+                implementation( libs.flowredux.jvm)
+                implementation( libs.flowredux.compose)
 
-                implementation( "io.insert-koin:koin-androidx-compose:${ver.various.koin}")
+                implementation( libs.koin.androidx.compose)
 
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:${ver.jetbrains.coroutines}")
-                implementation(compose.material)
+                implementation(libs.kotlinx.coroutines.android)
+                implementation(libs.compose.material)
             }
         }
     }
@@ -35,8 +35,5 @@ android {
     resourcePrefix = "fragment_setting"
 //    buildFeatures {
 //        compose = true
-//    }
-//    composeOptions {
-//        kotlinCompilerExtensionVersion = ver.build.compose_compiler
 //    }
 }

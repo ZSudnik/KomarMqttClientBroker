@@ -42,7 +42,7 @@ fun DocumentCardPager(
         horizontal = horizontalContentPadding,
         vertical = AppTheme.dimensions.regularPadding
       ),
-      outOfBoundsPageCount = 0,
+//      outOfBoundsPageCount = 0,
       pageSize = PageSize.Fill,
       flingBehavior = PagerDefaults.flingBehavior(state = pagerState),
       key = null,

@@ -10,8 +10,8 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.LocalContentAlpha
-import androidx.compose.material.ripple
 import androidx.compose.material.*
+import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
@@ -86,7 +86,7 @@ private fun RowScope.BottomNavigationItem(
   unselectedIconBackground: Color = Color(0x00000000),
   boldIfSelected: Boolean = false
 ) {
-  val ripple = ripple(
+  val ripple = rememberRipple(
     bounded = false,
     color = selectedContentColor
   )

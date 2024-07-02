@@ -1,5 +1,5 @@
 plugins {
-    id("org.jetbrains.compose")
+    alias(libs.plugins.compose.compiler)
     id("android-library-module")
 }
 
@@ -11,10 +11,11 @@ kotlin {
                 implementation( project(":mqtt:client"))
                 implementation( project(":data-store:client"))
                 implementation( project(":common-lib:resources"))
-                api(compose.runtime)
+                api(libs.compose.runtime)
+//                api(compose.runtime)
 
-                implementation("io.insert-koin:koin-android:${ver.various.koin}")
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:${ver.jetbrains.coroutines}")
+                implementation(libs.koin.android)
+                implementation(libs.kotlinx.coroutines.android)
 
 //                implementation("io.ktor:ktor-client-core:${ver.various.ktor}")
 //                implementation("io.ktor:ktor-client-content-negotiation:${ver.various.ktor}")
@@ -38,6 +39,6 @@ android {
 }
 
 dependencies {
-    implementation("androidx.test:monitor:1.6.1")
+    implementation(libs.androidx.test.monitor)
     implementation(project(":mqtt:client"))
 }

@@ -11,7 +11,7 @@ import org.gradle.kotlin.dsl.withType
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
 
-class AndroidLibraryPlugin : Plugin<Project> {
+class AndroidApplicationPlugin : Plugin<Project> {
 
     private val Project.android: BaseExtension
         get() = extensions.findByName("android") as? BaseExtension
@@ -24,14 +24,14 @@ class AndroidLibraryPlugin : Plugin<Project> {
                 .getByType(VersionCatalogsExtension::class.java)
                 .named("libs")
             applyPlugins()
-            androidConfig( libs)
-            dependenciesConfig(libs)
+            androidConfig(libs)
+            dependenciesConfig( libs)
         }
 
     private fun Project.applyPlugins() {
         plugins.run {
-            apply("com.android.library")
-            apply("kotlin-multiplatform")
+            apply("com.android.application")
+            apply("org.jetbrains.kotlin.android")
         }
     }
 
@@ -42,15 +42,23 @@ class AndroidLibraryPlugin : Plugin<Project> {
             defaultConfig {
                 minSdk = libs.findVersion("compile_sdk").get().displayName.toInt()
                 testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+                targetSdk = libs.findVersion("compile_sdk").get().displayName.toInt()
+//                versionCode = libs.findVersion("versionCode").get().displayName.toInt()
+//                versionName = libs.findVersion("versionName").get().displayName
+                multiDexEnabled = true
             }
             buildTypes {
                 getByName("debug") {
+                    isDebuggable = true
                     isMinifyEnabled = false
+                    isShrinkResources = false
                 }
                 getByName("release") {
-                    isMinifyEnabled= true
-                    consumerProguardFiles("consumer-rules.pro")
-                    proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+                    isDebuggable = false
+                    isJniDebuggable = false
+                    isMinifyEnabled = false
+                    proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
+                    signingConfig = signingConfigs.getByName("debug")
                 }
             }
             compileOptions {
@@ -62,20 +70,22 @@ class AndroidLibraryPlugin : Plugin<Project> {
 //                kotlinOptions.jvmTarget = javaVer.toString()
 //            }
             tasks.withType<KotlinJvmCompile>().configureEach {
-                compilerOptions{
-                    languageVersion.set(org.jetbrains.kotlin.gradle.dsl.KotlinVersion.KOTLIN_2_0)
+                    compilerOptions.languageVersion
+                        .set(org.jetbrains.kotlin.gradle.dsl.KotlinVersion.KOTLIN_2_0)
                 }
-            }
-//            tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompilation>().configureEach {
-//                compilerOptions {
-//                    apiVersion.set(org.jetbrains.kotlin.gradle.dsl.KotlinVersion.KOTLIN_2_0)
-//                    freeCompilerArgs.add("-Xexport-kdoc")
+//            composeOptions {
+//                kotlinCompilerExtensionVersion = libs.findVersion("compose_compiler").get().displayName
+//            }
+//            packaging {
+//                resources {
+//                    excludes += "/META-INF/{AL2.0,LGPL2.1}"
+//                    excludes.add("META-INF/*")
 //                }
 //            }
-//            kotlin {
-//                compilerOptions {
-//                    apiVersion.set(org.jetbrains.kotlin.gradle.dsl.KotlinVersion.KOTLIN_2_0)
-//                }
+//            buildFeatures {
+////        viewBinding = true
+//                compose = true
+//                buildConfig = true
 //            }
         }
     }
