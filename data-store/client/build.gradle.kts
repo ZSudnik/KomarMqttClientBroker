@@ -9,7 +9,7 @@ kotlin {
             dependencies {
                 implementation( project(":common-lib:resources"))
                 implementation( project(":common-lib:bms-model"))
-                api ("androidx.datastore:datastore-preferences:${ver.androidx.datastore_preferences}")
+                api (libs.androidx.datastore.preferences)
 
                 implementation(libs.kotlinx.coroutines.android)
                 implementation(libs.koin.android)
