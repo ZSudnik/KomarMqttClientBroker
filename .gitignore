@@ -2,10 +2,13 @@
 appBroker/build/
 */build/
 */*/build/
+*/build/**/BuildConfig.java
+**/configuration-cache-report.*
 .idea/
 .idea/*
 .idea/kotlinc.xml
 .idea/.name
 .idea/deploymentTargetSelector.xml
+
 
 
