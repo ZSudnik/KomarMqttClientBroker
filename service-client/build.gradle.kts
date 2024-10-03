@@ -33,10 +33,13 @@ kotlin {
 
 android {
     namespace= "com.zibi.service.client"
+    buildFeatures {
+        aidl = true
+    }
 }
 
 dependencies {
     implementation(libs.androidx.test.monitor)
     implementation(project(":mqtt:client"))
-    testImplementation("junit:junit:${ver.various.junit}")
+    testImplementation( libs.junit)
 }

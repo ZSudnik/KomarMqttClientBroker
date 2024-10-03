@@ -3,13 +3,13 @@ package com.zibi.service.client.service
 import android.annotation.SuppressLint
 import android.util.Log
 import com.zibi.mod.data_store.preferences.LightBulbStore
-import io.zibi.komar.mclient.MqttClient
 import io.zibi.codec.mqtt.util.MqttConnectOptions
+import io.zibi.komar.mclient.MqttClient
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.async
 
-object MQTTWrapperX {
+class MiddleClient {
     private var mqttClient: MqttClient? = null
 
     fun onPublishCommand(topic: String, message: String) {
@@ -40,7 +40,7 @@ object MQTTWrapperX {
         lightBulbStore: LightBulbStore,
         parentJob: Job,
         onOffConnect: (Boolean) -> Unit,
-        ): Boolean {
+    ): Boolean {
         mqttClient = MqttClient(prop as MqttConnectOptions, parentJob)
         mqttClient?.let {
             it.stateConnection = onOffConnect
@@ -50,7 +50,7 @@ object MQTTWrapperX {
             )
         }
         return CoroutineScope(parentJob).async {
-             try {
+            try {
                 mqttClient?.connectAuto()
                 mqttClient?.isConnected ?: false
             } catch (e: Exception) {

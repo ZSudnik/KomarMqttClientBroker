@@ -1,11 +1,11 @@
 package io.zibi.codec.mqtt
 
-import io.zibi.codec.mqtt.reasoncode.ReasonCode
+import java.util.Locale
 
 /**
  * MQTT Message Types.
  */
-enum class MqttMessageType(private val id: Int) : ReasonCode {
+enum class MqttMessageType(private val id: Int)  {
     CONNECT(1),
     CONNACK(2),
     PUBLISH(3),
@@ -26,10 +26,13 @@ enum class MqttMessageType(private val id: Int) : ReasonCode {
         return id
     }
 
-    override fun toDecByteArray() = byteArrayOf( id.toByte())
+    fun toDecByteArray() = byteArrayOf( id.toByte())
 
-    override fun toDesc() = ReasonCode.makeDesc( this.name )
-
+    fun toDesc() = this.name.replace("_", " ")
+            .lowercase(Locale.getDefault())
+            .replaceFirstChar { it2 ->
+                if (it2.isLowerCase()) it2.titlecase(Locale.getDefault()) else it2.toString()
+            }
 
     companion object {
         fun valueOf(type: Int): MqttMessageType? = entries.find { it.id == type }

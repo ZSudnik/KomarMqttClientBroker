@@ -176,7 +176,7 @@ private fun DropDownDialogElement(
       .fillMaxWidth()
       .background(if (item == selectedItem) AppTheme.colors.secondary else Color.White)
       .clickable(interactionSource = MutableInteractionSource(),
-        indication = rememberRipple(color = AppTheme.colors.secondary),
+        indication = ripple(color = AppTheme.colors.secondary),
         onClickLabel = null,
         onClick = { onClickItem(item) })
       .padding(AppTheme.dimensions.regularPadding),

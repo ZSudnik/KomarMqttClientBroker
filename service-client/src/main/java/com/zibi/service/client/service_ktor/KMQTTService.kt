@@ -71,7 +71,7 @@ class KxMQTTService : Service() {
 
     override fun onCreate() {
         super.onCreate()
-        startForeground(NOT_SERVICE_ID, NotificationUtil(this).notification)
+//        startForeground(NOT_SERVICE_ID, NotificationUtil(this).notification)
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
@@ -96,7 +96,7 @@ class KxMQTTService : Service() {
     private fun onOffClient(value: Boolean){
         if(isConn != value) {
             isClientRunning.value = value
-            startForeground(NOT_SERVICE_ID, NotificationUtil(this@KxMQTTService).notification)
+//            startForeground(NOT_SERVICE_ID, NotificationUtil(this@KxMQTTService).notification)
             isConn = value
         }
     }

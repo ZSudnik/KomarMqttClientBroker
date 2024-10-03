@@ -1,21 +1,30 @@
 package com.zibi.client.fragment.start.main
 
+//import com.zibi.service.client.service_ktor.KMQTTService
+import com.zibi.service.client.IClientService
+import android.content.ComponentName
+import android.content.Intent
+import android.content.ServiceConnection
+import android.os.IBinder
+import androidx.appcompat.app.AppCompatActivity.BIND_AUTO_CREATE
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateMapOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.snapshots.SnapshotStateMap
 import androidx.lifecycle.viewModelScope
 import com.zibi.client.fragment.start.data.LightPoint
-import kotlinx.coroutines.flow.Flow
-import com.zibi.mod.data_store.preferences.LightBulbStore
 import com.zibi.client.fragment.start.main.model.StartMainData
 import com.zibi.common.device.lightbulb.LightBulbData
+import com.zibi.mod.data_store.preferences.LightBulbStore
+import com.zibi.service.client.Observer
 import com.zibi.service.client.service.MQTTService
-//import com.zibi.service.client.service_ktor.KMQTTService
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
+
 
 interface StartMainViewModel {
     val uiData: (lightPoint: LightPoint) -> StartMainData.Initialized
@@ -38,7 +47,7 @@ class StartMainViewModelImpl (
     private val stateMachine: StartMainStateMachine,
     private val lightBulbStore: LightBulbStore,
 ) : AbsStateViewModel<StartMainState, StartMainAction>(stateMachine),
-    StartMainViewModel, StartMainNavigation {
+    StartMainViewModel, StartMainNavigation, Observer {
 
     private var job: Job? = null
 
@@ -48,7 +57,27 @@ class StartMainViewModelImpl (
     override fun goToFragment(action: StartMainAction){
         super.dispatch(action = action )
     }
+/////////////////////////////////////
+    private val isClientRunning = mutableStateOf(false)
+    private lateinit var clientService: IClientService
+//    private var serviceBounded: Boolean = false
 
+    /** Callbacks for service binding */
+    private val connection = object : ServiceConnection {
+        override fun onServiceConnected(className: ComponentName, service: IBinder) {
+//            serviceBounded = true
+            clientService = IClientService.Stub.asInterface(service)
+            clientService.addObserver( this@StartMainViewModelImpl)
+            clientService.onConnected()
+        }
+        override fun onServiceDisconnected(arg0: ComponentName) {
+//            serviceBounded = false
+//            clientService.onChangeConnection()
+        }
+    }
+
+
+    ////////////////
     override val mapSnapshot: SnapshotStateMap<String,LightBulbData> = mutableStateMapOf()
     override val uiData: (lightPoint: LightPoint) -> StartMainData.Initialized
         get() = {
@@ -63,17 +92,19 @@ class StartMainViewModelImpl (
                 }
             }
             StartMainData.Initialized(
-                stateClient = MQTTService.isClientRunning,
+                stateClient = isClientRunning,
                 lightPoint = it,
                 runStopServer = {context ->
-                    MQTTService.onChangeConnection(context)
+                    if(!isClientRunning.value) {
+                        val intent = Intent(context, MQTTService::class.java)
+                        context.bindService(intent, connection, BIND_AUTO_CREATE)
+                    }else{
+                        context.unbindService(connection)
+                    }
                 },
                 sendDataListOfLightBulb = { listBulb ->
                     listBulb.forEach { bulb ->
-                        MQTTService.publish(
-                            topic = bulb.topic,
-                            message = bulb.toJsonString(),
-                        )
+                        clientService.publish(bulb.topic, bulb.toJsonString())
                     }
                 },
                 changeEndPoint = { endPoint ->
@@ -85,6 +116,14 @@ class StartMainViewModelImpl (
 
     override val navEvent: Flow<StartMainNavigation.NavEvent>
         get() = stateMachine.navEvent
+
+    override fun asBinder(): IBinder? {
+        return null
+    }
+
+    override fun update(isRun: Boolean) {
+        isClientRunning.value = isRun
+    }
 
 }
 

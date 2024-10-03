@@ -9,7 +9,7 @@ import androidx.activity.OnBackPressedCallback
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.core.app.ActivityCompat
+import androidx.core.app.NotificationManagerCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.zibi.app.ex.client.view.fragment.AppManagerFragmentNavigator
@@ -82,8 +82,8 @@ class MainActivity : AppCompatActivity(), GlobalNavigationEventHandler {
     if (isFinishing) {
       globalNavigationManager.unregister(this)
       onBackPressedCallback?.remove()
-      MQTTService.end(this)
     }
+    NotificationManagerCompat.from(this).cancel(MQTTService.ID_NOTIFICATION)
     super.onDestroy()
   }
 

@@ -4,6 +4,7 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import com.zibi.mod.fragment.start.login.model.StartLoginData
 import com.zibi.mod.fragment.start.main.model.StartMainData
+import kotlinx.coroutines.flow.MutableStateFlow
 
 fun providePreviewStartLoginData(): StartLoginData.Screen =
     StartLoginData.Screen(
@@ -27,7 +28,7 @@ fun providePreviewStartMainData(): StartMainData.Initialized =
         descState = "State",
         valueStateRun = "Running",
         valueStateStop = "Stop",
-        stateServer = mutableStateOf(true),
+        stateServer =  mutableStateOf(true),
         descIPAddress = "IP Address",
         valueIPAddress = "192.168.1.125",
         descNumberClient = "Clients connected",

@@ -1,5 +1,6 @@
 package com.zibi.mod.fragment.start.main
 
+import android.content.Context
 import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.State
@@ -16,6 +17,8 @@ import com.zibi.service.broker.log.LogStream
 import com.zibi.service.broker.log.MsgType
 import com.zibi.service.broker.service.MQTTService
 import com.zibi.service.broker.service.MQTTWrapper
+import com.zibi.service.broker.service.ServiceState
+import com.zibi.service.broker.service.getServiceState
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.launch
@@ -40,7 +43,7 @@ interface StartMainNavigation {
 }
 
 @OptIn(FlowPreview::class, ExperimentalCoroutinesApi::class)
-class StartMainViewModelImpl constructor(
+class StartMainViewModelImpl (
     private val stateMachine: StartMainStateMachine,
     private val stringResolver: StringResolver,
     private val logStream: LogStream,
@@ -80,14 +83,10 @@ class StartMainViewModelImpl constructor(
                 descNumberClient = stringResolver.getString(R.string.fragment_start_main_desc_clients_connected),
                 valueNumberClient = clientsCount,
                 descLogs = stringResolver.getString(R.string.fragment_start_main_desc_logs),
-                runStopServer = {context ->
-                    if (isServerRunning.value) {
-                        isServerRunning.value = false
-                        MQTTService.stop(context)
-                    } else {
-                        isServerRunning.value = true
-                        MQTTService.start(context)
-                    }
+                runStopServer = { context ->
+                    if (isServerRunning.value) MQTTService.stop(context)
+                    else MQTTService.start(context)
+                    isServerRunning.value = !isServerRunning.value
                 },
                 onGoToSetting =  { super.dispatch(action = StartMainAction.GoToFragmentOne) },
                 onEraserLogList = { logs.clear() }

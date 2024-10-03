@@ -1,30 +1,42 @@
 package com.zibi.service.client.service
 
+import android.annotation.SuppressLint
+import com.zibi.service.client.IClientService
 import android.app.Service
-import android.content.Context
 import android.content.Intent
 import android.os.IBinder
-import androidx.compose.runtime.mutableStateOf
-import androidx.core.content.ContextCompat
+import androidx.core.app.NotificationManagerCompat
 import com.zibi.mod.data_store.preferences.ClientSetting
 import com.zibi.mod.data_store.preferences.LightBulbStore
+import com.zibi.service.client.Observer
 import com.zibi.service.client.notification.NotificationUtil
+import com.zibi.service.client.util.Subject
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
-class MQTTService : Service() {
+class MQTTService : Service(), Subject {
 
     private val clientSetting: ClientSetting by inject()
     private val lightBulbStore: LightBulbStore by inject()
 
+    private val middleClient = MiddleClient()
+    private lateinit var notificationUtil: NotificationUtil
+    private var observers: Observer? = null
+
+    override fun notifyObservers(isRunning: Boolean) {
+        observers?.let {
+            it.update(isRunning)
+        }
+    }
+
     private var serviceJob: Job? = null
     private lateinit var scope: CoroutineScope
-    private var isConn: Boolean? = null
+    private var isConn: Boolean = false
 
-    private fun cancelJob(){
+    private fun cancelJob() {
         serviceJob?.cancel()
         serviceJob = null
     }
@@ -39,67 +51,81 @@ class MQTTService : Service() {
         )
     }
 
-    override fun onCreate() {
-        super.onCreate()
-        scope = CoroutineScope( Dispatchers.IO )
-        startForeground(NOT_SERVICE_ID, NotificationUtil(this).notification)
-    }
+    private val binder: IClientService.Stub = object : IClientService.Stub() {
 
-    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        if (this::scope.isInitialized && serviceJob == null)
-            serviceJob = scope.launch {
-                isClientRunning.value = MQTTWrapper.startClientAuto(
-                    prop = getClientProperties(),
-                    lightBulbStore = lightBulbStore,
-                    parentJob = serviceJob!!,
-                    onOffConnect = this@MQTTService::onOffConnect
-                )
-            }
-        return START_STICKY
-    }
+        override fun publish(topic: String, message: String) {
+            middleClient.onPublishCommand(topic = topic, message = message)
+        }
 
-    private fun onOffConnect(value: Boolean){
-        if(isConn != value) {
-            isClientRunning.value = value
-            startForeground(NOT_SERVICE_ID, NotificationUtil(this@MQTTService).notification)
-            isConn = value
+        override fun addObserver(observer: Observer) {
+            observers = observer
+        }
+
+        override fun onConnected() {
+            runClientMqtt()
+            isConn = true
+            this@MQTTService.notifyObservers(isConn)
+            showNotification(isConn)
         }
     }
 
-    override fun onBind(intent: Intent): IBinder? {
-        return null
+    override fun onBind(intent: Intent): IBinder {
+        return binder
+    }
+
+    override fun onUnbind(intent: Intent): Boolean {
+        middleClient.disConnectClient()
+        isConn = false
+        this@MQTTService.notifyObservers(isConn)
+        showNotification(isConn)
+        return super.onUnbind(intent)
+    }
+
+    override fun onCreate() {
+        super.onCreate()
+        scope = CoroutineScope(Dispatchers.IO)
+        notificationUtil = NotificationUtil(this)
+    }
+
+    private fun runClientMqtt() {
+        if (this::scope.isInitialized && serviceJob == null)
+            serviceJob = scope.launch {
+                this@MQTTService.notifyObservers(
+                    middleClient.startClientAuto(
+                        prop = getClientProperties(),
+                        lightBulbStore = lightBulbStore,
+                        parentJob = serviceJob!!,
+                        onOffConnect = this@MQTTService::onOffConnect
+                    )
+                )
+            }
+    }
+
+    @SuppressLint("MissingPermission")
+    private fun showNotification(isRunning: Boolean) {
+        NotificationManagerCompat.from(this@MQTTService).run {
+            notify(ID_NOTIFICATION, notificationUtil.doNotification(isRunning))
+        }
+    }
+
+    private fun onOffConnect(value: Boolean) {
+        if (isConn != value) {
+            notifyObservers(value)
+            isConn = value
+            showNotification(isConn)
+        }
     }
 
     override fun onDestroy() {
+        NotificationManagerCompat.from(this).cancel(MQTTService.ID_NOTIFICATION)
         super.onDestroy()
         cancelJob()
-        isClientRunning.value = false
-        MQTTWrapper.stopClient()
-        stopForeground(STOP_FOREGROUND_DETACH)
+        notifyObservers(false)
+        middleClient.stopClient()
         stopSelf()
     }
 
     companion object {
-        const val NOT_SERVICE_ID = 987
-        var isClientRunning = mutableStateOf(false)
-
-        fun onChangeConnection(context: Context){
-            val intent = Intent(context, MQTTService::class.java)
-            if (isClientRunning.value) {
-                isClientRunning.value = false
-                MQTTWrapper.disConnectClient()
-//                context.stopService(intent)
-            }else
-                ContextCompat.startForegroundService(context, intent)
-        }
-
-        fun end(context: Context) {
-            val intent = Intent(context, MQTTService::class.java)
-            context.stopService(intent)
-        }
-
-        fun publish(topic: String, message: String) =
-            MQTTWrapper.onPublishCommand(topic = topic, message = message,)
-
+        const val ID_NOTIFICATION = 987
     }
 }

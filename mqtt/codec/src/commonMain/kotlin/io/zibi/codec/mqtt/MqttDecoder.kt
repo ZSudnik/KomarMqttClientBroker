@@ -4,7 +4,6 @@ import io.ktor.utils.io.core.internal.ChunkBuffer
 import io.ktor.utils.io.core.readBytes
 import io.ktor.utils.io.core.readInt
 import io.ktor.utils.io.core.readUByte
-import io.zibi.codec.mqtt.MqttConnectReturnCode.Companion.valueOf
 import io.zibi.codec.mqtt.MqttConstant.DEFAULT_MAX_BYTES_IN_MESSAGE
 import io.zibi.codec.mqtt.MqttConstant.DEFAULT_MAX_CLIENT_ID_LENGTH
 import io.zibi.codec.mqtt.MqttMessageType.*
@@ -13,6 +12,7 @@ import io.zibi.codec.mqtt.MqttVersion.Companion.fromProtocolNameAndLevel
 import io.zibi.codec.mqtt.exception.DecoderException
 import io.zibi.codec.mqtt.reasoncode.Disconnect
 import io.zibi.codec.mqtt.reasoncode.PubComp
+import io.zibi.codec.mqtt.reasoncode.ReasonCode
 import kotlin.text.Charsets.UTF_8
 
 /**
@@ -242,7 +242,7 @@ class MqttDecoder(
         ):MqttDisconnectVariableHeader{
         val byteDisconnectReasonCode = buffer.readByte().toUByte()
         val properties: MqttProperties =        decodeProperties(buffer, mqttVersion)
-        return MqttDisconnectVariableHeader(Disconnect.valueOf(byteDisconnectReasonCode), properties)
+        return MqttDisconnectVariableHeader(ReasonCode.valueOf<Disconnect>(byteDisconnectReasonCode), properties)
     }
 
     fun decodeConnAckVariableHeader(
@@ -252,7 +252,7 @@ class MqttDecoder(
         val sessionPresent = buffer.readByte().toUByte().toInt() and 0x01 == 0x01
         val returnCode = buffer.readUByte()
         val properties: MqttProperties = decodeProperties(buffer, mqttVersion)
-        return MqttConnAckVariableHeader(valueOf(returnCode), sessionPresent, properties)
+        return MqttConnAckVariableHeader(ReasonCode.valueOf<MqttConnectReturnCode>(returnCode), sessionPresent, properties)
     }
 
     fun decodePubCompleteVariableHeader(
@@ -261,7 +261,7 @@ class MqttDecoder(
     ): MqttPubCompleteVariableHeader {
         val completeReasonCode = buffer.readUByte()
         val properties: MqttProperties = decodeProperties(buffer, mqttVersion)
-        return MqttPubCompleteVariableHeader(PubComp.valueOf(completeReasonCode), properties)
+        return MqttPubCompleteVariableHeader(ReasonCode.valueOf<PubComp>(completeReasonCode), properties)
     }
     fun decodeVariableHeader(
         mqttVersion: MqttVersion,

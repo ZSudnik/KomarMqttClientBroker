@@ -30,13 +30,17 @@
         <service
             android:name="com.zibi.service.client.service.MQTTService"
             android:enabled="true"
-            android:exported="false"
-            android:stopWithTask="true"/>
-        <service
-            android:name="com.zibi.service.client.service_ktor.KMQTTService"
-            android:enabled="true"
-            android:exported="false"
-            android:stopWithTask="true"/>
+            android:exported="true"
+            android:stopWithTask="true">
+<!--            <intent-filter>-->
+<!--                <action android:name="MQTTService"/>-->
+<!--            </intent-filter>-->
+        </service>
+<!--        <service-->
+<!--            android:name="com.zibi.service.client.service_ktor.KMQTTService"-->
+<!--            android:enabled="true"-->
+<!--            android:exported="false"-->
+<!--            android:stopWithTask="true"/>-->
 
     </application>
 

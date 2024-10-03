@@ -39,7 +39,7 @@ fun StartMainScreen(viewModel: StartMainViewModel) {
     }
 }
 
-@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter", "StateFlowValueCalledInComposition")
 @Composable
 fun StartMainScreenInitialized(
     data: StartMainData.Initialized,

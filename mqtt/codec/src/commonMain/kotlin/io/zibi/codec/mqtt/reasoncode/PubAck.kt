@@ -4,25 +4,19 @@ package io.zibi.codec.mqtt.reasoncode
  * Provides a set of enumeration that exposes standard MQTT 5 reason codes used by various messages.
  * Reason codes for MQTT PubAck message.
  */
-enum class PubAck( val byteValue: UByte) : ReasonCode {
-    SUCCESS(0x00u),
-    NO_MATCHING_SUBSCRIBERS(0x10u),
-    UNSPECIFIED_ERROR(0x80u),
-    IMPLEMENTATION_SPECIFIC_ERROR(0x83u),
-    NOT_AUTHORIZED(0x87u),
-    TOPIC_NAME_INVALID(0x90u),
-    PACKET_IDENTIFIER_IN_USE(0x91u),
-    QUOTA_EXCEEDED(0x97u),
-    PAYLOAD_FORMAT_INVALID(0x99u);
+sealed class PubAck(override val byteValue: UByte) : ReasonCode(byteValue) {
+   data object SUCCESS : PubAck(0x00u)
+   data object NO_MATCHING_SUBSCRIBERS : PubAck(0x10u)
+   data object UNSPECIFIED_ERROR : PubAck(0x80u)
+   data object IMPLEMENTATION_SPECIFIC_ERROR : PubAck(0x83u)
+   data object NOT_AUTHORIZED : PubAck(0x87u)
+   data object TOPIC_NAME_INVALID : PubAck(0x90u)
+   data object PACKET_IDENTIFIER_IN_USE : PubAck(0x91u)
+   data object QUOTA_EXCEEDED : PubAck(0x97u)
+   data object PAYLOAD_FORMAT_INVALID : PubAck(0x99u)
 
     @OptIn(ExperimentalUnsignedTypes::class)
     override fun toDecByteArray() = ubyteArrayOf( byteValue).toByteArray()
 
-    override fun toDesc() = ReasonCode.makeDesc( this.name )
-
-    companion object {
-        fun valueOf(b: UByte): PubAck = entries.find { it.byteValue == b }
-            ?: throw IllegalArgumentException("unknown reason code: $b")
-    }
-
+    override fun toDesc() = makeDesc(this::class.simpleName)
 }
