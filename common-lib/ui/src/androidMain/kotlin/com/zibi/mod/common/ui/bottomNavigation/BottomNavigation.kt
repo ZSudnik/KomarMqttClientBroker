@@ -86,7 +86,7 @@ private fun RowScope.BottomNavigationItem(
   unselectedIconBackground: Color = Color(0x00000000),
   boldIfSelected: Boolean = false
 ) {
-  val ripple = rememberRipple(
+  val ripple = ripple(
     bounded = false,
     color = selectedContentColor
   )

@@ -1,5 +1,6 @@
 package io.zibi.codec.mqtt
 
+import io.zibi.codec.mqtt.reasoncode.ReasonCode
 import io.zibi.codec.mqtt.reasoncode.SubAck
 import java.util.Collections
 
@@ -12,7 +13,7 @@ class MqttSubAckPayload {
     constructor(vararg reasonCodes: Int) {
         val list: MutableList<SubAck?> = ArrayList(reasonCodes.size)
         for (v in reasonCodes) {
-            list.add(SubAck.valueOf(v.toUByte()))
+            list.add( ReasonCode.valueOf<SubAck>(v.toUByte()))
         }
         this.reasonCodes = Collections.unmodifiableList(list)
     }
@@ -26,7 +27,7 @@ class MqttSubAckPayload {
     constructor(reasonCodes: Iterable<Int>) {
         val list: MutableList<SubAck?> = mutableListOf()
         for (v in reasonCodes) {
-            list.add(SubAck.valueOf(v.toUByte()))
+            list.add(ReasonCode.valueOf< SubAck>(v.toUByte()))
         }
         this.reasonCodes = Collections.unmodifiableList(list)
     }

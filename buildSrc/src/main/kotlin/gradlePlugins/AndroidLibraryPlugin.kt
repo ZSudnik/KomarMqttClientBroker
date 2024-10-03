@@ -9,7 +9,6 @@ import org.gradle.api.artifacts.VersionCatalogsExtension
 import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.withType
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
 
 class AndroidLibraryPlugin : Plugin<Project> {
 
@@ -40,7 +39,7 @@ class AndroidLibraryPlugin : Plugin<Project> {
         android.run {
             compileSdkVersion( libs.findVersion("compile_sdk").get().displayName.toInt())
             defaultConfig {
-                minSdk = libs.findVersion("compile_sdk").get().displayName.toInt()
+                minSdk = libs.findVersion("min_sdk").get().displayName.toInt()
                 testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
             }
             buildTypes {
@@ -61,7 +60,7 @@ class AndroidLibraryPlugin : Plugin<Project> {
 //            tasks.withType<KotlinCompile>().configureEach {
 //                kotlinOptions.jvmTarget = javaVer.toString()
 //            }
-            tasks.withType<KotlinJvmCompile>().configureEach {
+            tasks.withType<KotlinCompile>().configureEach {
                 compilerOptions{
                     languageVersion.set(org.jetbrains.kotlin.gradle.dsl.KotlinVersion.KOTLIN_2_0)
                 }

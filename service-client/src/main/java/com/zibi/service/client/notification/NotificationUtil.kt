@@ -15,16 +15,23 @@ import com.zibi.service.client.service.MQTTService
 import org.koin.android.ext.android.inject
 
 class NotificationUtil(
-    context: Context,
+    val context: Context,
 ) {
 
     private val stringResolver: StringResolver = StringResolverImpl(context.resources)
-    val notification: Notification
+//    val notification: Notification
 
-    init {
+//                NotificationManagerCompat.from(this@MQTTService).run {
+//                notify(ID_NOTIFICATION, notificationUtil.doNotification(isConn))
+//            }
+
+
+
+
+    fun doNotification( isClientRunning: Boolean ): Notification {
         // Create the NotificationChannel
         val name = stringResolver.getString(R.string.fg_channel_name)
-        val importance = NotificationManager.IMPORTANCE_HIGH // .IMPORTANCE_DEFAULT
+        val importance = NotificationManager.IMPORTANCE_LOW
         val channel = NotificationChannel(FG_SERVICE_CHANNEL, name, importance)
         channel.description = stringResolver.getString(R.string.fg_channel_description)
         // Register the channel with the system; you can't change the importance
@@ -40,13 +47,13 @@ class NotificationUtil(
             .setSmallIcon(R.drawable.hub_spot_broker_red)
             .setContentTitle(stringResolver.getString(R.string.notification_mqtt_service_title))
             .setContentText(
-                if (MQTTService.isClientRunning.value)
+                if (isClientRunning)
                     stringResolver.getString(R.string.notification_mqtt_service_content_run)
                 else
                     stringResolver.getString(R.string.notification_mqtt_service_content_connecting)
             )
             .setColor(
-                if (MQTTService.isClientRunning.value)
+                if (isClientRunning)
                     context.getColor(R.color.RED)
                 else
                     context.getColor(R.color.BLUE_DARK)
@@ -64,7 +71,8 @@ class NotificationUtil(
                     PendingIntent.FLAG_CANCEL_CURRENT or PendingIntent.FLAG_IMMUTABLE
                 )
             )
-        notification = builder.build()
+//        notification = builder.build()
+        return builder.build()
     }
 
     companion object {

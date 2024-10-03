@@ -26,6 +26,9 @@ kotlin {
                 implementation( libs.kotlin.reflect)
             }
         }
+//        all{
+//            languageSettings.enableLanguageFeature("ExplicitBackingFields")
+//        }
     }
     task("testClasses").doLast {
         println("This is a dummy testClasses task")

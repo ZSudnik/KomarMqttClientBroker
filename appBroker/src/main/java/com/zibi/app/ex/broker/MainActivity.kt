@@ -15,6 +15,9 @@ import com.zibi.mod.common.navigation.global.GlobalNavigationManager
 import com.zibi.mod.common.navigation.AppGlobalNavigationEvent
 import com.zibi.app.ex.broker.view.fragment.feature.SettingFragment
 import com.zibi.app.ex.broker.view.fragment.feature.StartFragment
+import com.zibi.service.broker.service.MQTTService
+import com.zibi.service.broker.service.ServiceState
+import com.zibi.service.broker.service.getServiceState
 import org.koin.android.ext.android.inject
 
 class MainActivity : AppCompatActivity(), GlobalNavigationEventHandler {
@@ -28,6 +31,8 @@ class MainActivity : AppCompatActivity(), GlobalNavigationEventHandler {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
+    MQTTService.isBrokerRunning = getServiceState(this) == ServiceState.STARTED
+
     setTheme(androidx.appcompat.R.style.Theme_AppCompat_Light_NoActionBar)
     setContentView(R.layout.app_layout)
     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
@@ -41,7 +46,7 @@ class MainActivity : AppCompatActivity(), GlobalNavigationEventHandler {
 //    activityLifecycleConnector.connect(this)
     globalNavigationManager.register(this)
     initializeBackHandling()
-  }
+    }
 
   override fun onStart() {
     super.onStart()

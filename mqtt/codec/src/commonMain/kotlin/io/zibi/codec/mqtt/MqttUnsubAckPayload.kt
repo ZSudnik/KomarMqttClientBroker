@@ -1,5 +1,6 @@
 package io.zibi.codec.mqtt
 
+import io.zibi.codec.mqtt.reasoncode.ReasonCode
 import io.zibi.codec.mqtt.reasoncode.UnsubAck
 
 /**
@@ -11,7 +12,7 @@ class MqttUnsubAckPayload {
     constructor(vararg unsubscribeReasonCodes: Short) {
         val list: MutableList<UnsubAck?> = ArrayList(unsubscribeReasonCodes.size)
         for (v in unsubscribeReasonCodes) {
-            list.add(UnsubAck.valueOf((v.toUByte())))
+            list.add(ReasonCode.valueOf<UnsubAck>((v.toUByte())))
         }
         this.unsubscribeReasonCodes = list.toList()
     }
@@ -19,7 +20,7 @@ class MqttUnsubAckPayload {
     constructor(unsubscribeReasonCodes: Iterable<Short>) {
         val list: MutableList<UnsubAck?> = ArrayList()
         for (v in unsubscribeReasonCodes) {
-            list.add(UnsubAck.valueOf(v.toUByte()))
+            list.add(ReasonCode.valueOf<UnsubAck>(v.toUByte()))
         }
         this.unsubscribeReasonCodes =list.toList()
     }
