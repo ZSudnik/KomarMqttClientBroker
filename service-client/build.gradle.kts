@@ -15,7 +15,7 @@ kotlin {
 //                api(compose.runtime)
 
                 implementation(libs.koin.android)
-                implementation(libs.kotlinx.coroutines.android)
+                implementation(libs.coroutines.android)
 
 //                implementation("io.ktor:ktor-client-core:${ver.various.ktor}")
 //                implementation("io.ktor:ktor-client-content-negotiation:${ver.various.ktor}")

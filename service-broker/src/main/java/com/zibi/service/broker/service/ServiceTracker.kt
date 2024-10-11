@@ -14,7 +14,7 @@ enum class ServiceState(val state: Boolean) {
 private const val name = "SPYSERVICE_KEY"
 private const val key = "SPYSERVICE_STATE"
 
-fun setServiceState(context: Context, state: ServiceState) {
+fun setServiceStateB(context: Context, state: ServiceState) {
     val sharedPrefs = getPreferences(context)
     sharedPrefs.edit().let {
         it.putString(key, state.name)
@@ -22,7 +22,7 @@ fun setServiceState(context: Context, state: ServiceState) {
     }
 }
 
-fun getServiceState(context: Context): ServiceState {
+fun getServiceStatBe(context: Context): ServiceState {
     val sharedPrefs = getPreferences(context)
     val value = sharedPrefs.getString(key, ServiceState.STOPPED.name)!!
     return ServiceState.valueOf(value)

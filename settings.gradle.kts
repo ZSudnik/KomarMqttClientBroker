@@ -51,7 +51,6 @@ include(":common-lib:storage")
 include(":common-lib:permission")
 
 include(":mqtt:codec")
-include(":mqtt:broker")
-include(":mqtt:client")
-//include(":mqtt:$typApp")
-
+//include(":mqtt:broker")
+//include(":mqtt:client")
+include(":mqtt:$typApp")

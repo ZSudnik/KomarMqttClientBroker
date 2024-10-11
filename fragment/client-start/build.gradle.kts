@@ -22,7 +22,7 @@ kotlin {
 
                 implementation( libs.koin.androidx.compose)
 
-                implementation(libs.kotlinx.coroutines.android)
+                implementation(libs.coroutines.android)
                 implementation( libs.kotlin.reflect)
             }
         }

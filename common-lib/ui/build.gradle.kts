@@ -50,3 +50,6 @@ android {
     namespace = "com.zibi.mod.common.ui"
     resourcePrefix = "common_ui"
 }
+dependencies {
+    implementation(libs.androidx.lifecycle.runtime.compose.android)
+}

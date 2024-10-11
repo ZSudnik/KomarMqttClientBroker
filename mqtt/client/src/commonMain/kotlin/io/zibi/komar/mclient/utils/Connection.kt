@@ -52,11 +52,15 @@ class Connection(
  */
 fun Socket.connection(): Connection = Connection(this, openReadChannel(), openWriteChannel(autoFlush = true))
 
-fun Connection?.waitForAvailable() =
-    try {
-        this?.input?.availableForRead
+suspend fun Connection?.waitForAvailable(time: Long = 5L): Boolean {
+    if (this == null) return true
+    return try {
+        while(this.input.availableForRead <= 0){
+            delay( time)
+        }
         false
-    }catch (ex: Exception){
+    } catch (ex: Exception) {
         true
     }
+}
 fun Connection?.isClose() = this?.input?.isClosedForWrite != false

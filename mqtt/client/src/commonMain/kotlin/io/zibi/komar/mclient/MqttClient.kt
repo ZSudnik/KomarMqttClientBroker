@@ -77,10 +77,10 @@ class MqttClient(
     private val isSocketActive
         get() = socketConnection?.socket?.isActive ?: false
 
-    private fun closeSocket() {
+    private fun closeSocket(err: String ) {
         doInBackground {
             socketConnection?.socket?.close()
-            listener?.onConnectLost( Exception("Close socket"))
+            listener?.onConnectLost( Exception("Close socket: $err"))
             shutDown()
         }
     }
@@ -102,9 +102,9 @@ class MqttClient(
         doInBackground {
             try {
                 socketConnection!!.socket.awaitClosed()
-                closeSocket()
+                closeSocket("monitorSocketLink : normal")
             }catch (ex: Exception){
-                closeSocket()
+                closeSocket("monitorSocketLink : Exception")
             }
         }
     }
@@ -128,7 +128,8 @@ class MqttClient(
                     if (!isConnected) delay(options.actionTimeout)
                 }
                 delay(halfTimeout)
-                if (socketConnection.isClose()) closeSocket() //monitorSocketLink same times no working
+                if (socketConnection.isClose())
+                    closeSocket("connectAuto : socketConnection.isClose") //monitorSocketLink same times no working
             }
             stateConnection?.let { it(false) }
         }
@@ -147,14 +148,15 @@ class MqttClient(
             try {
                 val mqttHandler = MQTTHandler()
                 while ( it.isActive) {
+                    // ZIBI correct
                     if (socketConnection.waitForAvailable()) return@doInBackground
                     mqttHandler.channelRead()
                 }
             } catch (e: Exception) {
                 when (e) {
                     is DecoderException -> disConnect()
-                    is NullPointerException -> closeSocket() //error if byteReadChannel == null after shutDown
-                    else -> closeSocket()
+                    is NullPointerException -> closeSocket(" openReceiver : NullPointerException") //error if byteReadChannel == null after shutDown
+                    else -> closeSocket(" openReceiver : ${e.message}")
                 }
             }
         }
@@ -169,7 +171,7 @@ class MqttClient(
                 RESULT_FAIL -> false
             }
         } catch (ex: Exception) {
-            closeSocket()
+            closeSocket(" connectSession : ${ex.message}")
         } finally {
             stateConnection?.let{  it(isConnected) }
             if (isConnected) {
@@ -191,11 +193,11 @@ class MqttClient(
                         socketConnection?.writeChannel(byteArray)
                     }) {
                         RESULT_SUCCESS -> Unit
-                        RESULT_FAIL -> closeSocket()
+                        RESULT_FAIL -> closeSocket(" startPingTask : RESULT_FAIL")
                     }
                 }
             }catch (ex: Exception){
-                closeSocket()
+                closeSocket(" startPingTask : ${ex.message}")
             }
         }
     }
@@ -213,10 +215,10 @@ class MqttClient(
                     socketConnection?.writeChannel(byteArray)
                 }) {
                     RESULT_SUCCESS -> listener?.onSubscribe(topics.toString())
-                    RESULT_FAIL -> closeSocket()
+                    RESULT_FAIL -> closeSocket(" subscribe : RESULT_FAIL")
                 }
             } catch (e: Exception) {
-                closeSocket()
+                closeSocket(" subscribe : ${e.message}")
             } finally {
                 subscribeProcessorList.remove(sp)
             }
@@ -232,10 +234,10 @@ class MqttClient(
                     socketConnection?.writeChannel(byteArray)
                 }) {
                     RESULT_SUCCESS -> listener?.onUnsubscribe(topics.toString())
-                    RESULT_FAIL -> closeSocket()
+                    RESULT_FAIL -> closeSocket(" unsubscribe : RESULT_FAIL")
                 }
             } catch (e: Exception) {
-                closeSocket()
+                closeSocket(" unsubscribe : ${e.message}" )
             } finally {
                 unsubscribeProcessorList.remove(usp)
             }
@@ -251,10 +253,10 @@ class MqttClient(
                     socketConnection?.writeChannel(byteArray)
                 }) {
                     RESULT_SUCCESS -> Unit//i("Publish ok：$content")
-                    RESULT_FAIL -> closeSocket()
+                    RESULT_FAIL -> closeSocket(" publish : RESULT_FAIL")
                 }
             } catch (e: Exception) {
-                closeSocket()
+                closeSocket(" publish : ${e.message}")
             } finally {
                 publishProcessorList.remove(pp)
             }
@@ -274,7 +276,7 @@ class MqttClient(
                     MqttDisconnectMessage(mqttVersion = mqttVer).toDecByteArray(mqttVer)
                 )
             } catch (e: Exception) {
-                closeSocket()
+                closeSocket(" disConnect : ${e.message}" )
             } finally {
                 disConnectParameters()
             }
@@ -387,7 +389,7 @@ class MqttClient(
                     else -> {}
                 }
             }catch (ex: Exception){
-                closeSocket()
+                closeSocket(" channelRead : ${ex.message}")
             }
         }
     }

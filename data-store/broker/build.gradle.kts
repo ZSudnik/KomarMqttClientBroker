@@ -9,7 +9,7 @@ kotlin {
         commonMain {
             dependencies {
                 api (libs.androidx.datastore.preferences)
-                implementation(libs.kotlinx.coroutines.android)
+                implementation(libs.coroutines.android)
                 implementation(libs.koin.android)
             }
             commonTest {

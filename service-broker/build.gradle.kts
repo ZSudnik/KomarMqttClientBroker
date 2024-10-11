@@ -21,7 +21,8 @@ kotlin {
 
 //                implementation("org.jetbrains.kotlin:kotlin-stdlib:${ver.jetbrains.kotlin}")
 //                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:${ver.jetbrains.coroutines}")
-                implementation(libs.kotlinx.coroutines.android)
+                implementation(libs.coroutines.android)
+                implementation(libs.coroutines.core)
             }
             commonTest {
                 dependencies{

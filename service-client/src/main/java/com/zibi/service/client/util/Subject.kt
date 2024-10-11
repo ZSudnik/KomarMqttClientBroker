@@ -1,6 +1,6 @@
-package com.zibi.service.client.util;
+package com.zibi.service.client.util
 
 
-public interface Subject {
-    void notifyObservers(boolean isRunning);
+interface Subject {
+    fun notifyObservers(isRunning: Boolean)
 }
