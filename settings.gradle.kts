@@ -28,10 +28,10 @@ dependencyResolutionManagement {
 }
 
 gradle.startParameter.excludedTaskNames.addAll(listOf(":buildSrc:testClasses"))
-val typApp = "client"
-//val typApp = "broker"
-rootProject.name = "Komar Mqtt ${typApp.capitalized()}"
-include (":app${typApp.capitalized()}")
+//val typApp = "client"
+val typApp = "broker"
+rootProject.name = "${typApp.replaceFirstChar(Char::uppercase)} Mqtt - Komar"
+include (":app${typApp.replaceFirstChar(Char::uppercase)}")
 include(":fragment:$typApp-start")
 include(":fragment:$typApp-settings")
 include(":fragment:permission")

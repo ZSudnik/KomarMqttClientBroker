@@ -61,8 +61,8 @@ androidx-activity-compose = "1.9.3"
 androidx-lifecycle = "2.7.0"
 lifecycleRuntimeComposeAndroid = "2.8.6"
 
-commonsCodec = "1.15" #"1.17.1"
-h2Mvstore = "1.4.199" #"2.3.232"
+commonsCodec = "1.17.1" #"1.15"
+h2Mvstore = "1.4.200" #"1.4.199"
 netty-mqtt = "4.1.114.Final"
 
 [libraries]
