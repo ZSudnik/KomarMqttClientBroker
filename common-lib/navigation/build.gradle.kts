@@ -18,6 +18,6 @@ dependencies {
     implementation( project(":common-lib:lifecycle"))
 
     api( libs.androidx.navigation.compose)
-    implementation( libs.kotlinx.coroutines.android)
+    implementation(libs.coroutines.android)
     implementation(libs.koin.androidx.compose)
 }

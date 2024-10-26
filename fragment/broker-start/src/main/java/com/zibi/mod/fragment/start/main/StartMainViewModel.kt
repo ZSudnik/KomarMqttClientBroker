@@ -17,8 +17,6 @@ import com.zibi.service.broker.log.LogStream
 import com.zibi.service.broker.log.MsgType
 import com.zibi.service.broker.service.MQTTService
 import com.zibi.service.broker.service.MQTTWrapper
-import com.zibi.service.broker.service.ServiceState
-import com.zibi.service.broker.service.getServiceState
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.launch
@@ -70,6 +68,11 @@ class StartMainViewModelImpl (
         }
     }
 
+//    override fun update(isRun: Boolean) { isServerRunning.value = isRun }
+//    override fun numberClient(numClient: Int) { clientsCount.intValue = numClient }
+//    override fun loadListEvent(listStrEvent: List<String>) { logs.addAll( listStrEvent ) }
+//    override fun addEvent(strEvent: String){ logs.add(strEvent)}
+
     override val uiData: () -> StartMainData.Initialized
         get() = {
             StartMainData.Initialized(
@@ -114,6 +117,4 @@ class StartMainViewModelImpl (
         }
         return null
     }
-
 }
-

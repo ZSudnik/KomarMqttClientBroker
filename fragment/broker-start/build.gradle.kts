@@ -18,7 +18,7 @@ kotlin {
                 implementation( libs.flowredux.jvm)
                 implementation( libs.flowredux.compose)
                 implementation( libs.koin.androidx.compose)
-                implementation(libs.kotlinx.coroutines.android)
+                implementation(libs.coroutines.android)
             }
         }
     }

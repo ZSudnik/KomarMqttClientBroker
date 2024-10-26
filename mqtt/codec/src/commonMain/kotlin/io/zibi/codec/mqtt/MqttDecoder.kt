@@ -491,12 +491,13 @@ class MqttDecoder(
         var loop = 0
         do {
 //            val byte = buffer.readByte().toUByte().toInt()
+//            val byte1 = (readChannel(1)[1] and 0xFF.toByte())
             val byte = readChannel(1).first().toUByte().toInt()
             isNext = (byte and 0x80) == 0x80
             result += (byte and 0x7F) * multiplier
             multiplier *= 128
             loop++
-        } while (isNext && loop != 4)
+        } while (isNext && (loop != 4))
         if (loop < 4 && (result < 0 || result > 268435455)) {
             throw DecoderException("remaining length exceeds 4 digits ($messageType)")
         }

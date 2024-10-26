@@ -1,7 +1,6 @@
 package com.zibi.client.fragment.start.main
 
-//import com.zibi.service.client.service_ktor.KMQTTService
-import com.zibi.service.client.IClientService
+import android.annotation.SuppressLint
 import android.content.ComponentName
 import android.content.Intent
 import android.content.ServiceConnection
@@ -16,9 +15,10 @@ import androidx.lifecycle.viewModelScope
 import com.zibi.client.fragment.start.data.LightPoint
 import com.zibi.client.fragment.start.main.model.StartMainData
 import com.zibi.common.device.lightbulb.LightBulbData
+import com.zibi.mod.data_store.preferences.ClientSetting
 import com.zibi.mod.data_store.preferences.LightBulbStore
-import com.zibi.service.client.Observer
 import com.zibi.service.client.service.MQTTService
+import com.zibi.service.client.util.Observer
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.Job
@@ -46,6 +46,7 @@ interface StartMainNavigation {
 class StartMainViewModelImpl (
     private val stateMachine: StartMainStateMachine,
     private val lightBulbStore: LightBulbStore,
+    private val clientSetting: ClientSetting
 ) : AbsStateViewModel<StartMainState, StartMainAction>(stateMachine),
     StartMainViewModel, StartMainNavigation, Observer {
 
@@ -59,21 +60,18 @@ class StartMainViewModelImpl (
     }
 /////////////////////////////////////
     private val isClientRunning = mutableStateOf(false)
-    private lateinit var clientService: IClientService
-//    private var serviceBounded: Boolean = false
+    @SuppressLint("StaticFieldLeak")
+    private lateinit var clientService: MQTTService
 
     /** Callbacks for service binding */
     private val connection = object : ServiceConnection {
         override fun onServiceConnected(className: ComponentName, service: IBinder) {
-//            serviceBounded = true
-            clientService = IClientService.Stub.asInterface(service)
+            val binder = service as MQTTService.LocalBinder
+            clientService = binder.getMqttService()
             clientService.addObserver( this@StartMainViewModelImpl)
-            clientService.onConnected()
+            clientService.onConnected( clientSetting, lightBulbStore)
         }
-        override fun onServiceDisconnected(arg0: ComponentName) {
-//            serviceBounded = false
-//            clientService.onChangeConnection()
-        }
+        override fun onServiceDisconnected(arg0: ComponentName) {}
     }
 
 
@@ -116,10 +114,6 @@ class StartMainViewModelImpl (
 
     override val navEvent: Flow<StartMainNavigation.NavEvent>
         get() = stateMachine.navEvent
-
-    override fun asBinder(): IBinder? {
-        return null
-    }
 
     override fun update(isRun: Boolean) {
         isClientRunning.value = isRun

@@ -3,9 +3,11 @@ package com.zibi.mod.common.ui.inputs
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.relocation.BringIntoViewRequester
 import androidx.compose.foundation.relocation.bringIntoViewRequester
+import androidx.compose.foundation.text.BasicText
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.ClickableText
 import androidx.compose.foundation.text.KeyboardOptions
@@ -324,17 +326,16 @@ fun InputField(
         )
       }
     }
-
     linkText?.let { text ->
-      ClickableText(
-        modifier = Modifier.align(Alignment.End),
+      BasicText(
+        modifier = Modifier.align(Alignment.End).clickable {
+          onLinkClick()
+        },
         text = AnnotatedString(text),
         style = AppTheme.typography.label2Regular.copy(
           color = AppTheme.colors.statusBlue1
         ),
-      ) {
-        onLinkClick()
-      }
+      )
     }
 
   }

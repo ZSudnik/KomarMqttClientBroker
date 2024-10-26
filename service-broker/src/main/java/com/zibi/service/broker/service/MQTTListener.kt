@@ -34,7 +34,7 @@ class MQTTListener(private val logStream: LogStream) : AbstractInterceptHandler(
     }
 
     override fun onPublish(msg: InterceptPublishMessage) {
-        val logMsg = "${timeStr()} PUB: ${msg.username} : ${msg.topicName}"
+        val logMsg = "${timeStr()} PUB: ${msg.username} : ${msg.topicName} : ${msg.payload}"
         log(logMsg, MsgType.MESSAGE)
     }
 
@@ -49,16 +49,15 @@ class MQTTListener(private val logStream: LogStream) : AbstractInterceptHandler(
     }
 
     override fun onMessageAcknowledged(msg: InterceptAcknowledgedMessage) {
-        val logMsg = "${timeStr()} ACK: ${msg.username} ${msg.topic}"
+        val logMsg = "${timeStr()} ACK: ${msg.username} : ${msg.topic}"
         log(logMsg, MsgType.MESSAGE)
     }
 
 //    override fun onSessionLoopError(error: Throwable) {}
 
     fun log(logMsg: String, msgType: MsgType) {
-        logStream.addLog(LogData(logMsg, msgType, LogType.INFO))
+        logStream.addLog( LogData(logMsg, msgType, LogType.INFO))
     }
-
 
     companion object {
         const val TAG = "MQTTServerListener"

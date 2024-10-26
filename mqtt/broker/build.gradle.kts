@@ -16,19 +16,17 @@ kotlin {
                 //ver my
                 implementation (project(":mqtt:codec"))
                 //ver org
-                //    api("io.netty:netty-codec-mqtt:${ver.various.io_netty}")
-                //    implementation("io.netty:netty-codec-http:${ver.various.io_netty}")
-                //    implementation("io.netty:netty-transport-native-epoll:${ver.various.io_netty}")
+//                api(libs.netty.codec.mqtt)
+//                implementation(libs.netty.codec.http)
+//                implementation(libs.netty.transport.native.epoll)
                 ////////////////////////////
-//                api("io.netty:netty-codec-mqtt:${ver.various.io_netty}")
-//                implementation("io.netty:netty-codec-http:${ver.various.io_netty}")
-//                implementation("io.netty:netty-transport-native-epoll:${ver.various.io_netty}")
 
-                implementation("com.h2database:h2-mvstore:1.4.199")
+                implementation(libs.h2.mvstore)
+                implementation(libs.commons.codec)
 //                implementation("com.zaxxer:HikariCP:2.4.7")
 //                implementation("com.librato.metrics:metrics-librato:5.1.0")
 //                implementation("com.bugsnag:bugsnag:[3.0,4.0)")
-                implementation("commons-codec:commons-codec:1.15")
+
                 implementation(libs.slf4j.api)
             }
         }

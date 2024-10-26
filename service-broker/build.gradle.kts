@@ -18,10 +18,10 @@ kotlin {
 
                 implementation(libs.koin.android)
 //                implementation("io.insert-koin:koin-androidx-navigation:${ver.various.koin}")
-
 //                implementation("org.jetbrains.kotlin:kotlin-stdlib:${ver.jetbrains.kotlin}")
 //                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:${ver.jetbrains.coroutines}")
-                implementation(libs.kotlinx.coroutines.android)
+                implementation(libs.coroutines.android)
+                implementation(libs.coroutines.core)
             }
             commonTest {
                 dependencies{
@@ -37,4 +37,7 @@ kotlin {
 }
 android {
     namespace= "com.zibi.service.broker"
+}
+dependencies {
+    implementation(project(":mqtt:broker"))
 }

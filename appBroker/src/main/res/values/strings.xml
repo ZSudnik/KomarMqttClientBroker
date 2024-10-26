@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!--school id activation-->
-    <string name="app_name">Komar Mqtt Broker</string>
+    <string name="app_name">Broker Mqtt Komar</string>
 
     <string name="school_id_activation_next">Dalej</string>
     <string name="school_id_activation_your_password">Twój kod</string>

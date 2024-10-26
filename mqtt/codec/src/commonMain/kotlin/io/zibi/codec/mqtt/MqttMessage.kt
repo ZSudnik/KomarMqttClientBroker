@@ -39,7 +39,7 @@ open class MqttMessage(
         if (loop > 4) {
             throw DecoderException("remaining length exceeds 4 digits {$loop}")
         }
-        return result.reversedArray() + headerAndPayload
+        return result + headerAndPayload
     }
 
     override fun toString(): String {

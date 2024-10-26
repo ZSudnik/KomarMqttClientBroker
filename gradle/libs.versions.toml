@@ -2,12 +2,12 @@
 ## SDK Versions
 min_sdk = "28"
 compile_sdk = "35"
-java_compatibility = "VERSION_17"
+java_compatibility = "VERSION_21"
 ###############################
 ## buldSrc Version
-gradle-android = "8.5.2"
+gradle-android = "8.7.1"
 kotlin = "2.0.20"
-compose = "1.7.0-rc01" #"1.6.11"
+compose = "1.7.0" #"1.7.0-rc01" #"1.6.11"
 google-ksp = "1.9.23-1.0.19"
 android-desugaring = "2.0.4"
 ## Dependecies Version
@@ -39,7 +39,7 @@ android-gradle = "8.2.2"
 android-material3 = "1.1.0-beta02"
 android-material = "1.6.1"
 
-androidx-navigation_compose = "2.8.2"
+androidx-navigation_compose = "2.8.3"
 androidx-activity = "1.6.1"
 androidx-customview_poolingcontainer = "1.0.0"
 androidx-constraintlayout_compose = "1.0.1"
@@ -56,9 +56,14 @@ ktlint-gradle = "12.1.0"
 
 
 androidx-core = "1.13.1"
-androidx-activity-compose = "1.9.2"
+androidx-activity-compose = "1.9.3"
 # TODO: Update to 2.8.+ when updating to Compose 1.7.+
 androidx-lifecycle = "2.7.0"
+lifecycleRuntimeComposeAndroid = "2.8.6"
+
+commonsCodec = "1.17.1" #"1.15"
+h2Mvstore = "1.4.200" #"1.4.199"
+netty-mqtt = "4.1.114.Final"
 
 [libraries]
 androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
@@ -75,8 +80,10 @@ androidx-test-monitor = { module = "androidx.test:monitor", version.ref = "test-
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "androidx-navigation_compose" }
 atomicfu = { module = "org.jetbrains.kotlinx:atomicfu", version.ref = "atomicfu" }
 colormath = { module = "com.github.ajalt.colormath:colormath", version.ref = "colormath" }
+commons-codec = { module = "commons-codec:commons-codec", version.ref = "commonsCodec" }
 flowredux-compose = { module = "com.freeletics.flowredux:compose", version.ref = "flowredux" }
 flowredux-jvm = { module = "com.freeletics.flowredux:flowredux-jvm", version.ref = "flowredux" }
+h2-mvstore = { module = "com.h2database:h2-mvstore", version.ref = "h2Mvstore" }
 slf4j-api = { module = "org.slf4j:slf4j-api", version.ref = "slf4j" }
 slf4j-simple = { module = "org.slf4j:slf4j-simple", version.ref = "slf4j" }
 zxing-core = { module = "com.google.zxing:core", version.ref = "zxing-core" }
@@ -93,9 +100,12 @@ kotlinx-io = { group = "org.jetbrains.kotlinx", name ="kotlinx-io-core", version
 #gradle-ksp = { group = "com.google.devtools.ksp", name ="com.google.devtools.ksp.gradle.plugin",version.ref = "google-ksp"}
 androidx-core = { module = "androidx.core:core", version.ref = "androidx-core" }
 
-#androidx-lifecycle-runtime = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "androidx-lifecycle" }
-androidx-lifecycle-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "androidx-lifecycle" }
-#androidx-lifecycle-compose = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "androidx-lifecycle" }
+androidx-lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "androidx-lifecycle" }
+androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "androidx-lifecycle" }
+androidx-lifecycle-runtime = { module = "androidx.lifecycle:lifecycle-runtime", version.ref = "androidx-lifecycle" }
+androidx-lifecycle-runtime-compose-android = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose-android", version.ref = "lifecycleRuntimeComposeAndroid" }
+androidx-lifecycle-service = { group = "androidx.lifecycle", name = "lifecycle-service", version.ref = "lifecycleRuntimeComposeAndroid" }
+
 #androidx-test-junit = { module = "androidx.test.ext:junit-ktx", version.ref = "androidx-test-junit" }
 
 compose-runtime = { module = "org.jetbrains.compose.runtime:runtime", version.ref = "compose" }
@@ -115,6 +125,7 @@ compose-activity = { module = "androidx.activity:activity-compose", version.ref 
 
 coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
 #coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
+coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
 
 junit = { module = "junit:junit", version.ref = "junit" }
 
@@ -123,7 +134,6 @@ koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose", versi
 #koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
 #koin-test = { module = "io.insert-koin:koin-test", version.ref = "koin" }
 
-kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
 #kotlinx-dateTime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinx-datetime" }
 
 ktor-server-core = { module = "io.ktor:ktor-server-core", version.ref = "ktor" }
@@ -154,6 +164,10 @@ lottie-compose = { module = "com.airbnb.android:lottie-compose", version.ref = "
 
 #turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
 #kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
+
+netty-codec-mqtt = { module = "io.netty:netty-codec-mqtt", version.ref = "netty-mqtt" }
+netty-codec-http = { module = "io.netty:netty-codec-http", version.ref = "netty-mqtt" }
+netty-transport-native-epoll = { module = "io.netty:netty-transport-native-epoll", version.ref = "netty-mqtt" }
 
 [plugins]
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
