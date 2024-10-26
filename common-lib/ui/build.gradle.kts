@@ -34,7 +34,7 @@ kotlin {
                 implementation(libs.androidx.media3.ui)
 
                 implementation( libs.lottie.compose)
-                implementation (libs.androidx.lifecycle.viewmodel)
+                implementation (libs.androidx.lifecycle.viewmodel.ktx)
                 implementation (libs.androidx.lifecycle.common)
 
                 implementation(libs.colormath)

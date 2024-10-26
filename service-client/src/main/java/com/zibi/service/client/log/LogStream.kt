@@ -31,7 +31,7 @@ class LogStreamImp : LogStream {
         }
 
     override fun addLog(logData: LogData) {
-        if( logsCache.size >= 300) logsCache.removeFirst()
+        if( logsCache.size >= 300) logsCache.removeAt(0)
         logsCache.add(logData.msg)
 
         scope.launch {

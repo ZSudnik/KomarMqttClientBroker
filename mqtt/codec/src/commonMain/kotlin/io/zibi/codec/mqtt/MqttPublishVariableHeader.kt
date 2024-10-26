@@ -13,11 +13,7 @@ class MqttPublishVariableHeader(
     val packetId: Int,
     properties: MqttProperties? = MqttProperties.NO_PROPERTIES
 ) {
-    private val properties: MqttProperties
-
-    init {
-        this.properties = withEmptyDefaults(properties)
-    }
+    private val properties: MqttProperties = withEmptyDefaults(properties)
 
     fun toDecByteArray(mqttFixedHeader: MqttFixedHeader, version: MqttVersion): ByteArray {
         if (!isValidPublishTopicName(topicName)) {

@@ -293,21 +293,18 @@ class MqttClient(
         publishProcessorList.forEach { sp -> sp.cancel() }
     }
 
-    var ff = 0
     internal inner class MQTTHandler {
         private val dec = MqttDecoder()
         private val chunkBuffer = ChunkBuffer(ByteBuffer.allocate(dec.maxBytesInMessage))
 
         @Throws(Exception::class)
         suspend fun channelRead() {
-            if(ff > 4)
-                ff = ff
-            ff++
             try {
+                i(" mqttFixedHeader" )
                 val mqttFixedHeader = dec.decodeFixedHeader(mqttVer) { size ->
                     socketConnection?.readByteArray(size) ?: throw IOException()
                 }
-                i(" YYYYYYYYYYYYYYY size: ${mqttFixedHeader.remainingLength}  $ff ${socketConnection?.input?.availableForRead}")
+                i(" readChunkBuffer size: ${mqttFixedHeader.remainingLength} ${socketConnection?.input?.availableForRead}")
                 socketConnection?.readChunkBuffer(mqttFixedHeader.remainingLength, chunkBuffer)
                 i("-->ChannelRead :${mqttFixedHeader.messageType.name}")
                 when (mqttFixedHeader.messageType) {

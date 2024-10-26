@@ -70,8 +70,8 @@ class LightBulbStore(
             ((listTopics.first() == "tele" && listTopics.last() == "STATE") ||
             (listTopics.first() == "stat" && listTopics.last() == "RESULT"))
             ){
-            listTopics.removeFirst()
-            listTopics.removeLast()
+            listTopics.removeAt(0)
+            listTopics.removeAt(listTopics.lastIndex)  //removeLast()
             listTopics.joinToString("/")
         } else null
     }
