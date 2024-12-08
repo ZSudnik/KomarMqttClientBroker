@@ -1,5 +1,6 @@
 package com.zibi.mod.common.ui.colorpicker.harmony
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.gestures.awaitEachGesture
 import androidx.compose.foundation.gestures.awaitFirstDown
 import androidx.compose.foundation.gestures.drag
@@ -76,6 +77,7 @@ fun HarmonyColorPicker(
  * Will show a brightness bar if [showBrightnessBar] is true
  * otherwise all colors are given the provided brightness value
  */
+@SuppressLint("UnusedBoxWithConstraintsScope")
 @Composable
 fun HarmonyColorPicker(
     modifier: Modifier = Modifier,

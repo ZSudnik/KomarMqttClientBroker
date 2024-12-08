@@ -65,6 +65,14 @@ class AndroidApplicationPlugin : Plugin<Project> {
                 sourceCompatibility = javaVer
                 targetCompatibility = javaVer
             }
+            lintOptions {
+                isCheckReleaseBuilds = false
+//                isExplainIssues = true
+//                isAbortOnError = false
+//                isAbsolutePaths = true
+//                disable.add("MissingTranslation")
+//                baseline = file("lint-baseline.xml")
+            }
 //            tasks.withType<KotlinCompile>().configureEach {
 //                kotlinOptions.jvmTarget = javaVer.toString()
 //            }

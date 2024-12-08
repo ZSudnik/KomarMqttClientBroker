@@ -1,5 +1,6 @@
 package com.zibi.mod.common.ui.controllers.select
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -16,6 +17,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import com.zibi.mod.common.ui.theme.AppTheme
 
+@SuppressLint("UnrememberedMutableInteractionSource")
 @Composable
 fun ControllerSelect(
   items: List<String>,

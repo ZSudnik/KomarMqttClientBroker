@@ -22,7 +22,7 @@ fun Loader(
 ) {
   val composition by rememberLottieComposition(
     LottieCompositionSpec.RawRes(
-      resId = if (AppTheme.colors.isLight) R.raw.light_theme_loader else R.raw.dark_theme_loader
+      resId = if (AppTheme.colors.isLight) R.raw.common_ui_theme_light_loader else R.raw.common_ui_theme_dark_loader
     )
   )
   val interactionSource = remember { MutableInteractionSource() }

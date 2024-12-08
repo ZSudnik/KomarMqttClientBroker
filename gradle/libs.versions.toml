@@ -5,7 +5,7 @@ compile_sdk = "35"
 java_compatibility = "VERSION_21"
 ###############################
 ## buldSrc Version
-gradle-android = "8.7.1"
+gradle-android = "8.7.2"
 kotlin = "2.0.20"
 compose = "1.7.0" #"1.7.0-rc01" #"1.6.11"
 google-ksp = "1.9.23-1.0.19"
@@ -16,8 +16,8 @@ coroutines = "1.9.0"
 ##
 appcompat = "1.7.0"
 atomicfu = "0.24.0"
-camera = "1.3.4"
-constraintlayoutCompose = "1.0.1"
+camera = "1.4.0"
+constraintlayoutCompose = "1.0.1" #1.1.0-rc01
 customviewPoolingcontainer = "1.0.0"
 flowredux = "1.0.2"
 gson = "2.10.1"
@@ -32,7 +32,7 @@ google-accompanist_appcompat_theme = "0.27.1"
 monitor = "1.6.1"
 test-monitor = "1.7.2"
 slf4j = "2.0.12"
-zxing_core = "3.4.0"
+zxing = "3.4.0"
 google-exoplayer = "1.3.0"
 
 android-gradle = "8.2.2"
@@ -55,11 +55,11 @@ ktlint-gradle = "12.1.0"
 
 
 
-androidx-core = "1.13.1"
+androidx-core = "1.15.0"
 androidx-activity-compose = "1.9.3"
 # TODO: Update to 2.8.+ when updating to Compose 1.7.+
-androidx-lifecycle = "2.7.0"
-lifecycleRuntimeComposeAndroid = "2.8.6"
+androidx-lifecycle = "2.8.7"
+lifecycleRuntimeComposeAndroid = "2.8.7"
 
 commonsCodec = "1.17.1" #"1.15"
 h2Mvstore = "1.4.200" #"1.4.199"
@@ -86,7 +86,7 @@ flowredux-jvm = { module = "com.freeletics.flowredux:flowredux-jvm", version.ref
 h2-mvstore = { module = "com.h2database:h2-mvstore", version.ref = "h2Mvstore" }
 slf4j-api = { module = "org.slf4j:slf4j-api", version.ref = "slf4j" }
 slf4j-simple = { module = "org.slf4j:slf4j-simple", version.ref = "slf4j" }
-zxing-core = { module = "com.google.zxing:core", version.ref = "zxing-core" }
+zxing-core = { module = "com.google.zxing:core", version.ref = "zxing" }
 gradle-main = { group = "com.android.tools.build", name ="gradle", version.ref = "gradle-android"}
 gradle-api = { group = "com.android.tools.build", name ="gradle-api", version.ref = "gradle-android"}
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
@@ -102,6 +102,7 @@ androidx-core = { module = "androidx.core:core", version.ref = "androidx-core" }
 
 androidx-lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "androidx-lifecycle" }
 androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "androidx-lifecycle" }
+androidx-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "androidx-lifecycle" }
 androidx-lifecycle-runtime = { module = "androidx.lifecycle:lifecycle-runtime", version.ref = "androidx-lifecycle" }
 androidx-lifecycle-runtime-compose-android = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose-android", version.ref = "lifecycleRuntimeComposeAndroid" }
 androidx-lifecycle-service = { group = "androidx.lifecycle", name = "lifecycle-service", version.ref = "lifecycleRuntimeComposeAndroid" }
@@ -122,6 +123,8 @@ compose-preview = { module = "org.jetbrains.compose.ui:ui-tooling-preview", vers
 compose-materialIconsExtended = { module = "org.jetbrains.compose.material:material-icons-extended", version.ref = "compose" }
 
 compose-activity = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity-compose" }
+androidx-activity-ktx = { module = "androidx.activity:activity-ktx", version.ref = "androidx-activity-compose" }
+
 
 coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
 #coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }

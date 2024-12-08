@@ -34,7 +34,7 @@ fun StartLoginScreen(viewModel: StartLoginViewModel) {
     }
 }
 
-@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter", "UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun StartMainLogin(data: StartLoginData.Screen, showDialog: Boolean) {
     Scaffold(

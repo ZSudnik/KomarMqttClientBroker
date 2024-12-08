@@ -100,7 +100,7 @@ private fun getSourceUri(context: Context, @RawRes source: Int) =
   )
 
 private fun getAttrs(context: Context): AttributeSet? {
-  val parser = context.resources.getXml(R.xml.player_texture_view)
+  val parser = context.resources.getXml(R.xml.common_ui_player_texture_view)
   try {
     parser.next()
     parser.nextTag()

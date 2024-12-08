@@ -14,10 +14,10 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Button
-import androidx.compose.material.ButtonDefaults
-import androidx.compose.material.Icon
-import androidx.compose.material.Surface
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Icon
+import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -45,7 +45,7 @@ fun ButtonSmallWithIconNoState(
             shape = RoundedCornerShape(AppTheme.dimensions.xLargePadding),
             interactionSource = NoRippleInteractionSource(),
             colors = ButtonDefaults.buttonColors(
-                backgroundColor = if (buttonSet.state == state) {
+                containerColor = if (buttonSet.state == state) {
                     buttonSet.activeColor
                 } else {
                     buttonSet.passiveColor
@@ -53,7 +53,7 @@ fun ButtonSmallWithIconNoState(
             ),
             onClick = onClick,
             contentPadding = PaddingValues(AppTheme.dimensions.xSmallPadding),
-            elevation = ButtonDefaults.elevation(
+            elevation = ButtonDefaults.buttonElevation(
                 defaultElevation = AppTheme.dimensions.xLargePadding,
                 pressedElevation = AppTheme.dimensions.xLargePadding,
                 disabledElevation = AppTheme.dimensions.xLargePadding

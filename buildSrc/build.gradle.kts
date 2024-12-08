@@ -4,6 +4,11 @@ plugins {
     alias(libs.plugins.compose.compiler) apply false
 }
 
+repositories {
+    google()
+    mavenCentral()
+}
+
 gradlePlugin {
     plugins {
         create("android-library-module") {
