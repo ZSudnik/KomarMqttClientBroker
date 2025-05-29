@@ -9,6 +9,7 @@ appBroker/build/
 .idea/kotlinc.xml
 .idea/.name
 .idea/deploymentTargetSelector.xml
-
+.kotlin/*
+buildSrc/.kotlin/*
 
 
