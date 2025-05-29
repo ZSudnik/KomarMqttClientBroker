@@ -1,5 +1,4 @@
 plugins {
-    alias(libs.plugins.compose.compiler)
     id("android-library-module")
 }
 
@@ -8,26 +7,33 @@ kotlin {
     sourceSets {
         commonMain {
             dependencies {
-                implementation( project(":mqtt:client"))
-                implementation( project(":data-store:client"))
-                implementation( project(":common-lib:resources"))
+                api(project(":mqtt:client"))
+                implementation(project(":data-store:client"))
+                implementation(project(":common-lib:resources"))
                 api(libs.compose.runtime)
-//                api(compose.runtime)
-
                 implementation(libs.koin.android)
                 implementation(libs.coroutines.android)
+                implementation(libs.ktor.server.cio)
 
 //                implementation("io.ktor:ktor-client-core:${ver.various.ktor}")
 //                implementation("io.ktor:ktor-client-content-negotiation:${ver.various.ktor}")
 //                implementation("io.ktor:ktor-client-okhttp:${ver.various.ktor}")
 
 //                implementation("io.ktor:ktor-client-android:${ver.various.ktor}")
+                api(libs.androidx.runtime)
+                implementation(libs.androidx.core)
+                implementation(libs.koin.android)
+                api(libs.koin.core)
+                api(libs.ktor.server.core)
+                implementation(libs.ktor.server.host.common)
+                implementation(libs.ktor.utils)
+                api(libs.kotlin.stdlib)
+                api(libs.coroutines.core)
+                implementation(project(":common-lib:resources"))
+                api(project(":data-store:client"))
+                api(project(":mqtt:codec"))
             }
         }
-
-//        task("testClasses").doLast {
-//            println("This is a dummy testClasses task")
-//        }
     }
 }
 
@@ -39,7 +45,19 @@ android {
 }
 
 dependencies {
-    implementation(libs.androidx.test.monitor)
-    implementation(project(":mqtt:client"))
-    testImplementation( libs.junit)
+    api(project(":data-store:client"))
+    api(project(":mqtt:codec"))
+    api(project(":mqtt:client"))
+    implementation(project(":common-lib:resources"))
+    api(libs.androidx.runtime)
+    api(libs.coroutines.core)
+    api(libs.koin.core)
+    api(libs.ktor.server.core)
+    api(libs.kotlin.stdlib)
+    implementation(libs.androidx.core)
+    implementation(libs.koin.android)
+    implementation(libs.ktor.server.host.common)
+    implementation(libs.ktor.utils)
+    testImplementation(libs.androidx.test.monitor)
 }
+

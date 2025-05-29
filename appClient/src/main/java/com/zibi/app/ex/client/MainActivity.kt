@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity(), GlobalNavigationEventHandler {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    setTheme(androidx.appcompat.R.style.Theme_AppCompat_Light_NoActionBar)
+    setTheme(R.style.Theme_AppCompat_Light_NoActionBar)
     setContentView(R.layout.app_layout)
     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 //    onActivityCreate(

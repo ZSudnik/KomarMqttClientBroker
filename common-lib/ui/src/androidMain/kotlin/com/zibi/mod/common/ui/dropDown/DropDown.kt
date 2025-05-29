@@ -1,5 +1,6 @@
 package com.zibi.mod.common.ui.dropDown
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.clickable
@@ -21,6 +22,7 @@ import com.zibi.mod.common.ui.utils.ValidationState
 import com.zibi.mod.common.ui.theme.AppTheme
 import com.zibi.mod.common.ui.utils.NoRippleInteractionSource
 
+@SuppressLint("UnrememberedMutableInteractionSource")
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun DropDown(

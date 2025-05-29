@@ -129,7 +129,7 @@ fun DocumentMainCard(
               modifier = Modifier
                 .width(AppTheme.dimensions.localDocumentFlagWidth)
                 .height(AppTheme.dimensions.localDocumentFlagHeight),
-              source = R.raw.coi_common_ui_waving_polish_flag,
+              source = R.raw.common_ui_waving_polish_flag,
               testMode = testMode
             )
           }

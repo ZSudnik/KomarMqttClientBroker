@@ -1,9 +1,7 @@
 package com.zibi.app.ex.broker.di
 
-import com.zibi.app.ex.broker.view.fragment.AppManagerFragmentNavigator
-import com.zibi.app.ex.broker.view.fragment.feature.StartFragment
 import com.zibi.app.ex.broker.view.fragment.feature.SettingFragment
-import com.zibi.mod.common.navigation.fragments.FragmentNavigator
+import com.zibi.app.ex.broker.view.fragment.feature.StartFragment
 import com.zibi.mod.common.navigation.global.GlobalNavigationManager
 import com.zibi.mod.common.navigation.global.GlobalNavigationManagerImpl
 import com.zibi.mod.common.navigation.intents.IntentManager

@@ -1,24 +1,22 @@
 plugins {
-    kotlin("multiplatform")
-    alias(libs.plugins.compose.compiler)
+    id("android-library-module")
 }
 
 kotlin {
+    androidTarget("android"){
+        dependencies{
+            api(libs.kotlin.stdlib)
+            api(project(":common-lib:ui"))
+            implementation(libs.gson)
+        }
+    }
     jvm()
     sourceSets {
-        commonMain {
-            dependencies {
-                implementation(project(":common-lib:ui"))
-                implementation( libs.gson)
-            }
-        }
-        commonTest {
-            dependencies {
-                implementation(kotlin("test"))
-            }
-        }
+        commonMain {}
+        commonTest {}
     }
-    task("testClasses").doLast {
-        println("This is a dummy testClasses task")
-    }
+}
+android {
+    namespace = "com.zibi.mod.common.device"
+    resourcePrefix = "common_bms_device"
 }

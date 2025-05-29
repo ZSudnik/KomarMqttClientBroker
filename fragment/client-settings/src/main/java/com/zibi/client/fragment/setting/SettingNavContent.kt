@@ -1,7 +1,6 @@
 package com.zibi.client.fragment.setting
 
 import androidx.compose.runtime.Composable
-//import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import com.zibi.mod.common.navigation.AppGlobalNavigationEvent
 import com.zibi.mod.common.navigation.DestinationNavigator

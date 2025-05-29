@@ -3,24 +3,22 @@ plugins {
 }
 
 kotlin {
-    androidTarget("android")
+    androidTarget("android"){
+        dependencies {
+            api(libs.kotlin.stdlib)
+            implementation(libs.annotation)
+            implementation(libs.koin.android)
+        }
+    }
     sourceSets {
         commonMain {
             dependencies {
-                implementation( libs.koin.android)
+                api(libs.koin.core)
             }
         }
     }
-    task("testClasses").doLast {
-        println("This is a dummy testClasses task")
-    }
 }
-
 android {
     namespace = "com.zibi.mod.common.resources"
     resourcePrefix = "common_resources"
-}
-
-dependencies {
-    implementation("androidx.annotation:annotation:1.7.1")
 }

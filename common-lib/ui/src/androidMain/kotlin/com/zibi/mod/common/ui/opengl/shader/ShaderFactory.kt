@@ -28,8 +28,8 @@ object ShaderFactory {
         context = context,
         shader = Shader(
           title = "No effect",
-          fragmentShader = context.readTextFileFromResource(R.raw.basic_fragment),
-          vertexShader = context.readTextFileFromResource(R.raw.basic_vertex)
+          fragmentShader = context.readTextFileFromResource(R.raw.common_ui_basic_fragment),
+          vertexShader = context.readTextFileFromResource(R.raw.common_ui_basic_vertex)
         ),
         listBitmap = context.getListBitmaps(resListBitmap)
       )
@@ -37,8 +37,8 @@ object ShaderFactory {
         context = context,
         shader = Shader(
           title = "",
-          fragmentShader = context.readTextFileFromResource(R.raw.waving_bitmap_fragment),
-          vertexShader = context.readTextFileFromResource(R.raw.waving_bitmap_vertex)
+          fragmentShader = context.readTextFileFromResource(R.raw.common_ui_waving_bitmap_fragment),
+          vertexShader = context.readTextFileFromResource(R.raw.common_ui_waving_bitmap_vertex)
         ),
         listBitmap = context.getListBitmaps(resListBitmap)
       )
@@ -46,8 +46,8 @@ object ShaderFactory {
         context = context,
         shader = Shader(
           title = "Hologram 1",
-          fragmentShader = context.readTextFileFromResource(R.raw.holo__fragment),
-          vertexShader = context.readTextFileFromResource(R.raw.holo__vertex)
+          fragmentShader = context.readTextFileFromResource(R.raw.common_ui_holo__fragment),
+          vertexShader = context.readTextFileFromResource(R.raw.common_ui_holo__vertex)
         ),
         listBitmap = context.getListBitmaps(resListBitmap)
       )
@@ -55,8 +55,8 @@ object ShaderFactory {
         context = context,
         shader = Shader(
           title = "Hologram 2",
-          fragmentShader = context.readTextFileFromResource(R.raw.holo_ii_fragment),
-          vertexShader = context.readTextFileFromResource(R.raw.holo_ii_vertex)
+          fragmentShader = context.readTextFileFromResource(R.raw.common_ui_holo_ii_fragment),
+          vertexShader = context.readTextFileFromResource(R.raw.common_ui_holo_ii_vertex)
         ),
         listBitmap = context.getListBitmaps(resListBitmap)
       )

@@ -4,26 +4,34 @@ plugins {
 }
 
 kotlin {
-    androidTarget()
+    androidTarget("android"){
+        dependencies{
+            api(libs.kotlin.stdlib)
+            implementation(libs.koin.android)
+        }
+    }
     sourceSets {
         commonMain {
             dependencies {
-                api (libs.androidx.datastore.preferences)
+                api(libs.androidx.datastore.preferences)
                 implementation(libs.coroutines.android)
                 implementation(libs.koin.android)
+
+                api(libs.androidx.datastore.core)
+                api(libs.androidx.datastore.preferences.core)
+                api(libs.koin.core)
+                implementation(libs.androidx.datastore)
+                implementation(libs.coroutines.core)
             }
             commonTest {
-                dependencies{
-                        implementation (libs.junit)
+                dependencies {
+                    implementation(libs.junit)
                 }
             }
-        }
-       task("testClasses").doLast {
-            println("This is a dummy testClasses task")
         }
     }
 }
 
 android {
-    namespace= "com.zibi.mod.data_store"
+    namespace = "com.zibi.mod.data_store"
 }

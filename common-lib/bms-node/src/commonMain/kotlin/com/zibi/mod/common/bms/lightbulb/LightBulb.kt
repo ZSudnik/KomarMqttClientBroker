@@ -49,8 +49,8 @@ fun LightBulbColor(
             listData.firstOrNull() ?: LightBulbData()
     val updatedStateListLightBulb by rememberUpdatedState(onChangeListOfLightBulb)
     val standardButtonSet = ButtonSet(
-        activeIconResId = R.drawable.lightbulb_outline,
-        passiveIconResId = R.drawable.lightbulb_off_outline,
+        activeIconResId = R.drawable.common_bms_node_lightbulb_outline,
+        passiveIconResId = R.drawable.common_bms_node_lightbulb_off_outline,
         iconColor = AppTheme.colors.white,
         activeColor = Color.Red,
         passiveColor = Color.LightGray,
@@ -122,14 +122,14 @@ fun LightBulbColor(
                 state = mainButtonState,
                 listButton = listOf(
                     ButtonSet(
-                        activeIconResId = R.drawable.lightbulb_group_outline,
+                        activeIconResId = R.drawable.common_bms_node_lightbulb_group_outline,
                         iconColor = AppTheme.colors.white,
                         activeColor = Color.Red,
                         passiveColor = Color.LightGray,
                         state = ButtonState.ON,
                     ),
                     ButtonSet(
-                        activeIconResId = R.drawable.lightbulb_group_off_outline,
+                        activeIconResId = R.drawable.common_bms_node_lightbulb_group_off_outline,
                         iconColor = AppTheme.colors.white,
                         activeColor = Color.Red,
                         passiveColor = Color.LightGray,
