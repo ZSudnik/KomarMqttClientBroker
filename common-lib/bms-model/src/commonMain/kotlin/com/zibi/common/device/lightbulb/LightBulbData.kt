@@ -1,6 +1,5 @@
 package com.zibi.common.device.lightbulb
 
-//import androidx.compose.ui.graphics.Color
 import com.google.gson.Gson
 import com.google.gson.annotations.Expose
 import com.zibi.common.device.Json

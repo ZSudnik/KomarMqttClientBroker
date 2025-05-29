@@ -1,51 +1,48 @@
 package gradlePlugins
 
-import com.android.build.gradle.BaseExtension
+import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
+import gradlePlugin.libs
 import org.gradle.api.JavaVersion
-import org.gradle.api.Plugin
 import org.gradle.api.Project
-import org.gradle.api.artifacts.VersionCatalog
-import org.gradle.api.artifacts.VersionCatalogsExtension
-import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.withType
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
-class AndroidApplicationPlugin : Plugin<Project> {
+class AndroidApplicationPlugin : BasePlugin() {
 
-    private val Project.android: BaseExtension
-        get() = extensions.findByName("android") as? BaseExtension
-            ?: error("Not an Android module: $name")
+    private fun <T : BaseAppModuleExtension> Project.android(action: T.() -> Unit) {
+        extensions.configure("android", action)
+    }
 
-    override fun apply(project: Project) =
+    override fun apply(project: Project) {
         with(project) {
-            val libs = project.rootProject
-                .extensions
-                .getByType(VersionCatalogsExtension::class.java)
-                .named("libs")
-            applyPlugins()
-            androidConfig(libs)
-            dependenciesConfig( libs)
-        }
-
-    private fun Project.applyPlugins() {
-        plugins.run {
-            apply("com.android.application")
-            apply("org.jetbrains.kotlin.android")
+            applyPlugins( project)
+            androidConfig( project)
+            dependenciesConfig( project)
         }
     }
 
-    private fun Project.androidConfig(libs: VersionCatalog) {
-        val javaVer = JavaVersion.valueOf(libs.findVersion("java_compatibility").get().displayName)
-        android.run {
-            compileSdkVersion( libs.findVersion("compile_sdk").get().displayName.toInt())
+    override fun applyPlugins( project: Project) {
+        super.applyPlugins( project)
+        project.plugins.run {
+            apply(libs.pluginsId.android.application)
+            apply(libs.pluginsId.kotlin.android)
+            apply(libs.pluginsId.kotlin.compose)
+        }
+    }
+
+    fun androidConfig( project: Project) {
+        val javaVer = JavaVersion.valueOf(libs.version.aa.java.compatibility)
+        project.android<BaseAppModuleExtension> {
+            compileSdk = libs.version.aa.compile.sdk.toInt()
             defaultConfig {
-                minSdk = libs.findVersion("min_sdk").get().displayName.toInt()
+                minSdk = libs.version.aa.min.sdk.toInt()
                 testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-                targetSdk = libs.findVersion("compile_sdk").get().displayName.toInt()
-//                versionCode = libs.findVersion("versionCode").get().displayName.toInt()
-//                versionName = libs.findVersion("versionName").get().displayName
+                targetSdk = libs.version.aa.compile.sdk.toInt()
+                versionCode = libs.version.aa.versionCode.toInt()
+                versionName = libs.version.aa.versionName
                 multiDexEnabled = true
             }
+
             buildTypes {
                 getByName("debug") {
                     isDebuggable = true
@@ -56,7 +53,10 @@ class AndroidApplicationPlugin : Plugin<Project> {
                     isDebuggable = false
                     isJniDebuggable = false
                     isMinifyEnabled = false
-                    proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
+                    proguardFiles(
+                        getDefaultProguardFile("proguard-android.txt"),
+                        "proguard-rules.pro"
+                    )
                     signingConfig = signingConfigs.getByName("debug")
                 }
             }
@@ -65,41 +65,20 @@ class AndroidApplicationPlugin : Plugin<Project> {
                 sourceCompatibility = javaVer
                 targetCompatibility = javaVer
             }
-            lintOptions {
-                isCheckReleaseBuilds = false
-//                isExplainIssues = true
-//                isAbortOnError = false
-//                isAbsolutePaths = true
-//                disable.add("MissingTranslation")
-//                baseline = file("lint-baseline.xml")
+            lint {
+                checkReleaseBuilds = false
             }
-//            tasks.withType<KotlinCompile>().configureEach {
-//                kotlinOptions.jvmTarget = javaVer.toString()
-//            }
-            tasks.withType<KotlinCompile>().configureEach {
-                    compilerOptions.languageVersion
-                        .set(org.jetbrains.kotlin.gradle.dsl.KotlinVersion.KOTLIN_2_0)
-                }
-//            composeOptions {
-//                kotlinCompilerExtensionVersion = libs.findVersion("compose_compiler").get().displayName
-//            }
-//            packaging {
-//                resources {
-//                    excludes += "/META-INF/{AL2.0,LGPL2.1}"
-//                    excludes.add("META-INF/*")
-//                }
-//            }
-//            buildFeatures {
-////        viewBinding = true
-//                compose = true
-//                buildConfig = true
-//            }
+            project.tasks.withType<KotlinCompile>().configureEach {
+                compilerOptions.languageVersion
+                    .set(org.jetbrains.kotlin.gradle.dsl.KotlinVersion.KOTLIN_2_1)
+            }
         }
     }
-    private fun Project.dependenciesConfig(libs: VersionCatalog) {
-        val verDesugar = libs.findVersion("android-desugaring").get().displayName
-        dependencies {
-            "coreLibraryDesugaring"( "com.android.tools:desugar_jdk_libs:${verDesugar}")
-        }
+
+     override fun dependenciesConfig( project: Project) {
+        super.dependenciesConfig( project)
+         project.dependencies.apply {
+             add("implementation", libs.androidx.runtime)
+         }
     }
 }

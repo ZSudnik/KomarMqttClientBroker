@@ -1,6 +1,5 @@
 plugins {
     id("android-application-module")
-    alias(libs.plugins.compose.compiler)
 }
 
 task("testClasses").doLast {
@@ -43,9 +42,7 @@ android {
 
 dependencies {
     implementation( project(":common-lib:navigation"))
-    implementation( project(":common-lib:error"))
     implementation( project(":common-lib:resources"))
-    implementation( project(":common-lib:lifecycle"))
     implementation( project(":common-lib:storage"))
     implementation( project(":fragment:client-start"))
     implementation( project(":fragment:client-settings"))
@@ -54,11 +51,19 @@ dependencies {
     implementation( project(":service-client"))
 
     implementation( libs.androidx.core)
-    implementation( libs.compose.activity)
 
     implementation(libs.koin.android)
     implementation(libs.ktor.server.core)
     implementation(libs.ktor.server.cio)
 
     implementation(libs.coroutines.core)
+  implementation(libs.androidx.activity)
+  implementation(libs.annotation)
+  implementation(libs.androidx.appcompat)
+  implementation(libs.androidx.runtime)
+  implementation(libs.androidx.fragment)
+  implementation(libs.androidx.lifecycle.viewmodel)
+  implementation(libs.androidx.navigation.runtime)
+  implementation(libs.koin.core)
+  implementation("io.ktor:ktor-server-host-common:2.3.11")
 }

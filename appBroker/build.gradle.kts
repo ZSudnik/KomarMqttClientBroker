@@ -1,10 +1,6 @@
 plugins {
     id("android-application-module")
-    alias(libs.plugins.compose.compiler)
 }
-    task("testClasses").doLast {
-        println("This is a dummy testClasses task")
-    }
 
 android {
     namespace = "com.zibi.app.ex.broker"
@@ -36,9 +32,9 @@ android {
 
 dependencies {
     implementation( project(":common-lib:navigation"))
-    implementation( project(":common-lib:error"))
+//    implementation( project(":common-lib:error"))
     implementation( project(":common-lib:resources"))
-    implementation( project(":common-lib:lifecycle"))
+//    implementation( project(":common-lib:lifecycle"))
     implementation( project(":common-lib:storage"))
     implementation( project(":fragment:broker-start"))
     implementation( project(":fragment:broker-settings"))
@@ -46,9 +42,17 @@ dependencies {
     implementation( project(":service-broker"))
 
     implementation( libs.androidx.appcompat)
-    implementation( libs.compose.activity)
+//    implementation( libs.compose.activity)
+    implementation(libs.androidx.activity)
+    implementation(libs.androidx.runtime)
+    implementation(libs.androidx.fragment)
+    implementation(libs.androidx.lifecycle.viewmodel)
+    implementation(libs.androidx.navigation.runtime)
+    implementation(libs.koin.core)
+    implementation(libs.androidx.core)
+    implementation(libs.coroutines.core)
+    //
 
     implementation(libs.koin.android)
-    implementation(libs.coroutines.android)
-
+    runtimeOnly(libs.coroutines.android)
 }

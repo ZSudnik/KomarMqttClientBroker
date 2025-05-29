@@ -3,18 +3,19 @@ plugins {
 }
 
 kotlin {
-    androidTarget("android")
+    androidTarget("android"){
+        dependencies {
+            api(libs.kotlin.stdlib)
+            implementation(libs.androidx.core)
+        }
+    }
     sourceSets {
         commonMain {
             dependencies {
-                implementation(libs.androidx.core)
                 implementation( libs.koin.android)
-
+                api(libs.koin.core)
             }
         }
-    }
-    task("testClasses").doLast {
-        println("This is a dummy testClasses task")
     }
 }
 

@@ -1,21 +1,7 @@
-plugins {
-    kotlin("multiplatform")
-    id("kotlinx-atomicfu")
+plugins{
+    id("codec-module")
 }
-
-kotlin {
-    jvm()
-    sourceSets {
-        commonMain {
-            dependencies {
-                implementation(libs.coroutines.core)
-                implementation(libs.atomicfu)
-                implementation(libs.ktor.server.cio)
-//                implementation(libs.kotlinx.io)
-            }
-        }
-    }
-    task("testClasses").doLast {
-        println("This is a dummy testClasses task")
-    }
+dependencies{
+    api(libs.ktor.io)
+    runtimeOnly(libs.kotlin.reflect)
 }
